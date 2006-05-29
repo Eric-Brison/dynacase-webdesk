@@ -1,0 +1,35 @@
+# ============================================
+# $Id: Makefile.in,v 1.1 2006/05/29 16:35:36 marc Exp $
+# ============================================
+PACKAGE = @PACKAGE@
+VERSION = @VERSION@
+utildir = @PUBRULE@
+appname = @PACKAGE@
+pubdir  = @prefix@
+srcdir  = @srcdir@
+
+
+export pubdir utildir appname
+
+TAR = gtar
+GZIP_ENV = --best
+
+export targetdir PACKAGE
+
+#SUBDIR=  Class Images Zone Xml Action Css Javascript Families Themes OSync Batch Api Doc
+SUBDIR=  Xml Action Css Javascript Images
+
+include $(utildir)/PubRule
+
+DISTFILES += $(SUBDIR) \
+	$(PACKAGE).app \
+        RELEASE VERSION \
+	71_webdesk.conf
+
+$(pubdir)/$(appname)/71_webdesk.conf : 71_webdesk.conf
+	cp $< $@
+
+clean:
+	rm -f config.log config.status configure WEBDESK-*.tar.gz WEBDESK.php WEBDESK.spec 
+	rm -rf autom4te-2.53.cache
+	find . -name \*~  -exec rm {} \;
