@@ -1,0 +1,3 @@
+<h4>Service Horloge</h4>
+[date] [IF gmt](utc)[ENDIF gmt][IFNOT gmt](locale)[ENDIF gmt]
+

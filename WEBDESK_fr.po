@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-29 14:13+0200\n"
+"POT-Creation-Date: 2006-05-31 18:24+0200\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -10,11 +10,110 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "webdesk application"
+msgid "description"
 msgstr ""
+
+msgid "short_name"
+msgstr ""
+
+msgid "My portal"
+msgstr "Mon portail"
+
+msgid "My preferences"
+msgstr "Mes préférences"
+
+msgid "Webdesk preferences"
+msgstr "Préférences"
+
+msgid "Administration"
+msgstr "Administration"
+
+msgid "Webdesk administration"
+msgstr "Administration du WebDesk"
+
+msgid "webdesk"
+msgstr "WebDesk"
+
+msgid "webdesk application"
+msgstr "Application WebDesk"
 
 msgid "webdesk access"
-msgstr ""
+msgstr "Accès au WebDesk"
 
 msgid "webdesk main page"
-msgstr ""
+msgstr "Page principale WebDesk"
+
+msgid "portal page"
+msgstr "Portail"
+
+msgid "preferences page"
+msgstr "Préférences"
+
+msgid "administration page"
+msgstr "Administration"
+
+msgid "save service definition"
+msgstr "Sauvegarde de la définition du service"
+
+msgid "service test view"
+msgstr "Service test - affichage"
+
+msgid "service test edition"
+msgstr "Service test - édition"
+
+msgid "wd open/close menu"
+msgstr "Ouvrir/fermer le menu"
+
+msgid "Click here to login"
+msgstr "Cliquer ici pour vous déconnecter"
+
+msgid "wd fixe/release menu"
+msgstr "Afficher/masque le menu comme panneau latéral"
+
+msgid "wd hide svc content"
+msgstr "Masquer le contenu"
+
+msgid "wd reload svc content"
+msgstr "Afficher le contenu"
+
+msgid "wd edit svc content"
+msgstr "Editer les paramètres"
+
+msgid "wd move svc"
+msgstr "Déplacer"
+
+msgid "wd delete svc"
+msgstr "Supprimer le service"
+
+msgid "wd url for retrieving information not given"
+msgstr "Url de récuperation des informations non fournie"
+
+msgid "edition url not given"
+msgstr "Url pour édition des param^etre non fournie"
+
+msgid "wd loading edition forms"
+msgstr "Chargement du formulaire de paramètrage"
+
+msgid "wd error retrieving edit form"
+msgstr "Erreur de récupération du formulaire édition"
+
+msgid "wd error saving edit form"
+msgstr "Erreur de sauvegarde du formulaire édition"
+
+msgid "wd show svc content"
+msgstr "Afficher le contenu"
+
+msgid "wd confirm supress of"
+msgstr "Etes-vous sur de vouloir supprimer le service "
+
+msgid "wd error retrieving content"
+msgstr "Erreur de récupération du contenu"
+
+msgid "wd save"
+msgstr "Sauver"
+
+msgid "webdesk application portal"
+msgstr "Portail application WebDesk"
+
+msgid "Javascript must be enabled in your navigator"
+msgstr "éxécution  du Javascript doit ^etre autorisée"

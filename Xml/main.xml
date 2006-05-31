@@ -1,16 +1,14 @@
 <html>
 <head>
-  <title>[TEXT:webdesk application portal]</title>
-  <noscript>
-  <h1>[TEXT:Javascript must be enabled in your navigator]</h1>
-  </noscript>
-  <link rel="icon" href="WEBDESK/Images/webdesk.ico">
-  <link rel="SHORTCUT ICON" href="WEBDESK/Images/webdesk.ico" >
+
+[ZONE WEBDESK:HEAD]
 
 [CSS:REF]
 
 <style type="text/css">
-body { padding:0px; margin:0px; border:0px; }
+
+[ZONE WEBDESK:CSS]
+
 
 [CSS:CODE]</style>
 
@@ -32,18 +30,13 @@ var isOpen = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[
 function alternMBar() {
 
   if (isMBarStatic) {
-
     isMBarStatic = false;
-    isOpen = true;
-    document.getElementById('wdcmd').style.display = 'none';
-    document.getElementById('wditmbar').style.display = 'block';
-
+    isOpen = false;
+    document.getElementById('wdcmdtext').src = "[IMG:wd_release_menu.gif]";
   } else {
-    
     isMBarStatic = true;
     isOpen = true;
-    document.getElementById('wdcmd').style.display = 'block';
-    document.getElementById('wditmbar').style.display = 'hidden';
+    document.getElementById('wdcmdtext').src = "[IMG:wd_fixe_menu.gif]";
   }
   computefbodywh();
 }
@@ -57,72 +50,113 @@ function computefbodywh() {
   var wdrift = 0.02;
 
   var md = document.getElementById('wdmenu');
-  md.style.heigth = 'auto';
-
+  md.style.height = 'auto';
   if (isMBarStatic) {
-  
     md.style.position = 'relative';
     md.style.top = 0;
     md.style.left = 0;
 
-    var cmdW = getObjectWidth(document.getElementById('wdcmd'));
-    var ww = bodW - cmdW;
+    var ww = bodW;
     document.getElementById('wdmenu').style.height = bodH - topH;
-    document.getElementById('fbody').style.height = bodH - topH;
     document.getElementById('wdmenu').style.width = parseInt(ww * wor); 
-    document.getElementById('wdcmd').style.width = cmdW; 
-    document.getElementById('wdbody').style.width =
-      document.getElementById('fbody').style.width = parseInt(ww * (1 - (wor + wdrift)));
     document.getElementById('wdmenu').style.display = (isOpen?'block':'none');
+    document.getElementById('wdbody').style.width =parseInt(ww * (1 - (wor + wdrift)));
+    if (currentApp>-1) {
+      document.getElementById('fbody'+currentApp).style.height = bodH - topH;
+      document.getElementById('fbody'+currentApp).style.width = parseInt(ww * (1 - (wor + wdrift)));
+    }
+    document.getElementById('wdmbarmng').src = (isOpen?"[IMG:wd_left_bar.gif]":"[IMG:wd_right_bar.gif]");
 
   } else {
-
-    var md = document.getElementById('wdmenu');
 
     md.style.position = 'absolute';
     md.style.top = topH;
     md.style.width =  parseInt(bodW * wor);
     
-    document.getElementById('fbody').style.height = bodH - topH;
-    document.getElementById('wdbody').style.width =
-      document.getElementById('fbody').style.width = parseInt(bodW);
-    
+    document.getElementById('wdbody').style.width =parseInt(bodW);
+    if (currentApp>-1) {
+      document.getElementById('fbody'+currentApp).style.width = parseInt(bodW);
+      document.getElementById('fbody'+currentApp).style.height = bodH - topH;
+    }    
     if (isOpen)  md.style.display = 'block';
     else md.style.display = 'none';
 
-  }
+    document.getElementById('wdmbarmng').src = (isOpen?"[IMG:wd_close_bar.gif]":"[IMG:wd_open_bar.gif]");
 
-    
+  }
 }
 
+var currentApp = -1;
+var currentIdApp = -1;
+function runapp( idapp, sidapp, params) {
+  
+  if (!params) params='';
+
+  if (currentApp>-1) {
+    document.getElementById('app'+currentIdApp).className = 'app';
+    document.getElementById('fbody'+currentApp).style.display = 'none';
+  }
+
+  currentIdApp = idapp;
+  currentApp = (idapp>10000?0:idapp);
+  var fapp = document.getElementById('fbody'+currentApp);
+
+  if (fapp.src=='about:blank' || currentApp==0) {
+    fapp.src = '[CORE_BASEURL]app='+sidapp+params;
+  }
+  fapp.style.display = 'block';
+  
+  document.getElementById('app'+idapp).className = 'app app_selected';
+  document.getElementById('wdappsel').innerHTML = document.getElementById('app'+idapp).innerHTML;
+
+  if (!isMBarStatic) isOpen = false;
+  computefbodywh();
+
+}   
   
 </script>  
 </head>
 <body onload="computefbodywh()" onresize="computefbodywh()">
 
-<div id="wdtitle" style="background:yellow">
+<div id="wdtitle" class="wdtitle">
 <table style="width:100%"><tr>
-<td style="text-align:left">[IFNOT IsMBarStatic]<span id="wditmbar"  onclick="isOpen = !isOpen; computefbodywh();">(X)</span>[ENDIF IsMBarStatic]Agenda</td>
-<td style="text-align:center">title</td>
-<td style="text-align:right"><img id="logo" height="22"  style=" vertical-align: top; cursor:pointer;border:none" onclick="document.authent.submit()" title="[TEXT:Click here to login]" src="[IMG:connect.gif]"></td>
+<td style="text-align:left; "><img onclick="isOpen = !isOpen; computefbodywh();" style="vertical-align:bottom;"  class="small_button" title="[TEXT:wd open/close menu]" id="wdmbarmng" src="[IFNOT IsMBarStatic][IMG:wd_open_bar.gif][ENDIF IsMBarStatic][IF IsMBarStatic][IMG:wd_right_bar.gif][ENDIF IsMBarStatic]"> <span id="wdappsel">Agenda</span></td>
+<td style="text-align:center">[title]</td>
+<td style="text-align:right">[userDomain] | [userRealName] <img id="logo" onclick="document.authent.submit()" title="[TEXT:Click here to login]" class="small_button" src="[IMG:wdconnect.gif]"></td>
 </tr></table>
 </div>
 
-<div id="wdmenu" style="float:left; width:1px; background:red">
-toto<br>
-titi<br>
-tata
-<div style="display:[IF IsMBarStatic]hidden[ENDIF IsMBarStatic][IFNOT IsMBarStatic]block[ENDIF IsMBarStatic];text-align:center; font-size:80%; border-top:1px solid white" onclick="alternMBar();" >[ figer ]</div></div>
+<div id="wdmenu" class="wdmenu" style="float:left; width:1px;">
 
-<div id="wdcmd" style="display:[IF IsMBarStatic]block[ENDIF IsMBarStatic][IFNOT IsMBarStatic]none[ENDIF IsMBarStatic]; float:left; cursor:pointer; background:#000000; " onclick="isOpen = !isOpen; computefbodywh();"><img src="[IMG:scroll_vert.gif]"></div>
+[BLOCK appList]
+<div id="app[id]" class="app" onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" onclick="runapp([id], '[name]', '[params]')"><img src="[iconsrc]" style="width:16px; vertical-align:baseline">&nbsp;[short_name]</div>[ENDBLOCK appList]
 
-<div id="wdbody" style="float:left; background:lightblue; border:0px; width:5px;"><iframe id="fbody" style="border:0px; background:blue;" src="about:blank"></iframe></div>
+<div class="app">&nbsp;</div>
 
-<form style="display:none" target="_self" action="[CORE_PUBURL]/authent.php?[CORE_SESSIONID]" method=post name="authent">
-   <input type=hidden NAME="SeenBefore" VALUE="1">
-   <input type=hidden NAME="logout" VALUE="Y">
-   <input type=hidden NAME="OldAuth" VALUE="[PHP_AUTH_USER]">
+[BLOCK specialAppList]
+<div id="app[id]" class="app" onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" onclick="runapp([id], '[name]', '[params]')"><img src="[iconsrc]" style="width:16px; vertical-align:baseline">&nbsp;[short_name]</div>[ENDBLOCK specialAppList]
+
+<div style="text-align:right; font-size:80%; border-top:1px solid #CFCFCF"  ><img class="small_button" onclick="alternMBar();" id="wdcmdtext" src="[IF IsMBarStatic][IMG:wd_fixe_menu.gif][ENDIF IsMBarStatic][IFNOT IsMBarStatic][IMG:wd_release_menu.gif][ENDIF IsMBarStatic]" title="[TEXT:wd fixe/release menu]"></div>
+</div>
+
+
+<div id="wdbody" style="float:left; background:lightblue; border:0px; width:5px;">
+[BLOCK appListBody]<iframe id="fbody[id]" name="fbody[id]"  style="display:none; border:0px; background:blue;" src="about:blank" scrolling="needed"></iframe>
+[ENDBLOCK appListBody]
+<iframe id="fbody0" name="fbody0"  style="display:none; border:0px; background:blue;" src="about:blank" scrolling="needed"></iframe></div>
+
+<form style="display:inline" action="index.php?sole=Y&&app=AUTHENT&action=LOGOUT" method="POST" name="authent">
+  <input type="hidden" name="SeenBefore" value="1">
+  <input type="hidden" name="logout" value="Y">
+  <input type="hidden" name="rapp" value="WEBDESK">
+  <input type="hidden" name="raction" value="MAIN">
+  <input type="hidden" name="rurl" value="[CORE_STANDURL]">
+  <input type="hidden" name="OldAuth" value="[PHP_AUTH_USER]">
 </form>
 
+<script>
+// Load default app
+runapp([defid], '[defname]', '[defparams]');
+</script>
 </body>
 </html>

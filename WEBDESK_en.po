@@ -2,13 +2,37 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-29 14:13+0200\n"
+"POT-Creation-Date: 2006-05-31 18:24+0200\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+msgid "description"
+msgstr ""
+
+msgid "short_name"
+msgstr ""
+
+msgid "My portal"
+msgstr ""
+
+msgid "My preferences"
+msgstr ""
+
+msgid "Webdesk preferences"
+msgstr ""
+
+msgid "Administration"
+msgstr ""
+
+msgid "Webdesk administration"
+msgstr ""
+
+msgid "webdesk"
+msgstr ""
 
 msgid "webdesk application"
 msgstr ""
@@ -17,4 +41,79 @@ msgid "webdesk access"
 msgstr ""
 
 msgid "webdesk main page"
+msgstr ""
+
+msgid "portal page"
+msgstr ""
+
+msgid "preferences page"
+msgstr ""
+
+msgid "administration page"
+msgstr ""
+
+msgid "save service definition"
+msgstr ""
+
+msgid "service test view"
+msgstr ""
+
+msgid "service test edition"
+msgstr ""
+
+msgid "wd open/close menu"
+msgstr ""
+
+msgid "Click here to login"
+msgstr ""
+
+msgid "wd fixe/release menu"
+msgstr ""
+
+msgid "wd hide svc content"
+msgstr ""
+
+msgid "wd reload svc content"
+msgstr ""
+
+msgid "wd edit svc content"
+msgstr ""
+
+msgid "wd move svc"
+msgstr ""
+
+msgid "wd delete svc"
+msgstr ""
+
+msgid "wd url for retrieving information not given"
+msgstr ""
+
+msgid "edition url not given"
+msgstr ""
+
+msgid "wd loading edition forms"
+msgstr ""
+
+msgid "wd error retrieving edit form"
+msgstr ""
+
+msgid "wd error saving edit form"
+msgstr ""
+
+msgid "wd show svc content"
+msgstr ""
+
+msgid "wd confirm supress of"
+msgstr ""
+
+msgid "wd error retrieving content"
+msgstr ""
+
+msgid "wd save"
+msgstr ""
+
+msgid "webdesk application portal"
+msgstr ""
+
+msgid "Javascript must be enabled in your navigator"
 msgstr ""
