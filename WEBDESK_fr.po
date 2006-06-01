@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-05-31 18:24+0200\n"
+"POT-Creation-Date: 2006-06-01 14:44+0200\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -109,8 +109,20 @@ msgstr "Etes-vous sur de vouloir supprimer le service "
 msgid "wd error retrieving content"
 msgstr "Erreur de récupération du contenu"
 
+msgid "wd show/hide service list"
+msgstr "Afficher/masquer la liste des services"
+
 msgid "wd save"
 msgstr "Sauver"
+
+msgid "wd available services"
+msgstr "Liste des services disponibles"
+
+msgid "wd add service"
+msgstr "Ajouter le service"
+
+msgid "wd close"
+msgstr "Fermer"
 
 msgid "webdesk application portal"
 msgstr "Portail application WebDesk"

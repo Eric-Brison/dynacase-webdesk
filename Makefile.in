@@ -1,5 +1,5 @@
 # ============================================
-# $Id: Makefile.in,v 1.2 2006/05/31 17:06:43 marc Exp $
+# $Id: Makefile.in,v 1.3 2006/06/01 16:45:21 marc Exp $
 # ============================================
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@
@@ -17,17 +17,24 @@ GZIP_ENV = --best
 export targetdir PACKAGE
 
 #SUBDIR=  Class Images Zone Xml Action Css Javascript Families Themes OSync Batch Api Doc
-SUBDIR=  Xml Action Css Javascript Images Zone
+SUBDIR=  Xml Action Css Javascript Images Zone Freedom Services
 
 include $(utildir)/PubRule
 
 DISTFILES += $(SUBDIR) \
 	$(PACKAGE).app \
         RELEASE VERSION \
-	71_webdesk.conf
+	71_webdesk.conf \
+	Freedom/webdesk.csv
 
 $(pubdir)/$(appname)/71_webdesk.conf : 71_webdesk.conf
 	cp $< $@
+
+$(pubdir)/$(appname)/webdesk.csv : Freedom/webdesk.csv 
+	cp Freedom/webdesk.csv $(pubdir)/$(appname)
+
+publish: $(pubdir)/$(appname)/webdesk.csv \
+	$(pubdir)/$(appname)/71_webdesk.conf
 
 clean:
 	rm -f config.log config.status configure WEBDESK-*.tar.gz WEBDESK.php WEBDESK.spec 

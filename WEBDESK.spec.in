@@ -1,7 +1,7 @@
 #! /bin/rpm
 #
 #  File: 
-#  $Id: WEBDESK.spec.in,v 1.1 2006/05/29 16:35:36 marc Exp $
+#  $Id: WEBDESK.spec.in,v 1.2 2006/06/01 16:45:21 marc Exp $
 #
 #  This is the SPEC file for the What Users Module
 #  Anakeen What Application
@@ -54,6 +54,9 @@ autoconf
 make  pubdir=$RPM_BUILD_ROOT%{destdir} 
 install -d $RPM_BUILD_ROOT/%{apacheconfdir}
 install  $RPM_BUILD_ROOT/%{destdir}/%{name}/71_webdesk.conf $RPM_BUILD_ROOT/%{apacheconfdir}/71_webdesk.conf
+install -d $RPM_BUILD_ROOT/%{destdir}/FDL
+cd $RPM_BUILD_ROOT/%{destdir}/FDL
+ln -s ../@PACKAGE@/Method.*.php  .
 
 %clean
 [ "$RPM_BUILD_ROOT" != "/" ] && rm -rf $RPM_BUILD_ROOT
@@ -69,6 +72,7 @@ install  $RPM_BUILD_ROOT/%{destdir}/%{name}/71_webdesk.conf $RPM_BUILD_ROOT/%{ap
 %defattr(-,%{httpuser},%{httpuser})
 %dir %{destdir}/%{name}
 %{destdir}/%{name}/*
+%{destdir}/FDL/Method.*.php
 
 %changelog
 * Thu Nov 23 2004 Marc Claverie <marc.claverie@i-cesam.com>

@@ -28,6 +28,12 @@ $action_desc = array (
 
   array( "acl" => "USER",  "name" => "SAVESVC", "short_name" =>N_("save service definition"), "toc" => "N", "root" =>"N"),
 
+  // Service in portal management
+  array( "acl" => "USER",  "name" => "GETJSSERVICE", "short_name" =>N_("return JS service description"), "toc" => "N", "root" =>"N"),
+  array( "acl" => "USER",  "name" => "ADDSERVICE", "short_name" =>N_("add service in user portal"), "toc" => "N", "root" =>"N"),
+  array( "acl" => "USER",  "name" => "MODSERVICE", "short_name" =>N_("modify service in user portal"), "toc" => "N", "root" =>"N"),
+  array( "acl" => "USER",  "name" => "DELSERVICE", "short_name" =>N_("del service from user portal"), "toc" => "N", "root" =>"N"),
+
   // For test
   array( "acl" => "USER",  "name" => "SVCTEST", "short_name" =>N_("service test view"), "toc" => "N", "root" =>"N"),
   array( "acl" => "USER",  "name" => "ESVCTEST", "short_name" =>N_("service test edition"), "toc" => "N", "root" =>"N"),

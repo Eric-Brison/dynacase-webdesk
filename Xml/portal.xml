@@ -20,12 +20,12 @@ function initPortal() {
 
   resizeCols();
 
-  addService(0,'Test service c(0)l(0)', '[CORE_STANDURL]app=WEBDESK&action=SVCTEST', '[CORE_STANDURL]app=WEBDESK&action=ESVCTEST', '',  0,0);
-  addService(10,'Test service c(0)l(0)', '[CORE_STANDURL]app=WEBDESK&action=SVCTEST', '[CORE_STANDURL]app=WEBDESK&action=ESVCTEST', '',  0,0);
-  addService(100,'Agenda', '[CORE_STANDURL]app=WGCAL&action=WGCAL_PORTAL', '', '',  1,0);
-  addService(1,'Test service  c(0)l(1)', '', '', '', 0,1);
+  addService('Test service c(0)l(0)', '[CORE_STANDURL]app=WEBDESK&action=SVCTEST', '[CORE_STANDURL]app=WEBDESK&action=ESVCTEST', '',  0,0);
+  addService('Test service c(0)l(0)', '[CORE_STANDURL]app=WEBDESK&action=SVCTEST', '[CORE_STANDURL]app=WEBDESK&action=ESVCTEST', '',  0,0);
+  addService('Agenda', '[CORE_STANDURL]app=WGCAL&action=WGCAL_PORTAL&mo=L', '', '',  1,0);
+  addService('Test service  c(0)l(1)', '', '', '', 0,1);
 
-  addService(2,'Test service systeme 2', '', '', '', 2,0, true);
+  addService('Test service systeme 2', '', '', '', 2,0, true);
 }
 
 function resizeCols() {
@@ -38,11 +38,40 @@ function resizeCols() {
   }
 }
 
+function addNewService(sid) {
+  var xreq = null;
+  if (window.XMLHttpRequest) xreq = new XMLHttpRequest();
+  else xreq = new ActiveXObject("Microsoft.XMLHTTP");
+  if (xreq) {
+    xreq.open("POST", "[CORE_STANDURL]app=WEBDESK&action=ADDSERVICE&sid="+sid, false);
+    xreq.send('');
+    if (xreq.status!=200) {
+      alert('[TEXT:wd error add service] (HTTP Code '+xreq.status+')');	   
+    } else { 
+      eval(xreq.responseText);
+      if (svcnum && svcnum>-1) {
+	xreq.open("POST", "[CORE_STANDURL]app=WEBDESK&action=GETJSSERVICE&snum="+svcnum, false);
+	xreq.send('');
+	if (xreq.status!=200) {
+	  alert('[TEXT:wd error getting service] (HTTP Code '+xreq.status+')');	   
+	} else { 
+	  eval(xreq.responseText);
+	}
+      } else {
+	alert('[TEXT:wd invalid service number returned by creation]');	   
+      }
+    }
+  } else {
+    alert('[TEXT:wd error add service] (XMLHttpRequest contruction)');	   
+  }
+}
 
-function addService(sid, stitle, vurl, eurl,  purl, col, line, systemsvc) {
+
+function showService(stitle, vurl, eurl,  purl, col, line, systemsvc) {
 
   var root = document.getElementById('wdcol'+col);
   if (root) {
+    var sid = services.length;
     var svc = document.createElement('div');
     svc.id = 'svc'+sid;
     svc.name = 'svc'+sid;
@@ -208,6 +237,25 @@ function loadSvc(sid) {
   }
 }
 
+// Params 
+var paramIsOpen = false;
+function opencloseParams() {
+  if (document.getElementById('wdparamset')) {
+    var dp = document.getElementById('wdparamset');
+    var dpi = document.getElementById('wdparamimg');
+    if (paramIsOpen) {
+      if (dpi) dpi.src = "[IMG:wd_open_services.gif]";
+      dp.style.display = 'none';
+      paramIsOpen = false;
+    } else {
+      if (dpi) dpi.src = "[IMG:wd_close_services.gif]";
+      dp.style.display = 'block';
+      paramIsOpen = true;
+   }
+  }
+}
+    
+
 
 </script>
 <style type="text/css">
@@ -219,15 +267,22 @@ function loadSvc(sid) {
 </head>
 <body onload="initPortal()" onresize="resizeCols()">
 [BLOCK cols]
-<div id="wdcol[icol]" class="wdcols" style="display:none; float:left;"></div>[ENDBLOCK cols]
+<div id="wdcol[icol]" class="wdcols" style="display:none; float:left;">
+[IF firstCol]<div><img class="small_button" id="wdparamimg" onclick="opencloseParams()" src="[IMG:wd_open_services.gif]" title="[TEXT:wd show/hide service list]"></div>[ENDIF firstCol]
+</div>[ENDBLOCK cols]
 
 <div id="editsvc" style="padding:5px; margin:5px; border:1px solid #CFCFCF; display:none; position:relative">
 <form name="editsvcf" id="editsvcf" method="POST" action="[CORE_STANDURL]&app=WEBDESK&action=SVCSAVE">
 <div id="editsvc_c"></div>
-<div style="text-align:right; margin:5px; border-top:1px solid #CFCFCF;">
-<img class="small_button" onclick="sendForm()" src="[IMG:wd_save.gif]" title="[TEXT:wd save]">
-</div>
+<div class="wdbuttonb"><img class="small_button" onclick="sendForm()" src="[IMG:wd_save.gif]" title="[TEXT:wd save]"></div>
 </form>
+</div>
+
+<div id="wdparamset" class="wdparamb" style="position:absolute; left:20px; top:20px; display:none" >
+<div class="wdtitleb" >[TEXT:wd available services]</div>
+[BLOCK catS]<div class="wdtitleb1" >[categorie]</div>
+[BLOCK services[categorie]]<div title="[psvc_descr]">[IF Icon]<img style="height:16px" class="small_button" title="[psvc_title]" src="[CORE_BASEURL]app=FDL&action=EXPORTFILE&vid=[vid]&docid=[docid]&attrid=[attrid]&index=-1">[ENDIF Icon][IFNOT Icon]&nbsp;&rarr;[ENDIF Icon]&nbsp;[psvc_title]&nbsp<img class="small_button" onclick="addNewService([id])" title="[TEXT:wd add service] [psvc_title]" src="[IMG:wd_add_service.gif]"></div>[ENDBLOCK services[categorie]][ENDBLOCK catS]
+<div class="wdbuttonb" style="text-align:right"><img class="small_button" onclick="opencloseParams()" src="[IMG:wd_cancel.gif]" title="[TEXT:wd close]"></div>
 </div>
 
 </body>

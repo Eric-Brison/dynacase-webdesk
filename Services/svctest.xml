@@ -1,0 +1,2 @@
+<div><img style="vertical-align:middle" src="[IMG:svctest.gif]" title="Service Horloge">[date] [IF gmt](utc)[ENDIF gmt][IFNOT gmt](locale)[ENDIF gmt]</div>
+

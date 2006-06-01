@@ -9,6 +9,12 @@ body, div { padding:0px; margin:0px; border:0px; background-color:white }
 .wdmenu { border: 0px   }
 .wdcols { border-color:#CFCFCF; border-style:none none none dotted; padding:0px; border-width:1px; height:100%; }
 
-.wdsvc { margin: 6px 3px 3px 3px; }
+.wdsvc { margin: 6px 3px 10px 3px; }
 .wdsvc_title { background-color:#dbe6d9; border-style:none none solid none; border-color:#CFCFCF; border-width:1px; font-weight:bold; vertical-align:bottom; }
 .wdsvc_content { padding-left:5px; border-width:1px; border-style: none none none dotted; border-color:#CFCFCF;  }
+
+.wdparamb { padding:5px; margin:5px; border-color:#CFCFCF; border-style: solid; border-width:1px; }
+
+.wdbuttonb { text-align:right; border-top:1px solid #CFCFCF; margin: 5px 0px 5px 0px; }
+.wdtitleb { text-align:center; font-weight:bold; border-bottom:1px solid #CFCFCF; margin: 5px 0px 10px 0px;  }
+.wdtitleb1 { text-align:left; border-bottom:1px solid #CFCFCF; border-bottom:1px solid #CFCFCF; margin: 5px 0px 5px 0px;  }
