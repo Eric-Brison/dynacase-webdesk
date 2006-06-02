@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-01 14:44+0200\n"
+"POT-Creation-Date: 2006-06-02 14:21+0200\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -52,8 +52,20 @@ msgstr "Préférences"
 msgid "administration page"
 msgstr "Administration"
 
-msgid "save service definition"
+msgid "return JS service description"
+msgstr "return JS service description"
+
+msgid "add service in user portal"
+msgstr "Ajouter le service au portail"
+
+msgid "save service parameters"
 msgstr "Sauvegarde de la définition du service"
+
+msgid "position of service in user portal"
+msgstr ""
+
+msgid "del service from user portal"
+msgstr ""
 
 msgid "service test view"
 msgstr "Service test - affichage"
@@ -69,6 +81,27 @@ msgstr "Cliquer ici pour vous déconnecter"
 
 msgid "wd fixe/release menu"
 msgstr "Afficher/masque le menu comme panneau latéral"
+
+msgid "wd error add service"
+msgstr "wd error add service"
+
+msgid "wd error getting service"
+msgstr "wd error getting service"
+
+msgid "wd invalid service number returned by creation"
+msgstr ""
+
+msgid "wd go left"
+msgstr "déplacer vers la gauche"
+
+msgid "wd go down"
+msgstr "déplacer vers le bas"
+
+msgid "wd go up"
+msgstr "déplacer vers le haut"
+
+msgid "wd go right"
+msgstr "déplacer vers la droite"
 
 msgid "wd hide svc content"
 msgstr "Masquer le contenu"
@@ -103,14 +136,23 @@ msgstr "Erreur de sauvegarde du formulaire édition"
 msgid "wd show svc content"
 msgstr "Afficher le contenu"
 
+msgid "wd error geo service"
+msgstr "wd error geo service"
+
 msgid "wd confirm supress of"
 msgstr "Etes-vous sur de vouloir supprimer le service "
 
 msgid "wd error retrieving content"
 msgstr "Erreur de récupération du contenu"
 
+msgid "wd manage portal"
+msgstr "Gestion du portail"
+
 msgid "wd show/hide service list"
 msgstr "Afficher/masquer la liste des services"
+
+msgid "wd reload portal view"
+msgstr "Raffraichir le portail"
 
 msgid "wd save"
 msgstr "Sauver"

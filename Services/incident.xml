@@ -1,0 +1,6 @@
+[IF none]<div>Pas d'incident en cours !</div>[ENDIF none]
+[IFNOT  none]<table>
+[BLOCK inc]<tr><td>[state]</td><td>[title]</td><td>[owner]</td></tr>
+[ENDBLOCK inc]
+</table>
+[ENDIF none]

@@ -1,6 +1,38 @@
 <html>
-<head></head>
-<body style="background:white; margin:0px; padding:0px; border:0px">
-<h4>Mes préférences</h4>
+<head>
+[ZONE WEBDESK:HEAD]
+<style type="text/css">
+[ZONE WEBDESK:CSS]
+[CSS:CODE]
+</style>
+[JS:REF]
+<script>
+[JS:CODE]
+
+var appSelected = -1;
+function selectApp(id, url) {
+  if (appSelected!=-1) {
+    document.getElementById('app'+appSelected).className = 'app';
+  }
+  appSelected = id;
+  document.getElementById('appzone').src = url;
+  document.getElementById('app'+id).className = 'app app_selected';
+
+  document.getElementById('appzone').style.height = getFrameHeight()-20;
+  document.getElementById('appzone').style.display = 'block';
+  
+}
+</script>
+</head>
+<body>
+<table width="95%"><tr style="vertical-align:top">
+<td style="width:25%;">
+<div class="wdparamb">[BLOCK applist]
+<div id="app[id]" title="[description]" class="app" onclick="selectApp([id], '[CORE_STANDURL]&app=[name]&action=[action]');">
+<img src="[iconsrc]" style="width:16px;">&nbsp;[short_name]
+</div>[ENDBLOCK applist]</div>
+</td>
+<td style="width:70%"><iframe id="appzone" name="appzone" style="display:none; background-color:blue; height:100%; width:100%" src="about:blank"></iframe>
+</tr></table>
 </body>
 </html>

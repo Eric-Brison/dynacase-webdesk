@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-01 14:44+0200\n"
+"POT-Creation-Date: 2006-06-02 14:21+0200\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -52,7 +52,19 @@ msgstr ""
 msgid "administration page"
 msgstr ""
 
-msgid "save service definition"
+msgid "return JS service description"
+msgstr ""
+
+msgid "add service in user portal"
+msgstr ""
+
+msgid "save service parameters"
+msgstr ""
+
+msgid "position of service in user portal"
+msgstr ""
+
+msgid "del service from user portal"
 msgstr ""
 
 msgid "service test view"
@@ -68,6 +80,27 @@ msgid "Click here to login"
 msgstr ""
 
 msgid "wd fixe/release menu"
+msgstr ""
+
+msgid "wd error add service"
+msgstr ""
+
+msgid "wd error getting service"
+msgstr ""
+
+msgid "wd invalid service number returned by creation"
+msgstr ""
+
+msgid "wd go left"
+msgstr ""
+
+msgid "wd go down"
+msgstr ""
+
+msgid "wd go up"
+msgstr ""
+
+msgid "wd go right"
 msgstr ""
 
 msgid "wd hide svc content"
@@ -103,13 +136,22 @@ msgstr ""
 msgid "wd show svc content"
 msgstr ""
 
+msgid "wd error geo service"
+msgstr ""
+
 msgid "wd confirm supress of"
 msgstr ""
 
 msgid "wd error retrieving content"
 msgstr ""
 
+msgid "wd manage portal"
+msgstr ""
+
 msgid "wd show/hide service list"
+msgstr ""
+
+msgid "wd reload portal view"
 msgstr ""
 
 msgid "wd save"

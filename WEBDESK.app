@@ -26,6 +26,8 @@ $action_desc = array (
   array( "acl" => "USER",  "name" => "PREFERENCES", "short_name" =>N_("preferences page"), "toc" => "N", "root" =>"N"),
   array( "acl" => "ADMIN", "name" => "ADMIN",       "short_name" =>N_("administration page"), "toc" => "N", "root" =>"N"),
 
+  array( "acl" => "ADMIN",  "name" => "APPPREFS", "short_name" =>N_("webdesk general preferences"), "toc" => "N", "root" =>"N"),
+  array( "acl" => "ADMIN",  "name" => "APPADMIN", "short_name" =>N_("webdesk general admnistration"), "toc" => "N", "root" =>"N"),
 
   // Service in portal management
   array( "acl" => "USER",  "name" => "GETJSSERVICE", "short_name" =>N_("return JS service description"), "toc" => "N", "root" =>"N"),
@@ -37,6 +39,7 @@ $action_desc = array (
   // For test
   array( "acl" => "USER",  "name" => "SVCTEST", "short_name" =>N_("service test view"), "toc" => "N", "root" =>"N"),
   array( "acl" => "USER",  "name" => "ESVCTEST", "short_name" =>N_("service test edition"), "toc" => "N", "root" =>"N"),
+  array( "acl" => "USER",  "name" => "INCIDENT", "short_name" =>N_("service incident"), "toc" => "N", "root" =>"N"),
 
 	
 );
