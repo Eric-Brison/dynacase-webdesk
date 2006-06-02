@@ -1,7 +1,6 @@
-  <title>[TEXT:webdesk application portal]</title>
-  <noscript>
-  <h1>[TEXT:Javascript must be enabled in your navigator]</h1>
-  </noscript>
-  <link rel="icon" href="WEBDESK/Images/webdesk.ico">
-  <link rel="SHORTCUT ICON" href="WEBDESK/Images/webdesk.ico" >
+<title>[TEXT:webdesk application portal]</title>
+<noscript><h1>[TEXT:Javascript must be enabled in your navigator]</h1></noscript>
+<link rel="icon" href="WEBDESK/Images/webdesk.ico">
+<link rel="SHORTCUT ICON" href="WEBDESK/Images/webdesk.ico" >
+<script src="WHAT/Layout/logmsg.js"></script>
 

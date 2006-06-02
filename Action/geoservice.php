@@ -1,7 +1,7 @@
 <?php
 
 include_once('FDL/Lib.Dir.php');
-function savesvc(&$action) {
+function geoservice(&$action) {
 
   $dbaccess = getParam("FREEDOM_DB");
   
@@ -20,20 +20,24 @@ function savesvc(&$action) {
     $up = $tup[0];
   }
 
-  $p = urldecode(GetHttpVars("params", ""));
+  $col = GetHttpVars("col", 0);
+  $lin = GetHttpVars("lin", 0);
 
   $svcnum   = $up->getTValue("uport_svcnum");
-  $svcparam = $up->getTValue("uport_param");
+  $svccol   = $up->getTValue("uport_column");
+  $svcline  = $up->getTValue("uport_line");
 
   $change = false;
   foreach ($svcnum as $k => $v) {
     if ($snum==$v) {
-      $svcparam[$k] = $p;
+      $svccol[$k] = $col;
+      $svcline[$k] = $lin;	
       $change = true;
     }
   }
   if ($change) {
-    $up->setValue("uport_param", $svcparam);
+    $up->setValue("uport_column", $svccol);
+    $up->setValue("uport_line", $svcline);
     $err = $up->modify();
     $up->postModify();
     $action->lay->set("OUT", "var svcnum = $snum;");

@@ -52,7 +52,10 @@ function getjsservice(&$action) {
     .    "     eurl:'".getV($svc,"psvc_eurl")."',"
     .    "     purl:'".$sparam."'," 
     .    "     col:".$scol."," 
-    .    "     lin:".$slin." };"; 
+    .    "     lin:".$slin.","
+    .    "     m:false,"
+    .    "     e:true,"
+    .    "     d:false };"; 
 
   $action->lay->set("OUT", $ret);
 }

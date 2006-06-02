@@ -12,6 +12,7 @@ body, div { padding:0px; margin:0px; border:0px; background-color:white }
 .wdsvc { margin: 6px 3px 10px 3px; }
 .wdsvc_title { background-color:#dbe6d9; border-style:none none solid none; border-color:#CFCFCF; border-width:1px; font-weight:bold; vertical-align:bottom; }
 .wdsvc_content { padding-left:5px; border-width:1px; border-style: none none none dotted; border-color:#CFCFCF;  }
+.wdsvc_warning { font-style:italic; font-size:80%;  }
 
 .wdparamb { padding:5px; margin:5px; border-color:#CFCFCF; border-style: solid; border-width:1px; }
 

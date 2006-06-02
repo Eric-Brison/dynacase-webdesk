@@ -20,12 +20,22 @@ function initPortal() {
 
   resizeCols();
 
-  addService('Test service c(0)l(0)', '[CORE_STANDURL]app=WEBDESK&action=SVCTEST', '[CORE_STANDURL]app=WEBDESK&action=ESVCTEST', '',  0,0);
-  addService('Test service c(0)l(0)', '[CORE_STANDURL]app=WEBDESK&action=SVCTEST', '[CORE_STANDURL]app=WEBDESK&action=ESVCTEST', '',  0,0);
-  addService('Agenda', '[CORE_STANDURL]app=WGCAL&action=WGCAL_PORTAL&mo=L', '', '',  1,0);
-  addService('Test service  c(0)l(1)', '', '', '', 0,1);
+  [BLOCK USvc]
+  services[services.length] = { snum:[snum], sid:[sid], stitle:'[stitle]', 
+				vurl:'[vurl]', eurl:'[eurl]', purl:'[purl]',
+				col:[col], lin:[lin], 
+				m:[mandatory], e:[editable], d:false }; [ENDBLOCK USvc]
+									 
+  displayServices();
+}
 
-  addService('Test service systeme 2', '', '', '', 2,0, true);
+
+function startUtempo() {
+  globalcursor('progress');
+}
+
+function endUtempo() {
+  unglobalcursor();
 }
 
 function resizeCols() {
@@ -39,6 +49,7 @@ function resizeCols() {
 }
 
 function addNewService(sid) {
+  startUtempo(); 
   var xreq = null;
   if (window.XMLHttpRequest) xreq = new XMLHttpRequest();
   else xreq = new ActiveXObject("Microsoft.XMLHTTP");
@@ -56,6 +67,9 @@ function addNewService(sid) {
 	  alert('[TEXT:wd error getting service] (HTTP Code '+xreq.status+')');	   
 	} else { 
 	  eval(xreq.responseText);
+	  alert(xreq.responseText);
+	  services[services.length] = svc;
+	  displayServices();
 	}
       } else {
 	alert('[TEXT:wd invalid service number returned by creation]');	   
@@ -64,63 +78,95 @@ function addNewService(sid) {
   } else {
     alert('[TEXT:wd error add service] (XMLHttpRequest contruction)');	   
   }
+  endUtempo();
 }
 
 
-function showService(stitle, vurl, eurl,  purl, col, line, systemsvc) {
+function displayServices() {
+  for (var is=0; is<services.length; is++) {
+    if (services[is].d===false) {
+      showService(is);
+    }
+  }
+}
 
+
+function showService(is) {
+
+  var snum = services[is].snum;
+  if (document.getElementById('svc'+snum)) return; // Service already displayed
+
+  var stitle = services[is].stitle;
+  var vurl   = services[is].vurl;
+  var eurl   = services[is].eurl;
+  var iseditable   = services[is].e;
+  var ismandatory  = services[is].m;
+  var line  = services[is].line;
+  var col  = services[is].col;
+  
   var root = document.getElementById('wdcol'+col);
   if (root) {
-    var sid = services.length;
+
     var svc = document.createElement('div');
-    svc.id = 'svc'+sid;
-    svc.name = 'svc'+sid;
+    svc.id = 'svc'+snum;
+    svc.name = 'svc'+snum;
     svc.className = 'wdsvc';
     root.appendChild(svc);
 
     var tsvc = document.createElement('div');
-    tsvc.id = 'tsvc'+sid;
-    tsvc.name = 'tsvc'+sid;
+    tsvc.id = 'tsvc'+snum;
+    tsvc.name = 'tsvc'+snum;
     var cnt = '<table width="100%" cellspacing="0" cellpadding="0" style="border:0px"><tr><td>'+stitle+'</td>';
+ 
     cnt += '<td style="text-align:right">';
-    cnt += '<img id="ivsvc'+sid+'" style="margin-left:2px" class="small_button" onclick="showHideSvc('+sid+');" src="[IMG:wd_svc_hide.gif]" title="[TEXT:wd hide svc content]">';
+
+    if (col>0) cnt += '<img class="small_button" onclick="moveSvc('+snum+',-1,0)" src="[IMG:wd_go_left.gif]" title="[TEXT:wd go left]">';
+    if (col<colCount) cnt += '<img class="small_button" onclick="moveSvc('+snum+',0,1)" src="[IMG:wd_go_down.gif]" title="[TEXT:wd go down]">';
+    if (line>0) cnt += '<img class="small_button" onclick="moveSvc('+snum+',0,-1)" src="[IMG:wd_go_up.gif]" title="[TEXT:wd go up]">';
+    cnt += '<img class="small_button" onclick="moveSvc('+snum+',1,0)" src="[IMG:wd_go_right.gif]" title="[TEXT:wd go right]">';
+    cnt += '&nbsp;';
+    
+    cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc('+snum+');" src="[IMG:wd_svc_hide.gif]" title="[TEXT:wd hide svc content]">';
     if (vurl!='')
-      cnt += '<img id="irsvc'+sid+'" style="margin-left:2px" class="small_button" onclick="loadSvc('+sid+');" src="[IMG:wd_svc_reload.gif]" title="[TEXT:wd reload svc content]">';
-    if (!systemsvc)
-      cnt += '<img id="iesvc'+sid+'" style="margin-left:2px" class="small_button" onclick="editSvc('+sid+');" src="[IMG:wd_svc_edit.gif]" title="[TEXT:wd edit svc content]">';
-    cnt += '<img id="iesvc'+sid+'" style="margin-left:2px" class="small_button" onclick="moveSvc('+sid+');" src="[IMG:wd_svc_move.gif]" title="[TEXT:wd move svc]">';
-    if (!systemsvc)
-      cnt += '<img id="iesvc'+sid+'" style="margin-left:2px" class="small_button" onclick="deleteSvc('+sid+');" src="[IMG:wd_svc_delete.gif]" title="[TEXT:wd delete svc]">';
+      cnt += '<img id="irsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="loadSvc('+snum+');" src="[IMG:wd_svc_reload.gif]" title="[TEXT:wd reload svc content]">';
+    if (eurl!='' && iseditable)
+      cnt += '<img id="iesvc'+snum+'" style="margin-left:2px" class="small_button" onclick="editSvc('+snum+');" src="[IMG:wd_svc_edit.gif]" title="[TEXT:wd edit svc content]">';
+//     cnt += '<img id="iesvc'+snum+'" style="margin-left:2px" class="small_button" onclick="moveSvc('+snum+');" src="[IMG:wd_svc_move.gif]" title="[TEXT:wd move svc]">';
+    if (!ismandatory)
+      cnt += '<img id="iesvc'+snum+'" style="margin-left:2px" class="small_button" onclick="deleteSvc('+snum+');" src="[IMG:wd_svc_delete.gif]" title="[TEXT:wd delete svc]">';
     cnt += '</td></tr></table>';
     tsvc.innerHTML = cnt;
     tsvc.className = 'wdsvc_title';
     svc.appendChild(tsvc);
 
     var csvc = document.createElement('div');
-    csvc.setAttribute('id','csvc'+sid);
-    csvc.name = 'csvc'+sid;
-    if (vurl=='') csvc.innerHTML = '[TEXT:wd url for retrieving information not given]';
-    csvc.className = 'wdsvc_content';
+    csvc.setAttribute('id','csvc'+snum);
+    csvc.name = 'csvc'+snum;
+    if (vurl=='') {
+      csvc.innerHTML = '[TEXT:wd url for retrieving information not given]';
+      csvc.className = 'wdsvc_content wdsvc_warning';
+    } else {
+      csvc.className = 'wdsvc_content';
+    }
     csvc.style.overflow = 'auto';
     svc.appendChild(csvc);
     
-    services[services.length] = { sid:sid, stitle:stitle, vurl:vurl, eurl:eurl, purl:purl, scol:col, sline:line, display:true };
-    loadSvc(sid);
+    loadSvc(snum);
   }
 }
 
-function getSvc(sid) {
+function getSvc(snum) {
   for (var ix=0; ix<services.length; ix++) {
-    if (services[ix].sid == sid) return ix;
+    if (services[ix].snum == snum) return ix;
   }
   return false;
 }
 
 var ereq = null;
-var editSid = -1;
-function editSvc(sid) {
+var editSnum = -1;
+function editSvc(snum) {
 
-  var is = getSvc(sid);
+  var is = getSvc(snum);
   if (is===false) return;
 
   if (services[is].eurl=='') {
@@ -129,13 +175,13 @@ function editSvc(sid) {
   }
 
   // initialize form
-  editSid = sid;
+  editSnum = snum;
 
   var esvc = document.getElementById('editsvc').cloneNode(true);
-  esvc.id = 'editsvc'+sid;
+  esvc.id = 'editsvc'+snum;
   esvc.style.top = esvc.style.left = 0; 
   esvc.style.display = 'block';
-  document.getElementById('csvc'+sid).appendChild(esvc);
+  document.getElementById('csvc'+snum).appendChild(esvc);
   document.getElementById('editsvc_c').innerHTML = '[TEXT:wd loading edition forms]';
   if (services[is].eurl!='') {
     if (window.XMLHttpRequest) ereq = new XMLHttpRequest();
@@ -156,34 +202,32 @@ function editSvc(sid) {
 
 function sendForm() {
   var fedit = document.getElementById('editsvcf');
-  if (editSid===-1) return;
-  var sid = editSid;
+  if (editSnum===-1) return;
+  var snum = editSnum;
 
-  var is = getSvc(sid);
+  var is = getSvc(snum);
   if (is===false) return;
 
-  var purl = '&sid='+editSid;
+  var purl = '';
   for (var ie=0; ie<fedit.elements.length; ie++) {
     purl += '&'+fedit.elements[ie].name+'='+fedit.elements[ie].value;
   }
   if (window.XMLHttpRequest) ereq = new XMLHttpRequest();
   else ereq = new ActiveXObject("Microsoft.XMLHTTP");
   if (ereq) {
-//     alert(encodeURI("[CORE_STANDURL]&app=WEBDESK&action=SAVESVC&params="+escape(purl)));
-    ereq.open("POST", encodeURI("[CORE_STANDURL]&app=WEBDESK&action=SAVESVC&params="+escape(purl)), false);
+    ereq.open("POST", encodeURI("[CORE_STANDURL]&app=WEBDESK&action=SAVESVC&snum="+editSnum+"&params="+escape(purl)), false);
     ereq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     ereq.send('');
     if (ereq.status!=200) {
-      document.getElementById('csvc'+sid).innerHTML = '[TEXT:wd error saving edit form] (HTTP Code '+ereq.status+')';	   
+      document.getElementById('csvc'+snum).innerHTML = '[TEXT:wd error saving edit form] (HTTP Code '+ereq.status+')';	   
     } else { 
-//       document.getElementById('csvc'+sid).innerHTML = '<div>'+ereq.responseText+'</div>';
       services[is].purl = purl;
-      loadSvc(sid);
+      loadSvc(snum);
     }
   } else {
-    document.getElementById('csvc'+sid).innerHTML = '[TEXT:wd error saving edit form] (XMLHttpRequest contruction)';	    
+    document.getElementById('csvc'+snum).innerHTML = '[TEXT:wd error saving edit form] (XMLHttpRequest contruction)';	    
   }
-  editSid = -1;
+  editSnum = -1;
 }
 
 function showHideSvc(sid) {
@@ -204,14 +248,55 @@ function showHideSvc(sid) {
   }
 }
 
-function deleteSvc(sid) {
-  var is = getSvc(sid);
+
+function moveSvc(snum,c,l) {
+  var is = getSvc(snum);
+  if (is===false) return;
+  services[is].col = services[is].col + c;
+  services[is].lin = services[is].lin + l;
+  unDisplaySvc(snum);
+  showService(is);
+  var xreq = null;
+  if (window.XMLHttpRequest) xreq = new XMLHttpRequest();
+  else xreq = new ActiveXObject("Microsoft.XMLHTTP");
+  if (xreq) {
+    xreq.open("POST", "[CORE_STANDURL]app=WEBDESK&action=GEOSERVICE&snum="+snum+"&col="+services[is].col+"&lin="+services[is].lin, false);
+    xreq.send('');
+    if (xreq.status!=200) alert('[TEXT:wd error geo service] (HTTP Code '+xreq.status+')');	   
+  } else {
+    alert('[TEXT:wd error geo service] (XMLHttpRequest contruction)');	   
+  }
+  
+}
+  
+
+function unDisplaySvc(snum) {
+  var is = getSvc(snum);
+  if (is===false) return;
+  if (document.getElementById('svc'+snum)) {
+    var svc = document.getElementById('svc'+snum);
+    svc.parentNode.removeChild(svc);
+    services[is].display = false;
+
+  }
+}
+
+
+function deleteSvc(snum) {
+  var is = getSvc(snum);
   if (is===false) return;
   if (!confirm('[TEXT:wd confirm supress of] '+services[is].stitle)) return false;
-  if (document.getElementById('svc'+sid)) {
-    var svc = document.getElementById('svc'+sid);
-    svc.parentNode.removeChild(svc);
-    services.splice(is,1);
+  unDisplaySvc(snum);
+  services.splice(is,1);
+  var xreq = null;
+  if (window.XMLHttpRequest) xreq = new XMLHttpRequest();
+  else xreq = new ActiveXObject("Microsoft.XMLHTTP");
+  if (xreq) {
+    xreq.open("POST", "[CORE_STANDURL]app=WEBDESK&action=DELSERVICE&snum="+snum, false);
+    xreq.send('');
+    if (xreq.status!=200) alert('[TEXT:wd error add service] (HTTP Code '+xreq.status+')');	   
+  } else {
+    alert('[TEXT:wd error add service] (XMLHttpRequest contruction)');	   
   }
 }
 
@@ -268,7 +353,10 @@ function opencloseParams() {
 <body onload="initPortal()" onresize="resizeCols()">
 [BLOCK cols]
 <div id="wdcol[icol]" class="wdcols" style="display:none; float:left;">
-[IF firstCol]<div><img class="small_button" id="wdparamimg" onclick="opencloseParams()" src="[IMG:wd_open_services.gif]" title="[TEXT:wd show/hide service list]"></div>[ENDIF firstCol]
+[IF firstCol]<div class="wdtitleb" style="margin:5px; text-align:left; vertical-align:middle">[TEXT:wd manage portal]
+<img class="small_button" id="wdparamimg" onclick="opencloseParams()" src="[IMG:wd_open_services.gif]" title="[TEXT:wd show/hide service list]">
+<img class="small_button" onclick="document.location.reload(false)" src="[IMG:wd_portal_reload.gif]" title="[TEXT:wd reload portal view]">
+</div>[ENDIF firstCol]
 </div>[ENDBLOCK cols]
 
 <div id="editsvc" style="padding:5px; margin:5px; border:1px solid #CFCFCF; display:none; position:relative">

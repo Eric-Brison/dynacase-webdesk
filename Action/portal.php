@@ -41,6 +41,41 @@ function portal(&$action) {
   foreach ($tserv as $k => $v)  {
     $action->lay->setBlockData("services".$v["categorie"], $v["svc"]); 
   }
+
+
+  // Initialise user services
+  $tsvc = array();
+  $tup = GetChildDoc( getParam("FREEDOM_DB"), 0, 0, "ALL", 
+		     array("uport_ownerid = ".$action->user->fid), $action->user->id, "LIST", "USER_PORTAL");
+  if ($tup[0]->isAffected()) {
+    
+    $svcnum   = $tup[0]->getTValue("uport_svcnum");
+    $svcid    = $tup[0]->getTValue("uport_idsvc");
+    $svctitle = $tup[0]->getTValue("uport_svc");
+    $svcparam = $tup[0]->getTValue("uport_param");
+    $svccol   = $tup[0]->getTValue("uport_column");
+    $svcline  = $tup[0]->getTValue("uport_line");
+
+    foreach ($svcnum as $k => $v) {
+      
+      $sd = getTDoc(getParam("FREEDOM_DB"), $svcid[$k]);
+
+      $tsvc[] = array( "snum" => $v,
+		       "sid" => $svcid[$k],
+		       "stitle" => addslashes($svctitle[$k]),
+		       "vurl" => getV($sd, "psvc_vurl"),
+		       "eurl" => getV($sd, "psvc_eurl"),
+		       "purl" => $svcparam[$k],
+		       "purl" => $svcparam[$k],
+		       "col" => $svccol[$k],
+		       "lin" => $svcline[$k],
+		       "mandatory" => "false",
+		       "editable" => "true"		       
+		      );
+    }
+  }
+  $action->lay->setBlockData("USvc", $tsvc); 
+  
     
 }
 ?>
