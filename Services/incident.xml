@@ -1,6 +1,15 @@
 [IF none]<div>Pas d'incident en cours !</div>[ENDIF none]
-[IFNOT  none]<table>
-[BLOCK inc]<tr><td>[state]</td><td>[title]</td><td>[owner]</td></tr>
+[IFNOT  none]<table cellspacing="0">
+[BLOCK inc]
+<tr>
+<td style="font-weight:bold; font-size:80%; ">&diams;&nbsp;[title] </td>
+</tr>
+<tr><td style="border-width:1px; border-style:none none none solid; border-color:#CECECE; padding-left:15px; font-size:80%;">
+<span>&lsaquo;[date]&rsaquo;</span>&nbsp;<span>&lsaquo;[state]&rsaquo;</span>&nbsp;<span>&lsaquo;[grav]&rsaquo;</span>&nbsp;<span>&lsaquo;[ref]&rsaquo;</span>
+</td></tr>
+<tr><td style="border-width:1px; border-style:none none solid solid; border-color:#CECECE; padding-left:15px; font-size:80%;">
+<span>[desc]</span>
+</td></tr>
 [ENDBLOCK inc]
 </table>
 [ENDIF none]

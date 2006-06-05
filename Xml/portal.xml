@@ -128,7 +128,7 @@ function showService(is) {
     
     cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc('+snum+');" src="[IMG:wd_svc_hide.gif]" title="[TEXT:wd hide svc content]">';
     if (vurl!='')
-      cnt += '<img id="irsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="loadSvc('+snum+');" src="[IMG:wd_svc_reload.gif]" title="[TEXT:wd reload svc content]">';
+      cnt += '<img id="irsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="startUtempo(); loadSvc('+snum+', true);endUtempo(); " src="[IMG:wd_svc_reload.gif]" title="[TEXT:wd reload svc content]">';
     if (eurl!='' && iseditable)
       cnt += '<img id="iesvc'+snum+'" style="margin-left:2px" class="small_button" onclick="editSvc('+snum+');" src="[IMG:wd_svc_edit.gif]" title="[TEXT:wd edit svc content]">';
 //     cnt += '<img id="iesvc'+snum+'" style="margin-left:2px" class="small_button" onclick="moveSvc('+snum+');" src="[IMG:wd_svc_move.gif]" title="[TEXT:wd move svc]">';
@@ -300,13 +300,17 @@ function deleteSvc(snum) {
   }
 }
 
-function loadSvc(sid) {
+function loadSvc(sid, shl) {
   var dreq = null;
   var is = getSvc(sid);
   if (is===false) return;
 
   if (services[is].vurl=='') return;
 
+  if (shl) {
+    document.getElementById('csvc'+sid).innerHTML = '<div>Loading...</div>';
+//     document.getElementById('csvc'+sid).style.border = '1px solid red';
+  }
   if (window.XMLHttpRequest) dreq = new XMLHttpRequest();
   else dreq = new ActiveXObject("Microsoft.XMLHTTP");
   if (dreq) {
