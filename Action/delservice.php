@@ -24,6 +24,7 @@ function delservice(&$action) {
   $svcid    = $up->getTValue("uport_idsvc");
   $svctitle = $up->getTValue("uport_svc");
   $svcparam = $up->getTValue("uport_param");
+  $svcrdel  = $up->getTValue("uport_refreshd");
   $svccol   = $up->getTValue("uport_column");
   $svcline  = $up->getTValue("uport_line");
 
@@ -31,6 +32,7 @@ function delservice(&$action) {
   $nsvcid    = array();
   $nsvctitle = array();
   $nsvcparam = array();
+  $nsvrcdel  = array();
   $nsvccol   = array();
   $nsvcline  = array();
   $change = false;
@@ -40,6 +42,7 @@ function delservice(&$action) {
       $nsvcid[]    = $svcid[$k];
       $nsvctitle[] = $svctitle[$k];
       $nsvcparam[] = $svcparam[$k];
+      $nsvcrdel[]  = $svcrdel[$k];
       $nsvccol[]   = $svccol[$k];
       $nsvcline[]  = $svcline[$k];
     }  else {
@@ -51,6 +54,7 @@ function delservice(&$action) {
   $up->setValue("uport_idsvc",$nsvcid);
   $up->setValue("uport_svc",$nsvctitle);
   $up->setValue("uport_param",$nsvcparam);
+  $up->setValue("uport_refreshd",$nsvcrdel);
   $up->setValue("uport_column",$nsvccol);
   $up->setValue("uport_line",$nsvcline);
 

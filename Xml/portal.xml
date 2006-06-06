@@ -23,12 +23,32 @@ function initPortal() {
   [BLOCK USvc]
   services[services.length] = { snum:[snum], sid:[sid], stitle:'[stitle]', 
 				vurl:'[vurl]', eurl:'[eurl]', purl:'[purl]',
-				col:[col], lin:[lin], 
+				rdel:[rdel], nextLoad:0, col:[col], lin:[lin], 
 				m:[mandatory], e:[editable], d:false }; [ENDBLOCK USvc]
 									 
   displayServices();
+
+  setTimeout("startRefresh()", 60*1000);
 }
 
+function startRefresh() {
+  var  sl = '';
+  var dat = new Date();
+  var mdat = dat.getTime();
+  sl = '('+mdat+') ';
+  for (var is=0; is<services.length; is++) {
+    sl += '\n'+services[is].title+'('+services[is].rdel+')'+':'+services[is].nextLoad+' > ';
+    if (services[is].rdel>0 && services[is].nextLoad>0 && services[is].nextLoad<=mdat) {
+      services[is].nextLoad == 0;
+      loadSvcAsync(services[is].snum, true);
+      sl += 'reload';
+    } else {
+      sl += 'no';
+    } 
+  }
+//   alert('a reloader : '+sl);
+  setTimeout("startRefresh()", 60*1000);
+}  
 
 function startUtempo() {
   globalcursor('progress');
@@ -67,7 +87,6 @@ function addNewService(sid) {
 	  alert('[TEXT:wd error getting service] (HTTP Code '+xreq.status+')');	   
 	} else { 
 	  eval(xreq.responseText);
-	  alert(xreq.responseText);
 	  services[services.length] = svc;
 	  displayServices();
 	}
@@ -116,7 +135,7 @@ function showService(is) {
     var tsvc = document.createElement('div');
     tsvc.id = 'tsvc'+snum;
     tsvc.name = 'tsvc'+snum;
-    var cnt = '<table width="100%" cellspacing="0" cellpadding="0" style="border:0px"><tr><td>'+stitle+'</td>';
+    var cnt = '<table width="100%" cellspacing="0" cellpadding="0" style="border:0px"><tr><td><span id="tsvcti'+snum+'">'+stitle+'</span></td>';
  
     cnt += '<td style="text-align:right">';
 
@@ -128,10 +147,9 @@ function showService(is) {
     
     cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc('+snum+');" src="[IMG:wd_svc_hide.gif]" title="[TEXT:wd hide svc content]">';
     if (vurl!='')
-      cnt += '<img id="irsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="startUtempo(); loadSvc('+snum+', true);endUtempo(); " src="[IMG:wd_svc_reload.gif]" title="[TEXT:wd reload svc content]">';
+      cnt += '<img id="irsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="startUtempo(); loadSvcAsync('+snum+', true);endUtempo(); " src="[IMG:wd_svc_reload.gif]" title="[TEXT:wd reload svc content]">';
     if (eurl!='' && iseditable)
       cnt += '<img id="iesvc'+snum+'" style="margin-left:2px" class="small_button" onclick="editSvc('+snum+');" src="[IMG:wd_svc_edit.gif]" title="[TEXT:wd edit svc content]">';
-//     cnt += '<img id="iesvc'+snum+'" style="margin-left:2px" class="small_button" onclick="moveSvc('+snum+');" src="[IMG:wd_svc_move.gif]" title="[TEXT:wd move svc]">';
     if (!ismandatory)
       cnt += '<img id="iesvc'+snum+'" style="margin-left:2px" class="small_button" onclick="deleteSvc('+snum+');" src="[IMG:wd_svc_delete.gif]" title="[TEXT:wd delete svc]">';
     cnt += '</td></tr></table>';
@@ -151,7 +169,7 @@ function showService(is) {
     csvc.style.overflow = 'auto';
     svc.appendChild(csvc);
     
-    loadSvc(snum);
+    loadSvcAsync(snum);
   }
 }
 
@@ -193,6 +211,20 @@ function editSvc(snum) {
 	document.getElementById('editsvc_c').innerHTML = '[TEXT:wd error retrieving edit form] (HTTP Code '+ereq.status+')';	   
       } else { 
  	document.getElementById('editsvc_c').innerHTML = '<div>'+ereq.responseText+'</div>';
+	if (services[is].purl!='') {
+	  var tpurl = services[is].purl.split('&');
+	  var fedit = document.getElementById('editsvcf');
+	  for (var ie=0; ie<fedit.elements.length; ie++) {
+	    for (var ip=0; ip<tpurl.length; ip++) {
+	      if (tpurl[ip]!='') {
+		var thisp = tpurl[ip].split('=');
+		if (fedit.elements[ie].name==thisp[0]) {
+		  fedit.elements[ie].value = thisp[1];
+		}
+	      }
+	    }
+	  }
+	}
       }
     } else {
       document.getElementById('editsvc_c').innerHTML = '[TEXT:wd error retrieving edit form] (XMLHttpRequest contruction)';	    
@@ -222,7 +254,7 @@ function sendForm() {
       document.getElementById('csvc'+snum).innerHTML = '[TEXT:wd error saving edit form] (HTTP Code '+ereq.status+')';	   
     } else { 
       services[is].purl = purl;
-      loadSvc(snum);
+      loadSvcAsync(snum);
     }
   } else {
     document.getElementById('csvc'+snum).innerHTML = '[TEXT:wd error saving edit form] (XMLHttpRequest contruction)';	    
@@ -260,7 +292,7 @@ function moveSvc(snum,c,l) {
   if (window.XMLHttpRequest) xreq = new XMLHttpRequest();
   else xreq = new ActiveXObject("Microsoft.XMLHTTP");
   if (xreq) {
-    xreq.open("POST", "[CORE_STANDURL]app=WEBDESK&action=GEOSERVICE&snum="+snum+"&col="+services[is].col+"&lin="+services[is].lin, false);
+    xreq.open("POST", "[CORE_STANDURL]app=WEBDESK&action=GEOSERVICE&spec="+services[is].snum+":"+services[is].col+":"+services[is].lin, false);
     xreq.send('');
     if (xreq.status!=200) alert('[TEXT:wd error geo service] (HTTP Code '+xreq.status+')');	   
   } else {
@@ -300,6 +332,24 @@ function deleteSvc(snum) {
   }
 }
 
+function setWS(sid) {
+  var value = 40;
+  if (document.getElementById('svc'+sid)) {
+    var o = document.getElementById('svc'+sid);
+    o.style.opacity = value/100;
+    o.style.filter = 'alpha(opacity=' + value + ')';
+  }
+}
+function unsetWS(sid) {
+  var value = 100;
+  if (document.getElementById('svc'+sid)) {
+    var o = document.getElementById('svc'+sid);
+    o.style.opacity = value/100;
+    o.style.filter = 'alpha(opacity=' + value + ')';
+  }
+}
+
+
 function loadSvc(sid, shl) {
   var dreq = null;
   var is = getSvc(sid);
@@ -307,10 +357,8 @@ function loadSvc(sid, shl) {
 
   if (services[is].vurl=='') return;
 
-  if (shl) {
-    document.getElementById('csvc'+sid).innerHTML = '<div>Loading...</div>';
-//     document.getElementById('csvc'+sid).style.border = '1px solid red';
-  }
+  if (shl) setWS(sid);
+
   if (window.XMLHttpRequest) dreq = new XMLHttpRequest();
   else dreq = new ActiveXObject("Microsoft.XMLHTTP");
   if (dreq) {
@@ -321,6 +369,44 @@ function loadSvc(sid, shl) {
     } else { 
       document.getElementById('csvc'+sid).innerHTML = '<div>'+dreq.responseText+'</div>';
     }
+  } else {
+    document.getElementById('csvc'+sid).innerHTML = '[TEXT:wd error retrieving content] (XMLHttpRequest contruction)';	    
+  }
+  if (shl) unsetWS(sid);
+}
+
+var timerOn = new Array();
+function loadSvcAsync(sid, shl) {
+  var dreq = null;
+  var is = getSvc(sid);
+  if (is===false) return;
+
+  if (services[is].vurl=='') return;
+
+  if (window.XMLHttpRequest) dreq = new XMLHttpRequest();
+  else dreq = new ActiveXObject("Microsoft.XMLHTTP");
+  if (dreq) {
+    if (shl) setWS(sid);
+    dreq.onreadystatechange =  function() {
+      if (dreq.readyState == 4) {
+	if (dreq.status!=200) {
+	  document.getElementById('csvc'+sid).innerHTML = '[TEXT:wd error retrieving content] (HTTP Code '+dreq.status+')';	   
+	} else { 
+	  document.getElementById('csvc'+sid).innerHTML = '<div>'+dreq.responseText+'</div>';
+	  if (services[is].rdel>0) {
+	    var dat = new Date();
+	    services[is].nextLoad = dat.getTime() + (services[is].rdel*60*1000);
+// 	    alert('date : '+dat.getTime() +' prochain lancement : '+services[is].nextLoad);
+	  } else {
+	    timerOn[is] = -1;
+	  }	    
+	}
+	if (shl) unsetWS(sid);
+      }
+    }
+    dreq.open("POST", services[is].vurl+services[is].purl, true);
+    dreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    dreq.send('');
   } else {
     document.getElementById('csvc'+sid).innerHTML = '[TEXT:wd error retrieving content] (XMLHttpRequest contruction)';	    
   }

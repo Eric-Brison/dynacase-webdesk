@@ -53,6 +53,7 @@ function portal(&$action) {
     $svcid    = $tup[0]->getTValue("uport_idsvc");
     $svctitle = $tup[0]->getTValue("uport_svc");
     $svcparam = $tup[0]->getTValue("uport_param");
+    $svcrdel  = $tup[0]->getTValue("uport_refreshd");
     $svccol   = $tup[0]->getTValue("uport_column");
     $svcline  = $tup[0]->getTValue("uport_line");
 
@@ -66,7 +67,7 @@ function portal(&$action) {
 		       "vurl" => getV($sd, "psvc_vurl"),
 		       "eurl" => getV($sd, "psvc_eurl"),
 		       "purl" => $svcparam[$k],
-		       "purl" => $svcparam[$k],
+		       "rdel" => ($svcrdel[$k]==""?0:$svcrdel[$k]),
 		       "col" => $svccol[$k],
 		       "lin" => $svcline[$k],
 		       "mandatory" => "false",

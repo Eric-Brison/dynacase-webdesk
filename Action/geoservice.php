@@ -5,23 +5,28 @@ function geoservice(&$action) {
 
   $dbaccess = getParam("FREEDOM_DB");
   
-  $snum = GetHttpVars("snum", -1);
-  if ($snum==-1 || $snum=="") {
-    $action->lay->set("OUT", "var svcnum = -1;");
+
+  $spec = GetHttpVars("spec", "");
+  if ($spec=="") {
+    $action->lay->set("OUT", "var svcnum = -1; // spec empty");
     return;
+  }
+  $tspec = explode("|",$spec);
+  $svcgeo = array();
+  foreach ($tspec as $k => $v) {
+    $s = explode(":",$v);
+    if (!is_numeric($s[0]) || !is_numeric($s[1]) || !is_numeric($s[2])) continue; 
+    $svcgeo[] = array( "snum" =>  $s[0], "col" => $s[1], "lin" => $s[2] );
   }
 
   $tup = GetChildDoc( getParam("FREEDOM_DB"), 0, 0, "ALL", 
 		     array("uport_ownerid = ".$action->user->fid), $action->user->id, "LIST", "USER_PORTAL");
   if (count($tup)<1 || !$tup[0]->isAffected()) {
-    $action->lay->set("OUT", "var svcnum = -1;");
+    $action->lay->set("OUT", "var svcnum = -1; // no portal");
     return;
   } else {
     $up = $tup[0];
   }
-
-  $col = GetHttpVars("col", 0);
-  $lin = GetHttpVars("lin", 0);
 
   $svcnum   = $up->getTValue("uport_svcnum");
   $svccol   = $up->getTValue("uport_column");
@@ -29,10 +34,14 @@ function geoservice(&$action) {
 
   $change = false;
   foreach ($svcnum as $k => $v) {
-    if ($snum==$v) {
-      $svccol[$k] = $col;
-      $svcline[$k] = $lin;	
-      $change = true;
+    echo "$v :";
+    foreach ($svcgeo as $kg => $vg) {
+      echo " ".$vg["snum"];
+      if ($vg["snum"]==$v) {
+	$svccol[$k] = $vg["col"];
+	$svcline[$k] = $vg["lin"];	
+	$change = true;
+      }
     }
   }
   if ($change) {
@@ -40,7 +49,7 @@ function geoservice(&$action) {
     $up->setValue("uport_line", $svcline);
     $err = $up->modify();
     $up->postModify();
-    $action->lay->set("OUT", "var svcnum = $snum;");
-  } else $action->lay->set("OUT", "var svcnum = -1;");
+    $action->lay->set("OUT", "var svcnum = false;");
+  } else $action->lay->set("OUT", "var svcnum = -1; // no modif");
 }
 ?>

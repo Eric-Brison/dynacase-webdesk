@@ -23,6 +23,7 @@ function getjsservice(&$action) {
   $svcid    = $up->getTValue("uport_idsvc");
   $svctitle = $up->getTValue("uport_svc");
   $svcparam = $up->getTValue("uport_param");
+  $svcrdel  = $up->getTValue("uport_refreshd");
   $svccol   = $up->getTValue("uport_column");
   $svcline  = $up->getTValue("uport_line");
 
@@ -32,6 +33,7 @@ function getjsservice(&$action) {
       $sid = $svcid[$k];
       $stitle = $svctitle[$k];
       $sparam = $svcparam[$k];
+      $rdel = ($svcrdel[$k]==""?0:$svcrdel[$k]);
       $scol = $svccol[$k];
       $slin = $svcline[$k];
       continue;
@@ -51,6 +53,8 @@ function getjsservice(&$action) {
     .    "     vurl:'".getV($svc,"psvc_vurl")."',"
     .    "     eurl:'".getV($svc,"psvc_eurl")."',"
     .    "     purl:'".$sparam."'," 
+    .    "     rdel:".$rdel."," 
+    .    "     nextLoad:0," 
     .    "     col:".$scol."," 
     .    "     lin:".$slin.","
     .    "     m:false,"
