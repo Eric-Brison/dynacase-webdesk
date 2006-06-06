@@ -1,0 +1,20 @@
+<style>
+.tdmail { font-size:80%; vertical-align:top }
+</style>
+[IF accset]
+<div>
+<div class="tdmail" title="[account] ([login]/[server]) [spec]" style="border-width:1px; border-color:#CFCFCF; border-style:none none solid none"><span style="font-weight:bold">[account]</span> ([login]/[server]) : <span style="font-weight:bold">[new]</span>/[old]</div>
+[IF bmails]<table cellspacing="0">[IF moremails]<tr><td colspan="3" class="tdmail" style="font-style:italic">les [nfirst] derniers</td></tr>[ENDIF moremails]
+[BLOCK mails]<tr >
+<td class="tdmail">&rarr;</td>
+<td class="tdmail" style="font-weight:bold">[from]</td>
+<td class="tdmail" style="font-style:italic">[date]</td>
+</tr>
+<tr>
+<td></td><td class="tdmail" colspan="2">[subject]<td>
+</tr>
+[ENDBLOCK mails]
+</table>[ENDIF bmails]
+</div>[ENDIF accset]
+
+[IF showmsg]<div style="font-size:80%; border:1px solid red">[msgtext]</div>[ENDIF showmsg]

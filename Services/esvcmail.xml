@@ -1,0 +1,12 @@
+<table cellspacing="0">
+<tr><td>Compte</td><td>:</td><td><input type="text" name="account"></td></tr>
+<tr><td>Login</td><td>:</td><td><input type="text" name="login"></td></tr>
+<tr><td>Password</td><td>:</td><td><input type="password" name="password"></td></tr>
+<tr><td>Serveur</td><td>:</td><td><input type="text" name="server"></td></tr>
+<tr><td>Protocole</td><td>:</td><td><select name="proto">
+<option value="pop3">Pop3
+<option value="pop3s">Pop3 Ssl
+<option value="imap">Imap
+<option value="imaps">Imap Ssl
+</select></td></tr>
+</table>
