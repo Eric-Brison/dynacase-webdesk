@@ -24,7 +24,7 @@ function initPortal() {
   services[services.length] = { snum:[snum], sid:[sid], stitle:'[stitle]', 
 				vurl:'[vurl]', eurl:'[eurl]', purl:'[purl]',
 				rdel:[rdel], nextLoad:0, col:[col], lin:[lin], 
-				m:[mandatory], e:[editable], d:false }; [ENDBLOCK USvc]
+				i:[interactif], m:[mandatory], e:[editable], d:false }; [ENDBLOCK USvc]
 									 
   displayServices();
 
@@ -120,6 +120,7 @@ function showService(is) {
   var eurl   = services[is].eurl;
   var iseditable   = services[is].e;
   var ismandatory  = services[is].m;
+  var isinteractive  = services[is].i;
   var line  = services[is].line;
   var col  = services[is].col;
   
@@ -132,10 +133,14 @@ function showService(is) {
     svc.className = 'wdsvc';
     root.appendChild(svc);
 
+      
+      
     var tsvc = document.createElement('div');
     tsvc.id = 'tsvc'+snum;
     tsvc.name = 'tsvc'+snum;
-    var cnt = '<table width="100%" cellspacing="0" cellpadding="0" style="border:0px"><tr><td><span id="tsvcti'+snum+'">'+stitle+'</span></td>';
+    
+    var cnt = '';
+    cnt += '<table width="100%" cellspacing="0" cellpadding="0" style="border:0px"><tr><td><span id="tsvcti'+snum+'">'+stitle+'</span></td>';
  
     cnt += '<td style="text-align:right">';
 
@@ -155,6 +160,7 @@ function showService(is) {
     cnt += '</td></tr></table>';
     tsvc.innerHTML = cnt;
     tsvc.className = 'wdsvc_title';
+
     svc.appendChild(tsvc);
 
     var csvc = document.createElement('div');
@@ -167,10 +173,40 @@ function showService(is) {
       csvc.className = 'wdsvc_content';
     }
     csvc.style.overflow = 'auto';
-    svc.appendChild(csvc);
+
+    if (isinteractive) {
+      var fsvc = document.createElement('form');
+      fsvc.id = 'fsvc'+snum;
+      fsvc.name = 'fsvc'+snum;
+      fsvc.method = 'POST';
+      fsvc.action = vurl;
+      fsvc.serviceId = snum;
+      fsvc.onsubmit = 'submitService(this.form); return false;';
+      svc.appendChild(fsvc);
+      fsvc.appendChild(csvc);
+    } else {
+      svc.appendChild(csvc);
+    }
+
     
     loadSvcAsync(snum);
   }
+}
+
+function submitService(eltform) {
+  var snum = eltform.serviceId;
+  var is = getSvc(snum);
+  if (is===false) return false; 
+
+  var params = ''
+  var fsend = document.getElementById('fsvc'+snum);
+  for (var ie=0; ie<fsend.elements.length; ie++) {
+    if (fsend.elements[ie].name!="") params += '&'+fsend.elements[ie].name+'='+fsend.elements[ie].value;
+  }
+
+  loadSvcAsync(snum, true, params);
+  eltform.reset();
+  return false;
 }
 
 function getSvc(snum) {
@@ -350,7 +386,7 @@ function unsetWS(sid) {
 }
 
 
-function loadSvc(sid, shl) {
+function loadSvc(sid, shl, params) {
   var dreq = null;
   var is = getSvc(sid);
   if (is===false) return;
@@ -376,7 +412,7 @@ function loadSvc(sid, shl) {
 }
 
 var timerOn = new Array();
-function loadSvcAsync(sid, shl) {
+function loadSvcAsync(sid, shl, params) {
   var dreq = null;
   var is = getSvc(sid);
   if (is===false) return;
@@ -404,7 +440,9 @@ function loadSvcAsync(sid, shl) {
 	if (shl) unsetWS(sid);
       }
     }
-    dreq.open("POST", services[is].vurl+services[is].purl, true);
+    var url = services[is].vurl+services[is].purl;
+    if (params) url += params;
+    dreq.open("POST", url, true);
     dreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     dreq.send('');
   } else {
@@ -459,7 +497,7 @@ function opencloseParams() {
 <div id="wdparamset" class="wdparamb" style="position:absolute; left:20px; top:20px; display:none" >
 <div class="wdtitleb" >[TEXT:wd available services]</div>
 [BLOCK catS]<div class="wdtitleb1" >[categorie]</div>
-[BLOCK services[categorie]]<div title="[psvc_descr]">[IF Icon]<img style="height:16px" class="small_button" title="[psvc_title]" src="[CORE_BASEURL]app=FDL&action=EXPORTFILE&vid=[vid]&docid=[docid]&attrid=[attrid]&index=-1">[ENDIF Icon][IFNOT Icon]&nbsp;&rarr;[ENDIF Icon]&nbsp;[psvc_title]&nbsp<img class="small_button" onclick="addNewService([id])" title="[TEXT:wd add service] [psvc_title]" src="[IMG:wd_add_service.gif]"></div>[ENDBLOCK services[categorie]][ENDBLOCK catS]
+[BLOCK services[categorie]]<div title="[psvc_descr]">[IF Icon]<img style="height:16px" class="small_button" title="[psvc_title]" src="[CORE_BASEURL]app=FDL&action=EXPORTFILE&vid=[vid]&docid=[docid]&attrid=[attrid]&index=-1">[ENDIF Icon][IFNOT Icon]&nbsp;&rarr;[ENDIF Icon]&nbsp;[psvc_title]&nbsp<img class="small_button" onclick="addNewService([id]); opencloseParams()" title="[TEXT:wd add service] [psvc_title]" src="[IMG:wd_add_service.gif]"></div>[ENDBLOCK services[categorie]][ENDBLOCK catS]
 <div class="wdbuttonb" style="text-align:right"><img class="small_button" onclick="opencloseParams()" src="[IMG:wd_cancel.gif]" title="[TEXT:wd close]"></div>
 </div>
 

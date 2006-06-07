@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-02 14:21+0200\n"
+"POT-Creation-Date: 2006-06-07 16:35+0200\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -52,6 +52,12 @@ msgstr ""
 msgid "administration page"
 msgstr ""
 
+msgid "webdesk general preferences"
+msgstr ""
+
+msgid "webdesk general admnistration"
+msgstr ""
+
 msgid "return JS service description"
 msgstr ""
 
@@ -71,6 +77,30 @@ msgid "service test view"
 msgstr ""
 
 msgid "service test edition"
+msgstr ""
+
+msgid "service incident"
+msgstr ""
+
+msgid "service mail"
+msgstr ""
+
+msgid "service local mail"
+msgstr ""
+
+msgid "service mail edition"
+msgstr ""
+
+msgid "service contact"
+msgstr ""
+
+msgid "no account defined"
+msgstr ""
+
+msgid "error retrieving mails"
+msgstr ""
+
+msgid "without category"
 msgstr ""
 
 msgid "wd open/close menu"
@@ -110,9 +140,6 @@ msgid "wd reload svc content"
 msgstr ""
 
 msgid "wd edit svc content"
-msgstr ""
-
-msgid "wd move svc"
 msgstr ""
 
 msgid "wd delete svc"
@@ -170,4 +197,7 @@ msgid "webdesk application portal"
 msgstr ""
 
 msgid "Javascript must be enabled in your navigator"
+msgstr ""
+
+msgid "wd search for contact"
 msgstr ""

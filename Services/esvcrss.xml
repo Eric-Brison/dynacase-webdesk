@@ -1,0 +1,2 @@
+Source RSS <input style="font-size:80%; border:1px solid #CFCFCF; background-color:#EFEFEF; width:60%" type="text" title="[TEXT:wd entre rss link here]" name="rss"><br>
+Nombre d'item affichés <select name="max"><option value="5">5<option value="10">10<option value="20">20</select>

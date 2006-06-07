@@ -23,15 +23,15 @@ function portal(&$action) {
     $d->Affect($v);
 
     $ts[$k]["Icon"] = false;
-    $aico = $d->GetAttribute("psvc_icon");
-//     echo getv($v,"psvc_icon");
-    $vid="";
-    if (ereg ("(.*)\|(.*)", getv($v,"psvc_icon"), $reg)) {
-      $ts[$k]["Icon"] = true;
-      $ts[$k]["docid"] = $v["id"];
-      $ts[$k]["vid"] = $reg[2];
-      $ts[$k]["attrid"] = "psvc_icon";
-    }
+//     $aico = $d->GetAttribute("psvc_icon");
+// //     echo getv($v,"psvc_icon");
+//     $vid="";
+//     if (ereg ("(.*)\|(.*)", getv($v,"psvc_icon"), $reg)) {
+//       $ts[$k]["Icon"] = true;
+//       $ts[$k]["docid"] = $v["id"];
+//       $ts[$k]["vid"] = $reg[2];
+//       $ts[$k]["attrid"] = "psvc_icon";
+//     }
     $acat = $d->GetAttribute("psvc_categorie");
     $cat = $acat->getEnum();
     $tserv[getV($v,"psvc_categorie")]["categorie"] = $cat[getV($v,"psvc_categorie")];
@@ -70,6 +70,7 @@ function portal(&$action) {
 		       "rdel" => ($svcrdel[$k]==""?0:$svcrdel[$k]),
 		       "col" => $svccol[$k],
 		       "lin" => $svcline[$k],
+		       "interactif" => (getV($sd, "psvc_interactif")==1?"true":"false"),
 		       "mandatory" => "false",
 		       "editable" => "true"		       
 		      );

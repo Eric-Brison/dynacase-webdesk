@@ -1,7 +1,7 @@
 #! /bin/rpm
 #
 #  File: 
-#  $Id: WEBDESK.spec.in,v 1.2 2006/06/01 16:45:21 marc Exp $
+#  $Id: WEBDESK.spec.in,v 1.3 2006/06/07 15:53:59 marc Exp $
 #
 #  This is the SPEC file for the What Users Module
 #  Anakeen What Application
@@ -35,6 +35,9 @@ Packager: Marc Claverie <marc.claverie@anakeen.com>
 BuildArchitectures: noarch
 BuildRoot: /tmp/anakeen-root
 Requires: WGCAL >= 2.1
+Requires: php-pear-XML_RSS
+Requires: php-imap
+
 
 %description
 Webdesk aids users

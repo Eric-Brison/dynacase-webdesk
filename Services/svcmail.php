@@ -13,6 +13,7 @@ function svcmail(&$action) {
   $pas = GetHttpVars("password", "");
   $srv = GetHttpVars("server", "");
   $pro = GetHttpVars("proto", "");
+  $display = GetHttpVars("display", 0);
   
 //   echo "account=[$acc] login=[$log] password=[$pas] serveur=[$srv] protocol=[$pro]<br>";
 
@@ -71,9 +72,13 @@ if ($acc=="" || $log=="" || $pas=="" || $srv=="" || $pro=="") {
      $nb = (count($minfos["newmails"])>$maxm ? count($minfos["newmails"])-$maxm : 0);
      for ($ic=count($minfos["newmails"])-1; $ic>=$nb; $ic--) {
       $sd = convertDH($minfos["newmails"][$ic]->date);
-      $ms[] = array( "from" => utf8_decode(imap_utf8($minfos["newmails"][$ic]->from)),
-		      "subject" => utf8_decode(imap_utf8($minfos["newmails"][$ic]->subject)),
-		      "date" => $sd);
+      $rfrom = clearText($minfos["newmails"][$ic]->from);
+      $prfrom = preg_replace('/&lt;.*@.*&gt;/','',$rfrom);
+      $ms[] = array( "from" => ($prfrom==""?$rfrom:$prfrom), //clearText($minfos["newmails"][$ic]->from),
+		     "responseto" => $rfrom,
+		     "subject" => clearText($minfos["newmails"][$ic]->subject),
+		     "date" => $sd,
+		     "fulldisplay" => ($display==0||$display=="" ? true : false) );
      }
      if (count($minfos["newmails"])>$maxm)  $action->lay->set("moremails", true);
      $action->lay->setBlockData("mails", $ms);
@@ -83,6 +88,10 @@ if ($acc=="" || $log=="" || $pas=="" || $srv=="" || $pro=="") {
    $action->lay->set("msgtext", _("error retrieving mails")."[".$minfos["error"]."]");
  }
  return;   
+}
+
+function clearText($s) {
+  return htmlentities((utf8_decode(imap_utf8($s))));
 }
 
 function getMbox($mbox, $login, $pass) {

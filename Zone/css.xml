@@ -1,4 +1,7 @@
-body, div { padding:0px; margin:0px; border:0px; background-color:white }
+body, div { padding:0px; margin:0px; border:0px; color:black; background-color:white }
+
+a, a:visited { text-decoration:none; font-weigth:bold; color:#206e16;  }
+a:hover { color:#ff8f00 }
 
 .small_button { border:0px; cursor:pointer; vertical-align:baseline }
 .app { padding-left:5px; background:white; border:1px solid white; cursor:pointer; }

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-02 14:21+0200\n"
+"POT-Creation-Date: 2006-06-07 16:35+0200\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -52,6 +52,14 @@ msgstr "Préférences"
 msgid "administration page"
 msgstr "Administration"
 
+#, fuzzy
+msgid "webdesk general preferences"
+msgstr "Préférences"
+
+#, fuzzy
+msgid "webdesk general admnistration"
+msgstr "Administration du WebDesk"
+
 msgid "return JS service description"
 msgstr "return JS service description"
 
@@ -72,6 +80,35 @@ msgstr "Service test - affichage"
 
 msgid "service test edition"
 msgstr "Service test - édition"
+
+#, fuzzy
+msgid "service incident"
+msgstr "Service test - édition"
+
+#, fuzzy
+msgid "service mail"
+msgstr "Service test - affichage"
+
+msgid "service local mail"
+msgstr ""
+
+#, fuzzy
+msgid "service mail edition"
+msgstr "Service test - édition"
+
+#, fuzzy
+msgid "service contact"
+msgstr "Service test - affichage"
+
+msgid "no account defined"
+msgstr ""
+
+#, fuzzy
+msgid "error retrieving mails"
+msgstr "Erreur de récupération du formulaire édition"
+
+msgid "without category"
+msgstr ""
 
 msgid "wd open/close menu"
 msgstr "Ouvrir/fermer le menu"
@@ -111,9 +148,6 @@ msgstr "Afficher le contenu"
 
 msgid "wd edit svc content"
 msgstr "Editer les paramètres"
-
-msgid "wd move svc"
-msgstr "Déplacer"
 
 msgid "wd delete svc"
 msgstr "Supprimer le service"
@@ -171,3 +205,10 @@ msgstr "Portail application WebDesk"
 
 msgid "Javascript must be enabled in your navigator"
 msgstr "éxécution  du Javascript doit ^etre autorisée"
+
+#, fuzzy
+msgid "wd search for contact"
+msgstr "Afficher le contenu"
+
+#~ msgid "wd move svc"
+#~ msgstr "Déplacer"
