@@ -47,7 +47,7 @@ function portal(&$action) {
   $tsvc = array();
   $tup = GetChildDoc( getParam("FREEDOM_DB"), 0, 0, "ALL", 
 		     array("uport_ownerid = ".$action->user->fid), $action->user->id, "LIST", "USER_PORTAL");
-  if ($tup[0]->isAffected()) {
+  if (is_object($tup[0]) && $tup[0]->isAffected()) {
     
     $svcnum   = $tup[0]->getTValue("uport_svcnum");
     $svcid    = $tup[0]->getTValue("uport_idsvc");

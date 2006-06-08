@@ -28,6 +28,14 @@ function delservice(&$action) {
   $svccol   = $up->getTValue("uport_column");
   $svcline  = $up->getTValue("uport_line");
 
+  $up->deleteValue("uport_svcnum");
+  $up->deleteValue("uport_idsvc");
+  $up->deleteValue("uport_svc");
+  $up->deleteValue("uport_param");
+  $up->deleteValue("uport_refreshd");
+  $up->deleteValue("uport_column");
+  $up->deleteValue("uport_line");
+
   $nsvcnum   = array();
   $nsvcid    = array();
   $nsvctitle = array();

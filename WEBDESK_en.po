@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-07 16:35+0200\n"
+"POT-Creation-Date: 2006-06-08 07:44+0200\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -94,6 +94,12 @@ msgstr ""
 msgid "service contact"
 msgstr ""
 
+msgid "service rss"
+msgstr ""
+
+msgid "service edit rss"
+msgstr ""
+
 msgid "no account defined"
 msgstr ""
 
@@ -101,6 +107,17 @@ msgid "error retrieving mails"
 msgstr ""
 
 msgid "without category"
+msgstr ""
+
+msgid "wd no rss link given"
+msgstr ""
+
+msgid ""
+"[TEXT:no information available, verify your server have http access to "
+"internet and/or check link please...]"
+msgstr ""
+
+msgid "Rss feed"
 msgstr ""
 
 msgid "wd open/close menu"
@@ -200,4 +217,7 @@ msgid "Javascript must be enabled in your navigator"
 msgstr ""
 
 msgid "wd search for contact"
+msgstr ""
+
+msgid "wd entre rss link here"
 msgstr ""

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-07 16:35+0200\n"
+"POT-Creation-Date: 2006-06-08 07:44+0200\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -52,11 +52,9 @@ msgstr "Préférences"
 msgid "administration page"
 msgstr "Administration"
 
-#, fuzzy
 msgid "webdesk general preferences"
-msgstr "Préférences"
+msgstr "Préférences générale"
 
-#, fuzzy
 msgid "webdesk general admnistration"
 msgstr "Administration du WebDesk"
 
@@ -70,10 +68,10 @@ msgid "save service parameters"
 msgstr "Sauvegarde de la définition du service"
 
 msgid "position of service in user portal"
-msgstr ""
+msgstr "Position du service dans le portail"
 
 msgid "del service from user portal"
-msgstr ""
+msgstr "Supprimession du service du portail"
 
 msgid "service test view"
 msgstr "Service test - affichage"
@@ -81,34 +79,46 @@ msgstr "Service test - affichage"
 msgid "service test edition"
 msgstr "Service test - édition"
 
-#, fuzzy
 msgid "service incident"
-msgstr "Service test - édition"
+msgstr "Service Incidents"
 
-#, fuzzy
 msgid "service mail"
-msgstr "Service test - affichage"
+msgstr "Service Messagerie"
 
 msgid "service local mail"
-msgstr ""
+msgstr "Service Messagerie locale"
 
-#, fuzzy
 msgid "service mail edition"
-msgstr "Service test - édition"
+msgstr "Service Mail, édition"
 
-#, fuzzy
 msgid "service contact"
-msgstr "Service test - affichage"
+msgstr "Service Contacts"
+
+msgid "service rss"
+msgstr "Service RSS"
+
+msgid "service edit rss"
+msgstr "Service RSS, édition"
 
 msgid "no account defined"
 msgstr ""
 
-#, fuzzy
 msgid "error retrieving mails"
-msgstr "Erreur de récupération du formulaire édition"
+msgstr "Erreur de récupération des messages"
 
 msgid "without category"
 msgstr ""
+
+msgid "wd no rss link given"
+msgstr "Pas de flux RSS fourni"
+
+msgid ""
+"[TEXT:no information available, verify your server have http access to "
+"internet and/or check link please...]"
+msgstr "Pas d'information, vérifié que l'URL du lien est accessible"
+
+msgid "Rss feed"
+msgstr "Flux Rss"
 
 msgid "wd open/close menu"
 msgstr "Ouvrir/fermer le menu"
@@ -206,9 +216,11 @@ msgstr "Portail application WebDesk"
 msgid "Javascript must be enabled in your navigator"
 msgstr "éxécution  du Javascript doit ^etre autorisée"
 
-#, fuzzy
 msgid "wd search for contact"
-msgstr "Afficher le contenu"
+msgstr "Rechercher un contact"
+
+msgid "wd entre rss link here"
+msgstr "Saississez l'URL du flux RSS ici"
 
 #~ msgid "wd move svc"
 #~ msgstr "Déplacer"

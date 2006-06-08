@@ -101,7 +101,7 @@ function runapp( idapp, sidapp, params) {
   }
 
   currentIdApp = idapp;
-  currentApp = (idapp>10000?0:idapp);
+  currentApp = idapp; //(idapp>10000?0:idapp);
   var fapp = document.getElementById('fbody'+currentApp);
 
   if (fapp.src=='about:blank' || currentApp==0) {
@@ -153,7 +153,8 @@ function setcurtime() {
 <div id="wdbody" style="float:left; background:lightblue; border:0px; width:5px;">
 [BLOCK appListBody]<iframe id="fbody[id]" name="fbody[id]"  style="display:none; border:0px; background:blue;" src="about:blank" scrolling="needed"></iframe>
 [ENDBLOCK appListBody]
-<iframe id="fbody0" name="fbody0"  style="display:none; border:0px; background:blue;" src="about:blank" scrolling="needed"></iframe></div>
+[BLOCK specialAppListBody]<iframe id="fbody[id]" name="fbody[id]"  style="display:none; border:0px; background:blue;" src="about:blank" scrolling="needed"></iframe></div>
+[ENDBLOCK specialAppListBody]
 
 <form style="display:inline" action="index.php?sole=Y&&app=AUTHENT&action=LOGOUT" method="POST" name="authent">
   <input type="hidden" name="SeenBefore" value="1">

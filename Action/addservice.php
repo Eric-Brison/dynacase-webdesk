@@ -18,17 +18,17 @@ function addservice(&$action) {
     $up->setValue("uport_owner", $action->user->firstname." ".$action->user->firstname);
     $up->setValue("uport_title", "Mon portail (".$action->user->firstname." ".$action->user->firstname. ")");
     $up->Add();
+    $svcnum   = $svcid = $svctitle = $svcparam = $svcrdel = $svccol = $svcline = array();
   } else {
     $up = $tup[0];
+    $svcnum   = $up->getTValue("uport_svcnum");
+    $svcid    = $up->getTValue("uport_idsvc");
+    $svctitle = $up->getTValue("uport_svc");
+    $svcparam = $up->getTValue("uport_param");
+    $svcrdel  = $up->getTValue("uport_refreshd");
+    $svccol   = $up->getTValue("uport_column");
+    $svcline  = $up->getTValue("uport_line");
   }
-
-  $svcnum   = $up->getTValue("uport_svcnum");
-  $svcid    = $up->getTValue("uport_idsvc");
-  $svctitle = $up->getTValue("uport_svc");
-  $svcparam = $up->getTValue("uport_param");
-  $svcrdel  = $up->getTValue("uport_refreshd");
-  $svccol   = $up->getTValue("uport_column");
-  $svcline  = $up->getTValue("uport_line");
 
   $svnnumber = $up->getNumSequence();
 

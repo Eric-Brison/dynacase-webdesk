@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: main.php,v 1.2 2006/05/31 17:06:43 marc Exp $
+ * @version $Id: main.php,v 1.3 2006/06/08 12:19:13 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WEBDESK
@@ -85,6 +85,7 @@ function main(&$action) {
 			   "iconsrc" => "[IMG:wd_admin.gif]" );
   }
   $action->lay->setBlockData("specialAppList", $specialapp);
+  $action->lay->setBlockData("specialAppListBody", $specialapp);
 
   if (!$defApp) {
     $action->lay->set("defid", $specialapp[0]["id"]);

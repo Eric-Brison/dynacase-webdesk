@@ -30,6 +30,7 @@ $action_desc = array (
   array( "acl" => "ADMIN",  "name" => "APPADMIN", "short_name" =>N_("webdesk general admnistration"), "toc" => "N", "root" =>"N"),
 
   // Service in portal management
+
   array( "acl" => "USER",  "name" => "GETJSSERVICE", "short_name" =>N_("return JS service description"), "toc" => "N", "root" =>"N"),
   array( "acl" => "USER",  "name" => "ADDSERVICE", "short_name" =>N_("add service in user portal"), "toc" => "N", "root" =>"N"),
   array( "acl" => "USER",  "name" => "SAVESVC", "short_name" =>N_("save service parameters"), "toc" => "N", "root" =>"N"),
@@ -47,9 +48,17 @@ $action_desc = array (
 
    array( "acl" => "USER",  "name" => "SVCCONTACT", "short_name" =>N_("service contact"), "toc" => "N", "root" =>"N"),
  
+   array( "acl" => "USER",  "name" => "SVCARDOISE", "short_name" =>N_("service ardoise"), "toc" => "N", "root" =>"N"),
+   array( "acl" => "USER",  "name" => "ESVCARDOISE", "short_name" =>N_("service ardoise"), "toc" => "N", "root" =>"N"),
+
    array( "acl" => "USER",  "name" => "SVCRSS", "short_name" =>N_("service rss"), "toc" => "N", "root" =>"N"),
    array( "acl" => "USER",  "name" => "ESVCRSS", "short_name" =>N_("service edit rss"), "toc" => "N", "root" =>"N"),
 	
+   array( "acl" => "USER",  "name" => "FREEDOM_SEARCH", "short_name" =>N_("service freedom search execution"), "toc" => "N", "root" =>"N"),
+   array( "acl" => "USER",  "name" => "EFREEDOM_SEARCH", "short_name" =>N_("service freedom search execution"), "toc" => "N", "root" =>"N"),
+   array( "acl" => "USER",  "name" => "FREEDOM_FSEARCH", "short_name" =>N_("service freedom search in familie"), "toc" => "N", "root" =>"N"),   array( "acl" => "USER",  "name" => "EFREEDOM_FSEARCH", "short_name" =>N_("service edit freedom search in familie"), "toc" => "N", "root" =>"N"),
+
+
 );
 
 ?>

@@ -1,6 +1,6 @@
 body, div { padding:0px; margin:0px; border:0px; color:black; background-color:white }
 
-a, a:visited { text-decoration:none; font-weigth:bold; color:#206e16;  }
+a, a:visited { text-decoration:none; font-weight:bold; color:#206e16;  }
 a:hover { color:#ff8f00 }
 
 .small_button { border:0px; cursor:pointer; vertical-align:baseline }
