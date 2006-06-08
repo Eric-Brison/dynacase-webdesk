@@ -1,0 +1,8 @@
+Nombre de lignes <select name="cline"><option value="2">2<option value="5">5<option value="10">10</select><br>
+Couleur de la craie <select name="craie">
+<option value="white">Blanche
+<option value="yellow">Jaune
+<option value="red">Rouge
+<option value="lightgreen">Verte
+<option value="lightblue">Bleue
+</select>

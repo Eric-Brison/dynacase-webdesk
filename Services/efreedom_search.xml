@@ -1,0 +1,1 @@
+Nombre de documents affichés <select name="max"><option value="5">5<option value="10">10<option value="20">20</select>
