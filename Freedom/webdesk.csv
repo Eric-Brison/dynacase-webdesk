@@ -18,17 +18,15 @@ ATTR;PSVC_ICON;PSVC_SPEC;Icone;N;N;file;60;W;;;;;
 ATTR;PSVC_CATEGORIE;PSVC_SPEC;Catégorie;N;N;enumlist;70;W;Y;;;0|Gadgets,2|Loisirs,3|Intranet,4|Autre...;
 ATTR;PSVC_REFRESHD;PSVC_SPEC;Délai de rafraîchissement;N;N;enumlist;80;W;Y;;;0|Jamais,5|5 minutes,15|1/4 d'heure,30|1/2 heure,60|1 heure,120|2 heures;
 ;;;;;;;;;;;;;
-;;;;;;;;;;;;;
 ATTR;PSVC_PARAMS;;Paramêtres;N;N;frame;100;W;;;;;
 ATTR;PSVC_AVAILABLE;PSVC_PARAMS;Disponible;N;N;enum;110;W;;;-;[hcheck]1|Oui,0|Non;
-ATTR;PSVC_INTERACTIF;PSVC_PARAMS;Interactif;N;N;enum;110;W;;;-;[hcheck]0|Non,1|Oui;
 ATTR;PSVC_UMODE;PSVC_PARAMS;Modifiable;N;N;enum;120;W;;;-;[hcheck]1|Oui,0|Non;
 ATTR;PSVC_MANDATORY;PSVC_PARAMS;Obligatoire;N;N;enum;130;W;;;-;[hcheck]0|Optionnel,1|Obligatoire;
 ;;;;;;;;;;;;;
 ;;;;;;;;;;;;;
 ;;;;;;;;;;;;;
 ;;;;;;;;;;;;;
-DEFAULT;PSVC_INTERACTIF;0;;;;;;;;;;;
+;;;;;;;;;;;;;
 DEFAULT;PSVC_CATEGORIE;4;;;;;;;;;;;
 END;;;;;;;;;;;;;
 // ;fromid;titre;id;class;name;;;;;;;;
@@ -57,3 +55,6 @@ ATTR;UPORT_LINE;UPORT_TSERVICES;Ligne;N;N;int;160;W;;;;;
 ATTR;UPORT_REFRESHD;UPORT_TSERVICES;Délai raf.;N;N;int;170;W;;;;;
 ;;;;;;;;;;;;;
 END;;;;;;;;;;;;;
+//FAM;recherche détaillée(DSEARCH);<specid>;<fldid>;titre;couleur intercalaire;à utiliser dans les menus;mot-clef;révision;différence majuscule/minuscule;famille;fid amille;dossier racine;dans la poubelle;profondeur de recherche;requête sql;id dossier père courant;dossier père courant;opérateur logique;Conditions;attributs;fonctions;mot-clefs
+ORDER;DSEARCH;;;ba_title;gui_color;se_memo;se_key;se_latest;se_case;se_fam;se_famid;se_idfld;se_trash;se_sublevel;se_sqlselect;se_idcfld;se_cfld;se_ol;se_t_detail;se_attrids;se_funcs;se_keys
+DOC;DSEARCH;MY_LOCKED_DOCS;;Mes documents verrouillés;;no;;yes;;;;;;;select doc.* from  doc  where   (doctype != 'Z') and (doctype != 'T');;;and;;locked;=;::getMyAttribute(us_whatid)

@@ -1,4 +1,4 @@
-[IF none]<div>Pas d'incident en cours !</div>[ENDIF none]
+[IF none]<div style="font-style:italic; font-size:80%; ">Pas d'incident en cours.</div>[ENDIF none]
 [IFNOT  none]<table cellspacing="0">
 [BLOCK inc]
 <tr>

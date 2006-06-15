@@ -10,7 +10,7 @@
 <option value="imaps">Imap Ssl
 </select></td></tr>
 <tr><td>Affichage</td><td>:</td><td><select name="display">
-<option value="0">Complet
-<option value="1">Résumé
+<option value="1">Emetteur
+<option value="0">Emetteur - Sujet
 </select></td></tr>
 </table>

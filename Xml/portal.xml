@@ -181,7 +181,10 @@ function showService(is) {
       fsvc.method = 'POST';
       fsvc.action = vurl;
       fsvc.serviceId = snum;
-      fsvc.onsubmit = 'submitService(this.form); return false;';
+      fsvc.onsubmit = function (event)  {
+	submitService(event); 
+	return false; 
+      } ;
       svc.appendChild(fsvc);
       fsvc.appendChild(csvc);
     } else {
@@ -193,8 +196,11 @@ function showService(is) {
   }
 }
 
-function submitService(eltform) {
-  var snum = eltform.serviceId;
+function submitService(event) {
+  if (!event) event=window.event;
+  var e = (event.target) ? event.target : ((event.srcElement) ? event.srcElement : null);
+  if (!e) return false;
+  var snum = e.serviceId;
   var is = getSvc(snum);
   if (is===false) return false; 
 
@@ -205,7 +211,7 @@ function submitService(eltform) {
   }
 
   loadSvcAsync(snum, true, params);
-  eltform.reset();
+//   e.reset();
   return false;
 }
 
@@ -353,7 +359,7 @@ function unDisplaySvc(snum) {
 function deleteSvc(snum) {
   var is = getSvc(snum);
   if (is===false) return;
-  if (!confirm('[TEXT:wd confirm supress of] '+services[is].stitle)) return false;
+  if (!confirm('[TEXT:wd confirm supress of] ['+services[is].stitle+']')) return false;
   unDisplaySvc(snum);
   services.splice(is,1);
   var xreq = null;

@@ -1,5 +1,7 @@
 <div class="wdtitleb1" style="font-size:80%;">[msg]</div>
 [IF rss]
 [BLOCK rssnews]
-<div style="font-size:80%;">&nbsp;&rarr;&nbsp;<a target="_blank" href="[link]">[title]</a></div>[ENDBLOCK rssnews]
+<div style="font-size:80%;" >&nbsp;&rarr;&nbsp;<a target="_blank" href="[link]">[title]</a> <span style="font-size:80%">[date]</span>
+[IF vfull]<div style="margin:0px 0px 0px 15px; text-align:justify" id="rssct[id]">[descr]</div>[ENDIF vfull]
+</div>[ENDBLOCK rssnews]
 [ENDIF rss]

@@ -19,7 +19,7 @@ function svccontact(&$action) {
   $opf = ( $in==1 ? "^" : "" );
   $filter[] = "(title ~* '$opf".$search."')";
 
-  $rq = getChildDoc(getParam("FREEDOM_DB"), 0, 0, $limit, $filter, $action->user->id, "TABLE", "USER", true, "title");
+  $rq = getChildDoc(getParam("FREEDOM_DB"), 0, 0, $limit+1, $filter, $action->user->id, "TABLE", "USER", true, "title");
   $nb = count($rq);
   $action->lay->set("begin", ($in==1 ? false : true ));
   $action->lay->set("slimit", false);

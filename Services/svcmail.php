@@ -77,6 +77,7 @@ if ($acc=="" || $log=="" || $pas=="" || $srv=="" || $pro=="") {
       $ms[] = array( "from" => ($prfrom==""?$rfrom:$prfrom), //clearText($minfos["newmails"][$ic]->from),
 		     "responseto" => $rfrom,
 		     "subject" => clearText($minfos["newmails"][$ic]->subject),
+		     "msubject" => str_replace(" ","%20", clearText($minfos["newmails"][$ic]->subject)),
 		     "date" => $sd,
 		     "fulldisplay" => ($display==0||$display=="" ? true : false) );
      }

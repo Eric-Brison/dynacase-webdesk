@@ -7,11 +7,15 @@ include_once("FDL/Class.Doc.php");
 function incident(&$action) {
 
   $dbaccess = $action->GetParam("FREEDOM_DB");
+  
+  $myid = $action->user->fid;
 
   $interval=incidentdayinterval(&$action);
 
   $filters=array();
-  $filters[]="(state<>'traited' and state<>'rejected' and state<>'closed'  ) ";
+  $filters[]=" (  (state='recorded' and in_qualifid=$myid) "
+    .        " or (state='qualified' and in_analid=$myid) "
+    .        " or (state='analyzed' and in_trtid=$myid) ) ";
 
   $action->lay->set("none", true);
   $cur=createDoc($dbaccess,"INCIDENT",false);
@@ -35,7 +39,6 @@ function incident(&$action) {
      break;
     }
 
-    $name = $cur->getDocValue($ida,"us_fname")." ".$cur->getDocValue($ida,"us_lname");
     $inc[] = array( "state" => _($state),
 		    "title" => getV($v, "in_title"),
 		    "desc" => getV($v, "in_pbdesc"),
@@ -43,7 +46,6 @@ function incident(&$action) {
 		    "grav" => (getV($v, "in_grav")==""?'pas de gravité':getV($v, "in_grav")),
 		    "site" => getV($v, "in_site"),
 		    "ref" => $v["title"],
-		    "owner" => $name
 		   );
   }
   $action->lay->setBlockData("inc", $inc);
