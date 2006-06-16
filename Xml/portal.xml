@@ -60,7 +60,7 @@ function endUtempo() {
 
 function resizeCols() {
   var icol = 0;
-  var bodW = getFrameWidth();
+  var bodW = getFrameWidth() - 20;
   var colW = parseInt(bodW/colCount);
   for (icol=0; icol<colCount; icol++) {
     document.getElementById('wdcol'+icol).style.width = colW-1;
@@ -140,7 +140,11 @@ function showService(is) {
     tsvc.name = 'tsvc'+snum;
     
     var cnt = '';
-    cnt += '<table width="100%" cellspacing="0" cellpadding="0" style="border:0px"><tr><td><span id="tsvcti'+snum+'">'+stitle+'</span></td>';
+    var imgcyc = '';
+    if (services[is].rdel>0) {
+      imgcyc = '<img src="[IMG:wd_svc_cyclic.gif]" style="border:0px" title="[TEXT:automatic reload all] '+services[is].rdel+' sec">';
+    }
+    cnt += '<table width="100%" cellspacing="0" cellpadding="0" style="border:0px"><tr><td><span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
  
     cnt += '<td style="text-align:right">';
 
@@ -199,6 +203,7 @@ function showService(is) {
 function submitService(event) {
   if (!event) event=window.event;
   var e = (event.target) ? event.target : ((event.srcElement) ? event.srcElement : null);
+  if (e.nodeName!="FORM") e = e.form;
   if (!e) return false;
   var snum = e.serviceId;
   var is = getSvc(snum);

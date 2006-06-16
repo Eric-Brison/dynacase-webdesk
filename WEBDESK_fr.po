@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-08 07:44+0200\n"
+"POT-Creation-Date: 2006-06-16 15:13+0200\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -94,20 +94,32 @@ msgstr "Service Mail, édition"
 msgid "service contact"
 msgstr "Service Contacts"
 
+msgid "service ardoise"
+msgstr "Service ardoise"
+
 msgid "service rss"
 msgstr "Service RSS"
 
 msgid "service edit rss"
 msgstr "Service RSS, édition"
 
+msgid "service freedom search execution"
+msgstr "Service freedom"
+
+msgid "service freedom search in familie"
+msgstr "service freedom de recherche dans une famille"
+
+msgid "service edit freedom search in familie"
+msgstr "service freedom de recherche dans une famille (edition)"
+
 msgid "no account defined"
-msgstr ""
+msgstr "pas de compte défini."
 
 msgid "error retrieving mails"
 msgstr "Erreur de récupération des messages"
 
 msgid "without category"
-msgstr ""
+msgstr "sans catégorie"
 
 msgid "wd no rss link given"
 msgstr "Pas de flux RSS fourni"
@@ -117,8 +129,14 @@ msgid ""
 "internet and/or check link please...]"
 msgstr "Pas d'information, vérifié que l'URL du lien est accessible"
 
-msgid "Rss feed"
-msgstr "Flux Rss"
+msgid "wd no freedom search given"
+msgstr "Pas de recherche Freedom fournie"
+
+msgid "wd invalid freedom search given"
+msgstr "recherche Freedom invalide"
+
+msgid "wd freedom search, no  result"
+msgstr "Recherche Freedom, pas de résultat"
 
 msgid "wd open/close menu"
 msgstr "Ouvrir/fermer le menu"
@@ -136,7 +154,10 @@ msgid "wd error getting service"
 msgstr "wd error getting service"
 
 msgid "wd invalid service number returned by creation"
-msgstr ""
+msgstr "invalid service number returned by creation"
+
+msgid "automatic reload all"
+msgstr "mise à jour toutes les"
 
 msgid "wd go left"
 msgstr "déplacer vers la gauche"
@@ -216,11 +237,17 @@ msgstr "Portail application WebDesk"
 msgid "Javascript must be enabled in your navigator"
 msgstr "éxécution  du Javascript doit ^etre autorisée"
 
+msgid "open it in a new window"
+msgstr "ouvrir dans une nouvelle fenetre"
+
 msgid "wd search for contact"
 msgstr "Rechercher un contact"
 
 msgid "wd entre rss link here"
 msgstr "Saississez l'URL du flux RSS ici"
+
+#~ msgid "Rss feed"
+#~ msgstr "Flux Rss"
 
 #~ msgid "wd move svc"
 #~ msgstr "Déplacer"

@@ -1,0 +1,9 @@
+<select name="sfamily" style="font-size:80%; border:1px solid #CFCFCF; background-color:#EFEFEF; width:40%;">
+[BLOCK SFam]<option value="[value]">[label][ENDBLOCK SFam]
+</select>
+<input style="font-size:80%; border:1px solid #CFCFCF; background-color:#EFEFEF; width:40%;" type="text" title="[TEXT:wd search ...]" name="sphrase">&nbsp;<input type="button" style="font-size:80%; border:1px solid #CFCFCF; background-color:#EFEFEF; cursor:pointer;" title="chercher" value="?" onclick="submitService(event)">
+[IF csearch]
+[BLOCK docs]
+<div style="font-size:80%;" title="[title] ([owner]) [familie]|[revdate]">&rarr; <a title="[title], [TEXT:open it in a new window]" class="wd_alink" href="[CORE_STANDURL]app=FDL&action=FDL_CARD&props=N&abstract=N&id=[id]" target="opendoc">[title]</a> <span style="font-size:60%;">[familie], [revdate]</span></div>
+[ENDBLOCK docs]
+[ENDIF csearch]

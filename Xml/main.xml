@@ -45,6 +45,7 @@ function computefbodywh() {
 
   var bodH = getFrameHeight();
   var bodW = getFrameWidth();
+
   var topH = getObjectHeight(document.getElementById('wdtitle'));
   var wor = (isOpen ? 0.2 : 0.0);
   var wdrift = 0.02;

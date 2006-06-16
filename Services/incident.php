@@ -35,11 +35,12 @@ function incident(&$action) {
        $ida = $cur->getValue("IN_ANALID");
      break;
      case "analyzed":
-       $ida = $cur->getValue("IN_TRTID");
+       $ida = $cur->getValue("IN_TRTID"); 
      break;
     }
 
     $inc[] = array( "state" => _($state),
+		    "id" => getV($v, "id"),
 		    "title" => getV($v, "in_title"),
 		    "desc" => getV($v, "in_pbdesc"),
 		    "date" => getV($v, "in_createdate"),

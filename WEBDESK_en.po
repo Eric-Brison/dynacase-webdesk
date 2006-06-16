@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-08 07:44+0200\n"
+"POT-Creation-Date: 2006-06-16 15:13+0200\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -94,10 +94,22 @@ msgstr ""
 msgid "service contact"
 msgstr ""
 
+msgid "service ardoise"
+msgstr ""
+
 msgid "service rss"
 msgstr ""
 
 msgid "service edit rss"
+msgstr ""
+
+msgid "service freedom search execution"
+msgstr ""
+
+msgid "service freedom search in familie"
+msgstr ""
+
+msgid "service edit freedom search in familie"
 msgstr ""
 
 msgid "no account defined"
@@ -117,7 +129,13 @@ msgid ""
 "internet and/or check link please...]"
 msgstr ""
 
-msgid "Rss feed"
+msgid "wd no freedom search given"
+msgstr ""
+
+msgid "wd invalid freedom search given"
+msgstr ""
+
+msgid "wd freedom search, no  result"
 msgstr ""
 
 msgid "wd open/close menu"
@@ -136,6 +154,9 @@ msgid "wd error getting service"
 msgstr ""
 
 msgid "wd invalid service number returned by creation"
+msgstr ""
+
+msgid "automatic reload all"
 msgstr ""
 
 msgid "wd go left"
@@ -214,6 +235,9 @@ msgid "webdesk application portal"
 msgstr ""
 
 msgid "Javascript must be enabled in your navigator"
+msgstr ""
+
+msgid "open it in a new window"
 msgstr ""
 
 msgid "wd search for contact"

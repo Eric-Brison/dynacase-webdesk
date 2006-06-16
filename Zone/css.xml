@@ -8,10 +8,9 @@ a, a:visited, .wd_alink  {
   background-repeat: no-repeat;
   background-position: right center;
   padding-right: 11px;
-  border-style:none none none none; border-color:#ff8f00; border-width:1px;
 }
 
-a:hover { border-style:none none solid none; border-color:#ff8f00; border-width:1px }
+a:hover { color:#ff8f00 }
 
 .wd_amail {
   text-decoration:none; 
