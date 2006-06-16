@@ -1,6 +1,6 @@
 <div class="wdtitleb1" style="font-size:80%;">[msg]</div>
 [IF csearch]
 [BLOCK docs]
-<div style="font-size:80%;" title="[title] ([owner]) [familie]|[revdate]">&rarr; <span style="font-weight:bold">[title]</span> <span style="font-style:italic">([owner])</span> <span style="font-size:60%;">[familie], [revdate]</span> <a title="[title], [TEXT:open it in a new window]" style="border-style:none" href="[CORE_STANDURL]app=FDL&action=FDL_CARD&props=N&abstract=N&id=[id]" target="opendoc"><img style="border-style:none" class="small_button" src="[IMG:s_opendoc.gif]"></a></div>
+<div style="font-size:80%;" title="[title] ([owner]) [familie]|[revdate]">&rarr; <a title="[title], [TEXT:open it in a new window]" class="wd_alink" href="[CORE_STANDURL]app=FDL&action=FDL_CARD&props=N&abstract=N&id=[id]" target="opendoc">[title]</a> <span style="font-style:italic">([owner])</span> <span style="font-size:60%;">[familie], [revdate]</span></div>
 [ENDBLOCK docs]
 [ENDIF csearch]

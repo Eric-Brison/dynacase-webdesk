@@ -1,7 +1,27 @@
 body, div { padding:0px; margin:0px; border:0px; color:black; background-color:white }
 
-a, a:visited { text-decoration:none; font-weight:bold; color:#206e16;  }
-a:hover { color:#ff8f00 }
+a, a:visited, .wd_alink  { 
+  text-decoration:none; 
+  font-weight:bold; 
+  color:#206e16;  
+  background-image: url([IMG:wd_lnk_http.gif]);
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 11px;
+  border-style:none none none none; border-color:#ff8f00; border-width:1px;
+}
+
+a:hover { border-style:none none solid none; border-color:#ff8f00; border-width:1px }
+
+.wd_amail {
+  text-decoration:none; 
+  font-weight:bold; 
+  color:#206e16;   
+  background-image: url([IMG:wd_lnk_mailto.gif]);
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 11px;
+}
 
 .small_button { border:0px; cursor:pointer; vertical-align:baseline }
 .app { padding-left:5px; background:white; border:1px solid white; cursor:pointer; }

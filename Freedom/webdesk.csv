@@ -22,7 +22,7 @@ ATTR;PSVC_PARAMS;;Paramêtres;N;N;frame;100;W;;;;;
 ATTR;PSVC_AVAILABLE;PSVC_PARAMS;Disponible;N;N;enum;110;W;;;-;[hcheck]1|Oui,0|Non;
 ATTR;PSVC_UMODE;PSVC_PARAMS;Modifiable;N;N;enum;120;W;;;-;[hcheck]1|Oui,0|Non;
 ATTR;PSVC_MANDATORY;PSVC_PARAMS;Obligatoire;N;N;enum;130;W;;;-;[hcheck]0|Optionnel,1|Obligatoire;
-;;;;;;;;;;;;;
+ATTR;PSVC_APPNEEDED;PSVC_PARAMS;Application attendue;N;N;text;140;W;;;;;
 ;;;;;;;;;;;;;
 ;;;;;;;;;;;;;
 ;;;;;;;;;;;;;
@@ -58,3 +58,20 @@ END;;;;;;;;;;;;;
 //FAM;recherche détaillée(DSEARCH);<specid>;<fldid>;titre;couleur intercalaire;à utiliser dans les menus;mot-clef;révision;différence majuscule/minuscule;famille;fid amille;dossier racine;dans la poubelle;profondeur de recherche;requête sql;id dossier père courant;dossier père courant;opérateur logique;Conditions;attributs;fonctions;mot-clefs
 ORDER;DSEARCH;;;ba_title;gui_color;se_memo;se_key;se_latest;se_case;se_fam;se_famid;se_idfld;se_trash;se_sublevel;se_sqlselect;se_idcfld;se_cfld;se_ol;se_t_detail;se_attrids;se_funcs;se_keys
 DOC;DSEARCH;MY_LOCKED_DOCS;;Mes documents verrouillés;;no;;yes;;;;;;;select doc.* from  doc  where   (doctype != 'Z') and (doctype != 'T');;;and;;locked;=;::getMyAttribute(us_whatid)
+;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;
+// Portal services;;;;;;;;;;;;;;;;;;;;;;
+//FAM;Service Portail(PORTAL_SERVICE);<specid>;<fldid>;Title;Description;Consultation;Edition;Catégorie;Délai de rafraîchissement;Disponible;Interactif;Modifiable;Obligatoire;;;;;;;;;
+ORDER;PORTAL_SERVICE;;;psvc_title;psvc_descr;psvc_vurl;psvc_eurl;psvc_categorie;psvc_refreshd;psvc_available;psvc_interactif;psvc_umode;psvc_mandatory;psvc_appneeded;;;;;;;;
+DOC;PORTAL_SERVICE;PS_MAIL;;Messagerie;;[CORE_BASEURL]app=WEBDESK&action=SVCMAIL;[CORE_BASEURL]app=WEBDESK&action=ESVCMAIL;3;;1;;1;0;;;;;;;;;
+DOC;PORTAL_SERVICE;PS_LOCALMAIL;;Messagerie locale;;[CORE_BASEURL]app=WEBDESK&action=SVCLOCALMAIL;;3;;1;;0;1;;;;;;;;;
+DOC;PORTAL_SERVICE;PS_ARDOISE;;Mon ardoise;;[CORE_BASEURL]app=WEBDESK&action=SVCARDOISE;[CORE_BASEURL]app=WEBDESK&action=ESVCARDOISE;0;0;1;1;1;0;;;;;;;;;
+DOC;PORTAL_SERVICE;PS_TODOS;;Mes tâches;Les tâches à nettoyer;[CORE_STANDURL]app=WGCAL&action=WGCAL_TODOVIEW&mo=L;;4;;1;;1;0;WGCAL;;;;;;;;
+DOC;PORTAL_SERVICE;PS_WAITRV;;Rendez-vous proposés;Rendez-vous proposés à accepter ou refuser;[CORE_STANDURL]app=WGCAL&action=WGCAL_WAITRV;;3;15;1;;0;0;WGCAL;;;;;;;;
+DOC;PORTAL_SERVICE;PS_AGENDA;;Mon agenda;Rendez-vous à venir;[CORE_STANDURL]app=WGCAL&action=WGCAL_PORTAL&mo=L;[CORE_STANDURL]app=WGCAL&action=WGCAL_EPORTAL;3;;1;;1;0;WGCAL;;;;;;;;
+DOC;PORTAL_SERVICE;PS_LOCKEDDOCS;;Mes documents verrouillés;Liste de mes documents verrouillés;[CORE_BASEURL]app=WEBDESK&action=FREEDOM_SEARCH&s=MY_LOCKED_DOCS;;3;15;1;0;1;0;FREEDOM;;;;;;;;
+DOC;PORTAL_SERVICE;PS_TIME;;Horloge;Ce service fournit l'heure du serveur (UTC ou Locale);[CORE_STANDURL]app=WEBDESK&action=SVCTEST;[CORE_STANDURL]app=WEBDESK&action=ESVCTEST;0;5;1;;1;0;;;;;;;;;
+DOC;PORTAL_SERVICE;PS_INCIDENT;;Incident en cours;Les incidents sur lesquels je dois intervenir;[CORE_STANDURL]app=WEBDESK&action=INCIDENT;;3;;1;;0;0;INCIDENT;;;;;;;;
+DOC;PORTAL_SERVICE;PS_RSSREADER;;RSS;Lecteur RSS;[CORE_BASEURL]app=WEBDESK&action=SVCRSS;[CORE_BASEURL]app=WEBDESK&action=ESVCRSS;0;120;1;0;1;0;;;;;;;;;
+DOC;PORTAL_SERVICE;PS_PORTALSERVICES;;Services portails;Liste des services portails disponibles;[CORE_BASEURL]app=WEBDESK&action=FREEDOM_SEARCH&s=1826;[CORE_BASEURL]app=WEBDESK&action=EFREEDOM_SEARCH;3;0;1;0;1;0;WEBDESK;;;;;;;;
+DOC;PORTAL_SERVICE;PS_CONTACTSEARCH;;Contacts;Recherche de contacts;[CORE_BASEURL]app=WEBDESK&action=SVCCONTACT;;3;0;1;1;1;0;WEBDESK;;;;;;;;

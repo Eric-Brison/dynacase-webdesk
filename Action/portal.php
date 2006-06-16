@@ -18,24 +18,27 @@ function portal(&$action) {
   $ts = GetChildDoc(getParam("FREEDOM_DB"), 0, 0, "ALL", array(), $action->user->id, "TABLE", "PORTAL_SERVICE");
   $tserv = array();
   $d = createDoc(getParam("FREEDOM_DB"), "PORTAL_SERVICE", false);
+  $query=new QueryDb($action->dbaccess,"Application");
   foreach ($ts as $k => $v) {
-    $ts[$k]["psvc_title_js"] = addslashes(getV($v, "psvc_title"));
-    $d->Affect($v);
-
-    $ts[$k]["Icon"] = false;
-//     $aico = $d->GetAttribute("psvc_icon");
-// //     echo getv($v,"psvc_icon");
-//     $vid="";
-//     if (ereg ("(.*)\|(.*)", getv($v,"psvc_icon"), $reg)) {
-//       $ts[$k]["Icon"] = true;
-//       $ts[$k]["docid"] = $v["id"];
-//       $ts[$k]["vid"] = $reg[2];
-//       $ts[$k]["attrid"] = "psvc_icon";
-//     }
-    $acat = $d->GetAttribute("psvc_categorie");
-    $cat = $acat->getEnum();
-    $tserv[getV($v,"psvc_categorie")]["categorie"] = $cat[getV($v,"psvc_categorie")];
-    $tserv[getV($v,"psvc_categorie")]["svc"][] = $ts[$k];
+    $access = true;
+    $appn = getV($v, "psvc_appneeded");
+    if ($appn!="") {
+      $req = '';
+      $appl = explode("|",$appn);
+      foreach ($appl as $ka => $va) {
+	$access = haveAppAccess($va);
+	if (!$access) break;
+      }
+    }
+    if ($access) {
+      $ts[$k]["psvc_title_js"] = addslashes(getV($v, "psvc_title"));
+      $d->Affect($v);
+      $ts[$k]["Icon"] = false;
+      $acat = $d->GetAttribute("psvc_categorie");
+      $cat = $acat->getEnum();
+      $tserv[getV($v,"psvc_categorie")]["categorie"] = $cat[getV($v,"psvc_categorie")];
+      $tserv[getV($v,"psvc_categorie")]["svc"][] = $ts[$k];
+    }
   }
   $action->lay->setBlockData("catS", $tserv); 
   foreach ($tserv as $k => $v)  {
@@ -80,4 +83,28 @@ function portal(&$action) {
   
     
 }
+
+
+
+  function haveAppAccess($appname) {
+    global $action;
+    $query=new QueryDb($action->dbaccess,"Application");
+
+    // Check if application is installed and available
+    $query->basic_elem->sup_where=array("name='".$appname."'","available='Y'","displayable='Y'");
+    $list = $query->query(0,0,"TABLE");
+    if ($query->nb<=0) return false;
+
+    // User have permission ?
+    if ($action->user->id==1) return true;
+   
+    $queryact=new QueryDb($action->dbaccess,"Action");
+    $queryact->AddQuery("id_application=".$list[0]["id"]);
+    $queryact->AddQuery("root='Y'");
+    $listact = $queryact->Query(0,0,"TABLE");
+    $root_acl_name=$listact[0]["acl"];
+    if (!$action->HasPermission($root_acl_name,$list[0]["id"])) return false;
+
+    return true;
+  }
 ?>
