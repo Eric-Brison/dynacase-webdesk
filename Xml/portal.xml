@@ -12,6 +12,8 @@
 <script>
     [JS:CODE]
 
+
+var isIE = [IF ISIE]true[ENDIF ISIE][IFNOT ISIE]false[ENDIF ISIE];
 var colCount = [colCount];
 var colContent = new Array;
 var services = new Array();
@@ -46,7 +48,6 @@ function startRefresh() {
       sl += 'no';
     } 
   }
-//   alert('a reloader : '+sl);
   setTimeout("startRefresh()", 60*1000);
 }  
 
@@ -62,8 +63,10 @@ function resizeCols() {
   var icol = 0;
   var bodW = getFrameWidth() - 20;
   var colW = parseInt(bodW/colCount);
+  if (isIE) colW -= (colCount*3);
   for (icol=0; icol<colCount; icol++) {
-    document.getElementById('wdcol'+icol).style.width = colW-1;
+    
+    document.getElementById('wdcol'+icol).style.width = colW;
     document.getElementById('wdcol'+icol).style.display = 'block';
   }
 }
@@ -144,7 +147,7 @@ function showService(is) {
     if (services[is].rdel>0) {
       imgcyc = '<img src="[IMG:wd_svc_cyclic.gif]" style="border:0px" title="[TEXT:automatic reload all] '+services[is].rdel+' sec">';
     }
-    cnt += '<table width="100%" cellspacing="0" cellpadding="0" style="border:0px"><tr><td><span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
+    cnt += '<table cellspacing="0" cellpadding="0" style="width:100%; border:0px"><tr><td><span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
  
     cnt += '<td style="text-align:right">';
 
@@ -182,6 +185,7 @@ function showService(is) {
       var fsvc = document.createElement('form');
       fsvc.id = 'fsvc'+snum;
       fsvc.name = 'fsvc'+snum;
+      fsvc.style.display = 'inline';
       fsvc.method = 'POST';
       fsvc.action = vurl;
       fsvc.serviceId = snum;
@@ -200,6 +204,8 @@ function showService(is) {
   }
 }
 
+
+
 function submitService(event) {
   if (!event) event=window.event;
   var e = (event.target) ? event.target : ((event.srcElement) ? event.srcElement : null);
@@ -212,11 +218,10 @@ function submitService(event) {
   var params = ''
   var fsend = document.getElementById('fsvc'+snum);
   for (var ie=0; ie<fsend.elements.length; ie++) {
-    if (fsend.elements[ie].name!="") params += '&'+fsend.elements[ie].name+'='+fsend.elements[ie].value;
+    if (fsend.elements[ie].name!="") params += '&'+fsend.elements[ie].name+'='+escape(fsend.elements[ie].value);
   }
 
   loadSvcAsync(snum, true, params);
-//   e.reset();
   return false;
 }
 
@@ -443,7 +448,6 @@ function loadSvcAsync(sid, shl, params) {
 	  if (services[is].rdel>0) {
 	    var dat = new Date();
 	    services[is].nextLoad = dat.getTime() + (services[is].rdel*60*1000);
-// 	    alert('date : '+dat.getTime() +' prochain lancement : '+services[is].nextLoad);
 	  } else {
 	    timerOn[is] = -1;
 	  }	    
@@ -499,7 +503,7 @@ function opencloseParams() {
 </div>[ENDBLOCK cols]
 
 <div id="editsvc" style="padding:5px; margin:5px; border:1px solid #CFCFCF; display:none; position:relative">
-<form name="editsvcf" id="editsvcf" method="POST" action="[CORE_STANDURL]&app=WEBDESK&action=SVCSAVE">
+<form name="editsvcf" id="editsvcf" style="display:inline" method="POST" action="[CORE_STANDURL]&app=WEBDESK&action=SVCSAVE">
 <div id="editsvc_c"></div>
 <div class="wdbuttonb"><img class="small_button" onclick="sendForm()" src="[IMG:wd_save.gif]" title="[TEXT:wd save]"></div>
 </form>

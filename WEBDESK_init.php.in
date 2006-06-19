@@ -1,6 +1,6 @@
 <?php
 // ---------------------------------------------------------------
-// $Id: WEBDESK_init.php.in,v 1.1 2006/05/29 16:35:36 marc Exp $
+// $Id: WEBDESK_init.php.in,v 1.2 2006/06/19 17:00:21 marc Exp $
 // $Source: /home/cvsroot/anakeen/freedom/webdesk/WEBDESK_init.php.in,v $
 // ---------------------------------------------------------------
 //  O   Anakeen - 2001
@@ -28,8 +28,10 @@ $app_const =
 array(
   
 "VERSION" => "@VERSION@-@RELEASE@",
-"INIT" => "yes"
- 
+"INIT" => "yes",
+
+"ARDOISE" => array( "val"=>"", "descr"=>N_("ardoise content"),"user"=>"Y"),
+
 );
 
 ?>

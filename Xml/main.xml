@@ -22,6 +22,8 @@
     [JS:CODE]
 
 
+var isIE = [IF ISIE]true[ENDIF ISIE][IFNOT ISIE]false[ENDIF ISIE];
+
 var isMBarStatic = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[ENDIF IsMBarStatic];
 
 var isOpen = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[ENDIF IsMBarStatic];
@@ -48,23 +50,25 @@ function computefbodywh() {
 
   var topH = getObjectHeight(document.getElementById('wdtitle'));
   var wor = (isOpen ? 0.2 : 0.0);
-  var wdrift = 0.02;
 
   var md = document.getElementById('wdmenu');
   md.style.height = 'auto';
+
+  var ww = parseInt(bodW);
+  if (isIE) ww = parseInt(bodW) - 20;
+  
   if (isMBarStatic) {
     md.style.position = 'relative';
-    md.style.top = 0;
-    md.style.left = 0;
+    md.style.top = 1;
+    md.style.left = 1;
 
-    var ww = bodW;
     document.getElementById('wdmenu').style.height = bodH - topH;
     document.getElementById('wdmenu').style.width = parseInt(ww * wor); 
     document.getElementById('wdmenu').style.display = (isOpen?'block':'none');
-    document.getElementById('wdbody').style.width =parseInt(ww * (1 - (wor + wdrift)));
+    document.getElementById('wdbody').style.width = parseInt(ww * (1 - (wor)));
     if (currentApp>-1) {
       document.getElementById('fbody'+currentApp).style.height = bodH - topH;
-      document.getElementById('fbody'+currentApp).style.width = parseInt(ww * (1 - (wor + wdrift)));
+      document.getElementById('fbody'+currentApp).style.width = parseInt(ww * (1 - (wor)));
     }
     document.getElementById('wdmbarmng').src = (isOpen?"[IMG:wd_left_bar.gif]":"[IMG:wd_right_bar.gif]");
 
@@ -72,13 +76,12 @@ function computefbodywh() {
 
     md.style.position = 'absolute';
     md.style.top = topH;
-    md.style.width =  parseInt(bodW * wor);
+    md.style.width =  parseInt(ww * wor);
     
-    document.getElementById('wdbody').style.width =parseInt(bodW);
     if (currentApp>-1) {
-      document.getElementById('fbody'+currentApp).style.width = parseInt(bodW);
+      document.getElementById('fbody'+currentApp).style.width = parseInt(ww);
       document.getElementById('fbody'+currentApp).style.height = bodH - topH;
-    }    
+   }    
     if (isOpen)  md.style.display = 'block';
     else md.style.display = 'none';
 
@@ -129,7 +132,7 @@ function setcurtime() {
 </head>
 <body onload="computefbodywh()" onresize="computefbodywh()">
 
-<div id="wdtitle" class="wdtitle">
+<div id="wdtitle" class="wdhead">
 <table style="width:100%"><tr>
 <td style="text-align:left; "><img onclick="isOpen = !isOpen; computefbodywh();" style="vertical-align:bottom;"  class="small_button" title="[TEXT:wd open/close menu]" id="wdmbarmng" src="[IFNOT IsMBarStatic][IMG:wd_open_bar.gif][ENDIF IsMBarStatic][IF IsMBarStatic][IMG:wd_right_bar.gif][ENDIF IsMBarStatic]"> <span id="wdappsel">Agenda</span></td>
 <td style="text-align:center">[title]</td>
@@ -137,7 +140,7 @@ function setcurtime() {
 </tr></table>
 </div>
 
-<div id="wdmenu" class="wdmenu" style="float:left; width:1px;">
+<div id="wdmenu" class="wdmenu" style="float:left; width:1px; position:absolute; top:1px; left:1px">
 
 [BLOCK appList]
 <div id="app[id]" class="app" onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" onclick="runapp([id], '[name]', '[params]')"><img src="[iconsrc]" style="width:16px; vertical-align:baseline">&nbsp;[short_name]</div>[ENDBLOCK appList]
@@ -147,11 +150,11 @@ function setcurtime() {
 [BLOCK specialAppList]
 <div id="app[id]" class="app" onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" onclick="runapp([id], '[name]', '[params]')"><img src="[iconsrc]" style="width:16px; vertical-align:baseline">&nbsp;[short_name]</div>[ENDBLOCK specialAppList]
 
-<div style="text-align:right; font-size:80%; border-top:1px solid #CFCFCF"  ><img class="small_button" onclick="alternMBar();" id="wdcmdtext" src="[IF IsMBarStatic][IMG:wd_fixe_menu.gif][ENDIF IsMBarStatic][IFNOT IsMBarStatic][IMG:wd_release_menu.gif][ENDIF IsMBarStatic]" title="[TEXT:wd fixe/release menu]"></div>
+<div style="border-top:1px solid #CFCFCF"  ><img class="small_button" onclick="alternMBar();" id="wdcmdtext" src="[IF IsMBarStatic][IMG:wd_fixe_menu.gif][ENDIF IsMBarStatic][IFNOT IsMBarStatic][IMG:wd_release_menu.gif][ENDIF IsMBarStatic]" title="[TEXT:wd fixe/release menu]"></div>
 </div>
 
 
-<div id="wdbody" style="float:left; background:lightblue; border:0px; width:5px;">
+<div id="wdbody" style="float:left; background:lightblue; border:0px; width:1px;">
 [BLOCK appListBody]<iframe id="fbody[id]" name="fbody[id]"  style="display:none; border:0px; background:blue;" src="about:blank" scrolling="needed"></iframe>
 [ENDBLOCK appListBody]
 [BLOCK specialAppListBody]<iframe id="fbody[id]" name="fbody[id]"  style="display:none; border:0px; background:blue;" src="about:blank" scrolling="needed"></iframe></div>

@@ -8,9 +8,8 @@ width:100%;
 border:0px solid #CFCFCF;
 padding:0px 5px 0px 5px;
 }
-.ardbut { font-size:80%; background-color:transparent; border-width:1px; border-style: none none solid none; border-color:[craie]; color:[craie]; font-weight:bold }
 </style>
 <div style="border:1px solid #CFCFCF; padding:10px">
-<div style="text-align:right; background-image: url('[IMG:s_ardoise.gif]')">
-<input type="button" class="ardbut" value="Sauver" onclick="submitService(this.form)" title="Sauver le contenu de l'ardoise" value="sauver">&nbsp;<input type="button" class="ardbut" value="Effacer" onclick="this.form.reset();" title="Effacer l'ardoise" value="effacer"><textarea name="content" style="color:[craie];" class="ardoise" rows="[cline]">[content]</textarea></div>
+<textarea style="border:0px solid #CFCFCF; padding:0px 5px 0px 5px; width:100%; background-image: url('[IMG:s_ardoise.gif]'); color:[craie];" name="content" rows="[cline]">[content]</textarea>
+<div style="text-align:right; background-image: url('[IMG:s_ardoise.gif]'); color:[craie];" ><input name="ardsave" type="button" value="Sauver" onclick="submitService(event)" title="Sauver le contenu de l'ardoise" style="border:0px; text-align:right; background-color:black; color:[craie];"></div>
 </div>
