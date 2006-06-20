@@ -1,7 +1,7 @@
 // ;fromid;titre;id;class;name;;;;;;;;
 BEGIN;0;Service Portail;;;PORTAL_SERVICE;;;;;;;;
 TYPE;C;;;;;;;;;;;;
-DFLDID;;;;;;;;;;;;;
+DFLDID;AUTO;;;;;;;;;;;;
 WID;;;;;;;;;;;;;
 ICON;portal_service.gif;;;;;;;;;;;;
 TAG;P;;;;;;;;;;;;
