@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-16 15:13+0200\n"
+"POT-Creation-Date: 2006-06-21 20:24+0200\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -112,6 +112,9 @@ msgstr ""
 msgid "service edit freedom search in familie"
 msgstr ""
 
+msgid "ardoise content"
+msgstr ""
+
 msgid "no account defined"
 msgstr ""
 
@@ -136,15 +139,6 @@ msgid "wd invalid freedom search given"
 msgstr ""
 
 msgid "wd freedom search, no  result"
-msgstr ""
-
-msgid "wd open/close menu"
-msgstr ""
-
-msgid "Click here to login"
-msgstr ""
-
-msgid "wd fixe/release menu"
 msgstr ""
 
 msgid "wd error add service"
@@ -219,6 +213,12 @@ msgstr ""
 msgid "wd reload portal view"
 msgstr ""
 
+msgid "wd reduce font"
+msgstr ""
+
+msgid "wd  enlarge font"
+msgstr ""
+
 msgid "wd save"
 msgstr ""
 
@@ -229,6 +229,15 @@ msgid "wd add service"
 msgstr ""
 
 msgid "wd close"
+msgstr ""
+
+msgid "wd open/close menu"
+msgstr ""
+
+msgid "Click here to login"
+msgstr ""
+
+msgid "wd fixe/release menu"
 msgstr ""
 
 msgid "webdesk application portal"
@@ -244,4 +253,7 @@ msgid "wd search for contact"
 msgstr ""
 
 msgid "wd entre rss link here"
+msgstr ""
+
+msgid "wd search ..."
 msgstr ""

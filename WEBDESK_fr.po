@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-16 15:13+0200\n"
+"POT-Creation-Date: 2006-06-21 20:24+0200\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -112,6 +112,10 @@ msgstr "service freedom de recherche dans une famille"
 msgid "service edit freedom search in familie"
 msgstr "service freedom de recherche dans une famille (edition)"
 
+#, fuzzy
+msgid "ardoise content"
+msgstr "Masquer le contenu"
+
 msgid "no account defined"
 msgstr "pas de compte défini."
 
@@ -137,15 +141,6 @@ msgstr "recherche Freedom invalide"
 
 msgid "wd freedom search, no  result"
 msgstr "Recherche Freedom, pas de résultat"
-
-msgid "wd open/close menu"
-msgstr "Ouvrir/fermer le menu"
-
-msgid "Click here to login"
-msgstr "Cliquer ici pour vous déconnecter"
-
-msgid "wd fixe/release menu"
-msgstr "Afficher/masque le menu comme panneau latéral"
 
 msgid "wd error add service"
 msgstr "wd error add service"
@@ -219,6 +214,12 @@ msgstr "Afficher/masquer la liste des services"
 msgid "wd reload portal view"
 msgstr "Raffraichir le portail"
 
+msgid "wd reduce font"
+msgstr "Réduire la taille du texte..."
+
+msgid "wd  enlarge font"
+msgstr "Augmenter la taille du texte..."
+
 msgid "wd save"
 msgstr "Sauver"
 
@@ -230,6 +231,15 @@ msgstr "Ajouter le service"
 
 msgid "wd close"
 msgstr "Fermer"
+
+msgid "wd open/close menu"
+msgstr "Ouvrir/fermer le menu"
+
+msgid "Click here to login"
+msgstr "Cliquer ici pour vous déconnecter"
+
+msgid "wd fixe/release menu"
+msgstr "Afficher/masque le menu comme panneau latéral"
 
 msgid "webdesk application portal"
 msgstr "Portail application WebDesk"
@@ -245,6 +255,9 @@ msgstr "Rechercher un contact"
 
 msgid "wd entre rss link here"
 msgstr "Saississez l'URL du flux RSS ici"
+
+msgid "wd search ..."
+msgstr ""
 
 #~ msgid "Rss feed"
 #~ msgstr "Flux Rss"
