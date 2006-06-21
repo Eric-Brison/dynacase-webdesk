@@ -74,6 +74,7 @@ function computefbodywh() {
 
   } else {
 
+    md.style.float =  'left';
     md.style.position = 'absolute';
     md.style.top = topH;
     md.style.width =  parseInt(ww * wor);
