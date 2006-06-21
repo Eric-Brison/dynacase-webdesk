@@ -123,11 +123,21 @@ function runapp( idapp, sidapp, params) {
   
 function setcurtime() {
   var dat = new Date();
-  var dstr = dat.toLocaleDateString()+" "+dat.getHours()+":"+dat.getMinutes();
+  var day = dat.getDate();
+  var month = dat.getMonth()+1;
+  var year = dat.getFullYear();
+  var hour = dat.getHours();
+  var min = dat.getMinutes();
+  var dstr = pad(day,2,'0')+"/"+pad(month,2,'0')+"/"+year+" "+pad(hour,2,'0')+":"+pad(min,2,'0');
   document.getElementById('curdate').innerHTML = dstr;
   setTimeout("setcurtime()", 20*1000);
 }
 
+function pad(s,l,p) {
+  var str = String(s);
+  if (str.length<l) str = pad(p+s, l, p);
+  return str;
+}
 </script>  
 </head>
 <body onload="computefbodywh()" onresize="computefbodywh()">

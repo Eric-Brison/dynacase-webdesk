@@ -483,7 +483,23 @@ function opencloseParams() {
   }
 }
     
+// Font resizing
 
+var tags = new Array( 'div', 'span', 'td','tr','p','b','table','strong','emphasis','a','h1','h2','h3','pre','sub','sup','i','th','cp','ul','ol','li','dt','dd');
+var initSize = 9;
+
+function fontSizer(inc) {
+ if (!document.getElementById) return;
+ var size = initSize;
+ size += parseInt(inc);
+ initSize = size;
+ getBody = document.getElementsByTagName('body')[0];
+ for (i = 0 ; i < tags.length ; i++ ) {
+ getallTags = getBody.getElementsByTagName(tags[i]);
+ for (k = 0 ; k < getallTags.length ; k++)
+ getallTags[k].style.fontSize = size+'px';
+ }
+}
 
 </script>
 <style type="text/css">
@@ -499,6 +515,7 @@ function opencloseParams() {
 [IF firstCol]<div class="wdtitleb" style="margin:5px; text-align:left; vertical-align:middle">[TEXT:wd manage portal]
 <img class="small_button" id="wdparamimg" onclick="opencloseParams()" src="[IMG:wd_open_services.gif]" title="[TEXT:wd show/hide service list]">
 <img class="small_button" onclick="document.location.reload(false)" src="[IMG:wd_portal_reload.gif]" title="[TEXT:wd reload portal view]">
+&nbsp;<img class="small_button" src="[IMG:wd_font_smaller.gif]" title="[TEXT:wd reduce font]" onclick="fontSizer(-1)"><img class="small_button"  src="[IMG:wd_font_bigger.gif]" title="[TEXT:wd  enlarge font]" onclick="fontSizer(1)">
 </div>[ENDIF firstCol]
 </div>[ENDBLOCK cols]
 
