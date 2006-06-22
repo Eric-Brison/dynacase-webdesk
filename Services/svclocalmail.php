@@ -3,6 +3,7 @@ include_once("Class.MailAccount.php");
 include_once("Class.Pop.php");
 function svclocalmail(&$action) {
 
+  $ocount = GetHttpVars("oc", "N"); 
   $login = $_SERVER["PHP_AUTH_USER"];
   $password = $_SERVER["PHP_AUTH_PW"];
 
@@ -25,6 +26,6 @@ function svclocalmail(&$action) {
   
 //     echo "SVCMAIL&account=$domain&login=$login&password=$password&server=$server&proto=$protocol";
 
-  Redirect($action, "WEBDESK", "SVCMAIL&account=$domain&login=$login&password=$password&server=$server&proto=$protocol");
+  Redirect($action, "WEBDESK", "SVCMAIL&oc=$ocount&account=$domain&login=$login&password=$password&server=$server&proto=$protocol");
 }
 ?>

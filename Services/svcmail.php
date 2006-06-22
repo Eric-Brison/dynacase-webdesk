@@ -7,6 +7,8 @@ function svcmail(&$action) {
   $action->lay->set("showmsg", false);
   $action->lay->set("msgtext", "");
   $action->lay->set("accset", false); 
+
+  $ocount = GetHttpVars("oc", "N"); 
  
   $acc = GetHttpVars("account", "");
   $log = GetHttpVars("login", "");
@@ -63,6 +65,18 @@ if ($acc=="" || $log=="" || $pas=="" || $srv=="" || $pro=="") {
  $action->lay->set("nfirst", $maxm);
 
 
+ if ($ocount=="Y") {
+
+   $action->lay->set("OnlyCount", true);
+   $action->lay->set("new", count($minfos["newmails"]));
+   if ($minfos["error"]!="") $action->lay->set("new", "?");
+   else $action->lay->set("new", count($minfos["newmails"]));
+   return;
+	  
+ }
+
+
+ $action->lay->set("OnlyCount", false);
  if ($minfos["error"]=="") {
    $action->lay->set("new", count($minfos["newmails"]));
    $action->lay->set("old", count($minfos["oldmails"]));

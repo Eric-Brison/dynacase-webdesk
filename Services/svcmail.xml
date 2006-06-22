@@ -1,3 +1,5 @@
+[IF OnlyCount]var result='[new]';[ENDIF OnlyCount]
+[IFNOT OnlyCount]
 [IF accset]
 <div class="wdtitleb1" title="[account] ([login]/[server]) [spec]">[account] ([login]/[server]) : <span style="font-weight:bold">[new]</span>/[old]</div>
 
@@ -6,4 +8,4 @@
 [IF fulldisplay]<div style="margin:0px 0px 0px 10px">[subject]</div>[ENDIF fulldisplay]
 </div>[ENDBLOCK mails][ENDIF accset]
 [IF showmsg]<div style="font-size:80%; border:1px solid red">[msgtext]</div>[ENDIF showmsg]
-
+[ENDIF OnlyCount]
