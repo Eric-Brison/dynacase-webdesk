@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: main.php,v 1.3 2006/06/08 12:19:13 marc Exp $
+ * @version $Id: main.php,v 1.4 2006/06/22 15:23:47 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WEBDESK
@@ -15,6 +15,10 @@ include_once('Class.QueryDb.php');
 include_once('Class.Application.php');
 
 function main(&$action) {
+
+  $action->parent->AddJsRef("WEBDESK:main.js", true);
+  $action->parent->AddCssRef("WEBDESK:webdesk.css", true);
+  
 
   $action->lay->set("IsMBarStatic", getParam("WDK_MBARSTATIC",1)==0); 
   $action->lay->set("userRealName",$action->user->firstname." ".$action->user->lastname); 

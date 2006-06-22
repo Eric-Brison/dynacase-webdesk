@@ -1,0 +1,45 @@
+body, div { padding:0px; margin:0px; border:0px; }
+
+input, select { border:1px solid [COLOR_A7]; background_color:[COLOR_A9]; }
+
+a, a:visited, .wd_alink  { 
+  text-decoration:none; 
+  background-image: url([IMG:wd_lnk_http.gif]);
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 11px;
+}
+
+.wd_amail { 
+  text-decoration:none; 
+  background-image: url([IMG:wd_lnk_mailto.gif]);
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 11px;
+}
+
+.small_button { border:0px; cursor:pointer; vertical-align:baseline }
+.app { padding-left:5px; background:white; border:1px solid white; cursor:pointer; }
+.app_selected { font-weight:bold; cursor:pointer; }
+.app_over { border:1px inset white; background-color:[COLOR_A8]; cursor:pointer; }
+
+.wdhead { font-weight:bold; border-width:1px; border-style:none none solid none; border-color:[COLOR_A8];  }
+.wdtitle { border-width:1px; border-style:none none dotted none; border-color:[COLOR_A8];  }
+.wdmenu { border: 0px   }
+.wdcols { border-color:[COLOR_A8]; border-style:none none none dotted; padding:0px; border-width:1px; height:100%; }
+
+.wdsvc { margin: 6px 3px 10px 3px; }
+
+.wdsvc_title { background-color:[COLOR_A8]; border-style:none none solid none; border-color:[COLOR_A7]; border-width:1px; font-weight:bold; vertical-align:bottom; }
+.wdsvc_title td  { background-color:[COLOR_A8]!important; }
+
+.wdsvc_content { padding-left:5px; border-width:1px; border-style: none none none dotted; border-color:[COLOR_A7];  }
+.wdsvc_warning { font-style:italic; }
+
+.wdparamb { padding:2px; margin:2px; border-color:[COLOR_A7]; border-style: solid; border-width:1px; }
+
+.wdbuttonb { text-align:right; border-top:1px solid [COLOR_A7]; margin: 5px 0px 5px 0px;                                        }
+.wdtitleb  { text-align:center; font-weight:bold; border-bottom:1px solid [COLOR_A7]; margin: 5px 0px 10px 0px;  }
+.wdtitleb1 { text-align:left; border-bottom:1px solid [COLOR_A7]; border-bottom:1px solid [COLOR_A7]; margin: 5px 0px 5px 0px;  }
+
+

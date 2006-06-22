@@ -3,6 +3,9 @@
 include_once('FDL/Lib.Dir.php');
 function portal(&$action) {
    
+  $action->parent->AddJsRef("WEBDESK:portal.js", true);
+  $action->parent->AddCssRef("WEBDESK:webdesk.css", true);
+
   $colcount = getParam("WDK_COLCOUNT",3);
 
   $action->lay->set("colCount", $colcount); 
@@ -61,9 +64,8 @@ function portal(&$action) {
     $svcline  = $tup[0]->getTValue("uport_line");
 
     foreach ($svcnum as $k => $v) {
-      
       $sd = getTDoc(getParam("FREEDOM_DB"), $svcid[$k]);
-
+      if (getV($sd, "psvc_vurl")=="") continue;
       $tsvc[] = array( "snum" => $v,
 		       "sid" => $svcid[$k],
 		       "stitle" => addslashes($svctitle[$k]),

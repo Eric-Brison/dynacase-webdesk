@@ -1,19 +1,13 @@
-<input style="font-size:80%; border:1px solid #CFCFCF; background-color:#EFEFEF; width:90%;" type="text" title="[TEXT:wd search for contact]" name="search">&nbsp;
-<!-- input title="wds click to search INTO contact name's (default BEGIN)" name="into" type="checkbox" value="0"> <input type="button" style="font-size:80%; border:1px solid #CFCFCF; background-color:#EFEFEF; cursor:pointer;" value="Chercher !" onclick="submitService(event)" -->
-<style>
-.svcinfo { font-size:80%; }
-.svcinfohilight { background-color:yellow; font-weight: bold; }
-.svcinfobold { font-weight: bold; }
-</style>
+<input style="width:90%;" type="text" title="[TEXT:wd search for contact]" name="search">&nbsp;
 [IF csearch]
 
-[IF noresult]<div class="svcinfo" style="font-style:italic">Pas de contact [IF begin]commençant[ENDIF begin][IFNOT begin]contenant[ENDIF begin] <span class="svcinfohilight">[sphrase]</span></div>[ENDIF noresult]
+[IF noresult]<div style="font-style:italic">Pas de contact [IF begin]commençant[ENDIF begin][IFNOT begin]contenant[ENDIF begin] <span >[sphrase]</span></div>[ENDIF noresult]
 
-[IF slimit]<div class="svcinfo" style="font-style:italic">Les [limit] premiers...</div>[ENDIF slimit]
+[IF slimit]<div style="font-style:italic">Les [limit] premiers...</div>[ENDIF slimit]
 [BLOCK contacts]
-<div style="border:1px solid #CFCFCF; padding:0px 0px 0px 10px">
-<div class="svcinfo">[sexe] [IF hmail]<a href="mailto:[mailadd]">[ENDIF hmail]<span style="font-weight:bold;">[title]</span>[IF hmail]</a>[ENDIF hmail] [IF hsoc]<span style="font-style:italic" >([soc])</span>[ENDIF hsoc]</div>
-<div class="svcinfo">&nbsp;&rarr;&nbsp;Société [IF hsmob]M:<span class="svcinfobold">[smob]</span>[ENDIF hsmob] [IF hspho]T:<span class="svcinfobold">[spho]</span>[ENDIF hspho]  [IF hsfax]F:<span class="svcinfobold">[sfax]</span>[ENDIF hsfax]</div>
-<div class="svcinfo">&nbsp;&rarr;&nbsp;Personnel [IF hpmob]M:<span class="svcinfobold">[pmob]</span>[ENDIF hpmob] [IF hppho]T:<span class="svcinfobold">[spho]</span>[ENDIF hppho]  [IF hpfax]F:<span class="svcinfobold">[pfax]</span>[ENDIF hpfax]</div>
+<div>
+<div style="border-color:[COLOR_A8]; border-width:1px; border-style:none none solid none"><img src="[IMG:svccontact.gif]">&nbsp;[sexe] [IF hmail]<a href="mailto:[mailadd]">[ENDIF hmail]<span style="font-weight:bold;">[title]</span>[IF hmail]</a>[ENDIF hmail] [IF hsoc]<span style="font-style:italic" >(Société [soc])</span>[ENDIF hsoc]</div>
+<div>&nbsp;&rarr;&nbsp;Société [IF hsmob]M:<span >[smob]</span>[ENDIF hsmob] [IF hspho]T:<span >[spho]</span>[ENDIF hspho]  [IF hsfax]F:<span >[sfax]</span>[ENDIF hsfax]</div>
+<div>&nbsp;&rarr;&nbsp;Personnel [IF hpmob]M:<span >[pmob]</span>[ENDIF hpmob] [IF hppho]T:<span >[spho]</span>[ENDIF hppho]  [IF hpfax]F:<span>[pfax]</span>[ENDIF hpfax]</div>
 </div>[ENDBLOCK contacts]
 [ENDIF csearch]

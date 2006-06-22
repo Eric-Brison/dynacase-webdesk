@@ -43,7 +43,7 @@ function svccontact(&$action) {
 
     $tco[] = array(
 		   "sexe" => getV($rq[$i], "us_civility"),
-		   "title" => preg_replace('/('.$search.'?)/i','<span class="svcinfohilight">\1</span>', getV($rq[$i], "title")),
+		   "title" => preg_replace('/('.$search.'?)/i','<span style="background-color:'.getParam("COLOR_C2").'">\1</span>', getV($rq[$i], "title")),
 		   "mailadd" => getV($rq[$i], "us_mail"),
 		   "hmail" => (getV($rq[$i], "us_mail")=="" ? false : true ),
 
