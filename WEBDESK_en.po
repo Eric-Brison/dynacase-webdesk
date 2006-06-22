@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-21 20:24+0200\n"
+"POT-Creation-Date: 2006-06-22 17:24+0200\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -141,6 +141,51 @@ msgstr ""
 msgid "wd freedom search, no  result"
 msgstr ""
 
+msgid "wd manage portal"
+msgstr ""
+
+msgid "wd show/hide service list"
+msgstr ""
+
+msgid "wd reload portal view"
+msgstr ""
+
+msgid "wd reduce font"
+msgstr ""
+
+msgid "wd  enlarge font"
+msgstr ""
+
+msgid "wd save"
+msgstr ""
+
+msgid "wd available services"
+msgstr ""
+
+msgid "wd add service"
+msgstr ""
+
+msgid "wd close"
+msgstr ""
+
+msgid "wd open/close menu"
+msgstr ""
+
+msgid "wd document received"
+msgstr ""
+
+msgid "wd unread mail count"
+msgstr ""
+
+msgid "wd waiting event count"
+msgstr ""
+
+msgid "Click here to login"
+msgstr ""
+
+msgid "wd fixe/release menu"
+msgstr ""
+
 msgid "wd error add service"
 msgstr ""
 
@@ -202,42 +247,6 @@ msgid "wd confirm supress of"
 msgstr ""
 
 msgid "wd error retrieving content"
-msgstr ""
-
-msgid "wd manage portal"
-msgstr ""
-
-msgid "wd show/hide service list"
-msgstr ""
-
-msgid "wd reload portal view"
-msgstr ""
-
-msgid "wd reduce font"
-msgstr ""
-
-msgid "wd  enlarge font"
-msgstr ""
-
-msgid "wd save"
-msgstr ""
-
-msgid "wd available services"
-msgstr ""
-
-msgid "wd add service"
-msgstr ""
-
-msgid "wd close"
-msgstr ""
-
-msgid "wd open/close menu"
-msgstr ""
-
-msgid "Click here to login"
-msgstr ""
-
-msgid "wd fixe/release menu"
 msgstr ""
 
 msgid "webdesk application portal"

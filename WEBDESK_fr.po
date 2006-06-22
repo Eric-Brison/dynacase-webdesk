@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-21 20:24+0200\n"
+"POT-Creation-Date: 2006-06-22 17:24+0200\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -112,9 +112,8 @@ msgstr "service freedom de recherche dans une famille"
 msgid "service edit freedom search in familie"
 msgstr "service freedom de recherche dans une famille (edition)"
 
-#, fuzzy
 msgid "ardoise content"
-msgstr "Masquer le contenu"
+msgstr "contenu de l'ardoise"
 
 msgid "no account defined"
 msgstr "pas de compte défini."
@@ -141,6 +140,51 @@ msgstr "recherche Freedom invalide"
 
 msgid "wd freedom search, no  result"
 msgstr "Recherche Freedom, pas de résultat"
+
+msgid "wd manage portal"
+msgstr "Gestion du portail"
+
+msgid "wd show/hide service list"
+msgstr "Afficher/masquer la liste des services"
+
+msgid "wd reload portal view"
+msgstr "Raffraichir le portail"
+
+msgid "wd reduce font"
+msgstr "Réduire la taille du texte..."
+
+msgid "wd  enlarge font"
+msgstr "Augmenter la taille du texte..."
+
+msgid "wd save"
+msgstr "Sauver"
+
+msgid "wd available services"
+msgstr "Liste des services disponibles"
+
+msgid "wd add service"
+msgstr "Ajouter le service"
+
+msgid "wd close"
+msgstr "Fermer"
+
+msgid "wd open/close menu"
+msgstr "Ouvrir/fermer le menu"
+
+msgid "wd document received"
+msgstr "Documents affectés"
+
+msgid "wd unread mail count"
+msgstr "Mails non lus"
+
+msgid "wd waiting event count"
+msgstr "Rendez-vous proposés"
+
+msgid "Click here to login"
+msgstr "Cliquer ici pour vous déconnecter"
+
+msgid "wd fixe/release menu"
+msgstr "Afficher/masque le menu comme panneau latéral"
 
 msgid "wd error add service"
 msgstr "wd error add service"
@@ -204,42 +248,6 @@ msgstr "Etes-vous sur de vouloir supprimer le service "
 
 msgid "wd error retrieving content"
 msgstr "Erreur de récupération du contenu"
-
-msgid "wd manage portal"
-msgstr "Gestion du portail"
-
-msgid "wd show/hide service list"
-msgstr "Afficher/masquer la liste des services"
-
-msgid "wd reload portal view"
-msgstr "Raffraichir le portail"
-
-msgid "wd reduce font"
-msgstr "Réduire la taille du texte..."
-
-msgid "wd  enlarge font"
-msgstr "Augmenter la taille du texte..."
-
-msgid "wd save"
-msgstr "Sauver"
-
-msgid "wd available services"
-msgstr "Liste des services disponibles"
-
-msgid "wd add service"
-msgstr "Ajouter le service"
-
-msgid "wd close"
-msgstr "Fermer"
-
-msgid "wd open/close menu"
-msgstr "Ouvrir/fermer le menu"
-
-msgid "Click here to login"
-msgstr "Cliquer ici pour vous déconnecter"
-
-msgid "wd fixe/release menu"
-msgstr "Afficher/masque le menu comme panneau latéral"
 
 msgid "webdesk application portal"
 msgstr "Portail application WebDesk"
