@@ -62,7 +62,7 @@ function alternMBar() {
 function computefbodywh() {
 
   var bodH = getFrameHeight();
-  var bodW = getFrameWidth();
+  var bodW = parseInt(getFrameWidth());
 
   var topH = getObjectHeight(document.getElementById('wdtitle'));
   var wor = (isOpen ? 0.2 : 0.0);
@@ -70,33 +70,39 @@ function computefbodywh() {
   var md = document.getElementById('wdmenu');
   md.style.height = 'auto';
 
-  var ww = parseInt(bodW);
-  if (isIE) ww = parseInt(bodW) - 20;
+  if (isIE) bodW -= 20;
   
   if (isMBarStatic) {
+    md.style.float =  'left';
     md.style.position = 'relative';
-    md.style.top = 1;
-    md.style.left = 1;
+    md.style.top = 0;
+    md.style.left = 0;
 
-    document.getElementById('wdmenu').style.height = bodH - topH;
-    document.getElementById('wdmenu').style.width = parseInt(ww * wor); 
-    document.getElementById('wdmenu').style.display = (isOpen?'block':'none');
-    document.getElementById('wdbody').style.width = parseInt(ww * (1 - (wor)));
+
+    var rh = bodH - (topH + 0);
+    var ibody = bodW - getObjectWidth(document.getElementById('wdmenu'));
+
+    document.getElementById('wdmenu').style.height = rh;
+    document.getElementById('wdbody').style.width = ibody - 15;//  - 18; 
+    document.getElementById('wdbody').style.borderWidth = '0'; 
     if (currentApp>-1) {
-      document.getElementById('fbody'+currentApp).style.height = bodH - topH;
-      document.getElementById('fbody'+currentApp).style.width = parseInt(ww * (1 - (wor)));
+      document.getElementById('fbody'+currentApp).style.height = rh;
+      document.getElementById('fbody'+currentApp).style.width = getObjectWidth(document.getElementById('wdbody'));
+//       alert('body='+getObjectWidth(document.getElementById('wdbody'))+' iframe='+getObjectWidth(document.getElementById('fbody'+currentApp)));
     }
     document.getElementById('wdmbarmng').src = (isOpen?"[IMG:wd_left_bar.gif]":"[IMG:wd_right_bar.gif]");
+    document.getElementById('wdmenu').style.display = (isOpen?'block':'none');
+
+
 
   } else {
 
     md.style.float =  'left';
     md.style.position = 'absolute';
     md.style.top = topH;
-    md.style.width =  parseInt(ww * wor);
     
     if (currentApp>-1) {
-      document.getElementById('fbody'+currentApp).style.width = parseInt(ww);
+      document.getElementById('fbody'+currentApp).style.width = bodW;
       document.getElementById('fbody'+currentApp).style.height = bodH - topH;
    }    
     if (isOpen)  md.style.display = 'block';
