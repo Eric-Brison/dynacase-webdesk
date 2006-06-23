@@ -208,6 +208,8 @@ var ereq = null;
 var editSnum = -1;
 function editSvc(snum) {
 
+  if (snum==editSnum) return;
+
   var is = getSvc(snum);
   if (is===false) return;
 
@@ -263,6 +265,7 @@ function cancelForm() {
   if (is===false) return;
   var fedit = document.getElementById('editsvc'+snum);
   fedit.parentNode.removeChild(fedit);
+  editSnum = -1;
 }
 
 function sendForm() {
@@ -292,6 +295,8 @@ function sendForm() {
   } else {
     document.getElementById('csvc'+snum).innerHTML = '[TEXT:wd error saving edit form] (XMLHttpRequest contruction)';	    
   }
+  var fedit = document.getElementById('editsvc'+snum);
+  fedit.parentNode.removeChild(fedit);
   editSnum = -1;
 }
 

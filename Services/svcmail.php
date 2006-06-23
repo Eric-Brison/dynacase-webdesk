@@ -21,9 +21,15 @@ function svcmail(&$action) {
 
 
 if ($acc=="" || $log=="" || $pas=="" || $srv=="" || $pro=="") {
+ if ($ocount=="Y") {
+   $action->lay->set("OnlyCount", true);
+   $action->lay->set("new", "?");
+ } else {
+   $action->lay->set("OnlyCount", false);
    $action->lay->set("showmsg", true);
    $action->lay->set("msgtext", _("no account defined"));
-   return;
+ }
+  return;
  }
 
  $action->lay->set("accset", true); 
