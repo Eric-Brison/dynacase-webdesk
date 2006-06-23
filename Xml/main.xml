@@ -18,52 +18,6 @@
 var isIE = [IF ISIE]true[ENDIF ISIE][IFNOT ISIE]false[ENDIF ISIE];
 var isMBarStatic = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[ENDIF IsMBarStatic];
 var isOpen = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[ENDIF IsMBarStatic];
-var currentApp = -1;
-var currentIdApp = -1;
-
-var updateInfosTimeout = 5 * 60 * 1000;
-
-function initWebdesk() {
-  getUnreadMsgCount();
-  getWaitingEventCount();
-  computefbodywh();
-}
-  
-function getUnreadMsgCount() {
-  //     var uu = 'index.php?sole=A&app=WEBDESK&action=SVCLOCALMAIL&oc=Y';
-  var uu = 'index.php?sole=A&app=WEBDESK&action=SVCMAIL&account=Anakeen&login=marc.claverie&password=39h404gv&server=mail.tlse.i-cesam.com&proto=imap&display=1&oc=Y';
-  updateInfos(uu, 'ureadmail', "getUnreadMsgCount()", updateInfosTimeout);
-}
-  
-
-function getWaitingEventCount() {
-  var uu = 'index.php?sole=Y&app=WGCAL&action=WGCAL_WAITRV&mo=L&oc=Y';
-  updateInfos(uu, 'waitingrv', "getWaitingEventCount()", updateInfosTimeout);
-}
-  
-
-function updateInfos(url, tag, fct, to) {
-
-  if (url && url!="" && document.getElementById(tag)) {
-    var sr = '?';
-    var dreq = null;
-    if (window.XMLHttpRequest) dreq = new XMLHttpRequest();
-    else dreq = new ActiveXObject("Microsoft.XMLHTTP");
-    if (dreq) {
-      dreq.onreadystatechange =  function() {
-	if (dreq.readyState==4 && dreq.status==200) {
-	  eval(dreq.responseText);
-	  if (result) sr= result;
-	  document.getElementById(tag).innerHTML = sr;
-	  setTimeout(fct, to);
-	}
-      }
-      dreq.open("POST", url, true);
-      dreq.send('');
-    }
-  }
-}
-
 </script>  
 [JS:REF]
 

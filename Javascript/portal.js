@@ -113,16 +113,19 @@ function showService(is) {
     var cnt = '';
     var imgcyc = '';
     if (services[is].rdel>0) {
-      imgcyc = '<img src="[IMG:wd_svc_cyclic.gif]" style="border:0px" title="[TEXT:automatic reload all] '+services[is].rdel+' sec">';
+      imgcyc = '<img src="[IMG:wd_svc_cyclic.gif]" style="border:0px" title="[TEXT:automatic reload all] '+services[is].rdel+' minutes">';
     }
-    cnt += '<table cellspacing="0" cellpadding="0" style="width:100%; border:0px"><tr><td><span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
+    cnt += '<table cellspacing="0" cellpadding="0" style="width:100%; border:0px">';
+    cnt += '<tr onmouseover="showSvcIcons('+snum+')" onmouseout="hideSvcIcons('+snum+')">';
+    cnt += '<td><span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
  
     cnt += '<td style="text-align:right">';
+    cnt += '<span id="iconbox'+snum+'" style="visibility:hidden">';
 
-    if (col>0) cnt += '<img class="small_button" onclick="moveSvc('+snum+',-1,0)" src="[IMG:wd_go_left.gif]" title="[TEXT:wd go left]">';
-    if (col<colCount) cnt += '<img class="small_button" onclick="moveSvc('+snum+',0,1)" src="[IMG:wd_go_down.gif]" title="[TEXT:wd go down]">';
-    if (line>0) cnt += '<img class="small_button" onclick="moveSvc('+snum+',0,-1)" src="[IMG:wd_go_up.gif]" title="[TEXT:wd go up]">';
-    cnt += '<img class="small_button" onclick="moveSvc('+snum+',1,0)" src="[IMG:wd_go_right.gif]" title="[TEXT:wd go right]">';
+    if (col>0) cnt += '<img id="gotoL'+snum+'" class="small_button" onclick="moveSvc('+snum+',-1,0)" src="[IMG:wd_go_left.gif]" title="[TEXT:wd go left]">';
+    if (col<colCount) cnt += '<img id="gotoD'+snum+'" class="small_button" onclick="moveSvc('+snum+',0,1)" src="[IMG:wd_go_down.gif]" title="[TEXT:wd go down]">';
+    if (line>0) cnt += '<img id="gotoU'+snum+'" class="small_button" onclick="moveSvc('+snum+',0,-1)" src="[IMG:wd_go_up.gif]" title="[TEXT:wd go up]">';
+    cnt += '<img id="gotoR'+snum+'" class="small_button" onclick="moveSvc('+snum+',1,0)" src="[IMG:wd_go_right.gif]" title="[TEXT:wd go right]">';
     cnt += '&nbsp;';
     
     cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc('+snum+');" src="[IMG:wd_svc_hide.gif]" title="[TEXT:wd hide svc content]">';
@@ -131,7 +134,8 @@ function showService(is) {
     if (eurl!='' && iseditable)
       cnt += '<img id="iesvc'+snum+'" style="margin-left:2px" class="small_button" onclick="editSvc('+snum+');" src="[IMG:wd_svc_edit.gif]" title="[TEXT:wd edit svc content]">';
     if (!ismandatory)
-      cnt += '<img id="iesvc'+snum+'" style="margin-left:2px" class="small_button" onclick="deleteSvc('+snum+');" src="[IMG:wd_svc_delete.gif]" title="[TEXT:wd delete svc]">';
+      cnt += '<img id="idsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="deleteSvc('+snum+');" src="[IMG:wd_svc_delete.gif]" title="[TEXT:wd delete svc]">';
+    cnt += '</span>';
     cnt += '</td></tr></table>';
     tsvc.innerHTML = cnt;
     tsvc.className = 'wdsvc_title';
@@ -465,4 +469,31 @@ function fontSizer(inc) {
       getallTags[k].style.fontSize = size+'pt';
   }
 }
+
+
+var svcIconsDisplayed = -1;
+var svcIconList = ['gotoL', 'gotoU', 'gotoD', 'gotoR', 'ivsvc', 'irsvc', 'iesvc', 'idsvc' ];
+
+function showSvcIcons(snum) {
+  if (snum==svcIconsDisplayed) return;
+  if (snum>-1) hideSvcIcons(snum);
+  if (document.getElementById('iconbox'+snum)) document.getElementById('iconbox'+snum).style.visibility = 'visible';
+//   for (var ii=0; ii<svcIconList.length; ii++) {
+//     if (document.getElementById(svcIconList[ii]+snum)) {
+//       document.getElementById(svcIconList[ii]+snum).style.visibility = 'visible';
+//     }
+//   }
+  svcIconsDisplayed = snum;
+}
+function hideSvcIcons(snum) {
+  if (document.getElementById('iconbox'+snum)) document.getElementById('iconbox'+snum).style.visibility = 'hidden';
+//   for (var ii=0; ii<svcIconList.length; ii++) {
+//     if (document.getElementById(svcIconList[ii]+snum)) {
+//       document.getElementById(svcIconList[ii]+snum).style.visibility = 'hidden';
+//     }
+//   }
+  svcIconsDisplayed = -1;
+}
+
+
 
