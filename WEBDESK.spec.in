@@ -1,7 +1,7 @@
 #! /bin/rpm
 #
 #  File: 
-#  $Id: WEBDESK.spec.in,v 1.3 2006/06/07 15:53:59 marc Exp $
+#  $Id: WEBDESK.spec.in,v 1.4 2006/06/23 05:43:12 marc Exp $
 #
 #  This is the SPEC file for the What Users Module
 #  Anakeen What Application
@@ -76,6 +76,7 @@ ln -s ../@PACKAGE@/Method.*.php  .
 %dir %{destdir}/%{name}
 %{destdir}/%{name}/*
 %{destdir}/FDL/Method.*.php
+%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{apacheconfdir}/71_webdesk.conf
 
 %changelog
 * Thu Nov 23 2004 Marc Claverie <marc.claverie@i-cesam.com>

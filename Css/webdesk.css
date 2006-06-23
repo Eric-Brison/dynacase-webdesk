@@ -1,6 +1,6 @@
 body, div { padding:0px; margin:0px; border:0px; }
 
-input, select { border:1px solid [COLOR_A7]; background_color:[COLOR_A9]; }
+input, select { border:1px solid [COLOR_A7]; background-color:[COLOR_A9]; } 
 
 a, a:visited, .wd_alink  { 
   text-decoration:none; 
