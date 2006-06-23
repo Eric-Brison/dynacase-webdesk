@@ -223,7 +223,7 @@ function editSvc(snum) {
   esvc.id = 'editsvc'+snum;
   esvc.style.top = esvc.style.left = 0; 
   esvc.style.display = 'block';
-  document.getElementById('csvc'+snum).appendChild(esvc);
+  document.getElementById('tsvc'+snum).appendChild(esvc);
   document.getElementById('editsvc_c').innerHTML = '[TEXT:wd loading edition forms]';
   if (services[is].eurl!='') {
     if (window.XMLHttpRequest) ereq = new XMLHttpRequest();
@@ -254,6 +254,15 @@ function editSvc(snum) {
       document.getElementById('editsvc_c').innerHTML = '[TEXT:wd error retrieving edit form] (XMLHttpRequest contruction)';	    
     }
   }
+}
+
+function cancelForm() {
+  if (editSnum===-1) return;
+  var snum = editSnum;
+  var is = getSvc(snum);
+  if (is===false) return;
+  var fedit = document.getElementById('editsvc'+snum);
+  fedit.parentNode.removeChild(fedit);
 }
 
 function sendForm() {
@@ -472,26 +481,15 @@ function fontSizer(inc) {
 
 
 var svcIconsDisplayed = -1;
-var svcIconList = ['gotoL', 'gotoU', 'gotoD', 'gotoR', 'ivsvc', 'irsvc', 'iesvc', 'idsvc' ];
 
 function showSvcIcons(snum) {
   if (snum==svcIconsDisplayed) return;
   if (snum>-1) hideSvcIcons(snum);
   if (document.getElementById('iconbox'+snum)) document.getElementById('iconbox'+snum).style.visibility = 'visible';
-//   for (var ii=0; ii<svcIconList.length; ii++) {
-//     if (document.getElementById(svcIconList[ii]+snum)) {
-//       document.getElementById(svcIconList[ii]+snum).style.visibility = 'visible';
-//     }
-//   }
   svcIconsDisplayed = snum;
 }
 function hideSvcIcons(snum) {
   if (document.getElementById('iconbox'+snum)) document.getElementById('iconbox'+snum).style.visibility = 'hidden';
-//   for (var ii=0; ii<svcIconList.length; ii++) {
-//     if (document.getElementById(svcIconList[ii]+snum)) {
-//       document.getElementById(svcIconList[ii]+snum).style.visibility = 'hidden';
-//     }
-//   }
   svcIconsDisplayed = -1;
 }
 

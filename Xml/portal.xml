@@ -42,10 +42,13 @@ function initPortal() {
 </div>[ENDIF firstCol]
 </div>[ENDBLOCK cols]
 
-<div id="editsvc" style="padding:5px; margin:5px; border:1px solid #CFCFCF; display:none; position:relative">
+<div id="editsvc" style="padding:5px; margin:5px; border:3px solid [COLOR_A9]; display:none; position:relative">
 <form name="editsvcf" id="editsvcf" style="display:inline" method="POST" action="[CORE_STANDURL]&app=WEBDESK&action=SVCSAVE">
 <div id="editsvc_c"></div>
-<div class="wdbuttonb"><img class="small_button" onclick="sendForm()" src="[IMG:wd_save.gif]" title="[TEXT:wd save]"></div>
+<div class="wdbuttonb" >
+<img class="small_button" onclick="cancelForm()" src="[IMG:wd_cancel.gif]" title="[TEXT:wd close]">
+<img class="small_button" onclick="sendForm()" src="[IMG:wd_save.gif]" title="[TEXT:wd save]">
+</div>
 </form>
 </div> 
 
