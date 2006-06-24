@@ -31,10 +31,13 @@ function meteo(&$action) {
 //  require(PHPWEATHER_BASE_DIR . "/output/pw_text_".$def_lang.".php");
   //$type = 'pw_text_' . $def_lang;
   //$text = new $type($weather);
-  //$icons = new pw_images($weather);
 
+  $icons = new pw_images($weather);
   $metar =  $weather->get_metar();
   $data = $weather->decode_metar();
+
+  $img = $icons->get_sky_image();
+  $action->lay->set("bgimg", "phpweather/".$img);
 
   //echo "Metar: $metar <pre>\n";
   //print_r($data);
@@ -50,7 +53,7 @@ function meteo(&$action) {
   //// Temperature
   $action->lay->set("temp", $data["temperature"]["temp_c"]);
   $action->lay->set("rosee", $data["temperature"]["dew_c"]);
-  $action->lay->set("ressentie", $data["heatindex"]["heatindex_f"]);
+  $action->lay->set("ressentie", $data["heatindex"]["heatindex_c"]);
 
   // Vent
   $action->lay->set("ventv", $data["wind"]["meters_per_second"]);
