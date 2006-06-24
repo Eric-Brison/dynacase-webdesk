@@ -1,10 +1,10 @@
-<select name="icao" onchange="submitService(event);">
+<!-- div style="text-align:center"><select name="icao" onchange="submitService(event);">
 [BLOCK ICAO]<option value="[icao_code]" [icao_selected]>[icao_label]
-[ENDBLOCK ICAO]</select>
+[ENDBLOCK ICAO]</select></div -->
 <div style="background-image:url('[bgimg]'); background-repeat:no-repeat; background-position:0% 0% ">
-<div>Température [temp] °C (rosée [rosee]°c, ressentie [ressentie]°c)</div>
-<div>Vent, vitesse [ventv] direction [[d1] - [d2]]</div>
-<div>Plafond nuageux [nuage], visibilité [vis] [visd]</div>
-<div>Bulletin de [datebull]</div>
+<div style="text-align:right;" title="Température [temp] °C (rosée [rosee]°c, ressentie [ressentie]°c)">Température : [temp] °c</div>
+<div style="text-align:right;" title="Vent, vitesse [ventv] m/s direction [[d1] - [d2]]">Vent : [ventv] m/s</div>
+<div style="text-align:right;" title="Plafond nuageux [nuage], visibilité [vis] [visd] km">Visibilité [vis] [visd] km</div>
+<div style="text-align:right; font-size:80%" title="Bulletin du [datebull]">[datebull]</div>
 </div>
 
