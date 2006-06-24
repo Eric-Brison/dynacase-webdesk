@@ -58,6 +58,7 @@ $action_desc = array (
    array( "acl" => "USER",  "name" => "EFREEDOM_SEARCH", "short_name" =>N_("service freedom search execution"), "toc" => "N", "root" =>"N"),
    array( "acl" => "USER",  "name" => "FREEDOM_FSEARCH", "short_name" =>N_("service freedom search in familie"), "toc" => "N", "root" =>"N"),   array( "acl" => "USER",  "name" => "EFREEDOM_FSEARCH", "short_name" =>N_("service edit freedom search in familie"), "toc" => "N", "root" =>"N"),
 
+   array( "acl" => "USER",  "name" => "GSVC", "short_name" =>N_("generic service"), "toc" => "N", "root" =>"N"),
 
 );
 
