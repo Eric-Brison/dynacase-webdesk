@@ -27,7 +27,6 @@ function initPortal() {
   displayServices();
   setTimeout("startRefresh()", 60*1000);
 }
-
 </script>
 [JS:REF]
 

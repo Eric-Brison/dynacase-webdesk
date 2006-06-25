@@ -33,13 +33,13 @@ function geoservice(&$action) {
   $svcline  = $up->getTValue("uport_line");
 
   $change = false;
+//   $msg = '';
   foreach ($svcnum as $k => $v) {
-    echo "$v :";
     foreach ($svcgeo as $kg => $vg) {
-      echo " ".$vg["snum"];
       if ($vg["snum"]==$v) {
 	$svccol[$k] = $vg["col"];
 	$svcline[$k] = $vg["lin"];	
+// 	$msg .= '    svn('.$v.') [col='.$svccol[$k].';lin='.$svcline[$k];
 	$change = true;
       }
     }
@@ -51,5 +51,6 @@ function geoservice(&$action) {
     $up->postModify();
     $action->lay->set("OUT", "var svcnum = false;");
   } else $action->lay->set("OUT", "var svcnum = -1; // no modif");
+//   echo $msg;
 }
 ?>

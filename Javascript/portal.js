@@ -71,12 +71,50 @@ function addNewService(sid) {
 }
 
 
-function displayServices() {
+
+var colsDesc = new Array();
+function orderServices() {
+
+  for (var icol=0; icol<colCount; icol++) {
+    colsDesc[icol] = new Array();
+  }
+
+  var lcol=0;
   for (var is=0; is<services.length; is++) {
-    if (services[is].d===false) {
+
+    if (!services[is].col || services[is].col<0 || services[is].col>=colCount) services[is].col=0; 
+    lcol = services[is].col;
+    if (!services[is].lin || services[is].lin<0) { 
+       services[is].lin = colsDesc[lcol].length;
+    }
+    colsDesc[lcol][colsDesc[lcol].length] = is;
+  }
+
+//   var text = '';
+//   for (var ic=0;ic<colCount; ic++) {
+//     text += 'col['+ic+'] = {';
+//     for (var il=0;il<colsDesc[ic].length; il++) {
+//       text += ' '+il+':'+colsDesc[ic][il]+' ';
+//     }
+//     text += ' }\n';
+//   }
+//   alert(text);
+  return;
+}
+
+
+function displayServices() {
+
+
+  orderServices();
+
+  for (var ic=0;ic<colCount; ic++) {
+    for (var il=0;il<colsDesc[ic].length; il++) {
+      var is = colsDesc[ic][il];
       showService(is);
     }
   }
+
 }
 
 
@@ -92,7 +130,7 @@ function showService(is) {
   var iseditable   = services[is].e;
   var ismandatory  = services[is].m;
   var isinteractive  = services[is].i;
-  var line  = services[is].line;
+  var line  = services[is].lin;
   var col  = services[is].col;
   
   var root = document.getElementById('wdcol'+col);
@@ -117,17 +155,16 @@ function showService(is) {
     }
     cnt += '<table cellspacing="0" cellpadding="0" style="width:100%; border:0px">';
     cnt += '<tr onmouseover="showSvcIcons('+snum+')" onmouseout="hideSvcIcons('+snum+')">';
-    cnt += '<td><span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
+    cnt += '<td><span id="tsvcti'+snum+'">'+stitle+'</span> '+' svc'+snum+'[l:'+line+'|c:'+col+'] '+imgcyc+'</td>';
  
     cnt += '<td style="text-align:right">';
     cnt += '<span id="iconbox'+snum+'" style="visibility:hidden">';
 
-    if (col>0) cnt += '<img id="gotoL'+snum+'" class="small_button" onclick="moveSvc('+snum+',-1,0)" src="[IMG:wd_go_left.gif]" title="[TEXT:wd go left]">';
-    if (col<colCount) cnt += '<img id="gotoD'+snum+'" class="small_button" onclick="moveSvc('+snum+',0,1)" src="[IMG:wd_go_down.gif]" title="[TEXT:wd go down]">';
-    if (line>0) cnt += '<img id="gotoU'+snum+'" class="small_button" onclick="moveSvc('+snum+',0,-1)" src="[IMG:wd_go_up.gif]" title="[TEXT:wd go up]">';
-    cnt += '<img id="gotoR'+snum+'" class="small_button" onclick="moveSvc('+snum+',1,0)" src="[IMG:wd_go_right.gif]" title="[TEXT:wd go right]">';
+    cnt += '<img id="gotoL'+snum+'" style="display:none" class="small_button" onclick="moveSvc('+snum+',-1,0)" src="[IMG:wd_go_left.gif]" title="[TEXT:wd go left]">';
+    cnt += '<img id="gotoD'+snum+'" style="display:none" class="small_button" onclick="moveSvc('+snum+',0,1)" src="[IMG:wd_go_down.gif]" title="[TEXT:wd go down]">';
+    cnt += '<img id="gotoU'+snum+'" style="display:none" class="small_button" onclick="moveSvc('+snum+',0,-1)" src="[IMG:wd_go_up.gif]" title="[TEXT:wd go up]">';
+    cnt += '<img id="gotoR'+snum+'" style="display:none" class="small_button" onclick="moveSvc('+snum+',1,0)" src="[IMG:wd_go_right.gif]" title="[TEXT:wd go right]">';
     cnt += '&nbsp;';
-    
     cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc('+snum+');" src="[IMG:wd_svc_hide.gif]" title="[TEXT:wd hide svc content]">';
     if (vurl!='')
       cnt += '<img id="irsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="startUtempo(); loadSvcAsync('+snum+', true);endUtempo(); " src="[IMG:wd_svc_reload.gif]" title="[TEXT:wd reload svc content]">';
@@ -141,7 +178,8 @@ function showService(is) {
     tsvc.className = 'wdsvc_title';
 
     svc.appendChild(tsvc);
-
+    computeMoveIconV(is);
+    
     var csvc = document.createElement('div');
     csvc.setAttribute('id','csvc'+snum);
     csvc.name = 'csvc'+snum;
@@ -318,25 +356,82 @@ function showHideSvc(sid) {
   }
 }
 
+function computeMoveIconV(sid) {
+  var snum = services[sid].snum;
+  document.getElementById('gotoL'+snum).style.display = (services[sid].col>0 ? 'inline' : 'none');
+  document.getElementById('gotoR'+snum).style.display = (services[sid].col<colCount ? 'inline' : 'none');
+  document.getElementById('gotoU'+snum).style.display = (services[sid].lin>0 ? 'inline' : 'none');
+  document.getElementById('gotoD'+snum).style.display = (services[sid].lin<(colsDesc[services[sid].col].length-1) ? 'inline' : 'none');
+}
+
+  
 
 function moveSvc(snum,c,l) {
   var is = getSvc(snum);
   if (is===false) return;
-  services[is].col = services[is].col + c;
-  services[is].lin = services[is].lin + l;
-  unDisplaySvc(snum);
-  showService(is);
-  var xreq = null;
-  if (window.XMLHttpRequest) xreq = new XMLHttpRequest();
-  else xreq = new ActiveXObject("Microsoft.XMLHTTP");
-  if (xreq) {
-    xreq.open("POST", "[CORE_STANDURL]app=WEBDESK&action=GEOSERVICE&spec="+services[is].snum+":"+services[is].col+":"+services[is].lin, false);
-    xreq.send('');
-    if (xreq.status!=200) alert('[TEXT:wd error geo service] (HTTP Code '+xreq.status+')');	   
+  var geo = '';
+  if (c==-1||c==1) {
+    if (services[is].col+c>=0&&services[is].col+c<colCount) {
+      services[is].col = services[is].col + c;
+      services[is].lin = colsDesc[services[is].col].length;
+      colsDesc[services[is].col][colsDesc[services[is].col].length] = is;
+      geo = services[is].snum+':'+services[is].col+':'+services[is].lin;
+    } else {
+      return;
+    } 
+  } else if (l==-1||l==+1) {
+    var col = services[is].col;
+    if (services[is].lin+l<0) return;
+    var oli=services[is].lin;
+    if (l==-1) {
+      if (services[is].lin>0) {
+	var svc = colsDesc[col][services[is].lin-1];
+	colsDesc[col][services[is].lin] = svc;
+	colsDesc[col][services[is].lin-1] = is;
+	services[svc].lin = services[is].lin;
+	services[is].lin--;
+	var childo = document.getElementById('svc'+services[is].snum);
+	var brotho = document.getElementById('svc'+services[svc].snum);
+        childo.parentNode.insertBefore(childo,brotho);
+	computeMoveIconV(is);
+ 	computeMoveIconV(svc);
+	geo = services[is].snum+':'+services[is].col+':'+services[is].lin;
+	geo += '|'+services[svc].snum+':'+services[svc].col+':'+services[svc].lin;
+      }
+    } else {
+      if (services[is].lin<colsDesc[col].length) {
+	var svc = colsDesc[col][services[is].lin+1];
+	colsDesc[col][services[is].lin] = svc;
+	colsDesc[col][services[is].lin+1] = is;
+	services[svc].lin = services[is].lin;
+	services[is].lin++;
+	var childo = document.getElementById('svc'+services[is].snum);
+	var brotho = document.getElementById('svc'+services[svc].snum);
+        childo.parentNode.insertBefore(brotho,childo);
+ 	computeMoveIconV(is);
+ 	computeMoveIconV(svc);
+	geo = services[is].snum+':'+services[is].col+':'+services[is].lin;
+	geo += '|'+services[svc].snum+':'+services[svc].col+':'+services[svc].lin;
+      }
+    }
   } else {
-    alert('[TEXT:wd error geo service] (XMLHttpRequest contruction)');	   
+    alert('moveSvc:: invalid line='+l+', column='+c);
+    return;
   }
-  
+      
+  if (geo!='') {
+    var xreq = null;
+    if (window.XMLHttpRequest) xreq = new XMLHttpRequest();
+    else xreq = new ActiveXObject("Microsoft.XMLHTTP");
+    if (xreq) {
+      xreq.open("POST", "[CORE_STANDURL]app=WEBDESK&action=GEOSERVICE&spec="+geo, false);
+      xreq.send('');
+      if (xreq.status!=200) alert('[TEXT:wd error geo service] (HTTP Code '+xreq.status+')');	   
+    } else {
+      alert('[TEXT:wd error geo service] (XMLHttpRequest contruction)');	   
+    }
+  }
+  return;
 }
   
 
