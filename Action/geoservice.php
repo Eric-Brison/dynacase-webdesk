@@ -6,7 +6,7 @@ function geoservice(&$action) {
   $dbaccess = getParam("FREEDOM_DB");
   
 
-  $spec = GetHttpVars("spec", "");
+  $spec = GetHttpVars("sgeo", "");
   if ($spec=="") {
     $action->lay->set("OUT", "var svcnum = -1; // spec empty");
     return;
@@ -16,7 +16,8 @@ function geoservice(&$action) {
   foreach ($tspec as $k => $v) {
     $s = explode(":",$v);
     if (!is_numeric($s[0]) || !is_numeric($s[1]) || !is_numeric($s[2])) continue; 
-    $svcgeo[] = array( "snum" =>  $s[0], "col" => $s[1], "lin" => $s[2] );
+    if (!isset($s[3])) $s[3]=1;
+    $svcgeo[$s[0]] = array( "snum" =>  $s[0], "col" => $s[1], "lin" => $s[2], "open" => $s[3]);
   }
 
   $tup = GetChildDoc( getParam("FREEDOM_DB"), 0, 0, "ALL", 
@@ -31,26 +32,26 @@ function geoservice(&$action) {
   $svcnum   = $up->getTValue("uport_svcnum");
   $svccol   = $up->getTValue("uport_column");
   $svcline  = $up->getTValue("uport_line");
+  $svcopen  = $up->getTValue("uport_open");
 
   $change = false;
 //   $msg = '';
   foreach ($svcnum as $k => $v) {
-    foreach ($svcgeo as $kg => $vg) {
-      if ($vg["snum"]==$v) {
-	$svccol[$k] = $vg["col"];
-	$svcline[$k] = $vg["lin"];	
-// 	$msg .= '    svn('.$v.') [col='.$svccol[$k].';lin='.$svcline[$k];
-	$change = true;
-      }
+    if (isset($svcgeo[$v])) {
+      $svccol[$k] = $svcgeo[$v]["col"];
+      $svcline[$k] = $svcgeo[$v]["lin"];	
+      $svcopen[$k] = $svcgeo[$v]["open"];	
+      echo '  svn('.$v.') [col='.$svccol[$k].';lin='.$svcline[$k].']<br>';
+      $change = true;
     }
   }
   if ($change) {
     $up->setValue("uport_column", $svccol);
     $up->setValue("uport_line", $svcline);
+    $up->setValue("uport_open", $svcopen);
     $err = $up->modify();
     $up->postModify();
     $action->lay->set("OUT", "var svcnum = false;");
   } else $action->lay->set("OUT", "var svcnum = -1; // no modif");
-//   echo $msg;
 }
 ?>

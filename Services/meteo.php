@@ -1,11 +1,15 @@
 <?php
 function meteo(&$action) {
 
-  require_once("phpweather/phpweather.php");
+  require_once($_SERVER["DOCUMENT_ROOT"]."/phpweather/phpweather.php");
   require(PHPWEATHER_BASE_DIR . "/output/pw_images.php");
 
   $def_icao = GetHttpVars("icao", "LFBO");
   $def_lang = GetHttpVars("la", "fr");
+  $full = (GetHttpVars("fulldata", "")>=1 ?  true : false );
+  $wmetar = (GetHttpVars("fulldata", "")==2 ?  true : false );
+  $dd = false;
+  if (GetHttpVars("dd", "")=="1") $dd = true;;
 
   $weather = new phpweather();
   $weather->set_icao($def_icao);
@@ -28,16 +32,12 @@ function meteo(&$action) {
   }
   $action->lay->setBlockData("ICAO", $ticaos);
 
-//  require(PHPWEATHER_BASE_DIR . "/output/pw_text_".$def_lang.".php");
-  //$type = 'pw_text_' . $def_lang;
-  //$text = new $type($weather);
-
   $icons = new pw_images($weather);
   $metar =  $weather->get_metar();
   $data = $weather->decode_metar();
 
   $img = $icons->get_sky_image();
-  $action->lay->set("bgimg", "phpweather/".$img);
+  $action->lay->set("bgimg", "/phpweather/".$img);
 
   //echo "Metar: $metar <pre>\n";
   //print_r($data);
@@ -50,13 +50,30 @@ function meteo(&$action) {
           //"<p>The raw METAR is <code>" .
           //$weather->get_metar() . "</code></p>\n";
 //
+
+  if ($dd) print_r2($data);
+
+  $action->lay->set("location", $weather->get_location());
+
+  if (!isset($data["icao"])) {
+    $action->lay->set("datebull", "Pas d'information.");
+    $action->lay->set("data", false);
+    return;
+  }
+  $action->lay->set("fulldata", $full);
+  $action->lay->set("withmetar", $wmetar);
+  $action->lay->set("data", true);
+    
+  $action->lay->set("datebull", strftime("%x %X", $data["time"]));
+ 
   //// Temperature
   $action->lay->set("temp", $data["temperature"]["temp_c"]);
   $action->lay->set("rosee", $data["temperature"]["dew_c"]);
-  $action->lay->set("ressentie", $data["heatindex"]["heatindex_c"]);
+  $action->lay->set("ressentie", (isset($data["heatindex"]["heatindex_c"])?$data["heatindex"]["heatindex_c"]:"?"));
 
   // Vent
-  $action->lay->set("ventv", $data["wind"]["meters_per_second"]);
+  $action->lay->set("ventvms", ($data["wind"]["meters_per_second"]));
+  $action->lay->set("ventv", ($data["wind"]["meters_per_second"]*3.6));
   $action->lay->set("d1", $data["wind"]["var_beg"]);
   $action->lay->set("d2", $data["wind"]["var_end"]);
 
@@ -74,7 +91,7 @@ function meteo(&$action) {
   $action->lay->set("vis", $vis);
   $action->lay->set("visd", $data["visibility"][0]["km"]);
 
+  $action->lay->set("metar", $data["metar"]);
   // Infos bulletin
-  $action->lay->set("datebull", strftime("%x %X", $data["time"]));
 }
 ?>

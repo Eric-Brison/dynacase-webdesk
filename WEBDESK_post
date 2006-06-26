@@ -10,18 +10,36 @@ fi
 #------------------------------
 if [ "$1" = "I" ] ; then
   $wpub/wsh.php --api=freedom_import --file=$wpub/WEBDESK/webdesk.csv
+
+
+  cd $wpub/../html/phpweather
+  cp $wpub/WEBDESK/phpweather-default.php /home/httpd/html/phpweather/defaults.php
+  createdb -E latin1 -U anakeen phpweather
+  psql -U anakeen  phpweather -c 'create table pw_metars ()'
+  psql -U anakeen  phpweather -c 'create table pw_stations ()'
+  psql -U anakeen  phpweather -c 'create table pw_tafs ()'
+  php -q $wpub/WEBDESK/phpweather-init.php
 fi
 
 #------------------------------
 #post update
 #------------------------------
 if [ "$1" = "U" ] ; then
+
   $wpub/wsh.php --api=freedom_import --file=$wpub/WEBDESK/webdesk.csv
+
+
+  // Init
+
+
+
+
 fi
 
 #------------------------------
 #post uninstallation
 #------------------------------
 if [ "$1" = "D" ] ; then
+    dropdb phpweather -U anakeen
     echo
 fi

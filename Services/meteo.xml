@@ -1,10 +1,14 @@
-<!-- div style="text-align:center"><select name="icao" onchange="submitService(event);">
-[BLOCK ICAO]<option value="[icao_code]" [icao_selected]>[icao_label]
-[ENDBLOCK ICAO]</select></div -->
-<div style="background-image:url('[bgimg]'); background-repeat:no-repeat; background-position:0% 0% ">
-<div style="text-align:right;" title="Température [temp] °C (rosée [rosee]°c, ressentie [ressentie]°c)">Température : [temp] °c</div>
-<div style="text-align:right;" title="Vent, vitesse [ventv] m/s direction [[d1] - [d2]]">Vent : [ventv] m/s</div>
-<div style="text-align:right;" title="Plafond nuageux [nuage], visibilité [vis] [visd] km">Visibilité [vis] [visd] km</div>
-<div style="text-align:right; font-size:80%" title="Bulletin du [datebull]">[datebull]</div>
-</div>
+<div style="[IF data]background-image:url('[bgimg]'); background-repeat:no-repeat;background-position:100% 0%[ENDIF data]" title="[IF data]Bulletin du [ENDIF data][datebull]"><span style="font-weight:bold;">[location]</span> <span style="text-align:right; font-size:80%">([datebull])</span>
+[IF data]<div style="background-color:transparent;"><span style="font-weight:bold; font-size:200%;" title="Température [temp] °C (rosée [rosee]°c, ressentie [ressentie]°c)">[temp]&deg;c</span> </div>
+[IF fulldata]<div>
+<span title="Vent, vitesse [ventvms] m/s direction [[d1] - [d2]]"><span style="font-weight:bold;">[ventv]</span> km/h</span>
+&nbsp;|&nbsp;
+<span title="Humidité relative [rhumid] %"><span style="font-weight:bold;">[rhumid]</span> %</span>
+&nbsp;|&nbsp;
+<span title="Pression [pression] hpa"><span style="font-weight:bold;">[pression]</span> hpa</span>
+&nbsp;|&nbsp;
+<span title="Visibilité [vis] [visd] km"><span style="font-weight:bold;">[vis] [visd]</span> km</span>
+[IF withmetar]<div style="font-size:80%; font-family:courrier">[metar]</div>[ENDIF withmetar]
+</div>[ENDIF fulldata][ENDIF data]
+</div> 
 

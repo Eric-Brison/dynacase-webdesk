@@ -52,7 +52,8 @@ ATTR;UPORT_SVC;UPORT_TSERVICES;Service;N;N;text;130;W;;%S%app=FDL&action=FDL_CAR
 ATTR;UPORT_PARAM;UPORT_TSERVICES;Paramêtres;N;N;text;140;W;;;;;
 ATTR;UPORT_COLUMN;UPORT_TSERVICES;Colonne;N;N;int;150;W;;;;;
 ATTR;UPORT_LINE;UPORT_TSERVICES;Ligne;N;N;int;160;W;;;;;
-ATTR;UPORT_REFRESHD;UPORT_TSERVICES;Délai raf.;N;N;int;170;W;;;;;
+ATTR;UPORT_OPEN;UPORT_TSERVICES;Ouvert;N;N;int;170;W;;;-;[hcheck]1|Oui,0|Non;
+ATTR;UPORT_REFRESHD;UPORT_TSERVICES;Délai raf.;N;N;int;180;W;;;;;
 ;;;;;;;;;;;;;
 END;;;;;;;;;;;;;
 //FAM;recherche détaillée(DSEARCH);<specid>;<fldid>;titre;couleur intercalaire;à utiliser dans les menus;mot-clef;révision;différence majuscule/minuscule;famille;fid amille;dossier racine;dans la poubelle;profondeur de recherche;requête sql;id dossier père courant;dossier père courant;opérateur logique;Conditions;attributs;fonctions;mot-clefs

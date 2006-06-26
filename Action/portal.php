@@ -62,6 +62,7 @@ function portal(&$action) {
     $svcrdel  = $tup[0]->getTValue("uport_refreshd");
     $svccol   = $tup[0]->getTValue("uport_column");
     $svcline  = $tup[0]->getTValue("uport_line");
+    $svcopen  = $tup[0]->getTValue("uport_open");
 
     foreach ($svcnum as $k => $v) {
       $sd = getTDoc(getParam("FREEDOM_DB"), $svcid[$k]);
@@ -75,6 +76,7 @@ function portal(&$action) {
 		       "rdel" => ($svcrdel[$k]==""?0:$svcrdel[$k]),
 		       "col" => $svccol[$k],
 		       "lin" => $svcline[$k],
+		       "open" => ($svcopen[$k]==1?"1":"0"),
 		       "interactif" => (getV($sd, "psvc_interactif")==1?"true":"false"),
 		       "mandatory" => "false",
 		       "editable" => "true"		       

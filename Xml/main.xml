@@ -24,6 +24,7 @@ var isOpen = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[
 </head>
 <body onload="initWebdesk()" scrollable="no" onresize="computefbodywh()">
 
+
 <div id="wdtitle" class="wdhead">
 <table style="width:100%"><tr>
 <td style="text-align:left; "><img onclick="isOpen = !isOpen; computefbodywh();" style="vertical-align:bottom;"  class="small_button" title="[TEXT:wd open/close menu]" id="wdmbarmng" src="[IFNOT IsMBarStatic][IMG:wd_open_bar.gif][ENDIF IsMBarStatic][IF IsMBarStatic][IMG:wd_right_bar.gif][ENDIF IsMBarStatic]"> <span id="wdappsel">Agenda</span></td>

@@ -84,17 +84,18 @@ function orderServices() {
 
     if (!services[is].col || services[is].col<0 || services[is].col>=colCount) services[is].col=0; 
     lcol = services[is].col;
-    if (!services[is].lin || services[is].lin<0) { 
-       services[is].lin = colsDesc[lcol].length;
+    if (services[is].lin<0) { 
+       services[is].lin = colsDesc[lcol].length - 1;
     }
-    colsDesc[lcol][colsDesc[lcol].length] = is;
+    colsDesc[lcol][services[is].lin] = is;
   }
 
 //   var text = '';
 //   for (var ic=0;ic<colCount; ic++) {
-//     text += 'col['+ic+'] = {';
+//     text += '['+ic+'] = {';
 //     for (var il=0;il<colsDesc[ic].length; il++) {
-//       text += ' '+il+':'+colsDesc[ic][il]+' ';
+//       if (!services[colsDesc[ic][il]]) alert('oop '+ic+','+il);
+//       else text += ' '+colsDesc[ic][il]+':'+services[colsDesc[ic][il]].col+':'+services[colsDesc[ic][il]].lin;
 //     }
 //     text += ' }\n';
 //   }
@@ -155,7 +156,7 @@ function showService(is) {
     }
     cnt += '<table cellspacing="0" cellpadding="0" style="width:100%; border:0px">';
     cnt += '<tr onmouseover="showSvcIcons('+snum+')" onmouseout="hideSvcIcons('+snum+')">';
-    cnt += '<td><span id="tsvcti'+snum+'">'+stitle+'</span> '+' svc'+snum+'[l:'+line+'|c:'+col+'] '+imgcyc+'</td>';
+    cnt += '<td><span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
  
     cnt += '<td style="text-align:right">';
     cnt += '<span id="iconbox'+snum+'" style="visibility:hidden">';
@@ -346,13 +347,16 @@ function showHideSvc(sid) {
       document.getElementById('csvc'+sid).style.display = 'none';
       document.getElementById('ivsvc'+sid).src = '[IMG:wd_svc_show.gif]';
       document.getElementById('ivsvc'+sid).title = '[TEXT:wd show svc content]';
+      services[is].open = false;
       services[is].display = false;
     } else {
       document.getElementById('csvc'+sid).style.display = 'block';
       document.getElementById('ivsvc'+sid).src = '[IMG:wd_svc_hide.gif]';
       document.getElementById('ivsvc'+sid).title = '[TEXT:wd hide svc content]';
+      services[is].open = true;
       services[is].display = true;
     }
+//     saveGeometry();
   }
 }
 
@@ -364,7 +368,25 @@ function computeMoveIconV(sid) {
   document.getElementById('gotoD'+snum).style.display = (services[sid].lin<(colsDesc[services[sid].col].length-1) ? 'inline' : 'none');
 }
 
-  
+function saveGeometry() {
+  var geo='';
+  for (var ic=0; ic<colsDesc.length; ic++) {
+    for (var il=0; il<colsDesc[ic].length; il++) {
+      geo += (geo==''?'':'|')+services[colsDesc[ic][il]].snum+':'+ic+':'+il+':'+services[colsDesc[ic][il]].open;
+    }
+  }
+  var xreq = null;
+  if (window.XMLHttpRequest) xreq = new XMLHttpRequest();
+  else xreq = new ActiveXObject("Microsoft.XMLHTTP");
+  if (xreq) {
+    xreq.open("POST", "[CORE_STANDURL]app=WEBDESK&action=GEOSERVICE&sgeo="+geo, false);
+    xreq.send('');
+    if (xreq.status!=200) alert('[TEXT:wd error geo service] (HTTP Code '+xreq.status+')');	   
+  } else {
+    alert('[TEXT:wd error geo service] (XMLHttpRequest contruction)');	   
+  }
+  return;
+}
 
 function moveSvc(snum,c,l) {
   var is = getSvc(snum);
@@ -372,10 +394,28 @@ function moveSvc(snum,c,l) {
   var geo = '';
   if (c==-1||c==1) {
     if (services[is].col+c>=0&&services[is].col+c<colCount) {
-      services[is].col = services[is].col + c;
+
+      var ocol = services[is].col;
+      var olin = services[is].lin;
+
+      services[is].col += c;
       services[is].lin = colsDesc[services[is].col].length;
-      colsDesc[services[is].col][colsDesc[services[is].col].length] = is;
-      geo = services[is].snum+':'+services[is].col+':'+services[is].lin;
+      var ncol = services[is].col;
+      var clin = services[is].lin;
+
+      colsDesc[ncol][colsDesc[ncol].length] = is;
+      colsDesc[ocol].splice(olin,1);
+
+      var childo = document.getElementById('svc'+services[is].snum);
+      var insertCol = document.getElementById('wdcol'+ncol);
+
+      insertCol.insertBefore(childo,null);
+      computeMoveIconV(is);
+      if (colsDesc[ocol].length>0) computeMoveIconV(colsDesc[ocol][colsDesc[ocol].length-1]);
+      if (colsDesc[ncol].length>1) computeMoveIconV(colsDesc[ncol][colsDesc[ncol].length-2]);
+
+      saveGeometry();
+
     } else {
       return;
     } 
@@ -395,8 +435,8 @@ function moveSvc(snum,c,l) {
         childo.parentNode.insertBefore(childo,brotho);
 	computeMoveIconV(is);
  	computeMoveIconV(svc);
-	geo = services[is].snum+':'+services[is].col+':'+services[is].lin;
-	geo += '|'+services[svc].snum+':'+services[svc].col+':'+services[svc].lin;
+
+	saveGeometry();
       }
     } else {
       if (services[is].lin<colsDesc[col].length) {
@@ -410,26 +450,13 @@ function moveSvc(snum,c,l) {
         childo.parentNode.insertBefore(brotho,childo);
  	computeMoveIconV(is);
  	computeMoveIconV(svc);
-	geo = services[is].snum+':'+services[is].col+':'+services[is].lin;
-	geo += '|'+services[svc].snum+':'+services[svc].col+':'+services[svc].lin;
+
+	saveGeometry();
       }
     }
   } else {
     alert('moveSvc:: invalid line='+l+', column='+c);
     return;
-  }
-      
-  if (geo!='') {
-    var xreq = null;
-    if (window.XMLHttpRequest) xreq = new XMLHttpRequest();
-    else xreq = new ActiveXObject("Microsoft.XMLHTTP");
-    if (xreq) {
-      xreq.open("POST", "[CORE_STANDURL]app=WEBDESK&action=GEOSERVICE&spec="+geo, false);
-      xreq.send('');
-      if (xreq.status!=200) alert('[TEXT:wd error geo service] (HTTP Code '+xreq.status+')');	   
-    } else {
-      alert('[TEXT:wd error geo service] (XMLHttpRequest contruction)');	   
-    }
   }
   return;
 }
