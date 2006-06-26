@@ -1,13 +1,18 @@
+<style>
+.svccontact { background-color:[COLOR_A9]; border-style:none none solid none; border-color:[COLOR_A7]; border-width:1px }
+</style>
 <input style="width:90%;" type="text" title="[TEXT:wd search for contact]" name="search">&nbsp;
 [IF csearch]
 
 [IF noresult]<div style="font-style:italic">Pas de contact [IF begin]commençant[ENDIF begin][IFNOT begin]contenant[ENDIF begin] <span >[sphrase]</span></div>[ENDIF noresult]
 
 [IF slimit]<div style="font-style:italic">Les [limit] premiers...</div>[ENDIF slimit]
+<br><table width="90%" cellspacing="0">
 [BLOCK contacts]
-<div>
-<div style="border-color:[COLOR_A8]; border-width:1px; border-style:none none solid none"><img src="[IMG:svccontact.gif]">&nbsp;[sexe] [IF hmail]<a href="mailto:[mailadd]">[ENDIF hmail]<span style="font-weight:bold;">[title]</span>[IF hmail]</a>[ENDIF hmail] [IF hsoc]<span style="font-style:italic" >(Société [soc])</span>[ENDIF hsoc]</div>
-<div>&nbsp;&rarr;&nbsp;Société [IF hsmob]M:<span >[smob]</span>[ENDIF hsmob] [IF hspho]T:<span >[spho]</span>[ENDIF hspho]  [IF hsfax]F:<span >[sfax]</span>[ENDIF hsfax]</div>
-<div>&nbsp;&rarr;&nbsp;Personnel [IF hpmob]M:<span >[pmob]</span>[ENDIF hpmob] [IF hppho]T:<span >[spho]</span>[ENDIF hppho]  [IF hpfax]F:<span>[pfax]</span>[ENDIF hpfax]</div>
-</div>[ENDBLOCK contacts]
+<tr><td class="svccontact"><img src="[IMG:svccontact.gif]"></td><td class="svccontact" colspan="3">&nbsp;[sexe] [IF hmail]<a href="mailto:[mailadd]">[ENDIF hmail]<span style="font-weight:bold;">[title]</span>[IF hmail]</a>[ENDIF hmail] [IF hsoc]<span style="font-style:italic" >(Société [soc])</span>[ENDIF hsoc]</td></tr>
+[IF coor]<tr><td>&nbsp;</td><td>&nbsp;</td><td>Société</td><td>Personnel</td></tr>[ENDIF coor]
+[IF hpho]<tr><td>&nbsp;</td><td>Tél:</td><td>[spho]</td><td>[ppho]</td></tr>[ENDIF hpho]
+[IF hmob]<tr><td>&nbsp;</td><td>Mob:</td><td>[smob]</td><td>[pmob]</td></tr>[ENDIF hmob]
+[IF hfax]<tr><td>&nbsp;</td><td>Fax:</td><td>[sfax]</td><td>[pfax]</td></tr>[ENDIF hfax]
+[ENDBLOCK contacts]</table>
 [ENDIF csearch]

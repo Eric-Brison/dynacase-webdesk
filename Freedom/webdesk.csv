@@ -77,3 +77,4 @@ DOC;PORTAL_SERVICE;PS_RSSREADER;;RSS;Lecteur RSS;[CORE_BASEURL]app=WEBDESK&actio
 DOC;PORTAL_SERVICE;PS_PORTALSERVICES;;Services portails;Liste des services portails disponibles;[CORE_BASEURL]app=WEBDESK&action=FREEDOM_SEARCH&s=1826;[CORE_BASEURL]app=WEBDESK&action=EFREEDOM_SEARCH;3;0;1;0;1;0;WEBDESK;;;;;;;;
 DOC;PORTAL_SERVICE;PS_CONTACTSEARCH;;Contacts;Recherche de contacts;[CORE_BASEURL]app=WEBDESK&action=SVCCONTACT;;3;0;1;1;1;0;WEBDESK;;;;;;;;
 DOC;PORTAL_SERVICE;PS_FSEARCH;;Recherche Freedom;Recherche Freedom par famille;[CORE_BASEURL]app=WEBDESK&action=FREEDOM_FSEARCH;;3;0;1;1;1;0;FREEDOM;;;;;;;;
+DOC;PORTAL_SERVICE;PS_METEO;;Météo;Météo (données METAR -aviation-);[CORE_STANDURL]&sole=Y&app=WEBDESK&action=GSVC&sname=meteo;[CORE_STANDURL]&sole=Y&app=WEBDESK&action=GSVC&sname=meteo&sact=edit;2;120;1;0;1;0;;;;;;;;;

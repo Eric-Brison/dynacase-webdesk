@@ -10,8 +10,7 @@ function initWebdesk() {
 }
   
 function getUnreadMsgCount() {
-  //     var uu = 'index.php?sole=A&app=WEBDESK&action=SVCLOCALMAIL&oc=Y';
-  var uu = 'index.php?sole=A&app=WEBDESK&action=SVCMAIL&account=Anakeen&login=marc.claverie&password=39h404gv&server=mail.tlse.i-cesam.com&proto=imap&display=1&oc=Y';
+  var uu = 'index.php?sole=A&app=WEBDESK&action=SVCLOCALMAIL&oc=Y';
   updateInfos(uu, 'ureadmail', "getUnreadMsgCount()", updateInfosTimeout);
 }
   

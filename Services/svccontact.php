@@ -48,24 +48,19 @@ function svccontact(&$action) {
 		   "hmail" => (getV($rq[$i], "us_mail")=="" ? false : true ),
 
 
-		   "hsmob" => (getV($rq[$i], "us_mobile")==""?false:true),
+		   "hmob" => (getV($rq[$i],"us_mobile")!="" || getV($rq[$i], "us_homemobile")),
 		   "smob"  => getV($rq[$i], "us_mobile"),
-
-		   "hspho" => (getV($rq[$i], "us_phone")==""?false:true),
-		   "spho"  => getV($rq[$i], "us_phone"),
-
-		   "hsfax" => (getV($rq[$i], "us_fax")==""?false:true),
-		   "sfax"  => getV($rq[$i], "us_fax"),
-
-		   "hpmob" => (getV($rq[$i], "us_homemobile")==""?false:true),
 		   "pmob"  => getV($rq[$i], "us_homemobile"),
 
-		   "hppho" => (getV($rq[$i], "us_homephone")==""?false:true),
+		   "hpho" => (getV($rq[$i],"us_phone")!="" || getV($rq[$i], "us_homephone")),
+		   "spho"  => getV($rq[$i], "us_phone"),
 		   "ppho"  => getV($rq[$i], "us_homephone"),
 
-		   "hpfax" => (getV($rq[$i], "us_homefax")==""?false:true),
+		   "hfax" => (getV($rq[$i],"us_fax")!="" || getV($rq[$i], "us_homefax")),
+		   "sfax"  => getV($rq[$i], "us_fax"),
 		   "pfax"  => getV($rq[$i], "us_homefax"),
 
+		   "coor" => (getV($rq[$i],"us_fax")!="" || getV($rq[$i], "us_homefax")) || (getV($rq[$i],"us_mobile")!="" || getV($rq[$i], "us_homemobile")) || (getV($rq[$i],"us_phone")!="" || getV($rq[$i], "us_homephone")),
 		   "hsoc" => (getV($rq[$i], "us_society")==""?false:true),
 		   "soc"  => getV($rq[$i], "us_society"),
 
