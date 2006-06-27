@@ -1,0 +1,13 @@
+<div style="text-align:center">
+Lieu :  <!-- select name="country" onchange="submitService(event);">
+[BLOCK CC]<option value="[cc_code]" [cc_selected]>[cc_label]
+[ENDBLOCK CC]</select -->
+<select name="icao" onchange="submitService(event);">
+[BLOCK ICAO]<option value="[icao_code]" [icao_selected]>[icao_label]
+[ENDBLOCK ICAO]</select><br>
+<select name="fulldata">
+<option value="0">température
+<option value="1">complet
+<option value="2">complet & METAR
+</select>
+</div>
