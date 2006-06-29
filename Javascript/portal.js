@@ -80,22 +80,24 @@ function orderServices() {
   }
 
   var lcol=0;
+  var mm = '';
   for (var is=0; is<services.length; is++) {
-
+    mm += '['+is+'] num='+services[is].snum;
     if (!services[is].col || services[is].col<0 || services[is].col>=colCount) services[is].col=0; 
     lcol = services[is].col;
-    if (services[is].lin<0) { 
-       services[is].lin = colsDesc[lcol].length - 1;
+    if (services[is].lin<=0) { 
+       services[is].lin = colsDesc[lcol].length;
     }
     colsDesc[lcol][services[is].lin] = is;
+    mm += ' col:'+services[is].col+' line='+services[is].lin+' ==> '+is+'\n';
   }
-
+//   alert(mm);
 //   var text = '';
 //   for (var ic=0;ic<colCount; ic++) {
 //     text += '['+ic+'] = {';
 //     for (var il=0;il<colsDesc[ic].length; il++) {
-//       if (!services[colsDesc[ic][il]]) alert('oop '+ic+','+il);
-//       else text += ' '+colsDesc[ic][il]+':'+services[colsDesc[ic][il]].col+':'+services[colsDesc[ic][il]].lin;
+//       if (services[colsDesc[ic][il]])
+// 	text += ' '+colsDesc[ic][il]+':'+services[colsDesc[ic][il]].col+':'+services[colsDesc[ic][il]].lin;
 //     }
 //     text += ' }\n';
 //   }
@@ -111,8 +113,9 @@ function displayServices() {
 
   for (var ic=0;ic<colCount; ic++) {
     for (var il=0;il<colsDesc[ic].length; il++) {
-      var is = colsDesc[ic][il];
-      showService(is);
+      if (colsDesc[ic][il]) {
+	showService(colsDesc[ic][il]);
+      }
     }
   }
 
@@ -122,6 +125,11 @@ function displayServices() {
 
 function showService(is) {
 
+  if (!services[is]) {
+    alert('Internal error : no service defined ');
+    return;
+  }
+  
   var snum = services[is].snum;
   if (document.getElementById('svc'+snum)) return; // Service already displayed
 
@@ -363,7 +371,7 @@ function showHideSvc(sid) {
 function computeMoveIconV(sid) {
   var snum = services[sid].snum;
   document.getElementById('gotoL'+snum).style.display = (services[sid].col>0 ? 'inline' : 'none');
-  document.getElementById('gotoR'+snum).style.display = (services[sid].col<colCount ? 'inline' : 'none');
+  document.getElementById('gotoR'+snum).style.display = (services[sid].col<(colCount-1) ? 'inline' : 'none');
   document.getElementById('gotoU'+snum).style.display = (services[sid].lin>0 ? 'inline' : 'none');
   document.getElementById('gotoD'+snum).style.display = (services[sid].lin<(colsDesc[services[sid].col].length-1) ? 'inline' : 'none');
 }
@@ -372,7 +380,7 @@ function saveGeometry() {
   var geo='';
   for (var ic=0; ic<colsDesc.length; ic++) {
     for (var il=0; il<colsDesc[ic].length; il++) {
-      geo += (geo==''?'':'|')+services[colsDesc[ic][il]].snum+':'+ic+':'+il+':'+services[colsDesc[ic][il]].open;
+      if (services[colsDesc[ic][il]]) geo += (geo==''?'':'|')+services[colsDesc[ic][il]].snum+':'+ic+':'+il+':'+services[colsDesc[ic][il]].open;
     }
   }
   var xreq = null;

@@ -5,6 +5,9 @@ if [ "$dbpsql" == "" ]; then
    wchoose -b
 fi
 
+$squirrelmail=/usr/share/squirrelmail
+
+
 #------------------------------
 #post installation
 #------------------------------
@@ -19,6 +22,13 @@ if [ "$1" = "I" ] ; then
   psql -U anakeen  phpweather -c 'create table pw_stations ()'
   psql -U anakeen  phpweather -c 'create table pw_tafs ()'
   php -q $wpub/WEBDESK/phpweather-init.php
+
+
+  fth=$squirrelmail/themes/freedom_theme.php
+  [ -f $fth ] && mv $fth $fth.orig
+  cp $wpub/WEBDESK/squirrelmail-freedom_theme.php $fth
+
+
 fi
 
 #------------------------------
@@ -28,12 +38,17 @@ if [ "$1" = "U" ] ; then
 
   $wpub/wsh.php --api=freedom_import --file=$wpub/WEBDESK/webdesk.csv
 
+
 fi
 
 #------------------------------
 #post uninstallation
 #------------------------------
 if [ "$1" = "D" ] ; then
-    dropdb phpweather -U anakeen
-    echo
+
+  fth=$squirrelmail/themes/freedom_theme.php
+  [ -f $fth.orig ] && mv $fth.orig $fth  
+
+  dropdb phpweather -U anakeen
+  
 fi

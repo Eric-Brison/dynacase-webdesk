@@ -1,5 +1,5 @@
 # ============================================
-# $Id: Makefile.in,v 1.4 2006/06/26 14:23:58 marc Exp $
+# $Id: Makefile.in,v 1.5 2006/06/29 16:13:40 marc Exp $
 # ============================================
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@
@@ -27,7 +27,8 @@ DISTFILES += $(SUBDIR) \
 	71_webdesk.conf \
 	Freedom/webdesk.csv \
 	$(PACKAGE)_fr.po $(PACKAGE)_gb.po \
-	phpweather-default.php
+	phpweather-default.php \
+	squirrelmail-freedom_theme.php
 
 $(pubdir)/$(appname)/71_webdesk.conf : 71_webdesk.conf
 	cp $< $@

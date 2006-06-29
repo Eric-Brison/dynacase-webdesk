@@ -13,7 +13,7 @@ function svclocalmail(&$action) {
   }
 
   if ($action->user->iddomain==1) {
-    $action->lay->set("OUT", "<div>Vous n'avez pas de compte de messagerie local.</div>");
+    $action->lay->set("OUT", "<div>Vous n'avez pas de compte de messagerie locale.</div>");
     return;
   }
   $uacc = new MailAccount($action->dbaccess,$action->user->id);
@@ -22,10 +22,8 @@ function svclocalmail(&$action) {
 
   $domain = $udom->name;
   $server = $upop->popname;
-  $protocol = "pop3";
+  $protocol = "imap";
   
-//     echo "SVCMAIL&account=$domain&login=$login&password=$password&server=$server&proto=$protocol";
-
   Redirect($action, "WEBDESK", "SVCMAIL&oc=$ocount&account=$domain&login=$login&password=$password&server=$server&proto=$protocol");
 }
 ?>
