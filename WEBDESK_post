@@ -13,6 +13,7 @@ if [ "$1" = "I" ] ; then
 
 
   cd $wpub/../html/phpweather
+  [ -f /home/httpd/html/phpweather/default.php ] && rm -f /home/httpd/html/phpweather/default
   cp $wpub/WEBDESK/phpweather-default.php /home/httpd/html/phpweather/defaults.php
   createdb -E latin1 -U anakeen phpweather
   psql -U anakeen  phpweather -c 'create table pw_metars ()'

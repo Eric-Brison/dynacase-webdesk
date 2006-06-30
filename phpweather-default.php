@@ -1,5 +1,5 @@
 <?php
-/* $Id: phpweather-default.php,v 1.1 2006/06/29 16:14:08 marc Exp $
+/* $Id: phpweather-default.php,v 1.2 2006/06/30 15:25:11 marc Exp $
  * Freedom service configuration for phpweather
  */
 
@@ -12,8 +12,12 @@ $this->properties['icao'] = 'LFBO';
 $this->properties['pref_units'] = 'only_metric';
 $this->properties['language'] = 'fr';
 $this->properties['use_proxy']     = false;
-$this->properties['proxy_host']    = '';
-$this->properties['proxy_port']    = 3128;
+// AVEC PROXY pour récupération des données (http)
+// $this->properties['use_proxy']     = true;
+// $this->properties['proxy_host']    = 'proxy.domain.com';
+// $this->properties['proxy_port']    = '3128';
+// $this->properties['fetch_method'] = 'fsockopen';
+
 /******************************************************************/
 /*                        Database Options                        */
 /******************************************************************/
