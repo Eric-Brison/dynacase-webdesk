@@ -1,5 +1,5 @@
 # ============================================
-# $Id: Makefile.in,v 1.6 2006/06/30 09:26:50 marc Exp $
+# $Id: Makefile.in,v 1.7 2006/06/30 09:40:25 marc Exp $
 # ============================================
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@
@@ -26,7 +26,6 @@ DISTFILES += $(SUBDIR) \
         RELEASE VERSION \
 	71_webdesk.conf \
 	Freedom/webdesk.csv \
-	$(PACKAGE)_fr.po $(PACKAGE)_gb.po \
 	phpweather-default.php 
 
 $(pubdir)/$(appname)/71_webdesk.conf : 71_webdesk.conf
