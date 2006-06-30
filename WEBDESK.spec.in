@@ -1,7 +1,7 @@
 #! /bin/rpm
 #
 #  File: 
-#  $Id: WEBDESK.spec.in,v 1.5 2006/06/26 14:23:58 marc Exp $
+#  $Id: WEBDESK.spec.in,v 1.6 2006/06/30 09:26:50 marc Exp $
 #
 #  This is the SPEC file for the What Users Module
 #  Anakeen What Application
@@ -34,11 +34,15 @@ URL: http://www.anakeen.com/
 Packager: Marc Claverie <marc.claverie@anakeen.com>
 BuildArchitectures: noarch
 BuildRoot: /tmp/anakeen-root
-Requires: WGCAL >= 2.1
+
 Requires: php-pear-XML_RSS
 Requires: php-imap
 Requires: phpweather >= 2.2.2
 
+Requires: WGCAL >= 2.1
+Requires: MAIL >= 0.6.1
+Requires: FREEDOM-USERCARD >= 2.3.0
+Requires: WORKSPACE >= 0.0.1
 
 %description
 Webdesk aids users
