@@ -1,5 +1,5 @@
 <table cellspacing="0" style="width:100%">
-<tr><td style="text-align:right">Source RSS <a href="http://fr.wikipedia.org/wiki/Really_Simple_Syndication" target="_blank" title="Qu'est ce que c'est">(?)</a></td><td> : </td><td><input style="width:100%" type="text" title="[TEXT:wd entre rss link here]" name="rss"></td></tr>
+[IFNOT static]<tr><td style="text-align:right">Source RSS <a href="http://fr.wikipedia.org/wiki/Really_Simple_Syndication" target="_blank" title="Qu'est ce que c'est">(?)</a></td><td> : </td><td><input style="width:100%" type="text" title="[TEXT:wd entre rss link here]" name="rss"></td></tr>[ENDIF static]
 <tr><td style="text-align:right">Nombre d'item affichés</td><td> : </td><td><select name="max"><option value="5">5<option value="10">10<option value="20">20</select></td></tr>
 <tr><td style="text-align:right">Affichage du détail</td><td> : </td><td><select name="vfull"><option value="0">non<option value="1">oui</select></td></tr>
 <tr><td style="text-align:right">Longueur du détail</td><td> : </td><td><select name="dlg"><option value="0">complet<option value="100">100 car.<option value="200">200 car.<option value="500">500 car</select></td></tr>
