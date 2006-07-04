@@ -66,7 +66,7 @@ DOC;DSEARCH;MY_LOCKED_DOCS;;Mes documents verrouillés;;no;;yes;;;;;;;select doc.
 //FAM;Service Portail(PORTAL_SERVICE);<specid>;<fldid>;Title;Description;Consultation;Edition;Catégorie;Délai de rafraîchissement;Disponible;Interactif;Modifiable;Obligatoire;;;;;;;;;
 ORDER;PORTAL_SERVICE;;;psvc_title;psvc_descr;psvc_vurl;psvc_eurl;psvc_categorie;psvc_refreshd;psvc_available;psvc_interactif;psvc_umode;psvc_mandatory;psvc_appneeded;;;;;;;;
 DOC;PORTAL_SERVICE;PS_MAIL;;Messagerie;Consultation de ma messagerie;[CORE_BASEURL]app=WEBDESK&action=SVCMAIL;[CORE_BASEURL]app=WEBDESK&action=ESVCMAIL;3;;1;;1;0;;;;;;;;;
-DOC;PORTAL_SERVICE;PS_LOCALMAIL;;Messagerie locale;Consultation de ma messagerie locale;[CORE_BASEURL]app=WEBDESK&action=SVCLOCALMAIL;;3;;1;;0;1;;;;;;;;;
+DOC;PORTAL_SERVICE;PS_LOCALMAIL;;Messagerie locale;Consultation de ma messagerie locale;[CORE_BASEURL]app=WEBDESK&action=SVCLOCALMAIL;;3;15;1;;0;1;;;;;;;;;
 DOC;PORTAL_SERVICE;PS_ARDOISE;;Mon ardoise;Mon ardoise;[CORE_BASEURL]app=WEBDESK&action=SVCARDOISE;[CORE_BASEURL]app=WEBDESK&action=ESVCARDOISE;0;0;1;1;1;0;;;;;;;;;
 DOC;PORTAL_SERVICE;PS_TODOS;;Mes tâches;Les tâches à nettoyer;[CORE_STANDURL]app=WGCAL&action=WGCAL_TODOVIEW&mo=L;;4;;1;;1;0;WGCAL;;;;;;;;
 DOC;PORTAL_SERVICE;PS_WAITRV;;Rendez-vous proposés;Rendez-vous proposés à accepter ou refuser;[CORE_STANDURL]app=WGCAL&action=WGCAL_WAITRV&mo=L;;3;15;1;;0;0;WGCAL;;;;;;;;
