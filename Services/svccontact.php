@@ -37,16 +37,27 @@ function svccontact(&$action) {
   }
 
   $tco = array();
+  $person = createdoc(getParam("FREEDOM_DB"), "USER", false);
+  $pzone = ((!$usedefaultview)&& isset($person->faddbook_card))?$person->faddbook_card:$ddoc->defaultview;
+  $action->lay->set("pzone", $pzone);
   for ($i=0; $i<$nb; $i++) {
 
-    
-
+    $ident = '<span style="font-weight:bold;">'
+      .      preg_replace('/('.$search.'?)/i','<span class="svcstrsearch">\1</span>', getV($rq[$i], "title"))
+      .      '</span>';
+    if (getV($rq[$i], "us_mail")=="") {
+      $mailtolink = $ident;
+    } else {
+      $mailtolink = setMailtoAnchor(getV($rq[$i], "title")." <".getV($rq[$i], "us_mail").">", 
+				    $ident,
+				    "", "", "", "",
+				    array("class"=>"wd_amail", "target"=>"_blanck"));
+    }
     $tco[] = array(
+		   "pzone" => $pzone,
+		   "mailtolink" =>  $mailtolink,
+		   "id" => $rq[$i]["id"],
 		   "sexe" => getV($rq[$i], "us_civility"),
-		   "title" => preg_replace('/('.$search.'?)/i','<span style="background-color:'.getParam("COLOR_C2").'">\1</span>', getV($rq[$i], "title")),
-		   "mailadd" => getV($rq[$i], "us_mail"),
-		   "hmail" => (getV($rq[$i], "us_mail")=="" ? false : true ),
-
 
 		   "hmob" => (getV($rq[$i],"us_mobile")!="" || getV($rq[$i], "us_homemobile")),
 		   "smob"  => getV($rq[$i], "us_mobile"),

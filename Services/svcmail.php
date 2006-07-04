@@ -94,12 +94,15 @@ if ($acc=="" || $log=="" || $pas=="" || $srv=="" || $pro=="") {
       $sd = convertDH($minfos["newmails"][$ic]->date);
       $rfrom = clearText($minfos["newmails"][$ic]->from);
       $prfrom = preg_replace('/&lt;.*@.*&gt;/','',$rfrom);
-      $ms[] = array( "from" => ($prfrom==""?$rfrom:$prfrom), //clearText($minfos["newmails"][$ic]->from),
-		     "responseto" => $rfrom,
-		     "subject" => clearText($minfos["newmails"][$ic]->subject),
-		     "msubject" => str_replace(" ","%20", clearText($minfos["newmails"][$ic]->subject)),
+      $ms[] = array( "subject" => clearText($minfos["newmails"][$ic]->subject),
 		     "date" => $sd,
-		     "fulldisplay" => ($display==0||$display=="" ? true : false) );
+		     "fulldisplay" => ($display==0||$display=="" ? true : false),
+                     "mailtolink" =>  setMailtoAnchor(($prfrom==""?$rfrom:$prfrom), 
+						      $rfrom,
+						      "Re: ".clearText($minfos["newmails"][$ic]->subject),
+						      "", "", "",
+						      array("class"=>"wd_amail", "target"=>"_blanck"))
+		     );
      }
      if (count($minfos["newmails"])>$maxm)  $action->lay->set("moremails", true);
      $action->lay->setBlockData("mails", $ms);

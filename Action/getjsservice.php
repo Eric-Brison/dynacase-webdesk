@@ -49,7 +49,7 @@ function getjsservice(&$action) {
   $ret = "var svc = { "
     .    "     snum:".$snum.","
     .    "     sid:".$sid.","
-    .    "     stitle:'".getV($svc,"psvc_title")."',"
+    .    "     stitle:'".addslashes(getV($svc,"psvc_title"))."',"
     .    "     vurl:'".getV($svc,"psvc_vurl")."',"
     .    "     eurl:'".getV($svc,"psvc_eurl")."',"
     .    "     purl:'".$sparam."'," 
