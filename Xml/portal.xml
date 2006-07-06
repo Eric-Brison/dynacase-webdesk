@@ -28,6 +28,7 @@ function initPortal() {
   displayServices();
   setTimeout("startRefresh()", 60*1000);
 }
+
 </script>
 [JS:REF]
 
@@ -54,10 +55,12 @@ function initPortal() {
 
 <div id="wdparamset" style="background-color:[COLOR_A9]; border:0px; margin:0px; padding:0px; position:absolute; left:20px; top:20px; display:none" >
 <div class="wdparamb" style="background-color:[COLOR_WHITE];" >
-<div class="wdtitleb" >[TEXT:wd available services]</div>
-[BLOCK catS]<div class="wdtitleb1" >[categorie]</div>
-[BLOCK services[categorie]]<div title="[psvc_descr]" class="app" onmouseover="this.className='app app_over'" onmouseout="this.className='app'" >[IF Icon]<img style="height:16px" class="small_button" title="[psvc_title]" src="[CORE_BASEURL]app=FDL&action=EXPORTFILE&vid=[vid]&docid=[docid]&attrid=[attrid]&index=-1">[ENDIF Icon][IFNOT Icon]&nbsp;&rarr;[ENDIF Icon]&nbsp;[psvc_title]&nbsp<img class="small_button" onclick="addNewService([id]); opencloseParams()" title="[TEXT:wd add service] [psvc_title]" src="[IMG:wd_add_service.gif]"></div>[ENDBLOCK services[categorie]][ENDBLOCK catS]
-<div class="wdbuttonb" style="text-align:right"><img class="small_button" onclick="opencloseParams()" src="[IMG:wd_cancel.gif]" title="[TEXT:wd close]"></div>
+<table>
+<tr><td colspan="[colsCount]" class="wdtitleb" >[TEXT:wd available services]</td></tr>
+<tr style="vertical-align:top">[BLOCK COLS]<td style="width:[colsWidth]%">
+[BLOCK catS[nCols]]<div class="wdtitleb1" >[categorie]</div>
+[BLOCK services[categorie]]<div title="[psvc_descr]" class="app" onmouseover="this.className='app app_over'" onmouseout="this.className='app'" >[IF Icon]<img style="height:16px" class="small_button" title="[psvc_title]" src="[CORE_BASEURL]app=FDL&action=EXPORTFILE&vid=[vid]&docid=[docid]&attrid=[attrid]&index=-1">[ENDIF Icon][IFNOT Icon]&nbsp;&rarr;[ENDIF Icon]&nbsp;[psvc_title]&nbsp<img class="small_button" onclick="addNewService([id]); opencloseParams()" title="[TEXT:wd add service] [psvc_title]" src="[IMG:wd_add_service.gif]"></div>[ENDBLOCK services[categorie]][ENDBLOCK catS[nCols]]</td>[ENDBLOCK COLS]<tr>
+<tr><td colspan="[colsCount]" class="wdbuttonb" style="text-align:right"><img class="small_button" onclick="opencloseParams()" src="[IMG:wd_cancel.gif]" title="[TEXT:wd close]"></td></td></table>
 </div>
 </div>
 

@@ -7,6 +7,7 @@ function portal(&$action) {
   $action->parent->AddCssRef("WEBDESK:webdesk.css", true);
 
   $colcount = getParam("WDK_COLCOUNT",3);
+  $svclist_colcount = getParam("WDK_SVCCOLCOUNT",3);
 
   $action->lay->set("colCount", $colcount); 
 
@@ -16,8 +17,9 @@ function portal(&$action) {
   }
   $action->lay->setBlockData("cols", $cols); 
  
-
+  //
   // List services ordered by category
+  //
   $ts = GetChildDoc(getParam("FREEDOM_DB"), 0, 0, "ALL", array(), $action->user->id, "TABLE", "PORTAL_SERVICE");
   $tserv = array();
   $d = createDoc(getParam("FREEDOM_DB"), "PORTAL_SERVICE", false);
@@ -43,10 +45,27 @@ function portal(&$action) {
       $tserv[getV($v,"psvc_categorie")]["svc"][] = $ts[$k];
     }
   }
-  $action->lay->setBlockData("catS", $tserv); 
-  foreach ($tserv as $k => $v)  {
+  
+  $svcols = array();
+  $curcol = 0;
+  foreach ($tserv as $k => $v) {
     $action->lay->setBlockData("services".$v["categorie"], $v["svc"]); 
+    $svcols[$curcol]["nCols"] = $curcol;
+    $svcols[$curcol]["content"][] = $tserv[$k];
+    $curcol = ($curcol==$svclist_colcount-1?0:$curcol+1);
   }
+  foreach ($svcols as $k => $v) {
+    $action->lay->setBlockData("catS".$k, $v["content"]); 
+  }
+  $action->lay->setBlockData("COLS", $svcols); 
+  $action->lay->set("colsCount", $svclist_colcount);
+  $action->lay->set("colsWidth", (100/$svclist_colcount));
+    
+
+//   $action->lay->setBlockData("catS", $tserv); 
+//   foreach ($tserv as $k => $v)  {
+//     $action->lay->setBlockData("services".$v["categorie"], $v["svc"]); 
+//   }
 
 
   // Initialise user services
