@@ -57,6 +57,7 @@ function getjsservice(&$action) {
     .    "     nextLoad:0," 
     .    "     col:".$scol."," 
     .    "     lin:".$slin.","
+    .    "     open:true,"
     .    "     i:".(getV($svc,"psvc_interactif")==1?"true":"false").","
     .    "     m:false,"
     .    "     e:true,"

@@ -163,8 +163,8 @@ function showService(is) {
       imgcyc = '<img src="[IMG:wd_svc_cyclic.gif]" style="border:0px" title="[TEXT:automatic reload all] '+services[is].rdel+' minutes">';
     }
     cnt += '<table cellspacing="0" cellpadding="0" style="width:100%; border:0px">';
-    cnt += '<tr onclick="showHideSvc('+snum+', true);" onmouseover="showSvcIcons('+snum+')" onmouseout="hideSvcIcons('+snum+')">';
-    cnt += '<td><span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
+    cnt += '<tr onmouseover="showSvcIcons('+snum+')" onmouseout="hideSvcIcons('+snum+')">';
+    cnt += '<td onclick="showHideSvc('+snum+', true);" ><span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
  
     cnt += '<td style="text-align:right">';
     cnt += '<span id="iconbox'+snum+'" style="visibility:hidden">';
