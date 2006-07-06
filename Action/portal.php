@@ -95,7 +95,7 @@ function portal(&$action) {
 		       "rdel" => ($svcrdel[$k]==""?0:$svcrdel[$k]),
 		       "col" => $svccol[$k],
 		       "lin" => $svcline[$k],
-		       "open" => ($svcopen[$k]==1?"1":"0"),
+		       "open" => ($svcopen[$k]==1?"true":"false"),
 		       "interactif" => (getV($sd, "psvc_interactif")==1?"true":"false"),
 		       "mandatory" => "false",
 		       "editable" => "true"		       

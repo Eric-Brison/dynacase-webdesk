@@ -163,7 +163,7 @@ function showService(is) {
       imgcyc = '<img src="[IMG:wd_svc_cyclic.gif]" style="border:0px" title="[TEXT:automatic reload all] '+services[is].rdel+' minutes">';
     }
     cnt += '<table cellspacing="0" cellpadding="0" style="width:100%; border:0px">';
-    cnt += '<tr onmouseover="showSvcIcons('+snum+')" onmouseout="hideSvcIcons('+snum+')">';
+    cnt += '<tr onclick="showHideSvc('+snum+', true);" onmouseover="showSvcIcons('+snum+')" onmouseout="hideSvcIcons('+snum+')">';
     cnt += '<td><span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
  
     cnt += '<td style="text-align:right">';
@@ -174,7 +174,7 @@ function showService(is) {
     cnt += '<img id="gotoU'+snum+'" style="display:none" class="small_button" onclick="moveSvc('+snum+',0,-1)" src="[IMG:wd_go_up.gif]" title="[TEXT:wd go up]">';
     cnt += '<img id="gotoR'+snum+'" style="display:none" class="small_button" onclick="moveSvc('+snum+',1,0)" src="[IMG:wd_go_right.gif]" title="[TEXT:wd go right]">';
     cnt += '&nbsp;';
-    cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc('+snum+');" src="[IMG:wd_svc_hide.gif]" title="[TEXT:wd hide svc content]">';
+    cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc('+snum+',true);" src="[IMG:wd_svc_hide.gif]" title="[TEXT:wd hide svc content]">';
     if (vurl!='')
       cnt += '<img id="irsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="startUtempo(); loadSvcAsync('+snum+', true);endUtempo(); " src="[IMG:wd_svc_reload.gif]" title="[TEXT:wd reload svc content]">';
     if (eurl!='' && iseditable)
@@ -218,7 +218,12 @@ function showService(is) {
       svc.appendChild(csvc);
     }
 
-    
+    if (!services[is].open) {
+      document.getElementById('csvc'+snum).style.display = 'none';
+      document.getElementById('ivsvc'+snum).src = '[IMG:wd_svc_show.gif]';
+      document.getElementById('ivsvc'+snum).title = '[TEXT:wd show svc content]';
+    }
+
     loadSvcAsync(snum);
   }
 }
@@ -347,24 +352,22 @@ function sendForm() {
   editSnum = -1;
 }
 
-function showHideSvc(sid) {
+function showHideSvc(sid, savegeo) {
   var is = getSvc(sid);
   if (is===false) return;
   if (document.getElementById('csvc'+sid)) {
-    if (services[is].display) {
+    if (services[is].open) {
       document.getElementById('csvc'+sid).style.display = 'none';
       document.getElementById('ivsvc'+sid).src = '[IMG:wd_svc_show.gif]';
       document.getElementById('ivsvc'+sid).title = '[TEXT:wd show svc content]';
       services[is].open = false;
-      services[is].display = false;
     } else {
       document.getElementById('csvc'+sid).style.display = 'block';
       document.getElementById('ivsvc'+sid).src = '[IMG:wd_svc_hide.gif]';
       document.getElementById('ivsvc'+sid).title = '[TEXT:wd hide svc content]';
       services[is].open = true;
-      services[is].display = true;
     }
-//     saveGeometry();
+    if (savegeo) saveGeometry();
   }
 }
 
@@ -380,7 +383,7 @@ function saveGeometry() {
   var geo='';
   for (var ic=0; ic<colsDesc.length; ic++) {
     for (var il=0; il<colsDesc[ic].length; il++) {
-      if (services[colsDesc[ic][il]]) geo += (geo==''?'':'|')+services[colsDesc[ic][il]].snum+':'+ic+':'+il+':'+services[colsDesc[ic][il]].open;
+      if (services[colsDesc[ic][il]]) geo += (geo==''?'':'|')+services[colsDesc[ic][il]].snum+':'+ic+':'+il+':'+(services[colsDesc[ic][il]].open?"1":0);
     }
   }
   var xreq = null;
