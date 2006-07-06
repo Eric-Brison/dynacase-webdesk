@@ -3,7 +3,7 @@
 <table cellspacing="0" style="width:100%">
 [BLOCK rssnews]<tr style="vertical-align:top">
 <td>&nbsp;&rarr;&nbsp;</td>
-<td><a target="_blank" href="[link]">[title]</a> <span style="font-size:80%">[date]</span></td></tr>
+<td><a target="_blank" href="[link]">[title]</a> <!-- span style="font-size:80%">[date]</span --></td></tr>
 [IF vfull]<tr><td>&nbsp;</td><td style="text-align:justify" id="rssct[id]">[descr]</td></tr>[ENDIF vfull]
 [ENDBLOCK rssnews]</table>
 [ENDIF rss]

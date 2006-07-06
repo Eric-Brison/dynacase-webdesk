@@ -11,7 +11,7 @@ function svcrss(&$action) {
   }
   $max = GetHttpVars("max", 5);
   $textlg = GetHttpVars("dlg", 100);
-  $vfull = (GetHttpVars("vfull", 1)==1 ? true : false);
+  $vfull = (GetHttpVars("vfull", 0)==1 ? true : false);
 
 
   $rssi =& new XML_RSS($rsslink);
