@@ -33,7 +33,7 @@ var isOpen = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[
 <img src="[IMG:wd_docreceived.gif]" class="small_button" title="[TEXT:wd document received]">(<span id="docreceived" style="font-weight:bold">?</span>)&nbsp;
 <img src="[IMG:wd_mailcount.gif]" onclick="getUnreadMsgCount()" class="small_button" title="[TEXT:wd unread mail count]">(<span id="ureadmail" style="font-weight:bold">?</span>)&nbsp;
 <img src="[IMG:wd_rvcount.gif]" onclick="getWaitingEventCount()" class="small_button" title="[TEXT:wd waiting event count]">(<span id="waitingrv" style="font-weight:bold">?</span>)&nbsp;|
-<span id="curdate">jj:mm:yy hh:mm</span> | [userDomain] | [userRealName] <img id="logo" onclick="document.authent.submit()" title="[TEXT:Click here to login]" class="small_button" src="[IMG:wdconnect.gif]">&nbsp;|</td>
+<span id="curdate">jj:mm:yy hh:mm</span> | [userDomain] | [userRealName] <img id="logo" onclick="document.authent.submit()" title="[TEXT:Click here to login]" class="small_button" src="[IMG:wdconnect.gif]">&nbsp;|&nbsp;<img class="small_button" style="vertical-align:baseline" src="[IMG:aksm.gif]">&nbsp;</td>
 </tr></table>
 </div>
 

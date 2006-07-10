@@ -36,7 +36,7 @@ function initPortal() {
 <body onload="initPortal()" onresize="resizeCols()">
 [BLOCK cols]
 <div id="wdcol[icol]" class="wdcols" style="display:none; float:left;">
-[IF firstCol]<div class="wdtitleb" style="margin:5px; text-align:left; vertical-align:middle"><img class="small_button" src="[IMG:aksm.gif]">&nbsp;[TEXT:wd manage portal]
+[IF firstCol]<div class="wdtitleb" style="margin:5px; text-align:left; vertical-align:middle">[TEXT:wd manage portal]
 <img class="small_button" id="wdparamimg" onclick="opencloseParams()" src="[IMG:wd_open_services.gif]" title="[TEXT:wd show/hide service list]">
 <img class="small_button" onclick="document.location.reload(false)" src="[IMG:wd_portal_reload.gif]" title="[TEXT:wd reload portal view]">
 &nbsp;<img class="small_button" src="[IMG:wd_font_smaller.gif]" title="[TEXT:wd reduce font]" onclick="fontSizer(-1)"><img class="small_button"  src="[IMG:wd_font_bigger.gif]" title="[TEXT:wd  enlarge font]" onclick="fontSizer(1)">
