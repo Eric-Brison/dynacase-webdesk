@@ -37,9 +37,9 @@ function initPortal() {
 [BLOCK cols]
 <div id="wdcol[icol]" class="wdcols" style="display:none; float:left;">
 [IF firstCol]<div class="wdtitleb" style="margin:5px; text-align:left; vertical-align:middle">[TEXT:wd manage portal]
-<img class="small_button" id="wdparamimg" onclick="opencloseParams()" src="[IMG:wd_open_services.gif]" title="[TEXT:wd show/hide service list]">
-<img class="small_button" onclick="document.location.reload(false)" src="[IMG:wd_portal_reload.gif]" title="[TEXT:wd reload portal view]">
-&nbsp;<img class="small_button" src="[IMG:wd_font_smaller.gif]" title="[TEXT:wd reduce font]" onclick="fontSizer(-1)"><img class="small_button"  src="[IMG:wd_font_bigger.gif]" title="[TEXT:wd  enlarge font]" onclick="fontSizer(1)">
+<img class="small_button" id="wdparamimg" onclick="opencloseParams()" src="[IMGF:wd_open_services.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd show/hide service list]">
+<img class="small_button" onclick="document.location.reload(false)" src="[IMGF:wd_portal_reload.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reload portal view]">
+&nbsp;<img class="small_button" src="[IMGF:wd_font_smaller.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reduce font]" onclick="fontSizer(-1)"><img class="small_button"  src="[IMGF:wd_font_bigger.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd  enlarge font]" onclick="fontSizer(1)">
 </div>[ENDIF firstCol]
 </div>[ENDBLOCK cols]
 
@@ -47,8 +47,8 @@ function initPortal() {
 <form name="editsvcf" id="editsvcf" style="display:inline" method="POST" action="[CORE_STANDURL]&app=WEBDESK&action=SVCSAVE">
 <div id="editsvc_c"></div>
 <div class="wdbuttonb" >
-<img class="small_button" onclick="cancelForm()" src="[IMG:wd_cancel.gif]" title="[TEXT:wd close]">
-<img class="small_button" onclick="sendForm()" src="[IMG:wd_save.gif]" title="[TEXT:wd save]">
+<img class="small_button" onclick="cancelForm()" src="[IMGF:wd_cancel.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd close]">
+<img class="small_button" onclick="sendForm()" src="[IMGF:wd_save.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd save]">
 </div>
 </form>
 </div> 
@@ -59,8 +59,8 @@ function initPortal() {
 <tr><td colspan="[colsCount]" class="wdtitleb" >[TEXT:wd available services]</td></tr>
 <tr style="vertical-align:top">[BLOCK COLS]<td style="width:[colsWidth]%">
 [BLOCK catS[nCols]]<div class="wdtitleb1" >[categorie]</div>
-[BLOCK services[categorie]]<div title="[psvc_descr]" class="app" onmouseover="this.className='app app_over'" onmouseout="this.className='app'" >[IF Icon]<img style="height:16px" class="small_button" title="[psvc_title]" src="[CORE_BASEURL]app=FDL&action=EXPORTFILE&vid=[vid]&docid=[docid]&attrid=[attrid]&index=-1">[ENDIF Icon][IFNOT Icon]&nbsp;&rarr;[ENDIF Icon]&nbsp;[psvc_title]&nbsp<img class="small_button" onclick="addNewService([id]); opencloseParams()" title="[TEXT:wd add service] [psvc_title]" src="[IMG:wd_add_service.gif]"></div>[ENDBLOCK services[categorie]][ENDBLOCK catS[nCols]]</td>[ENDBLOCK COLS]<tr>
-<tr><td colspan="[colsCount]" class="wdbuttonb" style="text-align:right"><img class="small_button" onclick="opencloseParams()" src="[IMG:wd_cancel.gif]" title="[TEXT:wd close]"></td></td></table>
+[BLOCK services[categorie]]<div title="[psvc_descr]" class="app" onmouseover="this.className='app app_over'" onmouseout="this.className='app'" >[IF Icon]<img style="height:16px" class="small_button" title="[psvc_title]" src="[CORE_BASEURL]app=FDL&action=EXPORTFILE&vid=[vid]&docid=[docid]&attrid=[attrid]&index=-1">[ENDIF Icon][IFNOT Icon]&nbsp;&rarr;[ENDIF Icon]&nbsp;[psvc_title]&nbsp<img class="small_button" onclick="addNewService([id]); opencloseParams()" title="[TEXT:wd add service] [psvc_title]" src="[IMGF:wd_add_service.gif:0,0,0|COLOR_BLACK]"></div>[ENDBLOCK services[categorie]][ENDBLOCK catS[nCols]]</td>[ENDBLOCK COLS]<tr>
+<tr><td colspan="[colsCount]" class="wdbuttonb" style="text-align:right"><img class="small_button" onclick="opencloseParams()" src="[IMGF:wd_cancel.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd close]"></td></td></table>
 </div>
 </div>
 

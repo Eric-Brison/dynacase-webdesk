@@ -160,7 +160,7 @@ function showService(is) {
     var cnt = '';
     var imgcyc = '';
     if (services[is].rdel>0) {
-      imgcyc = '<img src="[IMG:wd_svc_cyclic.gif]" style="border:0px" title="[TEXT:automatic reload all] '+services[is].rdel+' minutes">';
+      imgcyc = '<img src="[IMGF:wd_svc_cyclic.gif:0,0,0|COLOR_BLACK]" style="border:0px" title="[TEXT:automatic reload all] '+services[is].rdel+' minutes">';
     }
     cnt += '<table cellspacing="0" cellpadding="0" style="width:100%; border:0px">';
     cnt += '<tr onmouseover="showSvcIcons('+snum+')" onmouseout="hideSvcIcons('+snum+')">';
@@ -169,18 +169,18 @@ function showService(is) {
     cnt += '<td style="text-align:right">';
     cnt += '<span id="iconbox'+snum+'" style="visibility:hidden">';
 
-    cnt += '<img id="gotoL'+snum+'" style="display:none" class="small_button" onclick="moveSvc('+snum+',-1,0)" src="[IMG:wd_go_left.gif]" title="[TEXT:wd go left]">';
-    cnt += '<img id="gotoD'+snum+'" style="display:none" class="small_button" onclick="moveSvc('+snum+',0,1)" src="[IMG:wd_go_down.gif]" title="[TEXT:wd go down]">';
-    cnt += '<img id="gotoU'+snum+'" style="display:none" class="small_button" onclick="moveSvc('+snum+',0,-1)" src="[IMG:wd_go_up.gif]" title="[TEXT:wd go up]">';
-    cnt += '<img id="gotoR'+snum+'" style="display:none" class="small_button" onclick="moveSvc('+snum+',1,0)" src="[IMG:wd_go_right.gif]" title="[TEXT:wd go right]">';
+    cnt += '<img id="gotoL'+snum+'" style="display:none" class="small_button" onclick="moveSvc('+snum+',-1,0)" src="[IMGF:wd_go_left.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd go left]">';
+    cnt += '<img id="gotoD'+snum+'" style="display:none" class="small_button" onclick="moveSvc('+snum+',0,1)" src="[IMGF:wd_go_down.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd go down]">';
+    cnt += '<img id="gotoU'+snum+'" style="display:none" class="small_button" onclick="moveSvc('+snum+',0,-1)" src="[IMGF:wd_go_up.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd go up]">';
+    cnt += '<img id="gotoR'+snum+'" style="display:none" class="small_button" onclick="moveSvc('+snum+',1,0)" src="[IMGF:wd_go_right.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd go right]">';
     cnt += '&nbsp;';
-    cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc('+snum+',true);" src="[IMG:wd_svc_hide.gif]" title="[TEXT:wd hide svc content]">';
+    cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc('+snum+',true);" src="[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd hide svc content]">';
     if (vurl!='')
-      cnt += '<img id="irsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="startUtempo(); loadSvcAsync('+snum+', true);endUtempo(); " src="[IMG:wd_svc_reload.gif]" title="[TEXT:wd reload svc content]">';
+      cnt += '<img id="irsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="startUtempo(); loadSvcAsync('+snum+', true);endUtempo(); " src="[IMGF:wd_svc_reload.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reload svc content]">';
     if (eurl!='' && iseditable)
-      cnt += '<img id="iesvc'+snum+'" style="margin-left:2px" class="small_button" onclick="editSvc('+snum+');" src="[IMG:wd_svc_edit.gif]" title="[TEXT:wd edit svc content]">';
+      cnt += '<img id="iesvc'+snum+'" style="margin-left:2px" class="small_button" onclick="editSvc('+snum+');" src="[IMGF:wd_svc_edit.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd edit svc content]">';
     if (!ismandatory)
-      cnt += '<img id="idsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="deleteSvc('+snum+');" src="[IMG:wd_svc_delete.gif]" title="[TEXT:wd delete svc]">';
+      cnt += '<img id="idsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="deleteSvc('+snum+');" src="[IMGF:wd_svc_delete.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd delete svc]">';
     cnt += '</span>';
     cnt += '</td></tr></table>';
     tsvc.innerHTML = cnt;
@@ -220,7 +220,7 @@ function showService(is) {
 
     if (!services[is].open) {
       document.getElementById('csvc'+snum).style.display = 'none';
-      document.getElementById('ivsvc'+snum).src = '[IMG:wd_svc_show.gif]';
+      document.getElementById('ivsvc'+snum).src = '[IMGF:wd_svc_show.gif:0,0,0|COLOR_BLACK]';
       document.getElementById('ivsvc'+snum).title = '[TEXT:wd show svc content]';
     }
 
@@ -358,12 +358,12 @@ function showHideSvc(sid, savegeo) {
   if (document.getElementById('csvc'+sid)) {
     if (services[is].open) {
       document.getElementById('csvc'+sid).style.display = 'none';
-      document.getElementById('ivsvc'+sid).src = '[IMG:wd_svc_show.gif]';
+      document.getElementById('ivsvc'+sid).src = '[IMGF:wd_svc_show.gif:0,0,0|COLOR_BLACK]';
       document.getElementById('ivsvc'+sid).title = '[TEXT:wd show svc content]';
       services[is].open = false;
     } else {
       document.getElementById('csvc'+sid).style.display = 'block';
-      document.getElementById('ivsvc'+sid).src = '[IMG:wd_svc_hide.gif]';
+      document.getElementById('ivsvc'+sid).src = '[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]';
       document.getElementById('ivsvc'+sid).title = '[TEXT:wd hide svc content]';
       services[is].open = true;
     }
@@ -591,11 +591,11 @@ function opencloseParams() {
     var dp = document.getElementById('wdparamset');
     var dpi = document.getElementById('wdparamimg');
     if (paramIsOpen) {
-      if (dpi) dpi.src = "[IMG:wd_open_services.gif]";
+      if (dpi) dpi.src = "[IMGF:wd_open_services.gif:0,0,0|COLOR_BLACK]";
       dp.style.display = 'none';
       paramIsOpen = false;
     } else {
-      if (dpi) dpi.src = "[IMG:wd_close_services.gif]";
+      if (dpi) dpi.src = "[IMGF:wd_close_services.gif:0,0,0|COLOR_BLACK]";
       dp.style.display = 'block';
       paramIsOpen = true;
    }
