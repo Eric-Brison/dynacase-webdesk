@@ -25,7 +25,18 @@ a, a:visited, .wd_alink  {
 
 .wdhead { font-weight:bold; border-width:1px; border-style:none none solid none; border-color:[COLOR_A8];  }
 .wdtitle { border-width:1px; border-style:none none dotted none; border-color:[COLOR_A8];  }
-.wdmenu { border-style:none solid none none; border-color:[COLOR_A8]; border-width:1px   }
+.wdmenu { 
+  border-style:none solid none none; border-color:[COLOR_A8]; border-width:1px;
+  position:absolute;width:auto
+}
+.wdmenufixed { 
+  border-style:none solid none none; border-color:[COLOR_A8]; border-width:1px;
+  width:auto;
+  float:left;
+}
+#wdbody iframe {
+  width:100%;
+}
 .wdcols { border-color:[COLOR_A8]; border-style:none none none dotted; padding:0px; border-width:1px; height:100%; }
 
 .wdsvc { margin: 6px 3px 10px 3px; }
