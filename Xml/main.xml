@@ -51,7 +51,7 @@ var isOpen = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[
 </div>
 
 
-<div id="wdbody" style="float:left;  border:0px solid red; width:auto;">
+<div id="wdbody" style="float:left; background:lightblue; border:0px solid red; width:auto;">
 [BLOCK appListBody]<iframe id="fbody[id]" name="fbody[id]"  style="display:none; border:0px;" src="about:blank" scrolling="needed"></iframe>
 [ENDBLOCK appListBody]
 [BLOCK specialAppListBody]<iframe id="fbody[id]" name="fbody[id]"  style="display:none; border:0px;" src="about:blank" scrolling="needed"></iframe>
