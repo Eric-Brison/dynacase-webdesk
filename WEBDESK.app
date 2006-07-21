@@ -12,7 +12,8 @@ $app_desc= array (
 );
 
 $app_acl = array (
-  array ( "name" => "USER", "description" => N_("webdesk access"), "group_default"  => "Y" )
+		  array ( "name" => "USER", "description" => N_("webdesk access"), "group_default"  => "Y" ),
+		  array ( "name" => "ADMIN", "description" => N_("webdesk admin") )
 );
 
 include_once("Lib.Prefix.php");
@@ -25,6 +26,7 @@ $action_desc = array (
   array( "acl" => "USER",  "name" => "PORTAL",      "short_name" =>N_("portal page"), "toc" => "N", "root" =>"N"),
   array( "acl" => "USER",  "name" => "PREFERENCES", "short_name" =>N_("preferences page"), "toc" => "N", "root" =>"N"),
   array( "acl" => "ADMIN", "name" => "ADMIN",       "short_name" =>N_("administration page"), "toc" => "N", "root" =>"N"),
+  array( "acl" => "ADMIN", "name" => "ADMINS",      "short_name" =>N_("list all admin pages"), "toc" => "N", "root" =>"N"),
 
   array( "acl" => "ADMIN",  "name" => "APPPREFS", "short_name" =>N_("webdesk general preferences"), "toc" => "N", "root" =>"N"),
   array( "acl" => "ADMIN",  "name" => "APPADMIN", "short_name" =>N_("webdesk general admnistration"), "toc" => "N", "root" =>"N"),

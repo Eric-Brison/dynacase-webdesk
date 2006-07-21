@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: preferences.php,v 1.2 2006/07/21 15:28:17 eric Exp $
+ * @version $Id: admins.php,v 1.1 2006/07/21 15:28:17 eric Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WEBDESK
@@ -14,7 +14,7 @@
 include_once('Class.QueryDb.php');
 include_once('Class.Application.php');
 
-function preferences(&$action) {
+function admins(&$action) {
 
   $action->parent->AddCssRef("WEBDESK:webdesk.css", true);
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/subwindow.js");  
@@ -30,8 +30,8 @@ function preferences(&$action) {
   if ($query->nb > 0) {
     $i=0;
     foreach($list as $k=>$appli) {
-      if ($action->Exists("APPPREFS", $appli["id"])) {
-	if ($action->canExecute("APPPREFS", $appli["id"])=="") {
+      if ($action->Exists("ADMIN", $appli["id"])) {
+	if ($action->canExecute("ADMIN", $appli["id"])=="") {
 	  $appli["description"]= $action->text($appli["description"]); // translate
 	  $appli["short_name"]= $action->text($appli["short_name"]); // translate
 	  $appli["descriptionsla"]= addslashes($appli["description"]); // because its in between '' in layout
@@ -40,7 +40,7 @@ function preferences(&$action) {
 	  $appli["iconsrc"]=$action->GetImageUrl($appli["icon"]);
 	  if ($appli["iconsrc"]=="CORE/Images/noimage.png") $appli["iconsrc"]=$appli["name"]."/Images/".$appli["icon"];
 	  $appli["params"] = "";
-	  $appli["action"] = "APPPREFS";
+	  $appli["action"] = "ADMIN";
 	  $tab[$i++]=$appli;
 	}
       }

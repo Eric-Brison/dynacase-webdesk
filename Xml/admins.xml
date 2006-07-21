@@ -25,14 +25,14 @@ function selectApp(id, url) {
 </script>
 </head>
 <body>
-<table width="95%"><tr style="vertical-align:top">
-<td style="width:25%;">
+<table width="98%" class="transparent"><tr style="vertical-align:top">
+<td style="width:200px;">
 <div class="wdparamb">[BLOCK applist]
 <div id="app[id]" title="[description]" class="app" onclick="selectApp([id], '[CORE_STANDURL]&app=[name]&action=[action]');">
 <img src="[iconsrc]" style="width:16px;">&nbsp;[short_name]
 </div>[ENDBLOCK applist]</div>
 </td>
-<td style="width:70%"><iframe id="appzone" name="appzone" style="display:none; height:100%; width:100%" src="about:blank"></iframe>
+<td ><iframe id="appzone" name="appzone" style="display:none;  height:100%; width:100%" src="about:blank"></iframe>
 </tr></table>
 </body>
 </html>

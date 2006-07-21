@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: main.php,v 1.4 2006/06/22 15:23:47 marc Exp $
+ * @version $Id: main.php,v 1.5 2006/07/21 15:28:17 eric Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WEBDESK
@@ -79,13 +79,13 @@ function main(&$action) {
 			 "description" => _("Webdesk preferences"), 
 			 "params" => "&action=PREFERENCES",
 			 "iconsrc" => "[IMG:wd_preferences.gif]" );
-  $cexec = $action->canExecute("ADMIN", $action->parent->id);
+  $cexec = $action->canExecute("ADMINS", $action->parent->id);
   if ($cexec=="") {
     $specialapp[] = array( "id" => "100020", 
 			   "short_name" => _("Administration"), 
 			   "description" => _("Webdesk administration"), 
 			   "name" => "WEBDESK", 
-			   "params" => "&action=ADMIN",
+			   "params" => "&action=ADMINS",
 			   "iconsrc" => "[IMG:wd_admin.gif]" );
   }
   $action->lay->setBlockData("specialAppList", $specialapp);
