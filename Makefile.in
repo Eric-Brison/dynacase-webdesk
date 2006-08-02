@@ -1,5 +1,5 @@
 # ============================================
-# $Id: Makefile.in,v 1.7 2006/06/30 09:40:25 marc Exp $
+# $Id: Makefile.in,v 1.8 2006/08/02 10:02:58 eric Exp $
 # ============================================
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@
@@ -25,7 +25,7 @@ DISTFILES += $(SUBDIR) \
 	$(PACKAGE).app \
         RELEASE VERSION \
 	71_webdesk.conf \
-	Freedom/webdesk.csv \
+	Freedom/webdesk.csv Freedom/webdesk-init.csv \
 	phpweather-default.php 
 
 $(pubdir)/$(appname)/71_webdesk.conf : 71_webdesk.conf
@@ -34,7 +34,10 @@ $(pubdir)/$(appname)/71_webdesk.conf : 71_webdesk.conf
 $(pubdir)/$(appname)/webdesk.csv : Freedom/webdesk.csv 
 	cp Freedom/webdesk.csv $(pubdir)/$(appname)
 
-publish: $(pubdir)/$(appname)/webdesk.csv \
+$(pubdir)/$(appname)/webdesk-init.csv : Freedom/webdesk-init.csv 
+	cp $< $(pubdir)/$(appname)
+
+publish: $(pubdir)/$(appname)/webdesk.csv $(pubdir)/$(appname)/webdesk-init.csv \
 	$(pubdir)/$(appname)/71_webdesk.conf
 
 clean:

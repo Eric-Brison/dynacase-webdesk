@@ -9,6 +9,7 @@ fi
 #post installation
 #------------------------------
 if [ "$1" = "I" ] ; then
+  $wpub/wsh.php --api=freedom_import --file=$wpub/WEBDESK/webdesk-init.csv
   $wpub/wsh.php --api=freedom_import --file=$wpub/WEBDESK/webdesk.csv
 
 
