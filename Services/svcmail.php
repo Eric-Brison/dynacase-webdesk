@@ -154,28 +154,6 @@ function getMbox($mbox, $login, $pass) {
 }
 
 function convertDH($id) {
-  //0         111111111122222222223 
-  //0123456789012345678901234567890
-  //Tue, 23 May 2006 15:43:03 +0200
-  $hou = substr($id, 17, 2);
-  $min = substr($id, 20, 2);
-  $day = substr($id, 5, 2);
-  $yea = substr($id, 12, 4);
-  $tiz = substr($id, 22, 5);
-  switch(substr($id,8,3)) {
-  case "Jan": $mon = 1; break;
-  case "Feb": $mon = 2; break;
-  case "Mar": $mon = 3; break;
-  case "Apr": $mon = 4; break;
-  case "May": $mon = 5; break;
-  case "Jun": $mon = 6; break;
-  case "Jul": $mon = 7; break;
-  case "Aug": $mon = 8; break;
-  case "Sep": $mon = 9; break;
-  case "Oct": $mon = 10; break;
-  case "Nov": $mon = 11; break;
-  case "Dec": $mon = 12; break;
-  }
-  return strftime("%d/%m/%y %H:%M", mktime($hou,$min,0,$mon,$day,$yea,$tiz));
+  return strftime("%d/%m/%y %H:%M",strtotime($id));
 }
 ?>
