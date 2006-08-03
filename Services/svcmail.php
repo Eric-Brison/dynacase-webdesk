@@ -97,8 +97,8 @@ if ($acc=="" || $log=="" || $pas=="" || $srv=="" || $pro=="") {
       $ms[] = array( "subject" => clearText($minfos["newmails"][$ic]->subject),
 		     "date" => $sd,
 		     "fulldisplay" => ($display==0||$display=="" ? true : false),
-                     "mailtolink" =>  setMailtoAnchor(($prfrom==""?$rfrom:$prfrom), 
-						      $rfrom,
+                     "mailtolink" =>  setMailtoAnchor($rfrom,
+                                                      ($prfrom==""?$rfrom:$prfrom), 
 						      "Re: ".clearText($minfos["newmails"][$ic]->subject),
 						      "", "", "",
 						      array("class"=>"wd_amail", "target"=>"_blanck"))
