@@ -26,18 +26,6 @@ function endUtempo() {
   unglobalcursor();
 }
 
-function resizeCols() {
-  var icol = 0;
-  var bodW = getFrameWidth() - 20;
-  var colW = parseInt(bodW/colCount);
-  if (isIE) colW -= (colCount*3);
-  for (icol=0; icol<colCount; icol++) {
-    
-    document.getElementById('wdcol'+icol).style.width = colW;
-    document.getElementById('wdcol'+icol).style.display = 'block';
-  }
-}
-
 function addNewService(sid) {
   startUtempo(); 
   var xreq = null;

@@ -19,7 +19,6 @@ var services = new Array();
 var initSize = parseInt('[SIZE_MEDIUM]');
 
 function initPortal() {
-  resizeCols();
   [BLOCK USvc]
   services[services.length] = { snum:[snum], sid:[sid], stitle:'[stitle]', 
 				vurl:'[vurl]', eurl:'[eurl]', purl:'[purl]',
@@ -33,15 +32,20 @@ function initPortal() {
 [JS:REF]
 
 </head>
-<body onload="initPortal()" onresize="resizeCols()">
+<body onload="initPortal()">
+
+<table cellspacing="0" style="width:100%">
+<tr>
 [BLOCK cols]
-<div id="wdcol[icol]" class="wdcols" style="display:none; float:left;">
+<td  id="wdcol[icol]" class="wdcols" style="width:33%;">
 [IF firstCol]<div class="wdtitleb" style="margin:5px; text-align:left; vertical-align:middle">[TEXT:wd manage portal]
 <img class="small_button" id="wdparamimg" onclick="opencloseParams()" src="[IMGF:wd_open_services.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd show/hide service list]">
 <img class="small_button" onclick="document.location.reload(false)" src="[IMGF:wd_portal_reload.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reload portal view]">
 &nbsp;<img class="small_button" src="[IMGF:wd_font_smaller.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reduce font]" onclick="fontSizer(-1)"><img class="small_button"  src="[IMGF:wd_font_bigger.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd  enlarge font]" onclick="fontSizer(1)">
 </div>[ENDIF firstCol]
-</div>[ENDBLOCK cols]
+</td>[ENDBLOCK cols]
+</tr></table>
+
 
 <div id="editsvc" style="padding:5px; margin:5px; border:3px solid [COLOR_A9]; display:none; position:relative">
 <form name="editsvcf" id="editsvcf" style="display:inline" method="POST" action="[CORE_STANDURL]&app=WEBDESK&action=SVCSAVE">
