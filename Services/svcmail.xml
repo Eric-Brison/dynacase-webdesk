@@ -4,7 +4,7 @@
 <div class="wdtitleb1" title="[account] ([login]/[server]) [spec]">[account] ([login]/[server]) : <span style="font-weight:bold">[new]</span>/[old]</div>
 
 [IF moremails]<div class="tdmail" style="font-style:italic">les [nfirst] derniers</div>[ENDIF moremails]
-[BLOCK mails]<div class="tdmail" style="margin:0px 0px 0px 0px" title="[subject]">&rarr;&nbsp;
+[BLOCK mails]<div class="tdmail" style="margin:0px 0px 0px 0px" title="[subject]"><img class="small_button" src="[IMG:wd_mail.gif]">
 [mailtolink]&nbsp;<span style="font-size:85%;">([date])</span>
 [IF fulldisplay]<div style="margin:0px 0px 0px 10px">[subject]</div>[ENDIF fulldisplay]
 </div>[ENDBLOCK mails][ENDIF accset]
