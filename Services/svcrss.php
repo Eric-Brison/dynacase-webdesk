@@ -12,6 +12,7 @@ function svcrss(&$action) {
   $max = GetHttpVars("max", 5);
   $textlg = GetHttpVars("dlg", 100);
   $vfull = (GetHttpVars("vfull", 0)==1 ? true : false);
+  $stitle = (GetHttpVars("stitle", 0)==1 ? true : false);
 
 
   $rssi =& new XML_RSS($rsslink);
@@ -36,6 +37,7 @@ function svcrss(&$action) {
     $action->lay->set("msg", _("[TEXT:no information available, verify your server have http access to internet and/or check link please...]"). '(<a href="'.$rsslink.'">'.$rsslink.'</a>)');
     return;
   }
+  $action->lay->set("showtitle", $stitle);
   $action->lay->set("msg",htmlentities(utf8_decode($rssi->channel["title"])));
   $action->lay->setBlockData("rssnews", $tr);
 }
