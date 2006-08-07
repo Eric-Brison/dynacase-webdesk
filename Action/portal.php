@@ -3,7 +3,9 @@
 include_once('FDL/Lib.Dir.php');
 function portal(&$action) {
    
-  $action->parent->AddJsRef("WEBDESK:portal.js", true);
+   $jslay = new Layout("WEBDESK/Layout/portal.js", $action);
+   $action->parent->AddJsCode($jslay->gen());
+//   $action->parent->AddJsRef("WEBDESK:portal.js", true);
   $action->parent->AddCssRef("WEBDESK:webdesk.css", true);
 
   $colcount = getParam("WDK_COLCOUNT",3);

@@ -38,7 +38,7 @@ a, a:visited, .wd_alink  {
 #wdbody iframe {
   width:100%;
 }
-.wdcols { empty-cells: show; vertical-align:top; border-color:[COLOR_A8]; border-style:none none none dotted; padding:0px; border-width:1px; }
+.wdcols { empty-cells: show; vertical-align:top; border-color:[COLOR_A8]; border-style:none none none none; padding:0px; border-width:1px; }
 
 .wdsvc { margin: 6px 3px 10px 3px; }
 

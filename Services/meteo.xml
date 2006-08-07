@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<freedomsvc uptime="[datebull]" title="[location]"><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?><freedomsvc uptime="[datebull]" title="[location]"><![CDATA[
 <div style="[IF data]background-image:url('[bgimg]'); background-repeat:no-repeat;background-position:100% 0%[ENDIF data]" title="[IF data]Bulletin du [ENDIF data][datebull]">
 [IF data]<div style="background-color:transparent;"><span style="font-weight:bold; font-size:200%;" title="Température [temp] °C (rosée [rosee]°c, ressentie [ressentie]°c)">[temp]&deg;c</span> </div>
 [IF fulldata]<div>

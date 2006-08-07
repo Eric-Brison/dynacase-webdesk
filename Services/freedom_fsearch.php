@@ -4,6 +4,9 @@ include_once('FDL/Lib.Dir.php');
 
 function freedom_fsearch(&$action) {
 
+  header('Content-type: text/xml; charset=utf-8');
+  $action->lay->setEncoding("utf-8");
+ 
   $dbaccess = getParam("FREEDOM_DB");
 
   // Interface init
@@ -40,5 +43,6 @@ function freedom_fsearch(&$action) {
   $action->lay->set("msg", count($rdoc)." document".($pd?"s":"")." trouvé".($pd?"s":"").", les $max premiers...");
   $action->lay->setBlockData("docs", $tdocs);
 
+  $action->lay->set("uptime", strftime("%H:%M %d/%m/%Y", time()));
   return;
 }

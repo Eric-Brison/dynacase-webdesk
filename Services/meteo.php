@@ -1,6 +1,9 @@
 <?php
 function meteo(&$action) {
 
+  header('Content-type: text/xml; charset=utf-8');
+  $action->lay->setEncoding("utf-8");
+ 
   require_once($_SERVER["DOCUMENT_ROOT"]."/phpweather/phpweather.php");
   require(PHPWEATHER_BASE_DIR . "/output/pw_images.php");
 
@@ -38,20 +41,6 @@ function meteo(&$action) {
 
   $img = $icons->get_sky_image();
   $action->lay->set("bgimg", "/phpweather/".$img);
-
-  //echo "Metar: $metar <pre>\n";
-  //print_r($data);
-  //echo "</pre>\n";
-  
-  //echo '<p>This is the current weather in ' .
-          //$weather->get_location() . ":</p>\n<blockquote>\n" .
-          //$text->print_pretty() . "\n</blockquote>\n" .
-          //"\n</blockquote>\n" .
-          //"<p>The raw METAR is <code>" .
-          //$weather->get_metar() . "</code></p>\n";
-//
-
-  if ($dd) print_r2($data);
 
   $action->lay->set("location", $weather->get_location());
 
@@ -93,7 +82,5 @@ function meteo(&$action) {
 
   $action->lay->set("metar", $data["metar"]);
   // Infos bulletin
- header('Content-type: text/xml; charset=utf-8');
- $action->lay->setEncoding("utf-8");
 }
 ?>

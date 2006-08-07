@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<freedomsvc uptime="[uptime]" title="Mon ardoise"><![CDATA[
 <style>
 .ardoise {
 font-weight:bold;
@@ -13,3 +15,4 @@ padding:0px 5px 0px 5px;
 <textarea style="border:0px solid #CFCFCF; padding:0px 5px 0px 5px; width:100%; background-image: url('[IMG:s_ardoise.gif]'); color:[craie]; font-weight:bold" name="content" rows="[cline]">[content]</textarea>
 <div style="text-align:right; background-image: url('[IMG:s_ardoise.gif]'); color:[craie];" ><input name="ardsave" type="button" value="Sauver" onclick="submitService(event)" title="Sauver le contenu de l'ardoise" style="border:0px; text-align:right; background-color:black; color:[craie];"></div>
 </div>
+]]></freedomsvc>

@@ -550,14 +550,25 @@ function loadSvcAsync(sid, shl, params) {
 	if (dreq.status!=200) {
 	  document.getElementById('csvc'+sid).innerHTML = '[TEXT:wd error retrieving content] (HTTP Code '+dreq.status+')';	   
 	} else { 
-          if (dreq.responseXML) {
+
+	  var isxml = false;
+	  if (dreq.responseXML) {
 	    var elts = dreq.responseXML.getElementsByTagName("freedomsvc");
-            var uptime = elts[0].getAttribute("uptime");
-            var title = elts[0].getAttribute("title");
-	    document.getElementById('tsvcti'+sid).innerHTML = title;
-	    document.getElementById('tsvcti'+sid).title = 'Mise à jour : '+uptime;
-	    document.getElementById('csvc'+sid).innerHTML = '<div>'+elts[0].firstChild.nodeValue+'</div>';
-          } else document.getElementById('csvc'+sid).innerHTML = '<div>'+dreq.responseText+'</div>';
+	    if (typeof elts[0] == "object") {
+	      var elts = dreq.responseXML.getElementsByTagName("freedomsvc");
+	      var uptime = elts[0].getAttribute("uptime");
+	      var title = elts[0].getAttribute("title");
+	      document.getElementById('tsvcti'+sid).innerHTML = title;
+	      document.getElementById('tsvcti'+sid).title = 'Mise à jour : '+uptime;
+	      document.getElementById('csvc'+sid).innerHTML = '<div>'+elts[0].firstChild.nodeValue+'</div>';
+	      isxml = true;
+	    }
+          } 
+	  
+	  if (!isxml) {
+	    alert('no valid XML content received');
+	  }
+	  
 	  if (services[is].rdel>0) {
 	    var dat = new Date();
 	    services[is].nextLoad = dat.getTime() + (services[is].rdel*60*1000);

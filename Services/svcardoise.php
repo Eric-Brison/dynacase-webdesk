@@ -1,6 +1,9 @@
 <?php
 function svcardoise(&$action) {
 
+  header('Content-type: text/xml; charset=utf-8');
+  $action->lay->setEncoding("utf-8");    
+  $action->lay->set("uptime", strftime("%A %d %B %Y, %H:%M", time()));
 
   $craie  = GetHttpVars("craie", "white");  
   $cline = GetHttpVars("cline", 5);
