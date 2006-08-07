@@ -111,7 +111,10 @@ if ($acc=="" || $log=="" || $pas=="" || $srv=="" || $pro=="") {
    $action->lay->set("showmsg", true);
    $action->lay->set("msgtext", _("error retrieving mails")."[".$minfos["error"]."]");
  }
- return;   
+ $action->lay->set("uptime", strftime("%X %x", time()));
+ header('Content-type: text/xml; charset=utf-8');
+ echo $action->lay->gen();
+ exit;
 }
 
 function clearText($s) {

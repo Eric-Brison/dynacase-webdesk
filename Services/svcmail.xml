@@ -1,7 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<freedomsvc uptime="[uptime]" title="[account] : [new]/[old]">
+<![CDATA[
 [IF OnlyCount]var result='[new]';[ENDIF OnlyCount]
 [IFNOT OnlyCount]
 [IF accset]
-<div class="wdtitleb1" title="[account] ([login]/[server]) [spec]">[account] ([login]/[server]) : <span style="font-weight:bold">[new]</span>/[old]</div>
 
 [IF moremails]<div class="tdmail" style="font-style:italic">les [nfirst] derniers</div>[ENDIF moremails]
 [BLOCK mails]<div class="tdmail" style="margin:0px 0px 0px 0px" title="[subject]"><img class="small_button" src="[IMG:wd_mail.gif]">
@@ -10,3 +12,5 @@
 </div>[ENDBLOCK mails][ENDIF accset]
 [IF showmsg]<div style="font-size:80%; border:1px solid red">[msgtext]</div>[ENDIF showmsg]
 [ENDIF OnlyCount]
+]]>
+</freedomsvc>

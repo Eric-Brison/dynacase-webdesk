@@ -551,7 +551,18 @@ function loadSvcAsync(sid, shl, params) {
 	if (dreq.status!=200) {
 	  document.getElementById('csvc'+sid).innerHTML = '[TEXT:wd error retrieving content] (HTTP Code '+dreq.status+')';	   
 	} else { 
-	  document.getElementById('csvc'+sid).innerHTML = '<div>'+dreq.responseText+'</div>';
+          if (dreq.responseXML) {
+	    var elts = dreq.responseXML.getElementsByTagName("freedomsvc");
+            var uptime = elts[0].getAttribute("uptime");
+            var title = elts[0].getAttribute("title");
+
+	    alert(elts[0].firstChild.nodeValue);
+            var content = 'content type='+elts[0].firstChild.nodeType+' :: '+elts[0].firstChild.toString();
+	    
+	    document.getElementById('tsvcti'+sid).innerHTML = title;
+	    document.getElementById('tsvcti'+sid).title = 'Mise à jour : '+uptime;
+	    document.getElementById('csvc'+sid).innerHTML = '<div>'+content+'</div>';
+          } else document.getElementById('csvc'+sid).innerHTML = '<div>'+dreq.responseText+'</div>';
 	  if (services[is].rdel>0) {
 	    var dat = new Date();
 	    services[is].nextLoad = dat.getTime() + (services[is].rdel*60*1000);

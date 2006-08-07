@@ -26,10 +26,10 @@ var isOpen = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[
 
 
 <div id="wdtitle" class="wdhead">
-<table style="width:100%"><tr>
-<td style="text-align:left; "><img onclick="isOpen = !isOpen; computefbodywh();" style="vertical-align:bottom;"  class="small_button" title="[TEXT:wd open/close menu]" id="wdmbarmng" src="[IFNOT IsMBarStatic][IMGF:wd_open_bar.gif:0,0,0|COLOR_BLACK][ENDIF IsMBarStatic][IF IsMBarStatic][IMGF:wd_right_bar.gif:0,0,0|COLOR_BLACK][ENDIF IsMBarStatic]"> <span id="wdappsel">Agenda</span></td>
+<table style="width:100%"><tr style="vertical-align:top">
+<td style="text-align:left;"><img onclick="isOpen = !isOpen; computefbodywh();" style="vertical-align:bottom;"  class="small_button" title="[TEXT:wd open/close menu]" id="wdmbarmng" src="[IFNOT IsMBarStatic][IMGF:wd_open_bar.gif:0,0,0|COLOR_BLACK][ENDIF IsMBarStatic][IF IsMBarStatic][IMGF:wd_right_bar.gif:0,0,0|COLOR_BLACK][ENDIF IsMBarStatic]"> <span id="wdappsel">Agenda</span></td>
 <td style="text-align:center">[title]</td>
-<td style="text-align:right">|&nbsp;
+<td style="text-align:right;">|&nbsp;
 <img src="[IMGF:wd_docreceived.gif:0,0,0|COLOR_BLACK]" class="small_button" title="[TEXT:wd document received]"><span id="docreceived" style="font-weight:bold">?</span>&nbsp;
 <img src="[IMGF:wd_mailcount.gif:0,0,0|COLOR_BLACK]" onclick="getUnreadMsgCount()" class="small_button" title="[TEXT:wd unread mail count]"><span id="ureadmail" style="font-weight:bold">?</span>&nbsp;
 <img src="[IMGF:wd_rvcount.gif:0,0,0|COLOR_BLACK]" onclick="getWaitingEventCount()" class="small_button" title="[TEXT:wd waiting event count]"><span id="waitingrv" style="font-weight:bold">?</span>&nbsp;|
