@@ -6,20 +6,28 @@ var updateInfosTimeout = 5 * 60 * 1000;
 function initWebdesk() {
   getUnreadMsgCount();
   getWaitingEventCount();
+  getAffectDocCount();
   computefbodywh();
 }
   
 function getUnreadMsgCount() {
-  var uu = 'index.php?sole=A&app=WEBDESK&action=SVCLOCALMAIL&oc=Y';
+  var corestandurl=window.location.pathname+'?sole=Y&';
+  var uu = corestandurl+'app=WEBDESK&action=SVCLOCALMAIL&oc=Y';
   updateInfos(uu, 'ureadmail', "getUnreadMsgCount()", updateInfosTimeout);
 }
   
 
 function getWaitingEventCount() {
-  var uu = 'index.php?sole=Y&app=WGCAL&action=WGCAL_WAITRV&mo=L&oc=Y';
+  var corestandurl=window.location.pathname+'?sole=Y&';
+  var uu = corestandurl+'app=WGCAL&action=WGCAL_WAITRV&mo=L&oc=Y';
   updateInfos(uu, 'waitingrv', "getWaitingEventCount()", updateInfosTimeout);
 }
   
+function getAffectDocCount() {
+  var corestandurl=window.location.pathname+'?sole=Y&';
+  var uu = corestandurl+'app=WEBDESK&action=COUNTAFFECTDOC';
+  updateInfos(uu, 'docreceived', "getAffectDocCount()", updateInfosTimeout);
+}
 
 function updateInfos(url, tag, fct, to) {
 
