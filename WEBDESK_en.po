@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-23 07:40+0200\n"
+"POT-Creation-Date: 2006-08-07 18:31+0200\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -40,6 +40,9 @@ msgstr ""
 msgid "webdesk access"
 msgstr ""
 
+msgid "webdesk admin"
+msgstr ""
+
 msgid "webdesk main page"
 msgstr ""
 
@@ -50,6 +53,9 @@ msgid "preferences page"
 msgstr ""
 
 msgid "administration page"
+msgstr ""
+
+msgid "list all admin pages"
 msgstr ""
 
 msgid "webdesk general preferences"
@@ -112,16 +118,22 @@ msgstr ""
 msgid "service edit freedom search in familie"
 msgstr ""
 
-msgid "ardoise content"
+msgid "generic service"
+msgstr ""
+
+msgid "number of affected document"
+msgstr ""
+
+msgid "preview of theme"
+msgstr ""
+
+msgid "without category"
 msgstr ""
 
 msgid "no account defined"
 msgstr ""
 
 msgid "error retrieving mails"
-msgstr ""
-
-msgid "without category"
 msgstr ""
 
 msgid "wd no rss link given"
@@ -141,49 +153,13 @@ msgstr ""
 msgid "wd freedom search, no  result"
 msgstr ""
 
-msgid "wd manage portal"
+msgid "portal columns count"
 msgstr ""
 
-msgid "wd show/hide service list"
+msgid "services list columns count"
 msgstr ""
 
-msgid "wd reload portal view"
-msgstr ""
-
-msgid "wd reduce font"
-msgstr ""
-
-msgid "wd  enlarge font"
-msgstr ""
-
-msgid "wd save"
-msgstr ""
-
-msgid "wd available services"
-msgstr ""
-
-msgid "wd add service"
-msgstr ""
-
-msgid "wd close"
-msgstr ""
-
-msgid "wd open/close menu"
-msgstr ""
-
-msgid "wd document received"
-msgstr ""
-
-msgid "wd unread mail count"
-msgstr ""
-
-msgid "wd waiting event count"
-msgstr ""
-
-msgid "Click here to login"
-msgstr ""
-
-msgid "wd fixe/release menu"
+msgid "ardoise content"
 msgstr ""
 
 msgid "wd error add service"
@@ -225,6 +201,9 @@ msgstr ""
 msgid "wd url for retrieving information not given"
 msgstr ""
 
+msgid "wd show svc content"
+msgstr ""
+
 msgid "edition url not given"
 msgstr ""
 
@@ -237,9 +216,6 @@ msgstr ""
 msgid "wd error saving edit form"
 msgstr ""
 
-msgid "wd show svc content"
-msgstr ""
-
 msgid "wd error geo service"
 msgstr ""
 
@@ -249,10 +225,7 @@ msgstr ""
 msgid "wd error retrieving content"
 msgstr ""
 
-msgid "webdesk application portal"
-msgstr ""
-
-msgid "Javascript must be enabled in your navigator"
+msgid "wd entre rss link here"
 msgstr ""
 
 msgid "open it in a new window"
@@ -261,8 +234,80 @@ msgstr ""
 msgid "wd search for contact"
 msgstr ""
 
-msgid "wd entre rss link here"
+msgid "wd search ..."
 msgstr ""
 
-msgid "wd search ..."
+msgid "small size"
+msgstr ""
+
+msgid "normal size"
+msgstr ""
+
+msgid "large size"
+msgstr ""
+
+msgid "x-large size"
+msgstr ""
+
+msgid "Apply"
+msgstr ""
+
+msgid "Change your theme"
+msgstr ""
+
+msgid "wd open/close menu"
+msgstr ""
+
+msgid "wd document received"
+msgstr ""
+
+msgid "wd unread mail count"
+msgstr ""
+
+msgid "wd waiting event count"
+msgstr ""
+
+msgid "Click here to login"
+msgstr ""
+
+msgid "wd fixe/release menu"
+msgstr ""
+
+msgid "wd manage portal"
+msgstr ""
+
+msgid "wd show/hide service list"
+msgstr ""
+
+msgid "wd reload portal view"
+msgstr ""
+
+msgid "wd reduce font"
+msgstr ""
+
+msgid "wd  enlarge font"
+msgstr ""
+
+msgid "wd close"
+msgstr ""
+
+msgid "wd save"
+msgstr ""
+
+msgid "wd available services"
+msgstr ""
+
+msgid "wd add service"
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+
+msgid "Do not click here"
+msgstr ""
+
+msgid "webdesk application portal"
+msgstr ""
+
+msgid "Javascript must be enabled in your navigator"
 msgstr ""

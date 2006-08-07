@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-06-23 07:40+0200\n"
-"PO-Revision-Date: 2005-06-03 16:32+0200\n"
+"POT-Creation-Date: 2006-08-07 18:31+0200\n"
+"PO-Revision-Date: 2006-08-07 18:29+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
 "MIME-Version: 1.0\n"
@@ -11,10 +11,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 msgid "description"
-msgstr ""
+msgstr "description"
 
 msgid "short_name"
-msgstr ""
+msgstr "nom court"
 
 msgid "My portal"
 msgstr "Mon portail"
@@ -40,6 +40,9 @@ msgstr "Application WebDesk"
 msgid "webdesk access"
 msgstr "Accès au WebDesk"
 
+msgid "webdesk admin"
+msgstr "administration webdesk"
+
 msgid "webdesk main page"
 msgstr "Page principale WebDesk"
 
@@ -51,6 +54,9 @@ msgstr "Préférences"
 
 msgid "administration page"
 msgstr "Administration"
+
+msgid "list all admin pages"
+msgstr "liste des pages d'administration"
 
 msgid "webdesk general preferences"
 msgstr "Préférences générale"
@@ -112,17 +118,23 @@ msgstr "service freedom de recherche dans une famille"
 msgid "service edit freedom search in familie"
 msgstr "service freedom de recherche dans une famille (edition)"
 
-msgid "ardoise content"
-msgstr "contenu de l'ardoise"
+msgid "generic service"
+msgstr "service générique"
+
+msgid "number of affected document"
+msgstr "nombre de documents affectés"
+
+msgid "preview of theme"
+msgstr "prévisualisation du thème"
+
+msgid "without category"
+msgstr "sans catégorie"
 
 msgid "no account defined"
 msgstr "pas de compte défini."
 
 msgid "error retrieving mails"
 msgstr "Erreur de récupération des messages"
-
-msgid "without category"
-msgstr "sans catégorie"
 
 msgid "wd no rss link given"
 msgstr "Pas de flux RSS fourni"
@@ -141,50 +153,14 @@ msgstr "recherche Freedom invalide"
 msgid "wd freedom search, no  result"
 msgstr "Recherche Freedom, pas de résultat"
 
-msgid "wd manage portal"
-msgstr "Gestion du portail"
+msgid "portal columns count"
+msgstr "nombre de colonne du portail"
 
-msgid "wd show/hide service list"
-msgstr "Afficher/masquer la liste des services"
+msgid "services list columns count"
+msgstr "nombre de colonnes pour la liste de services"
 
-msgid "wd reload portal view"
-msgstr "Raffraichir le portail"
-
-msgid "wd reduce font"
-msgstr "Réduire la taille du texte..."
-
-msgid "wd  enlarge font"
-msgstr "Augmenter la taille du texte..."
-
-msgid "wd save"
-msgstr "Sauver"
-
-msgid "wd available services"
-msgstr "Liste des services disponibles"
-
-msgid "wd add service"
-msgstr "Ajouter le service"
-
-msgid "wd close"
-msgstr "Fermer"
-
-msgid "wd open/close menu"
-msgstr "Ouvrir/fermer le menu"
-
-msgid "wd document received"
-msgstr "Documents affectés"
-
-msgid "wd unread mail count"
-msgstr "Mails non lus"
-
-msgid "wd waiting event count"
-msgstr "Rendez-vous proposés"
-
-msgid "Click here to login"
-msgstr "Cliquer ici pour vous déconnecter"
-
-msgid "wd fixe/release menu"
-msgstr "Afficher/masque le menu comme panneau latéral"
+msgid "ardoise content"
+msgstr "contenu de l'ardoise"
 
 msgid "wd error add service"
 msgstr "wd error add service"
@@ -225,6 +201,9 @@ msgstr "Supprimer le service"
 msgid "wd url for retrieving information not given"
 msgstr "Url de récuperation des informations non fournie"
 
+msgid "wd show svc content"
+msgstr "Afficher le contenu"
+
 msgid "edition url not given"
 msgstr "Url pour édition des param^etre non fournie"
 
@@ -237,9 +216,6 @@ msgstr "Erreur de récupération du formulaire édition"
 msgid "wd error saving edit form"
 msgstr "Erreur de sauvegarde du formulaire édition"
 
-msgid "wd show svc content"
-msgstr "Afficher le contenu"
-
 msgid "wd error geo service"
 msgstr "wd error geo service"
 
@@ -249,11 +225,8 @@ msgstr "Etes-vous sur de vouloir supprimer le service "
 msgid "wd error retrieving content"
 msgstr "Erreur de récupération du contenu"
 
-msgid "webdesk application portal"
-msgstr "Portail application WebDesk"
-
-msgid "Javascript must be enabled in your navigator"
-msgstr "éxécution  du Javascript doit ^etre autorisée"
+msgid "wd entre rss link here"
+msgstr "Saississez l'URL du flux RSS ici"
 
 msgid "open it in a new window"
 msgstr "ouvrir dans une nouvelle fenetre"
@@ -261,11 +234,86 @@ msgstr "ouvrir dans une nouvelle fenetre"
 msgid "wd search for contact"
 msgstr "Rechercher un contact"
 
-msgid "wd entre rss link here"
-msgstr "Saississez l'URL du flux RSS ici"
-
 msgid "wd search ..."
-msgstr ""
+msgstr "Texte recherché"
+
+msgid "small size"
+msgstr "petite taille"
+
+msgid "normal size"
+msgstr "taille normale"
+
+msgid "large size"
+msgstr "grande taille"
+
+msgid "x-large size"
+msgstr "très grande taille"
+
+msgid "Apply"
+msgstr "Appliquer"
+
+msgid "Change your theme"
+msgstr "Changer votre thème"
+
+msgid "wd open/close menu"
+msgstr "Ouvrir/fermer le menu"
+
+msgid "wd document received"
+msgstr "Documents affectés"
+
+msgid "wd unread mail count"
+msgstr "Mails non lus"
+
+msgid "wd waiting event count"
+msgstr "Rendez-vous proposés"
+
+msgid "Click here to login"
+msgstr "Cliquer ici pour vous déconnecter"
+
+msgid "wd fixe/release menu"
+msgstr "Afficher/masque le menu comme panneau latéral"
+
+msgid "wd manage portal"
+msgstr "Gestion du portail"
+
+msgid "wd show/hide service list"
+msgstr "Afficher/masquer la liste des services"
+
+msgid "wd reload portal view"
+msgstr "Raffraichir le portail"
+
+msgid "wd reduce font"
+msgstr "Réduire la taille du texte..."
+
+msgid "wd  enlarge font"
+msgstr "Augmenter la taille du texte..."
+
+msgid "wd close"
+msgstr "Fermer"
+
+msgid "wd save"
+msgstr "Sauver"
+
+msgid "wd available services"
+msgstr "Liste des services disponibles"
+
+msgid "wd add service"
+msgstr "Ajouter le service"
+
+msgid "Preview"
+msgstr "Prévisualisation"
+
+msgid "Do not click here"
+msgstr "Ne cliquer pas ici"
+
+msgid "webdesk application portal"
+msgstr "Portail application WebDesk"
+
+msgid "Javascript must be enabled in your navigator"
+msgstr "éxécution  du Javascript doit ^etre autorisée"
+
+#~ msgid "select a theme"
+#~ msgstr "Sélectionner un thème"
 
 #~ msgid "Rss feed"
 #~ msgstr "Flux Rss"

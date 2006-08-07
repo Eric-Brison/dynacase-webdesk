@@ -1,0 +1,54 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="STYLE/[PSTYLE]/Layout/gen.css">
+<link rel="stylesheet" type="text/css" href="WHAT/Layout/size-[size].css">
+<style>
+[CSS:CODE]
+table.color tr td {
+  height:3px;
+  width:10px;
+}
+table.example tr td:hover {
+  color:[COLOR_C0];
+}
+table.color {
+  position:absolute;
+  right:0px;
+  top:0px;
+}
+</style>
+</head>
+<body>
+<H1 style="text-align:right;padding-right:30px">[TEXT:Preview]</H1>
+<h2 style="color:[COLOR_A0];background-color:[COLOR_A9]">[style] - [size]</h2>
+<table><tr><td>
+<table class="example">
+<tr><th>à titre d'exemple</th></tr>
+<tr><td>exemple un</td></tr>
+<tr><td>exemple deux</td></tr>
+</table>
+</td>
+<td>
+<table class="example">
+<tr class="headcell"><th class="headtitle">Formulaire</th></tr>
+<tr><td><input size="10" value="texte"></td></tr>
+<tr><td><select><option>Choix 1</option><option>Choix 2</option><option>Choix 3</option></select></td></tr>
+</table>
+</td></tr></table>
+<a href="javascript:void(0)">[TEXT:Do not click here]</a>
+
+<table class="color" cellspacing="0" cellpadding="0">
+<tr><td style="background-color:[COLOR_A0]">&nbsp;</td><td style="background-color:[COLOR_B0]">&nbsp;</td><td style="background-color:[COLOR_C0]">&nbsp;</td></tr>
+<tr><td style="background-color:[COLOR_A1]">&nbsp;</td><td style="background-color:[COLOR_B1]">&nbsp;</td><td style="background-color:[COLOR_C1]">&nbsp;</td></tr>
+<tr><td style="background-color:[COLOR_A2]">&nbsp;</td><td style="background-color:[COLOR_B2]">&nbsp;</td><td style="background-color:[COLOR_C2]">&nbsp;</td></tr>
+<tr><td style="background-color:[COLOR_A3]">&nbsp;</td><td style="background-color:[COLOR_B3]">&nbsp;</td><td style="background-color:[COLOR_C3]">&nbsp;</td></tr>
+<tr><td style="background-color:[COLOR_A4]">&nbsp;</td><td style="background-color:[COLOR_B4]">&nbsp;</td><td style="background-color:[COLOR_C4]">&nbsp;</td></tr>
+<tr><td style="background-color:[COLOR_A5]">&nbsp;</td><td style="background-color:[COLOR_B5]">&nbsp;</td><td style="background-color:[COLOR_C5]">&nbsp;</td></tr>
+<tr><td style="background-color:[COLOR_A6]">&nbsp;</td><td style="background-color:[COLOR_B6]">&nbsp;</td><td style="background-color:[COLOR_C6]">&nbsp;</td></tr>
+<tr><td style="background-color:[COLOR_A7]">&nbsp;</td><td style="background-color:[COLOR_B7]">&nbsp;</td><td style="background-color:[COLOR_C7]">&nbsp;</td></tr>
+<tr><td style="background-color:[COLOR_A8]">&nbsp;</td><td style="background-color:[COLOR_B8]">&nbsp;</td><td style="background-color:[COLOR_C8]">&nbsp;</td></tr>
+<tr><td style="background-color:[COLOR_A9]">&nbsp;</td><td style="background-color:[COLOR_B9]">&nbsp;</td><td style="background-color:[COLOR_C9]">&nbsp;</td></tr>
+
+</table>
+</body>
+</html>
