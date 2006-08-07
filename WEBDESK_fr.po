@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-07 18:31+0200\n"
-"PO-Revision-Date: 2006-08-07 18:29+0200\n"
+"POT-Creation-Date: 2006-08-07 18:51+0200\n"
+"PO-Revision-Date: 2006-08-07 18:51+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
 "MIME-Version: 1.0\n"
@@ -237,6 +237,12 @@ msgstr "Rechercher un contact"
 msgid "wd search ..."
 msgstr "Texte recherché"
 
+msgid "Preview"
+msgstr "Prévisualisation"
+
+msgid "Do not click here"
+msgstr "Ne cliquez pas ici"
+
 msgid "small size"
 msgstr "petite taille"
 
@@ -254,6 +260,9 @@ msgstr "Appliquer"
 
 msgid "Change your theme"
 msgstr "Changer votre thème"
+
+msgid "Theme chooser"
+msgstr "Choix du thème"
 
 msgid "wd open/close menu"
 msgstr "Ouvrir/fermer le menu"
@@ -299,12 +308,6 @@ msgstr "Liste des services disponibles"
 
 msgid "wd add service"
 msgstr "Ajouter le service"
-
-msgid "Preview"
-msgstr "Prévisualisation"
-
-msgid "Do not click here"
-msgstr "Ne cliquer pas ici"
 
 msgid "webdesk application portal"
 msgstr "Portail application WebDesk"

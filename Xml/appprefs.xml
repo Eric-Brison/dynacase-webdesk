@@ -19,13 +19,13 @@ function changeTheme() {
      r=setparamu("CORE","FONTSIZE",size);
     if (!r) alert('error in change size');
   }
-  if (r) window.parent.parent.location.reload();
+  if (r) if (window.parent) if (window.parent.parent) window.parent.parent.location.reload();
   
 }
 
 
 </script>
-<h4>Préférences WEBDESK</h4>
+<h4>[TEXT:Theme chooser]</h4>
 
 
 <table>
@@ -43,7 +43,7 @@ function changeTheme() {
 
 </td>
 <td>
-<iframe id="previewtheme" width="400px" height="200px" src="[CORE_STANDURL]&app=WEBDESK&action=PREVIEWTHEME"></iframe></td></tr></table>
+<iframe id="previewtheme" width="400px" height="250px" style="border:none" src="[CORE_STANDURL]&app=WEBDESK&action=PREVIEWTHEME"></iframe></td></tr></table>
 <hr>
 <div style="text-align:right;width:100%"><input type="button" onclick="changeTheme();return false;" value="[TEXT:Apply]" title="[TEXT:Change your theme]" ></div>
 </body>

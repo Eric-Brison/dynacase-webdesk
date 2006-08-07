@@ -22,17 +22,29 @@ function selectApp(id, url) {
   document.getElementById('appzone').style.display = 'block';
   
 }
+function selectFirstApp() {
+  var da=document.getElementById('divapp');
+  if (da) {
+    var ds=da.getElementsByTagName('div');
+    if (ds.length > 0) {
+      var ds1=ds[0];
+      ds1.onclick.apply(ds1,[]);
+    }
+  }
+}
+
+addEvent(window,'load',selectFirstApp);
 </script>
 </head>
 <body>
 <table width="95%"><tr style="vertical-align:top">
 <td style="width:25%;">
-<div class="wdparamb">[BLOCK applist]
+<div id="divapp" class="wdparamb">[BLOCK applist]
 <div id="app[id]" title="[description]" class="app" onclick="selectApp([id], '[CORE_STANDURL]&app=[name]&action=[action]');">
 <img src="[iconsrc]" style="width:16px;">&nbsp;[short_name]
 </div>[ENDBLOCK applist]</div>
 </td>
-<td style="width:70%"><iframe id="appzone" name="appzone" style="display:none; height:100%; width:100%" src="about:blank"></iframe>
+<td style="width:70%"><iframe id="appzone" name="appzone" style="display:none;height:100%; width:100%" src="about:blank"></iframe>
 </tr></table>
 </body>
 </html>
