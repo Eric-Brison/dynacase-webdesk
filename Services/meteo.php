@@ -93,5 +93,7 @@ function meteo(&$action) {
 
   $action->lay->set("metar", $data["metar"]);
   // Infos bulletin
+ header('Content-type: text/xml; charset=utf-8');
+ $action->lay->setEncoding("utf-8");
 }
 ?>

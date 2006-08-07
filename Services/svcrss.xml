@@ -1,4 +1,5 @@
-[IF showtitle]<div class="wdtitleb1">[msg]</div>[ENDIF showtitle]
+<?xml version="1.0" encoding="UTF-8"?>
+<freedomsvc uptime="[uptime]" title="[msg]"><![CDATA[
 [IF rss]
 <table cellspacing="0" style="width:100%">
 [BLOCK rssnews]<tr style="vertical-align:top">
@@ -6,3 +7,4 @@
 [IF vfull]<tr><td style="padding:0px 10px 5px 10px; text-align:justify" id="rssct[id]">[descr]</td></tr>[ENDIF vfull]
 [ENDBLOCK rssnews]</table>
 [ENDIF rss]
+]]></freedomsvc>

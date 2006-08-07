@@ -2,6 +2,9 @@
 include_once("XML/RSS.php");
 function svcrss(&$action) {
 
+ header('Content-type: text/xml; charset=utf-8');
+ $action->lay->setEncoding("utf-8");
+
   $action->lay->set("rss", false);
 
   $rsslink = GetHttpVars("rss", "");
@@ -12,8 +15,6 @@ function svcrss(&$action) {
   $max = GetHttpVars("max", 5);
   $textlg = GetHttpVars("dlg", 100);
   $vfull = (GetHttpVars("vfull", 0)==1 ? true : false);
-  $stitle = (GetHttpVars("stitle", 0)==1 ? true : false);
-
 
   $rssi =& new XML_RSS($rsslink);
   $pret = $rssi->parse();
@@ -37,8 +38,8 @@ function svcrss(&$action) {
     $action->lay->set("msg", _("[TEXT:no information available, verify your server have http access to internet and/or check link please...]"). '(<a href="'.$rsslink.'">'.$rsslink.'</a>)');
     return;
   }
-  $action->lay->set("showtitle", $stitle);
-  $action->lay->set("msg",htmlentities(utf8_decode($rssi->channel["title"])));
+  $action->lay->set("msg",$rssi->channel["title"]);
+ $action->lay->set("uptime", strftime("%H:%M %d/%m/%Y", time()));
   $action->lay->setBlockData("rssnews", $tr);
 }
   

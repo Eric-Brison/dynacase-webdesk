@@ -1,4 +1,6 @@
-<div style="[IF data]background-image:url('[bgimg]'); background-repeat:no-repeat;background-position:100% 0%[ENDIF data]" title="[IF data]Bulletin du [ENDIF data][datebull]"><span style="font-weight:bold;">[location]</span> <span style="text-align:right; font-size:80%">([datebull])</span>
+<?xml version="1.0" encoding="UTF-8"?>
+<freedomsvc uptime="[datebull]" title="[location]"><![CDATA[
+<div style="[IF data]background-image:url('[bgimg]'); background-repeat:no-repeat;background-position:100% 0%[ENDIF data]" title="[IF data]Bulletin du [ENDIF data][datebull]">
 [IF data]<div style="background-color:transparent;"><span style="font-weight:bold; font-size:200%;" title="Température [temp] °C (rosée [rosee]°c, ressentie [ressentie]°c)">[temp]&deg;c</span> </div>
 [IF fulldata]<div>
 <span title="Vent, vitesse [ventvms] m/s direction [[d1] - [d2]]"><span style="font-weight:bold;">[ventv]</span> km/h</span>
@@ -11,4 +13,4 @@
 [IF withmetar]<div style="font-size:80%; font-family:courrier">[metar]</div>[ENDIF withmetar]
 </div>[ENDIF fulldata][ENDIF data]
 </div> 
-
+]]></freedomsvc>
