@@ -37,7 +37,8 @@ var isOpen = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[
 </tr></table>
 </div>
 
-<div id="wdmenu" class="wdmenu" >
+<div id="wdmenu" class="wdmenu">
+<div id="inmenu">
 
 [BLOCK appList]
 <div id="app[id]" class="app" onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" onclick="runapp([id], '[name]', '[params]')"><img src="[iconsrc]" style="width:16px; vertical-align:baseline">&nbsp;[short_name]</div>[ENDBLOCK appList]
@@ -47,7 +48,10 @@ var isOpen = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[
 [BLOCK specialAppList]
 <div id="app[id]" class="app" onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" onclick="runapp([id], '[name]', '[params]')"><img src="[iconsrc]" style="width:16px; vertical-align:baseline">&nbsp;[short_name]</div>[ENDBLOCK specialAppList]
 
-<div style="background-color:[COLOR_WHITE]; border-top:1px solid #CFCFCF"  ><img class="small_button" onclick="alternMBar();" id="wdcmdtext" src="[IF IsMBarStatic][IMGF:wd_fixe_menu.gif:0,0,0|COLOR_BLACK][ENDIF IsMBarStatic][IFNOT IsMBarStatic][IMGF:wd_release_menu.gif:0,0,0|COLOR_BLACK][ENDIF IsMBarStatic]" title="[TEXT:wd fixe/release menu]"></div>
+</div>
+
+<div title="[TEXT:wd fixe/release menu]" id="wdcmdtext" style="height:10px; padding:0px; cursor:pointer; text-align:center; background-color:[COLOR_A6]; border:1px [IF IsMBarStatic]inset[ENDIF IsMBarStatic][IFNOT IsMBarStatic]outset[ENDIF IsMBarStatic] [COLOR_A6]" onclick="alternMBar();"></div>
+
 </div>
 
 

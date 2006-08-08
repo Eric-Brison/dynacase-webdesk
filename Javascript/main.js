@@ -59,12 +59,11 @@ function alternMBar() {
   if (isMBarStatic) {
     isMBarStatic = false;
     isOpen = false;
-    document.getElementById('wdcmdtext').src = "[IMGF:wd_release_menu.gif:0,0,0|COLOR_BLACK]";
+    document.getElementById('wdcmdtext').style.border = "1px outset [COLOR_A6]";
   } else {
     isMBarStatic = true;
     isOpen = true;
-    document.getElementById('wdcmdtext').src = "[IMGF:wd_fixe_menu.gif:0,0,0|COLOR_BLACK]";
-    
+    document.getElementById('wdcmdtext').style.border = "1px inset [COLOR_A6]";
   }
   computefbodywh();
 }

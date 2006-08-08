@@ -19,17 +19,29 @@ a, a:visited, .wd_alink  {
 }
 
 .small_button { border:0px; cursor:pointer; vertical-align:baseline }
-.app { padding-left:5px; padding-right:5px; background-color:[COLOR_WHITE]; border:1px solid [COLOR_WHITE]; cursor:pointer; }
-.app_selected { font-weight:bold; cursor:pointer; }
-.app_over { border:1px inset [COLOR_WHITE]; background-color:[COLOR_A8]; cursor:pointer; }
+.app { padding-left:5px; padding-right:5px; border:1px solid white; background-color:transparent; }
+.app_selected { font-weight:bold;  border:1px solid white; cursor:pointer; }
+.app_over { background-color:[COLOR_A8]; border:1px inset [COLOR_A8]; cursor:pointer; }
 
 .wdhead { font-weight:bold; border-width:1px; border-style:none none solid none; border-color:[COLOR_A8];  }
 .wdtitle { border-width:1px; border-style:none none dotted none; border-color:[COLOR_A8];  }
 #wdtitle td span, #wdtitle td img { vertical-align: middle; }
 .wdmenu { 
-  border-style:none solid none none; border-color:[COLOR_A8]; border-width:1px;
-  position:absolute;width:auto
+  border-style:none solid none none; 
+  border-color:[COLOR_A8];
+  border-width:1px;
+  position:absolute;
+  width:auto;
+  background-color: white;
+  padding: 0px;
 }
+#inmenu {
+  background-image: url([IMG:webdesk-logo.gif]);
+  background-repeat: no-repeat;
+  background-position: right top; 
+  padding: 0px 20px 0px 0px;
+}
+
 .wdmenufixed { 
   border-style:none solid none none; border-color:[COLOR_A8]; border-width:1px;
   width:auto;
