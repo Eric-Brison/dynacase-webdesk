@@ -54,33 +54,36 @@ function meteo(&$action) {
   $action->lay->set("data", true);
     
   $action->lay->set("datebull", strftime("%x %X", $data["time"]));
- 
+
+//   print_r2($data);
+
   //// Temperature
-  $action->lay->set("temp", $data["temperature"]["temp_c"]);
-  $action->lay->set("rosee", $data["temperature"]["dew_c"]);
-  $action->lay->set("ressentie", (isset($data["heatindex"]["heatindex_c"])?$data["heatindex"]["heatindex_c"]:"?"));
+  $action->lay->set("tempv", $data["temperature"]["temp_c"]);
+  $action->lay->set("temp", sprintf(_("temperature %s c (dew %s c, heat %s c)"),$data["temperature"]["temp_c"],$data["temperature"]["dew_c"],(isset($data["heatindex"]["heatindex_c"])?$data["heatindex"]["heatindex_c"]:"?")));
 
   // Vent
-  $action->lay->set("ventvms", ($data["wind"]["meters_per_second"]));
-  $action->lay->set("ventv", ($data["wind"]["meters_per_second"]*3.6));
-  $action->lay->set("d1", $data["wind"]["var_beg"]);
-  $action->lay->set("d2", $data["wind"]["var_end"]);
+  $action->lay->set("ventvms", sprintf(_("wind, speed %s m/s direction [%s]"), $data["wind"]["meters_per_second"],$data["wind"]["deg"]));
+  $action->lay->set("ventv", $data["wind"]["meters_per_second"]);
 
   //Pression , humid
-  $action->lay->set("rhumid", $data["rel_humidity"]);
-  $action->lay->set("pression", $data["altimeter"]["hpa"]);
-
-  // Nuages
+  $action->lay->set("rhumid", sprintf(_("relative humidity %s %%"),$data["rel_humidity"]));
+  $action->lay->set("rhumidv", $data["rel_humidity"]);
+  
+  $action->lay->set("pression", sprintf(_("Pression %s hpa"),$data["altimeter"]["hpa"]));
+  $action->lay->set("pressionv", $data["altimeter"]["hpa"]);
+  
+// Nuages
   $action->lay->set("nuage", "");
   switch ($data["visibility"][0]["prefix"]) {
-    case -1: $vis = "<"; break;
-    case 1: $vis = ">"; break;
-    default: $vis = "";
+  case -1: $vis = "<"; break;
+  case 1: $vis = ">"; break;
+  default: $vis = "";
   }
+  $action->lay->set("vist", sprintf(_("Visibility %s %s km"),$vis,$data["visibility"][0]["km"]));
   $action->lay->set("vis", $vis);
   $action->lay->set("visd", $data["visibility"][0]["km"]);
-
+  
   $action->lay->set("metar", $data["metar"]);
-  // Infos bulletin
+  
 }
 ?>

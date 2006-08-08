@@ -4,6 +4,9 @@ function svcmail(&$action) {
 
   $maxm = 10; // how many mails shown ?
 
+  header('Content-type: text/xml; charset=utf-8');
+  $action->lay->setEncoding("utf-8");
+
   $action->lay->set("showmsg", false);
   $action->lay->set("msgtext", "");
   $action->lay->set("accset", false); 
@@ -112,10 +115,6 @@ if ($acc=="" || $log=="" || $pas=="" || $srv=="" || $pro=="") {
    $action->lay->set("msgtext", _("error retrieving mails")."[".$minfos["error"]."]");
  }
  $action->lay->set("uptime", strftime("%H:%M %d/%m/%Y", time()));
- header('Content-type: text/xml; charset=utf-8');
- $action->lay->setEncoding("utf-8");
-//  echo $action->lay->gen();
-//  exit;
  return;
 }
 
