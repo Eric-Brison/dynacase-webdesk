@@ -78,17 +78,6 @@ function orderServices() {
     colsDesc[lcol][services[is].lin] = is;
     mm += ' col:'+services[is].col+' line='+services[is].lin+' ==> '+is+'\n';
   }
-//   alert(mm);
-//   var text = '';
-//   for (var ic=0;ic<colCount; ic++) {
-//     text += '['+ic+'] = {';
-//     for (var il=0;il<colsDesc[ic].length; il++) {
-//       if (services[colsDesc[ic][il]])
-// 	text += ' '+colsDesc[ic][il]+':'+services[colsDesc[ic][il]].col+':'+services[colsDesc[ic][il]].lin;
-//     }
-//     text += ' }\n';
-//   }
-//   alert(text);
   return;
 }
 
@@ -508,30 +497,30 @@ function unsetWS(sid) {
 }
 
 
-function loadSvc(sid, shl, params) {
-  var dreq = null;
-  var is = getSvc(sid);
-  if (is===false) return;
+// function loadSvc(sid, shl, params) {
+//   var dreq = null;
+//   var is = getSvc(sid);
+//   if (is===false) return;
 
-  if (services[is].vurl=='') return;
+//   if (services[is].vurl=='') return;
 
-  if (shl) setWS(sid);
+//   if (shl) setWS(sid);
 
-  if (window.XMLHttpRequest) dreq = new XMLHttpRequest();
-  else dreq = new ActiveXObject("Microsoft.XMLHTTP");
-  if (dreq) {
-    dreq.open("POST", services[is].vurl+services[is].purl, false);
-    dreq.send('');
-    if (dreq.status!=200) {
-      document.getElementById('csvc'+sid).innerHTML = '[TEXT:wd error retrieving content] (HTTP Code '+dreq.status+')';	   
-    } else { 
-      document.getElementById('csvc'+sid).innerHTML = '<div>'+dreq.responseText+'</div>';
-    }
-  } else {
-    document.getElementById('csvc'+sid).innerHTML = '[TEXT:wd error retrieving content] (XMLHttpRequest contruction)';	    
-  }
-  if (shl) unsetWS(sid);
-}
+//   if (window.XMLHttpRequest) dreq = new XMLHttpRequest();
+//   else dreq = new ActiveXObject("Microsoft.XMLHTTP");
+//   if (dreq) {
+//     dreq.open("POST", services[is].vurl+services[is].purl, false);
+//     dreq.send('');
+//     if (dreq.status!=200) {
+//       document.getElementById('csvc'+sid).innerHTML = '[TEXT:wd error retrieving content] (HTTP Code '+dreq.status+')';	   
+//     } else { 
+//       document.getElementById('csvc'+sid).innerHTML = '<div>'+dreq.responseText+'</div>';
+//     }
+//   } else {
+//     document.getElementById('csvc'+sid).innerHTML = '[TEXT:wd error retrieving content] (XMLHttpRequest contruction)';	    
+//   }
+//   if (shl) unsetWS(sid);
+// }
 
 var timerOn = new Array();
 function loadSvcAsync(sid, shl, params) {
@@ -558,8 +547,8 @@ function loadSvcAsync(sid, shl, params) {
 	      var elts = dreq.responseXML.getElementsByTagName("freedomsvc");
 	      var uptime = elts[0].getAttribute("uptime");
 	      var title = elts[0].getAttribute("title");
-	      document.getElementById('tsvcti'+sid).innerHTML = title;
-	      document.getElementById('tsvcti'+sid).title = 'Mise à jour : '+uptime;
+	      if (title) document.getElementById('tsvcti'+sid).innerHTML = title;
+	      if (uptime) document.getElementById('tsvcti'+sid).title = 'Mise à jour : '+uptime;
 	      document.getElementById('csvc'+sid).innerHTML = '<div>'+elts[0].firstChild.nodeValue+'</div>';
 	      isxml = true;
 	    }
