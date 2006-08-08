@@ -19,7 +19,7 @@ function getUnreadMsgCount() {
 
 function getWaitingEventCount() {
   var corestandurl=window.location.pathname+'?sole=Y&';
-  var uu = corestandurl+'app=WGCAL&action=WGCAL_WAITRV&mo=L&oc=Y';
+  var uu = corestandurl+'app=WGCAL&action=WGCAL_WAITRV&oc=Y';
   updateInfos(uu, 'waitingrv', "getWaitingEventCount()", updateInfosTimeout);
 }
   
