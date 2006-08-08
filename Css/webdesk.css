@@ -4,7 +4,7 @@ input, select { border:1px solid [COLOR_A7]; background-color:[COLOR_A9]; }
 
 a, a:visited, .wd_alink  { 
   text-decoration:none; 
-  background-image: url([IMG:wd_lnk_http.gif]);
+  background-image: url([IMGF:wd_lnk_http.gif:0,0,0|COLOR_BLACK]);
   background-repeat: no-repeat;
   background-position: right center;
   padding-right: 11px;
@@ -12,15 +12,15 @@ a, a:visited, .wd_alink  {
 
 .wd_amail { 
   text-decoration:none; 
-  background-image: url([IMG:wd_lnk_mailto.gif]);
+  background-image: url([IMGF:wd_lnk_mailto.gif:0,0,0|COLOR_BLACK]);
   background-repeat: no-repeat;
   background-position: right center;
   padding-right: 11px;
 }
 
 .small_button { border:0px; cursor:pointer; vertical-align:baseline }
-.app { background-color:[COLOR_WHITE]; padding-left:5px; padding-right:5px; border:1px solid white; }
-.app_selected { font-weight:bold;  border:1px solid white; cursor:pointer; }
+.app { background-color:[COLOR_WHITE]; padding-left:5px; padding-right:5px; border:1px solid [COLOR_WHITE]; }
+.app_selected { font-weight:bold;  border:1px solid [COLOR_WHITE]; cursor:pointer; }
 .app_over { background-color:[COLOR_A8]; border:1px inset [COLOR_A8]; cursor:pointer; }
 
 .wdhead { font-weight:bold; border-width:1px; border-style:none none solid none; border-color:[COLOR_A8];  }
@@ -36,10 +36,10 @@ a, a:visited, .wd_alink  {
   padding: 0px;
 }
 #inmenu {
-  background-image: url([IMGF:webdesk-logo.gif:0,0,0|COLOR_A8]);
+  background-image: url([IMG:webdesk-logo.png]);
   background-repeat: no-repeat;
-  background-position: right top; 
-  padding: 0px 20px 0px 0px;
+  background-position: left top; 
+  padding: 0px 0px 0px 15px;
 }
 
 .wdmenufixed { 

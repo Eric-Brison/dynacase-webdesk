@@ -4,7 +4,7 @@
 <freedomsvc uptime="[uptime]" title="Mail, [account] : [new] / [old]"><![CDATA[
 [IF accset]
 [IF moremails]<div class="tdmail" style="font-style:italic">les [nfirst] derniers</div>[ENDIF moremails]
-[BLOCK mails]<div class="tdmail" style="margin:0px 0px 0px 0px" title="[subject]"><img class="small_button" src="[IMG:wd_mail.gif]">
+[BLOCK mails]<div class="tdmail" style="margin:0px 0px 0px 0px" title="[subject]"><img class="small_button" src="[IMGF:wd_mail.gif:0,0,0|COLOR_BLACK]">
 [mailtolink]&nbsp;<span style="font-size:85%;">([date])</span>
 [IF fulldisplay]<div style="margin:0px 0px 0px 10px">[subject]</div>[ENDIF fulldisplay]
 </div>[ENDBLOCK mails][ENDIF accset]
