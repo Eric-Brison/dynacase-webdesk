@@ -33,7 +33,7 @@ var isOpen = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[
 <img src="[IMGF:wd_docreceived.gif:0,0,0|COLOR_BLACK]" onclick="getAffectDocCount()" class="small_button" title="[TEXT:wd document received]"><span id="docreceived" style="font-weight:bold">?</span>&nbsp;
 <img src="[IMGF:wd_mailcount.gif:0,0,0|COLOR_BLACK]" onclick="getUnreadMsgCount()" class="small_button" title="[TEXT:wd unread mail count]"><span id="ureadmail" style="font-weight:bold">?</span>&nbsp;
 <img src="[IMGF:wd_rvcount.gif:0,0,0|COLOR_BLACK]" onclick="getWaitingEventCount()" class="small_button" title="[TEXT:wd waiting event count]"><span id="waitingrv" style="font-weight:bold">?</span>&nbsp;|
-<span id="curdate">jj:mm:yy hh:mm</span> | [userDomain] | [userRealName] <img id="logo" onclick="document.authent.submit()" title="[TEXT:Click here to login]" class="small_button" src="[IMGF:wdconnect.gif:0,0,0|COLOR_BLACK]">&nbsp;|&nbsp;[ZONE WGCAL:ANAKEEN]&nbsp;</td>
+<span id="curdate">jj:mm:yy hh:mm</span> | [userDomain] | [userRealName] <img id="logo" onclick="document.authent.submit()" title="[TEXT:Click here to login]" class="small_button" src="[IMGF:wdconnect.gif:0,0,0|COLOR_BLACK]">&nbsp;|&nbsp;[ZONE WEBDESK:ANAKEEN]&nbsp;</td>
 </tr></table>
 </div>
 
