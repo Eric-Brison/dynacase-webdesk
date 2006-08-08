@@ -37,14 +37,22 @@ addEvent(window,'load',selectFirstApp);
 </script>
 </head>
 <body>
-<table width="95%"><tr style="vertical-align:top">
-<td style="width:25%;">
+<table cellspacing="0" style="width:95%" ><tr style="vertical-align:top">
+<td>
 <div id="divapp" class="wdparamb">[BLOCK applist]
 <div id="app[id]" title="[description]" class="app" onclick="selectApp([id], '[CORE_STANDURL]&app=[name]&action=[action]');">
 <img src="[iconsrc]" style="width:16px;">&nbsp;[short_name]
 </div>[ENDBLOCK applist]</div>
 </td>
-<td style="width:70%"><iframe id="appzone" name="appzone" style="display:none;height:100%; width:100%" src="about:blank"></iframe>
+<td>
+<style>
+#appzone {
+  border-width:1px;
+  border-color:[COLOR_A6];
+  border-style:none none none dotted;
+}
+</style>
+<iframe id="appzone" name="appzone" style="display:none;height:100%; width:100%" src="about:blank"></iframe>
 </tr></table>
 </body>
 </html>

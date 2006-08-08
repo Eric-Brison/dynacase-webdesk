@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-08 05:55+0200\n"
+"POT-Creation-Date: 2006-08-08 22:30+0200\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -35,6 +35,9 @@ msgid "Do not click here"
 msgstr ""
 
 msgid "Theme chooser"
+msgstr ""
+
+msgid "font size chooser"
 msgstr ""
 
 msgid "small size"
@@ -80,6 +83,9 @@ msgid "wd available services"
 msgstr ""
 
 msgid "wd add service"
+msgstr ""
+
+msgid "produced by Freedom"
 msgstr ""
 
 msgid "webdesk application portal"

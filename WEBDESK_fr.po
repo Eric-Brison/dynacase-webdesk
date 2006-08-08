@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-08 05:55+0200\n"
+"POT-Creation-Date: 2006-08-08 22:30+0200\n"
 "PO-Revision-Date: 2006-08-07 18:51+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -36,6 +36,9 @@ msgstr "Ne cliquez pas ici"
 
 msgid "Theme chooser"
 msgstr "Choix du thème"
+
+msgid "font size chooser"
+msgstr "Taille de la police"
 
 msgid "small size"
 msgstr "petite taille"
@@ -81,6 +84,9 @@ msgstr "Liste des services disponibles"
 
 msgid "wd add service"
 msgstr "Ajouter le service"
+
+msgid "produced by Freedom"
+msgstr ""
 
 msgid "webdesk application portal"
 msgstr "Portail application WebDesk"
@@ -193,7 +199,6 @@ msgstr "température %s°c (rosée %°c, ressentie %°c)"
 msgid "wind, speed %s m/s direction [%s]"
 msgstr "vent, vitesse %s m/s, direction [%s]°"
 
-#, c-format
 msgid "relative humidity %s %%"
 msgstr "humidité relative %s %%"
 

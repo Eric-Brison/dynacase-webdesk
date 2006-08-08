@@ -25,26 +25,31 @@ function changeTheme() {
 
 
 </script>
-<h4>[TEXT:Theme chooser]</h4>
 
-
-<table>
-<tr><td colspan="2">
+<style>
+#chooser {
+  text-align:center;
+  font-weight : bold;
+}
+</style>
+<table style="border:none;   background-color:transparent;" cellspacing="0">
+<tr><td id="chooser">[TEXT:Theme chooser]</td><td id="chooser">[TEXT:font size chooser]</td>
+<tr><td style="vertical-align:top">
  <select name="styleid" onchange="viewPreviewTheme(this.options[this.selectedIndex].value)">
 [BLOCK SELSTYLE]
          <option [selected] value="[name]">[name] - [description]</option> [ENDBLOCK SELSTYLE]
        </select>
-<input title="[TEXT:small size]" onclick="window.size='small';viewPreviewTheme();return false;" type="image" style="width:15px;height:15px" src="[IMG:zoomsize.png]">
-<input title="[TEXT:normal size]" onclick="window.size='normal';viewPreviewTheme();return false;" type="image" style="width:20px;height:20px" src="[IMG:zoomsize.png]">
-<input title="[TEXT:large size]" onclick="window.size='large';viewPreviewTheme();return false;" type="image" style="width:30px;height:30px" src="[IMG:zoomsize.png]">
-<input title="[TEXT:x-large size]" onclick="window.size='x-large';viewPreviewTheme();return false;" type="image" style="width:40px;height:40px" src="[IMG:zoomsize.png]">
-</td></tr>
-<td align="center">
-
 </td>
-<td>
-<iframe id="previewtheme" width="400px" height="250px" style="border:none" src="[CORE_STANDURL]&app=WEBDESK&action=PREVIEWTHEME"></iframe></td></tr></table>
-<hr>
-<div style="text-align:right;width:100%"><input type="button" onclick="changeTheme();return false;" value="[TEXT:Apply]" title="[TEXT:Change your theme]" ></div>
+<td style="vertical-align:top">
+<input title="[TEXT:small size]" onclick="window.size='small';viewPreviewTheme();return false;" type="image" style="vertical-align:top;width:15px;height:15px" src="[IMG:zoomsize.png]">
+<input title="[TEXT:normal size]" onclick="window.size='normal';viewPreviewTheme();return false;" type="image" style="vertical-align:top;width:20px;height:20px" src="[IMG:zoomsize.png]">
+<input title="[TEXT:large size]" onclick="window.size='large';viewPreviewTheme();return false;" type="image" style="vertical-align:top;width:30px;height:30px" src="[IMG:zoomsize.png]">
+<input title="[TEXT:x-large size]" onclick="window.size='x-large';viewPreviewTheme();return false;" type="image" style="vertical-align:top;width:40px;height:40px" src="[IMG:zoomsize.png]">
+</td></tr>
+<tr><td align="center" colspan="2">
+<iframe id="previewtheme" width="80%" height="250px" style="border:3px inset [COLOR_WHITE];" src="[CORE_STANDURL]&app=WEBDESK&action=PREVIEWTHEME"></iframe></td></tr>
+<tr><td colspan="2" style="margin-top:5px; padding-top:5px; text-align:right; border-top:1px solid [COLOR_BLACK]">
+<input type="button" onclick="changeTheme();return false;" value="[TEXT:Apply]" title="[TEXT:Change your theme]" />
+</td></tr></table>
 </body>
 </html>

@@ -4,7 +4,14 @@
 <link rel="stylesheet" type="text/css" href="WHAT/Layout/size-[size].css">
 <style>
 [CSS:CODE]
+
+#content {
+  border : 0px;
+  padding : 10px;
+  width : 100%;
+}
 table.color tr td {
+  border:1px solid [COLOR_WHITE];
   height:3px;
   width:10px;
 }
@@ -12,16 +19,15 @@ table.example tr td:hover {
   color:[COLOR_C0];
 }
 table.color {
-  position:absolute;
-  right:0px;
-  top:0px;
+  border:1px solid [COLOR_BLACK];
 }
 </style>
 </head>
 <body>
+<table id="content"><tr> <td>
 <H1 style="text-align:right;padding-right:30px">[TEXT:Preview]</H1>
-<h2 style="color:[COLOR_A0];background-color:[COLOR_A9]">[style] - [size]</h2>
-<table><tr><td>
+<h2 style="color:[COLOR_A0];background-color:[COLOR_A9]">Style [style] - Fonte [size]</h2>
+<table ><tr><td>
 <table class="example">
 <tr><th>à titre d'exemple</th></tr>
 <tr><td>exemple un</td></tr>
@@ -36,7 +42,8 @@ table.color {
 </table>
 </td></tr></table>
 <a href="javascript:void(0)">[TEXT:Do not click here]</a>
-
+</td>
+<td>
 <table class="color" cellspacing="0" cellpadding="0">
 <tr><td style="background-color:[COLOR_A0]">&nbsp;</td><td style="background-color:[COLOR_B0]">&nbsp;</td><td style="background-color:[COLOR_C0]">&nbsp;</td></tr>
 <tr><td style="background-color:[COLOR_A1]">&nbsp;</td><td style="background-color:[COLOR_B1]">&nbsp;</td><td style="background-color:[COLOR_C1]">&nbsp;</td></tr>
@@ -50,5 +57,6 @@ table.color {
 <tr><td style="background-color:[COLOR_A9]">&nbsp;</td><td style="background-color:[COLOR_B9]">&nbsp;</td><td style="background-color:[COLOR_C9]">&nbsp;</td></tr>
 
 </table>
+</td></tr></table>
 </body>
 </html>
