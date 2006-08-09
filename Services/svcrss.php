@@ -19,7 +19,6 @@ function svcrss(&$action) {
   $rssi =& new XML_RSS($rsslink);
   $pret = $rssi->parse();
   $rssc = $rssi->getItems();
-//    print_r2($rssc);
   $ic = 0;
   if (count($rssc)>0) {
     $action->lay->set("rss", true);
@@ -38,8 +37,8 @@ function svcrss(&$action) {
     $action->lay->set("msg", _("[TEXT:no information available, verify your server have http access to internet and/or check link please...]"). '(<a href="'.$rsslink.'">'.$rsslink.'</a>)');
     return;
   }
-  $action->lay->set("msg",$rssi->channel["title"]);
- $action->lay->set("uptime", strftime("%H:%M %d/%m/%Y", time()));
+  $action->lay->set("title",$rssi->channel["title"]);
+  $action->lay->set("uptime", strftime("%H:%M %d/%m/%Y", time()));
   $action->lay->setBlockData("rssnews", $tr);
 }
   

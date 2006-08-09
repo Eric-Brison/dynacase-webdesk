@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<freedomsvc uptime="[uptime]" title="[msg]"><![CDATA[
+<freedomsvc [IF rss]uptime="[uptime]" title="[title]"[ENDIF rss]><![CDATA[
 [IFNOT rss][msg][ENDIF rss]
 [IF rss]
 <table cellspacing="0" style="width:100%">
