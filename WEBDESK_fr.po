@@ -222,7 +222,7 @@ msgstr "Pas de flux RSS fourni"
 msgid ""
 "[TEXT:no information available, verify your server have http access to "
 "internet and/or check link please...]"
-msgstr "Pas d'information, vérifiéez que l'URL du lien est accessible"
+msgstr "Pas d'information, vérifiez que l'URL du lien est accessible"
 
 msgid "no account defined"
 msgstr "pas de compte défini."
