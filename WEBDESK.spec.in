@@ -1,7 +1,7 @@
 #! /bin/rpm
 #
 #  File: 
-#  $Id: WEBDESK.spec.in,v 1.7 2006/06/30 09:40:25 marc Exp $
+#  $Id: WEBDESK.spec.in,v 1.8 2006/08/11 11:43:11 marc Exp $
 #
 #  This is the SPEC file for the What Users Module
 #  Anakeen What Application
@@ -39,9 +39,10 @@ Requires: php-pear-XML_RSS
 Requires: php-imap
 Requires: phpweather >= 2.2.2
 
-Requires: WGCAL >= 2.1
+Requires: WGCAL >= 2.1.3
 Requires: MAIL >= 0.6.1
-Requires: FREEDOM-USERCARD >= 2.3.0
+Requires: FREEDOM-USERCARD >= 2.3.3
+Requires: WHAT >= 2.3.2
 Requires: WORKSPACE >= 0.0.1
 
 %description
