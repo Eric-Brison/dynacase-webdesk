@@ -1,31 +1,38 @@
 #! /bin/rpm
 #
 #  File: 
-#  $Id: WEBDESK.spec.in,v 1.8 2006/08/11 11:43:11 marc Exp $
+#  $Id: WEBDESK.spec.in,v 1.9 2006/09/05 16:25:17 eric Exp $
 #
 #  This is the SPEC file for the What Users Module
 #  Anakeen What Application
 #
 
 %define cerbere         %(rpm -q --queryformat '%{VENDOR}' rpm |grep -q 'none' && echo 1 || echo 0)
+%define pld		%(rpm -q --queryformat '%{VENDOR}' rpm |grep -q 'PLD' && echo 1 || echo 0)
+%define redhat	        %(rpm -q --queryformat '%{VENDOR}' rpm | grep -q 'Red Hat, Inc.' && echo 1 || echo 0)
 %if %{cerbere}
 %define destdir /home/httpd/what
 %define httpuser http
 %define apacheconfdir /etc/httpd/httpd.conf
-%else
+%define releasepostfix %(echo)
+%endif
+%if %{pld}
+%define destdir /usr/share/what
+%define httpuser http
+%define apacheconfdir /etc/webapps/what
+%define releasepostfix cb
+%endif
+%if %{redhat}
 %define destdir /usr/share/what
 %define apacheconfdir /etc/httpd/conf.d
 %define httpuser apache
+%define releasepostfix fc5
 %endif
 
 Summary: Webdesk
 Name: @PACKAGE@
 Version: @VERSION@
-%if %{cerbere}
-Release: @RELEASE@
-%else
-Release: @RELEASE@fc
-%endif
+Release: @RELEASE@%{releasepostfix}
 License: GPL
 Group: Applications/Web
 Source: ftp://ftp.souillac.anakeen.com/pub/anakeen/%{name}-%{version}.tar.gz
