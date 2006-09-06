@@ -50,7 +50,7 @@ var isOpen = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[
 
 </div>
 
-<div title="[TEXT:wd fixe/release menu]" id="wdcmdtext" style="height:10px; padding:0px; cursor:pointer; text-align:center; background-color:[COLOR_A6]; border:1px [IF IsMBarStatic]inset[ENDIF IsMBarStatic][IFNOT IsMBarStatic]outset[ENDIF IsMBarStatic] [COLOR_A6]" onclick="alternMBar();"></div>
+<div title="[TEXT:wd fixe/release menu]" id="wdcmdtext" style="padding:10px 0px 0px 0px ; cursor:pointer; text-align:center; background-color:[COLOR_A6]; border:1px [IF IsMBarStatic]inset[ENDIF IsMBarStatic][IFNOT IsMBarStatic]outset[ENDIF IsMBarStatic] [COLOR_A6]" onclick="alternMBar();"><img src="[IMG:1x1.gif]"></div>
 
 </div>
 

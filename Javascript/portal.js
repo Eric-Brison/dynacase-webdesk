@@ -523,6 +523,7 @@ function unsetWS(sid) {
 // }
 
 var timerOn = new Array();
+
 function loadSvcAsync(sid, shl, params) {
   var dreq = null;
   var is = getSvc(sid);
@@ -543,7 +544,7 @@ function loadSvcAsync(sid, shl, params) {
 	  var isxml = false;
 	  if (dreq.responseXML) {
 	    var elts = dreq.responseXML.getElementsByTagName("freedomsvc");
-	    if (typeof elts[0] == "object") {
+	    if ((elts.length>0) && (typeof elts[0] == "object")) {
 	      var elts = dreq.responseXML.getElementsByTagName("freedomsvc");
 	      var uptime = elts[0].getAttribute("uptime");
 	      var title = elts[0].getAttribute("title");
@@ -555,7 +556,7 @@ function loadSvcAsync(sid, shl, params) {
           } 
 	  
 	  if (!isxml) {
-	    alert('no valid XML content received');
+	    alert('no valid XML content received\n'+dreq.responseText);
 	  }
 	  
 	  if (services[is].rdel>0) {
