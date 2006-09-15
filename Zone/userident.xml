@@ -1,0 +1,4 @@
+[ZONE FDL:IMPCARD?zone=USERCARD:VIEWPERSON:S]
+<div style="text-align:right;width:100%">
+<button onclick="document.location.href='[CORE_STANDURL]app=GENERIC&action=GENERIC_EDIT&id=[ID]&zone=FUSERS:EDITCHANGEPASSWORD:T&rzone==WEBDESK:USERIDENT:T'">[TEXT:Change password]</button>
+<button onclick="document.location.href='[CORE_STANDURL]app=GENERIC&action=GENERIC_EDIT&id=[ID]&zone=FDL:EDITBODYCARD&rzone=WEBDESK:USERIDENT:T'">[TEXT:Change name and coordinates]</button></div>

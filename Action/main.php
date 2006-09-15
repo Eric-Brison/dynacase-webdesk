@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: main.php,v 1.5 2006/07/21 15:28:17 eric Exp $
+ * @version $Id: main.php,v 1.6 2006/09/15 15:38:38 eric Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WEBDESK
@@ -74,7 +74,7 @@ function main(&$action) {
 			 "params" => "&action=PORTAL",
 			 "iconsrc" => "[IMG:wd_portal.gif]" );
   $specialapp[] = array( "id" => "100001", 
-			 "short_name" => _("My preferences"), 
+			 "short_name" => _("My account"), 
 			 "name" => "WEBDESK", 
 			 "description" => _("Webdesk preferences"), 
 			 "params" => "&action=PREFERENCES",

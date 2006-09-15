@@ -41,12 +41,12 @@ var isOpen = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[
 <div id="inmenu">
 
 [BLOCK appList]
-<div id="app[id]" class="app" onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" onclick="runapp([id], '[name]', '[params]')"><img src="[iconsrc]" style="width:16px; vertical-align:baseline">&nbsp;[short_name]</div>[ENDBLOCK appList]
+<div id="app[id]" class="app" onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" onclick="runapp([id], '[name]', '[params]')"><img src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]; vertical-align:baseline">&nbsp;[short_name]</div>[ENDBLOCK appList]
 
 <div class="app">&nbsp;</div>
 
 [BLOCK specialAppList]
-<div id="app[id]" class="app" onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" onclick="runapp([id], '[name]', '[params]')"><img src="[iconsrc]" style="width:16px; vertical-align:baseline">&nbsp;[short_name]</div>[ENDBLOCK specialAppList]
+<div id="app[id]" class="app" onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" onclick="runapp([id], '[name]', '[params]')"><img src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]; vertical-align:baseline">&nbsp;[short_name]</div>[ENDBLOCK specialAppList]
 
 </div>
 

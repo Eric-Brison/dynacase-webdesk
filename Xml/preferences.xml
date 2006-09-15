@@ -40,8 +40,8 @@ addEvent(window,'load',selectFirstApp);
 <table cellspacing="0" style="width:95%" ><tr style="vertical-align:top">
 <td>
 <div id="divapp" class="wdparamb">[BLOCK applist]
-<div id="app[id]" title="[description]" class="app" onclick="selectApp([id], '[CORE_STANDURL]&app=[name]&action=[action]');">
-<img src="[iconsrc]" style="width:16px;">&nbsp;[short_name]
+<div id="app[id]" title="[description]" class="app" onclick="selectApp('[id]', '[CORE_STANDURL]&app=[name]&action=[action]');">
+<img src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]">&nbsp;[short_name]
 </div>[ENDBLOCK applist]</div>
 </td>
 <td>

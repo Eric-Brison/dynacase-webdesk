@@ -3,7 +3,7 @@
  * see webdesk user preferences
  *
  * @author Anakeen 2006
- * @version $Id: appprefs.php,v 1.1 2006/08/07 16:31:49 eric Exp $
+ * @version $Id: theme.php,v 1.1 2006/09/15 15:38:38 eric Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package WEBDESK
  * @subpackage 
@@ -16,7 +16,7 @@ include_once("FDL/Class.Doc.php");
  * Display webdesk user preferences
  * @param Action &$action current action
  */
-function appprefs(&$action) {
+function theme(&$action) {
   $dbaccess = $action->GetParam("FREEDOM_DB");
   $styleid= $action->getParam("STYLE","DEFAULT");
   $sizeid= $action->getParam("FONTSIZE","normal");
