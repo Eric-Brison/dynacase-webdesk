@@ -12,13 +12,40 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-11 17:58+0200\n"
-"PO-Revision-Date: 2006-08-11 17:59+0200\n"
+"POT-Creation-Date: 2006-09-21 11:54+0200\n"
+"PO-Revision-Date: 2006-09-21 12:27+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+msgid "My portal"
+msgstr "Mon portail"
+
+msgid "My account"
+msgstr "Mon compte"
+
+msgid "Webdesk preferences"
+msgstr "Préférences"
+
+msgid "Administration"
+msgstr "Administration"
+
+msgid "Webdesk administration"
+msgstr "Administration du WebDesk"
+
+msgid "Theme preferences"
+msgstr "Préférences du thème"
+
+msgid "Theme"
+msgstr "Thème"
+
+msgid "User identification"
+msgstr "Identification de l'utilisateur"
+
+msgid "Identification"
+msgstr "Identification"
 
 msgid "webdesk"
 msgstr "WebDesk"
@@ -41,14 +68,14 @@ msgstr "Portail"
 msgid "preferences page"
 msgstr "Préférences"
 
+msgid "theme preferences"
+msgstr "Préférences du thème"
+
 msgid "administration page"
 msgstr "Administration"
 
 msgid "list all admin pages"
 msgstr "liste des pages d'administration"
-
-msgid "webdesk general preferences"
-msgstr "Préférences générale"
 
 msgid "webdesk general admnistration"
 msgstr "Administration du WebDesk"
@@ -116,29 +143,28 @@ msgstr "nombre de documents affectés"
 msgid "preview of theme"
 msgstr "prévisualisation du thème"
 
-msgid "My portal"
-msgstr "Mon portail"
+msgid "without category"
+msgstr "sans catégorie"
 
-msgid "My preferences"
-msgstr "Mes préférences"
+msgid "no account defined"
+msgstr "pas de compte défini."
 
-msgid "Webdesk preferences"
-msgstr "Préférences"
+msgid "error retrieving mails"
+msgstr "Erreur de récupération des messages"
 
-msgid "Administration"
-msgstr "Administration"
+msgid "wd no rss link given"
+msgstr "Pas de flux RSS fourni"
 
-msgid "Webdesk administration"
-msgstr "Administration du WebDesk"
+msgid ""
+"[TEXT:no information available, verify your server have http access to "
+"internet and/or check link please...]"
+msgstr "Pas d'information, vérifiez que l'URL du lien est accessible"
 
 msgid "wd no freedom search given"
 msgstr "Pas de recherche Freedom fournie"
 
 msgid "wd invalid freedom search given"
 msgstr "recherche Freedom invalide"
-
-msgid "without category"
-msgstr "sans catégorie"
 
 #, c-format
 msgid "temperature %s c (dew %s c, heat %s c)"
@@ -160,19 +186,14 @@ msgstr "Pression %s hpa"
 msgid "Visibility %s %s km"
 msgstr "visibilité %s %s km"
 
-msgid "no account defined"
-msgstr "pas de compte défini."
+msgid "portal columns count"
+msgstr "nombre de colonne du portail"
 
-msgid "error retrieving mails"
-msgstr "Erreur de récupération des messages"
+msgid "services list columns count"
+msgstr "nombre de colonnes pour la liste de services"
 
-msgid "wd no rss link given"
-msgstr "Pas de flux RSS fourni"
-
-msgid ""
-"[TEXT:no information available, verify your server have http access to "
-"internet and/or check link please...]"
-msgstr "Pas d'information, vérifiez que l'URL du lien est accessible"
+msgid "ardoise content"
+msgstr "contenu de l'ardoise"
 
 msgid "wd error add service"
 msgstr "wd error add service"
@@ -240,14 +261,20 @@ msgstr "Erreur de récupération du contenu"
 msgid "wd entre rss link here"
 msgstr "Saississez l'URL du flux RSS ici"
 
-msgid "wd search ..."
-msgstr "Texte recherché"
-
 msgid "open it in a new window"
 msgstr "ouvrir dans une nouvelle fenetre"
 
 msgid "wd search for contact"
 msgstr "Rechercher un contact"
+
+msgid "wd search ..."
+msgstr "Texte recherché"
+
+msgid "Preview"
+msgstr "Prévisualisation"
+
+msgid "Do not click here"
+msgstr "Ne cliquez pas ici"
 
 msgid "Theme chooser"
 msgstr "Choix du thème"
@@ -312,11 +339,11 @@ msgstr "Liste des services disponibles"
 msgid "wd add service"
 msgstr "Ajouter le service"
 
-msgid "Preview"
-msgstr "Prévisualisation"
+msgid "Change password"
+msgstr "Modifier mon mot de passe"
 
-msgid "Do not click here"
-msgstr "Ne cliquez pas ici"
+msgid "Change name and coordinates"
+msgstr "Changer mon nom et mes coordonnées"
 
 msgid "webdesk application portal"
 msgstr "Portail application WebDesk"
@@ -324,14 +351,11 @@ msgstr "Portail application WebDesk"
 msgid "produced by Freedom"
 msgstr "produit par Freedom"
 
-msgid "portal columns count"
-msgstr "nombre de colonne du portail"
+#~ msgid "webdesk general preferences"
+#~ msgstr "Préférences générale"
 
-msgid "services list columns count"
-msgstr "nombre de colonnes pour la liste de services"
-
-msgid "ardoise content"
-msgstr "contenu de l'ardoise"
+#~ msgid "My preferences"
+#~ msgstr "Mes préférences"
 
 #~ msgid "wd freedom search, no  result"
 #~ msgstr "Recherche Freedom, pas de résultat"

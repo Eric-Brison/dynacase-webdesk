@@ -2,13 +2,46 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-11 17:58+0200\n"
+"POT-Creation-Date: 2006-09-21 11:54+0200\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+msgid "description"
+msgstr ""
+
+msgid "short_name"
+msgstr ""
+
+msgid "My portal"
+msgstr ""
+
+msgid "My account"
+msgstr ""
+
+msgid "Webdesk preferences"
+msgstr ""
+
+msgid "Administration"
+msgstr ""
+
+msgid "Webdesk administration"
+msgstr ""
+
+msgid "Theme preferences"
+msgstr ""
+
+msgid "Theme"
+msgstr ""
+
+msgid "User identification"
+msgstr ""
+
+msgid "Identification"
+msgstr ""
 
 msgid "webdesk"
 msgstr ""
@@ -31,13 +64,13 @@ msgstr ""
 msgid "preferences page"
 msgstr ""
 
+msgid "theme preferences"
+msgstr ""
+
 msgid "administration page"
 msgstr ""
 
 msgid "list all admin pages"
-msgstr ""
-
-msgid "webdesk general preferences"
 msgstr ""
 
 msgid "webdesk general admnistration"
@@ -106,34 +139,27 @@ msgstr ""
 msgid "preview of theme"
 msgstr ""
 
-msgid "description"
+msgid "without category"
 msgstr ""
 
-msgid "short_name"
+msgid "no account defined"
 msgstr ""
 
-msgid "My portal"
+msgid "error retrieving mails"
 msgstr ""
 
-msgid "My preferences"
+msgid "wd no rss link given"
 msgstr ""
 
-msgid "Webdesk preferences"
-msgstr ""
-
-msgid "Administration"
-msgstr ""
-
-msgid "Webdesk administration"
+msgid ""
+"[TEXT:no information available, verify your server have http access to "
+"internet and/or check link please...]"
 msgstr ""
 
 msgid "wd no freedom search given"
 msgstr ""
 
 msgid "wd invalid freedom search given"
-msgstr ""
-
-msgid "without category"
 msgstr ""
 
 #, c-format
@@ -156,18 +182,13 @@ msgstr ""
 msgid "Visibility %s %s km"
 msgstr ""
 
-msgid "no account defined"
+msgid "portal columns count"
 msgstr ""
 
-msgid "error retrieving mails"
+msgid "services list columns count"
 msgstr ""
 
-msgid "wd no rss link given"
-msgstr ""
-
-msgid ""
-"[TEXT:no information available, verify your server have http access to "
-"internet and/or check link please...]"
+msgid "ardoise content"
 msgstr ""
 
 msgid "wd error add service"
@@ -236,13 +257,19 @@ msgstr ""
 msgid "wd entre rss link here"
 msgstr ""
 
-msgid "wd search ..."
-msgstr ""
-
 msgid "open it in a new window"
 msgstr ""
 
 msgid "wd search for contact"
+msgstr ""
+
+msgid "wd search ..."
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+
+msgid "Do not click here"
 msgstr ""
 
 msgid "Theme chooser"
@@ -314,10 +341,10 @@ msgstr ""
 msgid "wd add service"
 msgstr ""
 
-msgid "Preview"
+msgid "Change password"
 msgstr ""
 
-msgid "Do not click here"
+msgid "Change name and coordinates"
 msgstr ""
 
 msgid "webdesk application portal"
@@ -327,13 +354,4 @@ msgid "Javascript must be enabled in your navigator"
 msgstr ""
 
 msgid "produced by Freedom"
-msgstr ""
-
-msgid "portal columns count"
-msgstr ""
-
-msgid "services list columns count"
-msgstr ""
-
-msgid "ardoise content"
 msgstr ""
