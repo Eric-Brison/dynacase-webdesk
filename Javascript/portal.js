@@ -497,30 +497,6 @@ function unsetWS(sid) {
 }
 
 
-// function loadSvc(sid, shl, params) {
-//   var dreq = null;
-//   var is = getSvc(sid);
-//   if (is===false) return;
-
-//   if (services[is].vurl=='') return;
-
-//   if (shl) setWS(sid);
-
-//   if (window.XMLHttpRequest) dreq = new XMLHttpRequest();
-//   else dreq = new ActiveXObject("Microsoft.XMLHTTP");
-//   if (dreq) {
-//     dreq.open("POST", services[is].vurl+services[is].purl, false);
-//     dreq.send('');
-//     if (dreq.status!=200) {
-//       document.getElementById('csvc'+sid).innerHTML = '[TEXT:wd error retrieving content] (HTTP Code '+dreq.status+')';	   
-//     } else { 
-//       document.getElementById('csvc'+sid).innerHTML = '<div>'+dreq.responseText+'</div>';
-//     }
-//   } else {
-//     document.getElementById('csvc'+sid).innerHTML = '[TEXT:wd error retrieving content] (XMLHttpRequest contruction)';	    
-//   }
-//   if (shl) unsetWS(sid);
-// }
 
 var timerOn = new Array();
 
@@ -569,7 +545,7 @@ function loadSvcAsync(sid, shl, params) {
 	if (shl) unsetWS(sid);
       }
     }
-    var url = services[is].vurl+services[is].purl;
+    var url = services[is].vurl +  services[is].purl;
     if (params) url += params;
     dreq.open("POST", url, true);
     dreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
