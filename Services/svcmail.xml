@@ -5,8 +5,8 @@
 [IF accset]
 [IF moremails]<div class="tdmail" style="font-style:italic">les [nfirst] derniers</div>[ENDIF moremails]
 [BLOCK mails]<div class="tdmail" style="margin:0px 0px 0px 0px" title="[subject]"><img class="small_button" src="[IMGF:wd_mail.gif:0,0,0|COLOR_BLACK]">
-[mailtolink]&nbsp;<span style="font-size:85%;">([date])</span>
-[IF fulldisplay]<div style="margin:0px 0px 0px 10px">[subject]</div>[ENDIF fulldisplay]
+[mailtolink]
+[IF fulldisplay]<span style="color:[COLOR_A3]; margin:0px 0px 0px 5px">[subject]</span>[ENDIF fulldisplay]&nbsp;<span style="color:[COLOR_C0]; font-size:85%;">([date])</span>
 </div>[ENDBLOCK mails][ENDIF accset]
 [IF showmsg]<div style="font-size:80%; border:1px solid red">[msgtext]</div>[ENDIF showmsg]
 ]]></freedomsvc>
