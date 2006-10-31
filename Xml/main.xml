@@ -37,8 +37,8 @@ var isOpen = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[
 </tr></table>
 </div>
 
-<div id="wdmenu" class="wdmenu">
-<div id="inmenu">
+<div id="wdmenu" style="background-color:[menu_bgcolor];" class="wdmenu">
+<div id="inmenu" style="  padding: 0px 0px 0px [menu_imgwidth]px; background-image: url([menu_bgimage]);">
 
 [BLOCK appList]
 <div id="app[id]" class="app" onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" onclick="runapp([id], '[name]', '[params]')"><img src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]; vertical-align:baseline">&nbsp;[short_name]</div>[ENDBLOCK appList]

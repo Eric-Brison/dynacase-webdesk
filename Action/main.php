@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: main.php,v 1.6 2006/09/15 15:38:38 eric Exp $
+ * @version $Id: main.php,v 1.7 2006/10/31 06:05:46 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WEBDESK
@@ -90,6 +90,14 @@ function main(&$action) {
   }
   $action->lay->setBlockData("specialAppList", $specialapp);
   $action->lay->setBlockData("specialAppListBody", $specialapp);
+
+
+  $m_bgcolor = GetParam("WDESK_MENUCOLOR", GetParam("COLOR_A7"));
+  $action->lay->set("menu_bgcolor", $m_bgcolor);
+  $m_bgimagew = GetParam("WDESK_MENUIMGW", "15");
+  $action->lay->set("menu_imgwidth", $m_bgimagew );
+  $m_bgimage = GetParam("WDESK_MENUIMAGE", "webdesk-logo.png");
+  $action->lay->set("menu_bgimage", $action->GetImageUrl($m_bgimage));
 
   if (!$defApp) {
     $action->lay->set("defid", $specialapp[0]["id"]);

@@ -21,7 +21,12 @@ a, a:visited, .wd_alink  {
 }
 
 .small_button { border:0px; cursor:pointer; vertical-align:baseline }
-.app { background-color:[COLOR_WHITE]; padding-left:5px; padding-right:5px; border:1px solid [COLOR_WHITE];cursor:pointer; }
+.app { 
+    background-color:[COLOR_WHITE]; 
+    padding-left:5px; 
+    padding-right:5px; 
+    border:1px solid [COLOR_WHITE]; 
+    cursor:pointer; }
 .app_selected { font-weight:bold;  border:1px solid [COLOR_WHITE]; cursor:pointer; }
 .app_over { background-color:[COLOR_A8]; padding-left:5px; padding-right:5px; border:1px inset [COLOR_A8]; cursor:pointer; }
 
@@ -34,14 +39,11 @@ a, a:visited, .wd_alink  {
   border-width:1px;
   position:absolute;
   width:auto;
-  background-color: [COLOR_A8];
   padding: 0px;
 }
 #inmenu {
-  background-image: url([IMG:webdesk-logo.png]);
   background-repeat: no-repeat;
   background-position: left top; 
-  padding: 0px 0px 0px 15px;
 }
 
 .wdmenufixed { 
