@@ -25,7 +25,7 @@ function initPortal() {
 				rdel:[rdel], nextLoad:0, col:[col], lin:[lin], open:[open],
 				i:[interactif], m:[mandatory], e:[editable], d:false }; [ENDBLOCK USvc]							 
   displayServices();
-  setTimeout("startRefresh()", 60*1000);
+  setTimeout("startRefresh()", portalRefreshInterval*1000);
 }
 
 </script>

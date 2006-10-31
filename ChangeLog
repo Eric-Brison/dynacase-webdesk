@@ -2,3 +2,5 @@
 - mail service look
 - Rpm dependency
 - Application menu customisation
+- Don't reload service when portal is hidden
+- Force application reloading on ctrl-click

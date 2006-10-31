@@ -1,20 +1,24 @@
 // portal
+var portalRefreshInterval = 10;
 function startRefresh() {
-  var  sl = '';
-  var dat = new Date();
-  var mdat = dat.getTime();
-  sl = '('+mdat+') ';
-  for (var is=0; is<services.length; is++) {
-    sl += '\n'+services[is].title+'('+services[is].rdel+')'+':'+services[is].nextLoad+' > ';
-    if (services[is].rdel>0 && services[is].nextLoad>0 && services[is].nextLoad<=mdat) {
-      services[is].nextLoad == 0;
-      loadSvcAsync(services[is].snum, true);
-      sl += 'reload';
-    } else {
-      sl += 'no';
-    } 
+  var fapp = parent.document.getElementById(window.name);
+  if (fapp.style.display=='block') {
+    var  sl = '';
+    var dat = new Date();
+    var mdat = dat.getTime();
+    sl = '('+mdat+') ';
+    for (var is=0; is<services.length; is++) {
+      sl += '\n'+services[is].title+'('+services[is].rdel+')'+':'+services[is].nextLoad+' > ';
+      if (services[is].rdel>0 && services[is].nextLoad>0 && services[is].nextLoad<=mdat) {
+	services[is].nextLoad == 0;
+	loadSvcAsync(services[is].snum, true);
+	sl += 'reload';
+      } else {
+	sl += 'no';
+      } 
+    }
   }
-  setTimeout("startRefresh()", 60*1000);
+  setTimeout("startRefresh()", portalRefreshInterval*1000);
 }  
 
 function startUtempo() {

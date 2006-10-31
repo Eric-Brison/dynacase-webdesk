@@ -135,8 +135,14 @@ function computefbodywh() {
     
 }
 
-function runapp( idapp, sidapp, params) {
-  
+function runappm(event, idapp, sidapp, params) {
+  var evt = (evt) ? evt : ((event) ? event : null );
+  var force = evt.ctrlKey ? true : false;
+  runapp(idapp, sidapp, params, force);
+}
+
+function runapp(idapp, sidapp, params, force) {
+
   if (!params) params='';
 
   if (currentApp>-1) {
@@ -148,7 +154,7 @@ function runapp( idapp, sidapp, params) {
   currentApp = idapp; //(idapp>10000?0:idapp);
   var fapp = document.getElementById('fbody'+currentApp);
 
-  if (fapp.src=='about:blank' || currentApp==0) {
+  if (fapp.src=='about:blank' || currentApp==0 || force) {
     fapp.src = '[CORE_BASEURL]app='+sidapp+params;
   }
   fapp.style.display = 'block';
