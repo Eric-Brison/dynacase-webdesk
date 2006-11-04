@@ -18,7 +18,7 @@ function gsvc(&$action) {
  
 
   $lfile = $action->GetLayoutFile($actlay);
-  if ($lfile!="") $action->lay = new Layout($lfile);
+  if ($lfile!="") $action->lay = new Layout($lfile, $action);
 
   $hasfunc = false;
   include_once($actfile);
