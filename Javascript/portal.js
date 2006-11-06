@@ -121,6 +121,7 @@ function showService(is) {
   var isinteractive  = services[is].i;
   var line  = services[is].lin;
   var col  = services[is].col;
+  var jslink  = services[is].jslink;
   
   var root = document.getElementById('wdcol'+col);
   if (root) {
@@ -202,6 +203,23 @@ function showService(is) {
       document.getElementById('csvc'+snum).style.display = 'none';
       document.getElementById('ivsvc'+snum).src = '[IMGF:wd_svc_show.gif:0,0,0|COLOR_BLACK]';
       document.getElementById('ivsvc'+snum).title = '[TEXT:wd show svc content]';
+    }
+
+    var head = document.getElementsByTagName("head")[0];
+    if (services[is].jslink!=''&& !document.getElementById('sjs'+is)) {
+      script = document.createElement('script');
+      script.id = 'sjs'+is;
+      script.type = 'text/javascript';
+      script.src = services[is].jslink;
+      head.appendChild(script);
+    }
+    if (services[is].csslink!='' && !document.getElementById('scss'+is)) {
+      script = document.createElement('link');
+      script.id = 'scss'+is;
+      script.type = 'text/css';
+      script.rel = 'stylesheet';
+      script.href = services[is].csslink;
+      head.appendChild(script);
     }
 
     loadSvcAsync(snum);

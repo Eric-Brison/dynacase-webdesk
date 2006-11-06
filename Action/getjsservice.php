@@ -46,12 +46,17 @@ function getjsservice(&$action) {
 
   $svc  = getTDoc($dbaccess, $sid);
   
+  $jslay = new Layout($jfile, $action);
+  $action->parent->AddJsCode($jslay->gen());
+
   $ret = "var svc = { "
     .    "     snum:".$snum.","
     .    "     sid:".$sid.","
     .    "     stitle:'".addslashes(getV($svc,"psvc_title"))."',"
     .    "     vurl:'".getV($svc,"psvc_vurl")."',"
     .    "     eurl:'".getV($svc,"psvc_eurl")."',"
+    .    "     jslink:'".(getV($sd, "psvc_jsfile")!=""?Getparam("CORE_STANDURL")."&app=CORE&action=CORE_CSS&session=".$action->session->id."&layout=".getV($sd, "psvc_jsfile"):"")."',"
+    .    "     csslink:'".(getV($sd, "psvc_cssfile")!=""?Getparam("CORE_STANDURL")."&app=CORE&action=CORE_CSS&session=".$action->session->id."&layout=".getV($sd, "psvc_cssfile"):"")."',"
     .    "     purl:'".$sparam."'," 
     .    "     rdel:".$rdel."," 
     .    "     nextLoad:0," 

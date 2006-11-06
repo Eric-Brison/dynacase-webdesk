@@ -3,9 +3,8 @@
 include_once('FDL/Lib.Dir.php');
 function portal(&$action) {
    
-//   $jslay = new Layout("WEBDESK/Layout/portal.js", $action);
-//   $action->parent->AddJsCode($jslay->gen());
-   $action->parent->AddJsRef("WEBDESK:portal.js", true);
+  $action->parent->AddJsRef("FDL:common.js", true);
+  $action->parent->AddJsRef("WEBDESK:portal.js", true);
   $action->parent->AddCssRef("WEBDESK:webdesk.css", true);
 
   $colcount = getParam("WDK_COLCOUNT",3);
@@ -94,13 +93,15 @@ function portal(&$action) {
 		       "vurl" => getV($sd, "psvc_vurl"),
 		       "eurl" => getV($sd, "psvc_eurl"),
 		       "purl" => $svcparam[$k],
+		       "jslink" => (getV($sd, "psvc_jsfile")!=""?Getparam("CORE_STANDURL")."&app=CORE&action=CORE_CSS&session=".$action->session->id."&layout=".getV($sd, "psvc_jsfile"):""),
+		       "csslink" => (getV($sd, "psvc_cssfile")!=""?Getparam("CORE_STANDURL")."&app=CORE&action=CORE_CSS&session=".$action->session->id."&layout=".getV($sd, "psvc_cssfile"):""),
 		       "rdel" => ($svcrdel[$k]==""?0:$svcrdel[$k]),
 		       "col" => $svccol[$k],
 		       "lin" => $svcline[$k],
 		       "open" => ($svcopen[$k]==1?"true":"false"),
 		       "interactif" => (getV($sd, "psvc_interactif")==1?"true":"false"),
 		       "mandatory" => "false",
-		       "editable" => "true"		       
+		       "editable" => "true",
 		      );
     }
   }

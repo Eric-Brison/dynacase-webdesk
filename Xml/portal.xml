@@ -21,7 +21,8 @@ var initSize = parseInt('[SIZE_MEDIUM]');
 function initPortal() {
   [BLOCK USvc]
   services[services.length] = { snum:[snum], sid:[sid], stitle:'[stitle]', 
-				vurl:'[vurl]', eurl:'[eurl]', purl:'[purl]',
+				vurl:'[vurl]', eurl:'[eurl]', purl:'[purl]', 
+				jslink:'[jslink]', csslink:'[csslink]',
 				rdel:[rdel], nextLoad:0, col:[col], lin:[lin], open:[open],
 				i:[interactif], m:[mandatory], e:[editable], d:false }; [ENDBLOCK USvc]							 
   displayServices();
