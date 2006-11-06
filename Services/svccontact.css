@@ -1,0 +1,87 @@
+div#srresult {
+  font-size:90%;
+  border-style : none;
+  padding: 8px;
+  margin: 2px;
+  border: 1px solid [COLOR_A2]; 
+  background-color : [COLOR_WHITE];
+ }
+.sr_result {
+  padding : 0 5 0 5; 
+  margin : 0 3 3 0; 
+  background-color : [COLOR_A9];
+  border-width: 3px;
+  border-style: none none none solid;
+  border-color: [COLOR_A3]; 
+  cursor:pointer; 
+}
+.sr_input {
+	        -moz-border-radius:0px;
+  background-color: [COLOR_A6];
+  border-width: 1px;
+  border-style: solid;
+  border-color: [COLOR_A3];
+}
+
+.sr_result_hover {
+  background-color: [COLOR_A6]; 
+  border-width: 3px;
+  border-style: none none none solid;
+  border-color: red;
+}
+.sr_bordermorecard {
+  z-index:5000;
+  border-width: 0px;
+  border-style: solid;
+  border-color: [COLOR_A3];
+  padding : 2;
+  background-color : [COLOR_A9];
+}
+.sr_morecard {
+  background-color : [COLOR_A9];
+  border-width: 1px;
+  border-style: solid;
+  border-color: [COLOR_A0];
+  padding : 5;
+}
+.sr_rcard {
+  padding:0px 0px 0px 10px; 
+}
+.sr_trcard {
+  text-align:right;
+  color: [COLOR_A2];
+  border-bottom : 1px solid [COLOR_A0];
+}
+.sr_info {
+  color:[COLOR_A3]; 
+  border-right:3px; 
+  border-bottom:1px 
+  solid [COLOR_A3]; 
+  text-align:right;
+}
+.sr_warn {
+  text-decoration : underline;
+}
+.sr_options {
+  color:[COLOR_A3];
+  border:1px outset [COLOR_A3];
+  cursor:pointer;
+}
+.sr_blockoptions {
+  z-index:1000;
+  margin : 10px;
+  padding : 10px;
+  position : absolute;
+  background-color: [COLOR_A6];
+  border-width: 5px;
+  border-style: solid;
+  border-color: [COLOR_A3];
+  visibility:hidden;
+}
+.sr_closeopt {
+  cursor:pointer;
+  margin-top:5px;
+  border-top:1px solid [COLOR_A3];
+  color  : [COLOR_A3];
+  text-align:right;
+}

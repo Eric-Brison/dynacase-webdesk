@@ -1,19 +1,10 @@
-<style>
-.svccontact { background-color:[COLOR_A9]; border-style:none none solid none; border-color:[COLOR_A7]; border-width:1px }
-.svcstrsearch { border-style:none none solid none; border-color:[COLOR_C0]; border-width:2px }
-</style>
-<input style="width:90%;" type="text" title="[TEXT:wd search for contact]" name="search">&nbsp;
-[IF csearch]
-
-[IF noresult]<div style="font-style:italic">Pas de contact [IF begin]commençant[ENDIF begin][IFNOT begin]contenant[ENDIF begin] <span >[sphrase]</span></div>[ENDIF noresult]
-
-[IF slimit]<div style="font-style:italic">Les [limit] premiers...</div>[ENDIF slimit]
-<br><table width="90%" cellspacing="0">
-[BLOCK contacts]
-<tr><td class="svccontact"><img  title="Voir sa carte" onclick="subwindow(300, 400, '_blanck', '[CORE_STANDURL]&app=FDL&action=FDL_CARD&zone=[pzone]&id='+[id])"class="small_button"  src="[IMG:svccontact.gif]"></td><td class="svccontact" colspan="3">&nbsp;[sexe] [mailtolink] [IF hsoc]<span style="font-style:italic" >(Société [soc])</span>[ENDIF hsoc]</td></tr>
-[IF coor]<tr><td>&nbsp;</td><td>&nbsp;</td><td>Société</td><td>Personnel</td></tr>[ENDIF coor]
-[IF hpho]<tr><td>&nbsp;</td><td>Tél:</td><td>[spho]</td><td>[ppho]</td></tr>[ENDIF hpho]
-[IF hmob]<tr><td>&nbsp;</td><td>Mob:</td><td>[smob]</td><td>[pmob]</td></tr>[ENDIF hmob]
-[IF hfax]<tr><td>&nbsp;</td><td>Fax:</td><td>[sfax]</td><td>[pfax]</td></tr>[ENDIF hfax]
-[ENDBLOCK contacts]</table>
-[ENDIF csearch]
+<?xml version="1.0" encoding="UTF-8"?>
+<freedomsvc uptime="" title="Carnet d'adresse"><![CDATA[
+<!-- <form method="POST" action=""> -->
+<input autocomplete="off" name="cc" type="hidden" value="1">
+<input autocomplete="off"  class="sr_input" id="str" type="text" name="str" onkeypress="return getReturn(event)" onkeyup="runsearch(event);"  value="[sstr]">
+&nbsp;<input type="checkbox" class="sr_input" name="begin" id="begin" checked title="[TEXT:Click to search person containing...]"> 
+&nbsp;<input type="checkbox" class="sr_input" name="soc" id="soc" title="[TEXT:Click to search both in society name...]"> 
+&nbsp;<span class="sr_options" title="[TEXT:clear results...]" onclick="clearResults()">x</span>
+<!-- </form> -->
+]]></freedomsvc>
