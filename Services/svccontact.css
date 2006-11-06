@@ -7,6 +7,7 @@ div#srresult {
   background-color : [COLOR_WHITE];
  }
 .sr_result {
+  font-size:90%;
   padding : 0 5 0 5; 
   margin : 0 3 3 0; 
   background-color : [COLOR_A9];
@@ -16,7 +17,6 @@ div#srresult {
   cursor:pointer; 
 }
 .sr_input {
-	        -moz-border-radius:0px;
   background-color: [COLOR_A6];
   border-width: 1px;
   border-style: solid;
@@ -24,10 +24,10 @@ div#srresult {
 }
 
 .sr_result_hover {
-  background-color: [COLOR_A6]; 
+  background-color: [COLOR_C8]; 
   border-width: 3px;
   border-style: none none none solid;
-  border-color: red;
+  border-color: [COLOR_C0];
 }
 .sr_bordermorecard {
   z-index:5000;
@@ -38,7 +38,7 @@ div#srresult {
   background-color : [COLOR_A9];
 }
 .sr_morecard {
-  background-color : [COLOR_A9];
+  background-color: [COLOR_C9]; 
   border-width: 1px;
   border-style: solid;
   border-color: [COLOR_A0];
@@ -53,6 +53,7 @@ div#srresult {
   border-bottom : 1px solid [COLOR_A0];
 }
 .sr_info {
+  cursor:crosshair;
   color:[COLOR_A3]; 
   border-right:3px; 
   border-bottom:1px 
@@ -68,15 +69,8 @@ div#srresult {
   cursor:pointer;
 }
 .sr_blockoptions {
-  z-index:1000;
-  margin : 10px;
-  padding : 10px;
-  position : absolute;
-  background-color: [COLOR_A6];
-  border-width: 5px;
-  border-style: solid;
-  border-color: [COLOR_A3];
-  visibility:hidden;
+  font-weight:normal;
+  text-align:center
 }
 .sr_closeopt {
   cursor:pointer;

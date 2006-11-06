@@ -22,7 +22,7 @@ function initPortal() {
   [BLOCK USvc]
   services[services.length] = { snum:[snum], sid:[sid], stitle:'[stitle]', 
 				vurl:'[vurl]', eurl:'[eurl]', purl:'[purl]', 
-				jslink:'[jslink]', csslink:'[csslink]',
+				jslink:'[jslink]', jslinkmd5:'[jslinkmd5]', csslink:'[csslink]', csslinkmd5:'[csslinkmd5]',
 				rdel:[rdel], nextLoad:0, col:[col], lin:[lin], open:[open],
 				i:[interactif], m:[mandatory], e:[editable], d:false }; [ENDBLOCK USvc]							 
   displayServices();

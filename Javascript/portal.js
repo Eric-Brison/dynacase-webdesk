@@ -121,7 +121,6 @@ function showService(is) {
   var isinteractive  = services[is].i;
   var line  = services[is].lin;
   var col  = services[is].col;
-  var jslink  = services[is].jslink;
   
   var root = document.getElementById('wdcol'+col);
   if (root) {
@@ -206,16 +205,16 @@ function showService(is) {
     }
 
     var head = document.getElementsByTagName("head")[0];
-    if (services[is].jslink!=''&& !document.getElementById('sjs'+is)) {
+    if (services[is].jslink!=''&& !document.getElementById('fref_'+services[is].jslinkmd5)) {
       script = document.createElement('script');
-      script.id = 'sjs'+is;
+      script.id = 'fref_'+services[is].jslinkmd5;
       script.type = 'text/javascript';
       script.src = services[is].jslink;
       head.appendChild(script);
     }
-    if (services[is].csslink!='' && !document.getElementById('scss'+is)) {
+    if (services[is].csslink!=''&& !document.getElementById('fref_'+services[is].csslinkmd5)) {
       script = document.createElement('link');
-      script.id = 'scss'+is;
+      script.id = 'fref_'+services[is].csslinkmd5;
       script.type = 'text/css';
       script.rel = 'stylesheet';
       script.href = services[is].csslink;

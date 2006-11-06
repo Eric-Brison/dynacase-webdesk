@@ -12,13 +12,31 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-21 11:54+0200\n"
+"POT-Creation-Date: 2006-11-06 17:01+0100\n"
 "PO-Revision-Date: 2006-09-21 12:27+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+msgid "Theme preferences"
+msgstr "Préférences du thème"
+
+msgid "Theme"
+msgstr "Thème"
+
+msgid "User identification"
+msgstr "Identification de l'utilisateur"
+
+msgid "Identification"
+msgstr "Identification"
+
+msgid "description"
+msgstr ""
+
+msgid "short_name"
+msgstr ""
 
 msgid "My portal"
 msgstr "Mon portail"
@@ -34,18 +52,6 @@ msgstr "Administration"
 
 msgid "Webdesk administration"
 msgstr "Administration du WebDesk"
-
-msgid "Theme preferences"
-msgstr "Préférences du thème"
-
-msgid "Theme"
-msgstr "Thème"
-
-msgid "User identification"
-msgstr "Identification de l'utilisateur"
-
-msgid "Identification"
-msgstr "Identification"
 
 msgid "webdesk"
 msgstr "WebDesk"
@@ -143,28 +149,29 @@ msgstr "nombre de documents affectés"
 msgid "preview of theme"
 msgstr "prévisualisation du thème"
 
-msgid "without category"
-msgstr "sans catégorie"
+msgid "portal columns count"
+msgstr "nombre de colonne du portail"
+
+msgid "services list columns count"
+msgstr "nombre de colonnes pour la liste de services"
+
+msgid "ardoise content"
+msgstr "contenu de l'ardoise"
+
+msgid "webdesk menu background color"
+msgstr "Couleur de fond pour le menu application"
+
+msgid "webdesk menu background image"
+msgstr "Image de fond pour le menu application"
+
+msgid "webdesk menu background image width"
+msgstr "Largeur de l'image de fond pour le menu application"
 
 msgid "no account defined"
 msgstr "pas de compte défini."
 
 msgid "error retrieving mails"
 msgstr "Erreur de récupération des messages"
-
-msgid "wd no rss link given"
-msgstr "Pas de flux RSS fourni"
-
-msgid ""
-"[TEXT:no information available, verify your server have http access to "
-"internet and/or check link please...]"
-msgstr "Pas d'information, vérifiez que l'URL du lien est accessible"
-
-msgid "wd no freedom search given"
-msgstr "Pas de recherche Freedom fournie"
-
-msgid "wd invalid freedom search given"
-msgstr "recherche Freedom invalide"
 
 #, c-format
 msgid "temperature %s c (dew %s c, heat %s c)"
@@ -186,14 +193,56 @@ msgstr "Pression %s hpa"
 msgid "Visibility %s %s km"
 msgstr "visibilité %s %s km"
 
-msgid "portal columns count"
-msgstr "nombre de colonne du portail"
+msgid "wd no rss link given"
+msgstr "Pas de flux RSS fourni"
 
-msgid "services list columns count"
-msgstr "nombre de colonnes pour la liste de services"
+msgid ""
+"[TEXT:no information available, verify your server have http access to "
+"internet and/or check link please...]"
+msgstr "Pas d'information, vérifiez que l'URL du lien est accessible"
 
-msgid "ardoise content"
-msgstr "contenu de l'ardoise"
+msgid "wd no freedom search given"
+msgstr "Pas de recherche Freedom fournie"
+
+msgid "wd invalid freedom search given"
+msgstr "recherche Freedom invalide"
+
+#, c-format
+msgid "more than %d results..."
+msgstr "plus de %d résultats..."
+
+msgid "wd: result"
+msgstr "résultat"
+
+msgid "no result for search"
+msgstr "Pas de résultat..."
+
+msgid "clear displayed results"
+msgstr "Effacer les résultats"
+
+msgid "wd: Private"
+msgstr "Accès privé"
+
+msgid "wd: Public readonly"
+msgstr "Accès public"
+
+msgid "wd: Group access"
+msgstr "Accès groupes"
+
+msgid "wd: Special access"
+msgstr "Accès spéciaux"
+
+msgid "wd: secretary"
+msgstr "secrétaire"
+
+msgid "wdd info society"
+msgstr "société...."
+
+msgid "wdd info personal"
+msgstr "personnel..."
+
+msgid "without category"
+msgstr "sans catégorie"
 
 msgid "wd error add service"
 msgstr "wd error add service"
@@ -258,59 +307,35 @@ msgstr "Etes-vous sur de vouloir supprimer le service "
 msgid "wd error retrieving content"
 msgstr "Erreur de récupération du contenu"
 
-msgid "wd entre rss link here"
-msgstr "Saississez l'URL du flux RSS ici"
+msgid "Click to search person containing..."
+msgstr "Commençant par ...."
+
+msgid "Click to search both in society name..."
+msgstr "Sélectionner pour chercher dans les noms de société"
+
+msgid "wd search ..."
+msgstr "Texte recherché"
 
 msgid "open it in a new window"
 msgstr "ouvrir dans une nouvelle fenetre"
 
+msgid "display full card in the same window"
+msgstr "Afficher les cartes complètes dans la même fenêtre"
+
+msgid "display column x lines"
+msgstr "Affichage colonnes x lignes"
+
+msgid "wd entre rss link here"
+msgstr "Saississez l'URL du flux RSS ici"
+
 msgid "wd search for contact"
 msgstr "Rechercher un contact"
-
-msgid "wd search ..."
-msgstr "Texte recherché"
 
 msgid "Preview"
 msgstr "Prévisualisation"
 
 msgid "Do not click here"
 msgstr "Ne cliquez pas ici"
-
-msgid "Theme chooser"
-msgstr "Choix du thème"
-
-msgid "font size chooser"
-msgstr "Taille de la police"
-
-msgid "small size"
-msgstr "petite taille"
-
-msgid "normal size"
-msgstr "taille normale"
-
-msgid "large size"
-msgstr "grande taille"
-
-msgid "x-large size"
-msgstr "très grande taille"
-
-msgid "Change your theme"
-msgstr "Changer votre thème"
-
-msgid "wd open/close menu"
-msgstr "Ouvrir/fermer le menu"
-
-msgid "wd document received"
-msgstr "Documents affectés"
-
-msgid "wd unread mail count"
-msgstr "Mails non lus"
-
-msgid "wd waiting event count"
-msgstr "Rendez-vous proposés"
-
-msgid "wd fixe/release menu"
-msgstr "Afficher/masque le menu comme panneau latéral"
 
 msgid "wd manage portal"
 msgstr "Gestion du portail"
@@ -339,14 +364,59 @@ msgstr "Liste des services disponibles"
 msgid "wd add service"
 msgstr "Ajouter le service"
 
+msgid "wd open/close menu"
+msgstr "Ouvrir/fermer le menu"
+
+msgid "wd document received"
+msgstr "Documents affectés"
+
+msgid "wd unread mail count"
+msgstr "Mails non lus"
+
+msgid "wd waiting event count"
+msgstr "Rendez-vous proposés"
+
+msgid "Click here to login"
+msgstr ""
+
+msgid "wd fixe/release menu"
+msgstr "Afficher/masque le menu comme panneau latéral"
+
+msgid "Theme chooser"
+msgstr "Choix du thème"
+
+msgid "font size chooser"
+msgstr "Taille de la police"
+
+msgid "small size"
+msgstr "petite taille"
+
+msgid "normal size"
+msgstr "taille normale"
+
+msgid "large size"
+msgstr "grande taille"
+
+msgid "x-large size"
+msgstr "très grande taille"
+
+msgid "Apply"
+msgstr ""
+
+msgid "Change your theme"
+msgstr "Changer votre thème"
+
+msgid "webdesk application portal"
+msgstr "Portail application WebDesk"
+
+msgid "Javascript must be enabled in your navigator"
+msgstr ""
+
 msgid "Change password"
 msgstr "Modifier mon mot de passe"
 
 msgid "Change name and coordinates"
 msgstr "Changer mon nom et mes coordonnées"
-
-msgid "webdesk application portal"
-msgstr "Portail application WebDesk"
 
 msgid "produced by Freedom"
 msgstr "produit par Freedom"

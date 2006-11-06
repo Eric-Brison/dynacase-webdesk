@@ -7,6 +7,7 @@ function svccontact_search(&$action) {
 
   $str    = GetHttpVars("str", "");
   $fam    = GetHttpVars("fam", "");
+  $dcl    = GetHttpVars("dcl", ""); // Div result close
   $hclick = GetHttpVars("hcl", ""); // On click handler
   $hover  = GetHttpVars("hov", ""); // On Mouse Over handler
   $hout   = GetHttpVars("hou", ""); // On Mouse Out handler
@@ -35,10 +36,10 @@ function svccontact_search(&$action) {
   $moreresult = ($total>$maxf ? true : false );
   $cn = ($total>$maxf ?  $maxf  : $total );
   $ret .= "<table cellspacing=\"0\" cellpadding=\"0\">";
-  if ($moreresult) $atext = "more than $cn results...";
-  else if ($cn>0) $atext = "$cn result".($cn>1?"s":"");
-  else $atext = "no result";
-  $ret .= "<tr><td  class=\"sr_info\" colspan=\"".$maxc."\">".$atext."</td></tr>";
+  if ($moreresult) $atext = sprintf(_("more than %d results..."),$cn);
+  else if ($cn>0) $atext = $cn." "._("wd: result").($cn>1?"s":"");
+  else $atext = _("no result for search");
+  $ret .= "<tr><td  class=\"sr_info\" ".($dcl!=""?"  title=\""._("clear displayed results")."\" onclick=\"".$dcl."()\" ":"")." colspan=\"".$maxc."\">".$atext."</td></tr>";
   if ($cn>0)  {
     $ret .= "<tr><td style=\"height:5px\"; colspan=\"".$maxc."\"></td></tr>";
     $m = ceil($cn/$maxc);
@@ -67,10 +68,10 @@ function svccontact_search(&$action) {
 	$tt .= "&nbsp;(".$socs.")";
       }
       $pt = "";
-      if ($r[$ip]["us_privcard"] =="P") $pt = "Private";
-      if ($r[$ip]["us_privcard"] =="R") $pt = "Public readonly";
-      if ($r[$ip]["us_privcard"] =="G") $pt = "Group access";
-      if ($r[$ip]["us_privcard"] =="S") $pt = "Special access";
+      if ($r[$ip]["us_privcard"] =="P") $pt = _("wd: Private");
+      if ($r[$ip]["us_privcard"] =="R") $pt = _("wd: Public readonly");
+      if ($r[$ip]["us_privcard"] =="G") $pt = _("wd: Group access");
+      if ($r[$ip]["us_privcard"] =="S") $pt = _("wd: Special access");
       if ($pt!="") $tt .= "&nbsp;<img title=\"$pt\" src=\"cadenas.gif\"/>";
       $ccol[$icol][$ili] .= "<div class=\"sr_result\" ";
       $ccol[$icol][$ili] .= ($hclick!="" ? " onclick=\"".$hclick."(event, this,".$r[$ip]["id"].")\"" : "");
@@ -83,7 +84,7 @@ function svccontact_search(&$action) {
       $ext = addCopt($ext, $r[$ip], "us_phone", "<br>");
       $ext = addCopt($ext, $r[$ip], "us_mobile", "<br>");
       $ext = addCopt($ext, $r[$ip], "us_mail", "<br>");
-      $ext = addCopt($ext, $r[$ip], "us_secr", "<br>", "Secretary : ");
+      $ext = addCopt($ext, $r[$ip], "us_secr", "<br>", _("wd: secretary").":");
       if ($ext!="") $ccol[$icol][$ili] .= "<div class=\"sr_rcard\">".$ext."</div>"; 
 	
       $more = "";
@@ -92,7 +93,7 @@ function svccontact_search(&$action) {
       $society = addCopt($society, $r[$ip], "us_workaddr", "<br>");
       $society = addCopt($society, $r[$ip], array("us_workpostalcode", "us_worktown"), "<br>");
       $society = addCopt($society, $r[$ip], "us_workweb", "<br>");
-      if ($society!="") $more .= "<div class=\"sr_trcard\">Society...</div>" . "<div class=\"sr_rcard\">". $society ."</div>";
+      if ($society!="") $more .= "<div class=\"sr_trcard\">"._("wdd info society")."</div>" . "<div class=\"sr_rcard\">". $society ."</div>";
 
       $perso = "";
       $perso = addCopt($perso, $r[$ip], "us_homephone", "<br>");
@@ -100,7 +101,7 @@ function svccontact_search(&$action) {
       $perso = addCopt($perso, $r[$ip], "us_homemail", "<br>");
       $perso = addCopt($perso, $r[$ip], "us_homeaddr", "<br>");
       $perso = addCopt($perso, $r[$ip], array("us_homepostalcode", "us_hometown"), "<br>");
-      if ($perso!="") $more .= "<div class=\"sr_trcard\">Personal...</div>" . "<div class=\"sr_rcard\">".$perso."</div>";
+      if ($perso!="") $more .= "<div class=\"sr_trcard\">"._("wdd info personal")."</div>" . "<div class=\"sr_rcard\">".$perso."</div>";
 
       $ccol[$icol][$ili] .= "</div>\n";
 
@@ -117,7 +118,9 @@ function svccontact_search(&$action) {
       $ret .= "</td>";
     }
   }
-  $ret .= "</tr></table>";
+  $ret .= "</tr>";
+  if ($cn>0)  $ret .= "<tr><td  style=\"border-top:1px solid; border-bottom:0px\" title=\""._("clear displayed results")."\" class=\"sr_info\" ".($dcl!=""?" onclick=\"".$dcl."()\" ":"")." colspan=\"".$maxc."\">x</td></tr>";
+  $ret .= "</table>";
 
   echo $ret."<div style=\"visibility:hidden; position:fixed; top:0; left:0; border:1px solid red\">".$addret."</div>";
   exit;
@@ -133,7 +136,7 @@ function addCopt($str, $doc, $field, $epref="", $pref="", $suff="") {
   } else {
     $instr = (isset($doc[$field]) && $doc[$field]!="" ? $doc[$field] : "" );
   }
-    if ($instr!="")  return $str .= ($str==""?"":$epref).$pref.$instr.$suff;
+  if ($instr!="")  return $str .= ($str==""?"":$epref).$pref.str_replace(" ", "&nbsp;", $instr).$suff;
     return $str;
 }
 

@@ -1,7 +1,7 @@
 function showDoc(doc) {
-  var  card = 'card'+doc;
-  if (document.getElementById('fcard').checked) card = 'card';
-  subwindow(300, 550, card, 'http://www.tlse.i-cesam.com/freedom/index.php?sole=Y&app=FDL&action=FDL_CARD&zone=USERCARD:VIEWPERSON:T&id='+doc);
+  var card = 'carddetails';
+  if (document.getElementById('fcard').value==1) card += doc;
+  subwindow(300, 550, card, 'index.php?sole=Y&app=FDL&action=FDL_CARD&zone=USERCARD:VIEWPERSON:T&id='+doc);
 }
 
 function getReturn(event) {
@@ -28,12 +28,16 @@ function runsearch(event) {
   var soc = (document.getElementById('soc').checked ? 1 : 0);
   var beg = (document.getElementById('begin').checked ? 1 : 0);
 
+  var maxc = document.getElementById('maxc').value;
+  var maxl = document.getElementById('maxl').value;
+  var fcard = document.getElementById('fcard').value;
+
   if (str.length<3 && !forceSearch) {
-    if (document.getElementById('srresult')) document.getElementById('srresult').innerHTML = '';
+    resetsearch();
     return false;
   }
 
-  var url = 'index.php?sole=Y&&sole=Y&app=WEBDESK&action=GSVC&sname=svccontact_search&fam='+fam+'&str='+str+'&soc='+soc+'&csz=0&hcl=clickH&hov=mouseoverH&hmo=mouseoverH&hou=mouseoutH&beg='+beg;
+  var url = 'index.php?sole=Y&&sole=Y&app=WEBDESK&action=GSVC&sname=svccontact_search&fam='+fam+'&str='+str+'&soc='+soc+'&csz=0&dcl=clearResults&hcl=clickH&hov=mouseoverH&hmo=mouseoverH&hou=mouseoutH&beg='+beg+'&maxc='+maxc+'&maxl='+maxl;
 
   if (window.XMLHttpRequest) sreq = new XMLHttpRequest();
   else sreq = new ActiveXObject('Microsoft.XMLHTTP');
@@ -70,7 +74,7 @@ function runsearch(event) {
   }
   sreq.open('POST', url, true);
   sreq.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-//   globalcursor('progress');
+  globalcursor('progress');
   sreq.send('');
   return false;
 }

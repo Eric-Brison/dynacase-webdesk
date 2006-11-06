@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <freedomsvc uptime="" title="Carnet d'adresse"><![CDATA[
 <!-- <form method="POST" action=""> -->
+<input type="hidden" id="maxc" value="[maxc]"/>
+<input type="hidden" id="maxl" value="[maxl]"/>
+<input type="hidden" id="fcard" value="[fcard]"/>
 <input autocomplete="off" name="cc" type="hidden" value="1">
-<input autocomplete="off"  class="sr_input" id="str" type="text" name="str" onkeypress="return getReturn(event)" onkeyup="runsearch(event);"  value="[sstr]">
+<input autocomplete="off"  class="sr_input" id="str" type="text" name="str" style="width:60%" onkeypress="return getReturn(event)" onkeyup="runsearch(event);"  value="[sstr]">
 &nbsp;<input type="checkbox" class="sr_input" name="begin" id="begin" checked title="[TEXT:Click to search person containing...]"> 
-&nbsp;<input type="checkbox" class="sr_input" name="soc" id="soc" title="[TEXT:Click to search both in society name...]"> 
-&nbsp;<span class="sr_options" title="[TEXT:clear results...]" onclick="clearResults()">x</span>
+<input type="checkbox" class="sr_input" name="soc" id="soc" title="[TEXT:Click to search both in society name...]"> 
 <!-- </form> -->
 ]]></freedomsvc>
