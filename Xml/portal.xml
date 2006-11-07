@@ -43,7 +43,7 @@ function initPortal() {
 <img class="small_button" id="wdparamimg" onclick="opencloseParams()" src="[IMGF:wd_open_services.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd show/hide service list]">
 <img class="small_button" onclick="document.location.reload(false)" src="[IMGF:wd_portal_reload.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reload portal view]">
 &nbsp;<img class="small_button" src="[IMGF:wd_font_smaller.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reduce font]" onclick="fontSizer(-1)"><img class="small_button"  src="[IMGF:wd_font_bigger.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd  enlarge font]" onclick="fontSizer(1)">
-</div>[ENDIF firstCol]
+ <span id="trace">----</span></div>[ENDIF firstCol]
 </td>[ENDBLOCK cols]
 </tr></table>
 

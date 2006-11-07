@@ -147,12 +147,10 @@ function showService(is) {
     cnt += '<td onclick="showHideSvc('+snum+', true);" ><span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
  
     cnt += '<td style="text-align:right">';
+
     cnt += '<span id="iconbox'+snum+'" style="visibility:hidden">';
 
-    cnt += '<img id="gotoL'+snum+'" style="display:none" class="small_button" onclick="moveSvc('+snum+',-1,0)" src="[IMGF:wd_go_left.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd go left]">';
-    cnt += '<img id="gotoD'+snum+'" style="display:none" class="small_button" onclick="moveSvc('+snum+',0,1)" src="[IMGF:wd_go_down.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd go down]">';
-    cnt += '<img id="gotoU'+snum+'" style="display:none" class="small_button" onclick="moveSvc('+snum+',0,-1)" src="[IMGF:wd_go_up.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd go up]">';
-    cnt += '<img id="gotoR'+snum+'" style="display:none" class="small_button" onclick="moveSvc('+snum+',1,0)" src="[IMGF:wd_go_right.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd go right]">';
+    cnt += '<img id="move'+snum+'" class="small_button" onmousedown="startMoveService(event, this, '+snum+')" onmouseup="endMoveService(event,'+snum+')"src="[IMGF:wd_svc_move.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd move service]">';
     cnt += '&nbsp;';
     cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc('+snum+',true);" src="[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd hide svc content]">';
     if (vurl!='')
@@ -167,7 +165,6 @@ function showService(is) {
     tsvc.className = 'wdsvc_title';
 
     svc.appendChild(tsvc);
-    computeMoveIconV(is);
     
     var csvc = document.createElement('div');
     csvc.setAttribute('id','csvc'+snum);
@@ -368,14 +365,6 @@ function showHideSvc(sid, savegeo) {
   }
 }
 
-function computeMoveIconV(sid) {
-  var snum = services[sid].snum;
-  document.getElementById('gotoL'+snum).style.display = (services[sid].col>0 ? 'inline' : 'none');
-  document.getElementById('gotoR'+snum).style.display = (services[sid].col<(colCount-1) ? 'inline' : 'none');
-  document.getElementById('gotoU'+snum).style.display = (services[sid].lin>0 ? 'inline' : 'none');
-  document.getElementById('gotoD'+snum).style.display = (services[sid].lin<(colsDesc[services[sid].col].length-1) ? 'inline' : 'none');
-}
-
 function saveGeometry() {
   var geo='';
   for (var ic=0; ic<colsDesc.length; ic++) {
@@ -418,9 +407,6 @@ function moveSvc(snum,c,l) {
       var insertCol = document.getElementById('wdcol'+ncol);
 
       insertCol.insertBefore(childo,null);
-      computeMoveIconV(is);
-      if (colsDesc[ocol].length>0) computeMoveIconV(colsDesc[ocol][colsDesc[ocol].length-1]);
-      if (colsDesc[ncol].length>1) computeMoveIconV(colsDesc[ncol][colsDesc[ncol].length-2]);
 
       saveGeometry();
 
@@ -441,8 +427,6 @@ function moveSvc(snum,c,l) {
 	var childo = document.getElementById('svc'+services[is].snum);
 	var brotho = document.getElementById('svc'+services[svc].snum);
         childo.parentNode.insertBefore(childo,brotho);
-	computeMoveIconV(is);
- 	computeMoveIconV(svc);
 
 	saveGeometry();
       }
@@ -456,8 +440,6 @@ function moveSvc(snum,c,l) {
 	var childo = document.getElementById('svc'+services[is].snum);
 	var brotho = document.getElementById('svc'+services[svc].snum);
         childo.parentNode.insertBefore(brotho,childo);
- 	computeMoveIconV(is);
- 	computeMoveIconV(svc);
 
 	saveGeometry();
       }
@@ -623,5 +605,92 @@ function hideSvcIcons(snum) {
   svcIconsDisplayed = -1;
 }
 
+function trace(txt) {
+  if (document.getElementById('trace')) {
+    document.getElementById('trace').innerHTML = txt;
+  }
+}
 
+// Move service
+var svcMove = '';
+var ghost = null;
+function startMoveService(event, elt, snum) {
+  globalcursor('move');
+  document.addEventListener("mousemove", moveService, true);
+  document.addEventListener("mouseup", endMoveService, true);
+  event.stopPropagation( );
+  event.preventDefault( );
+  svcMove = 'svc'+snum;
 
+  var svccur = document.getElementById(svcMove);
+
+  var xy = getAnchorPosition('svc'+snum);
+  var h=getObjectHeight(svccur);
+  var w=getObjectWidth(svccur);
+ 
+  ghost = svccur.cloneNode(true); //document.createElement('div');
+  ghost.setAttribute('id','ghost');
+  ghost.setAttribute('name','ghost');
+  ghost.style.visbility = 'hidden';
+  document.body.appendChild(ghost);
+  ghost.style.left = parseInt(xy.x)+'px';
+  ghost.style.top = parseInt(xy.y)+'px';
+  ghost.style.height = parseInt(h)+'px';
+  ghost.style.width = parseInt(w)+'px';
+  ghost.style.position = 'absolute';
+  ghost.style.border = '1px dotted red';
+  ghost.style.visibility = 'visible';
+  curCol = -1;
+}
+
+var curCol = -1;
+var curLine = 0;
+function moveService(event) {
+  var xp = (event.clientX) + "px";
+  var yp = (event.clientY) + "px";
+  ghost.style.left = parseInt(xp)+'px';
+  ghost.style.top = parseInt(yp)+'px';
+  event.stopPropagation( );
+
+  var bw = getObjectWidth(document.body);
+  var pcol = parseInt(bw/colCount);
+  var currentc = -1;
+  for (var ic=0; ic<colCount && currentc==-1; ic++) {
+     if (parseInt(xp)>=(ic*parseInt(pcol)) && parseInt(xp)<((ic+1)*parseInt(pcol))) {
+      currentc = ic;
+    }
+  }
+  if (currentc>-1) curCol = currentc;
+
+  var coltd = document.getElementById('wdcol'+curCol);
+
+  var currentLine = -1;
+  for (var isvc=0; isvc<coltd.childNodes.length && currentLine<0; isvc++) {
+    if (coltd.childNodes[isvc].nodeName=='DIV' && coltd.childNodes[isvc].id!='') {
+      var xy = getAnchorPosition(coltd.childNodes[isvc].id);
+      var h=getObjectHeight(coltd.childNodes[isvc]);
+      if (parseInt(yp)>=parseInt(xy.y) && parseInt(yp)<parseInt(xy.y+h)) {
+	currentLine = isvc;
+      }
+    }
+  }
+  if (currentLine>-1) curLine = currentLine;
+  coltd.insertBefore(ghost, coltd.childNodes[curLine]);
+      
+  trace('Insertion a [colonne:'+curCol+';rang:'+curLine+']');
+
+}
+function endMoveService(event) {
+  if (curLine>-1 && curCol>-1 && svcMove!='') {
+    var coltd = document.getElementById('wdcol'+curCol);
+    var svccur = document.getElementById(svcMove);
+    coltd.insertBefore(svccur, coltd.childNodes[curLine]);
+  }
+  svcMove = '';
+  document.removeEventListener("mouseup", endMoveService, true);
+  document.removeEventListener("mousemove", moveService, true);
+  event.stopPropagation( );
+  ghost.parentNode.removeChild(ghost);
+  ghost = null;
+  unglobalcursor();
+}
