@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-07 10:57+0100\n"
+"POT-Creation-Date: 2006-11-07 18:06+0100\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -246,10 +246,10 @@ msgstr ""
 msgid "automatic reload all"
 msgstr ""
 
-msgid "wd move service"
+msgid "wd hide svc content"
 msgstr ""
 
-msgid "wd hide svc content"
+msgid "wd move service"
 msgstr ""
 
 msgid "wd reload svc content"
@@ -415,4 +415,10 @@ msgid "Change name and coordinates"
 msgstr ""
 
 msgid "produced by Freedom"
+msgstr ""
+
+msgid "wd  close all services"
+msgstr ""
+
+msgid "wd open all services"
 msgstr ""

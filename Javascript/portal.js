@@ -1,3 +1,5 @@
+// $Id: portal.js,v 1.23 2006/11/07 18:26:19 marc Exp $
+
 // portal
 var portalRefreshInterval = 10;
 function startRefresh() {
@@ -131,6 +133,10 @@ function showService(is) {
     svc.name = 'svc'+snum;
     svc.className = 'wdsvc';
     root.appendChild(svc);
+    if (!isNetscape) {
+      var w=getObjectWidth(svc);
+      svc.style.width = (parseInt(w) - 6) + 'px';
+    }
     addEvent(svc,'mouseover',mouseOverService);  
   
     var tsvc = document.createElement('div');
@@ -152,7 +158,7 @@ function showService(is) {
 
     cnt += '<span id="iconbox'+snum+'" style="visibility:hidden">';
 
-    cnt += '<img id="move'+snum+'" class="small_button" onmousedown="startMoveService(event, this, '+snum+')" onmouseup="endMoveService(event,'+snum+')"src="[IMGF:wd_svc_move.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd move service]">';
+    cnt += '<img id="move'+snum+'" class="small_button" onmousedown="return startMoveService(event, this, '+snum+');" onmouseup="endMoveService(event,'+snum+')" src="[IMGF:wd_svc_move.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd move service]">';
     cnt += '&nbsp;';
     if (vurl!='')
       cnt += '<img id="irsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="startUtempo(); loadSvcAsync('+snum+', true);endUtempo(); " src="[IMGF:wd_svc_reload.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reload svc content]">';
@@ -346,6 +352,20 @@ function sendForm() {
   var fedit = document.getElementById('editsvc'+snum);
   fedit.parentNode.removeChild(fedit);
   editSnum = -1;
+}
+
+
+function openAllSvc() {
+  for (var ix=0; ix<services.length; ix++) {
+    if (!services[ix].open) showHideSvc(services[ix].snum, false);
+  }
+  return false;
+}
+function closeAllSvc() {
+  for (var ix=0; ix<services.length; ix++) {
+    if (services[ix].open) showHideSvc(services[ix].snum, false);
+  }
+  return false;
 }
 
 function showHideSvc(sid, savegeo) {
@@ -555,8 +575,11 @@ function hideSvcIcons(snum) {
 
 var svcMove = '';
 var ghost = null;
+var overElt = null;
+
 function startMoveService(event, elt, snum) {
   globalcursor('move');
+  addEvent(document,'mousemove',mouseMoveService);  
   addEvent(document,'mouseup',endMoveService);  
   stopPropagation(event);
   svcMove = 'svc'+snum;
@@ -579,46 +602,70 @@ function startMoveService(event, elt, snum) {
   ghost.style.width = parseInt(w)+'px';
   ghost.className = 'wdsvcghost' ;
   ghost.style.visibility = 'visible';
+  ghost.style.border = '1px solid red';
   svccur.parentNode.insertBefore(ghost, svccur);
   overElt = null;
-}
 
-var overElt = null;
+  return false;
+}
 
 function endMoveService(event) {
   event || (event = window.event);
   var srcel = (event.target) ? event.target : event.srcElement;
-  if (svcMove!='' && overElt!=null) {
+  if (svcMove!='') {
     var svccur = document.getElementById(svcMove);
-    overElt.parentNode.insertBefore(svccur, overElt);
+    if (overElt!=null) {
+      var svccur = document.getElementById(svcMove);
+      if (overElt.nodeName=='TD') overElt.appendChild(svccur);
+      else overElt.parentNode.insertBefore(svccur, overElt);
+      stopPropagation(event);
+      saveGeometry();
+    }
     svccur.style.display = 'block';
+    svcMove = '';
+    overElt = null;
+    delEvent(document,'mouseup',endMoveService);
     stopPropagation(event);
-    saveGeometry();
+    ghost.parentNode.removeChild(ghost);
   }
-  svcMove = '';
-  overElt = null;
-  delEvent(document,'mouseup',endMoveService);
-  event.stopPropagation( );
-  ghost.parentNode.removeChild(ghost);
   ghost = null;
   unglobalcursor();
 }
 
+function mouseMoveService(event) {
+  return false;
+}
 
 function mouseOverService(event) {
   event || (event = window.event);
   var srcel = (event.target) ? event.target : event.srcElement;
+  var srcorg = srcel;
   var efound = false;
-  if (svcMove!='') {
+  var foundCol = -1;
+  if (svcMove!='' && srcel.id!='ghost') {
     while (!efound && srcel.nodeName!='BODY') {
      if (srcel.getAttribute('svcid')) {
 	efound = true;
 	overElt = srcel;
 	stopPropagation(event);
 	srcel.parentNode.insertBefore(ghost, srcel);
-     } else {
-	srcel = srcel.parentNode;
-      }
+     }else {
+       if (srcel.getAttribute('wdcol')) foundCol = srcel.getAttribute('wdcol');
+     }
+     srcel = srcel.parentNode;
+    }
+    if (foundCol>-1 && !efound) {
+      trace('foundCol='+foundCol+' efound='+efound);
+      overElt = document.getElementById('wdcol'+foundCol);
+      stopPropagation(event);
+      overElt.appendChild(ghost);
     }
   }
 }
+
+
+
+function trace(tt) {
+  if (document.getElementById('trace')) document.getElementById('trace').innerHTML = tt;
+}
+    

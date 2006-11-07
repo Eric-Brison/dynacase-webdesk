@@ -63,7 +63,8 @@ a, a:visited, .wd_alink  {
 
 .wdsvc { 
   border:4px solid  [COLOR_A9];
-  margin: 6px 3px 10px 3px; 
+  background-color:[COLOR_A9]; 
+  margin: 3px 3px 3px 3px; 
  }
 
 .wdsvc_title { 
@@ -76,6 +77,7 @@ a, a:visited, .wd_alink  {
 }
 .wdsvc_title td  { background-color:[COLOR_A9]!important; }
 .wdsvc_content { 
+  background-color:[COLOR_WHITE]; 
   padding-left:5px; 
   border-width:1px; 
   border-style: solid; 

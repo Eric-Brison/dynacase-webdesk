@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-07 10:57+0100\n"
+"POT-Creation-Date: 2006-11-07 18:06+0100\n"
 "PO-Revision-Date: 2006-09-21 12:27+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -256,12 +256,11 @@ msgstr "invalid service number returned by creation"
 msgid "automatic reload all"
 msgstr "mise à jour toutes les"
 
-#, fuzzy
-msgid "wd move service"
-msgstr "Déplacer"
-
 msgid "wd hide svc content"
 msgstr "Masquer le contenu"
+
+msgid "wd move service"
+msgstr "Déplacer le service"
 
 msgid "wd reload svc content"
 msgstr "Afficher le contenu"
@@ -427,6 +426,16 @@ msgstr "Changer mon nom et mes coordonnées"
 
 msgid "produced by Freedom"
 msgstr "produit par Freedom"
+
+msgid "wd  close all services"
+msgstr "Fermer tous les services"
+
+msgid "wd open all services"
+msgstr "Ouvrir tous les services"
+
+#, fuzzy
+#~ msgid "portal page number 1"
+#~ msgstr "Portail"
 
 #~ msgid "webdesk general preferences"
 #~ msgstr "Préférences générale"

@@ -40,6 +40,7 @@ function updateInfos(url, tag, fct, to) {
       dreq.onreadystatechange =  function() {
 	if (dreq.readyState==4 && dreq.status==200) {
 	  try {
+	    alert(dreq.responseText);
 	    eval(dreq.responseText);
 	    if (result) sr= result;
 	    document.getElementById(tag).innerHTML = sr;
