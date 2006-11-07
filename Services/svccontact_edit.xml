@@ -1,0 +1,4 @@
+<div class="sr_blockoptions" >
+[TEXT:display full card in the same window] <select name="fcard"><option value="0" [nselected]>Non<option value="1" [yselected]>Oui</select><br>
+[TEXT:display column x lines] <input class="sr_input" id="maxc" name="maxc" size="2" value="[maxc]"> X <input class="sr_input"  id="maxl" name="maxl" size="2" value="[maxl]">
+</div>
