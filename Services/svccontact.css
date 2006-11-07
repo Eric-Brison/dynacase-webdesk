@@ -9,25 +9,26 @@ div#srresult {
 .sr_result {
   font-size:90%;
   padding : 0 5 0 5; 
-  margin : 0 3 3 0; 
+  margin : 0 3 3 0;
   background-color : [COLOR_A9];
-  border-width: 3px;
-  border-style: none none none solid;
-  border-color: [COLOR_A3]; 
+  border-width: 1px 1px 1px 3px;
+  border-style: solid;
+  border-color: [COLOR_A9] [COLOR_A9] [COLOR_A9] [COLOR_A3]; 
   cursor:pointer; 
 }
 .sr_input {
-  background-color: [COLOR_A6];
+  background-color: [COLOR_A8];
   border-width: 1px;
   border-style: solid;
   border-color: [COLOR_A3];
 }
 
 .sr_result_hover {
-  background-color: [COLOR_C8]; 
+  background-color: [COLOR_C9]; 
   border-width: 3px;
-  border-style: none none none solid;
-  border-color: [COLOR_C0];
+  border-width: 1px 1px 1px 3px;
+  border-style: solid;
+  border-color: [COLOR_C9] [COLOR_C9] [COLOR_C9] [COLOR_C0];
 }
 .sr_bordermorecard {
   z-index:5000;

@@ -127,12 +127,12 @@ function showService(is) {
 
     var svc = document.createElement('div');
     svc.id = 'svc'+snum;
+    svc.setAttribute("svcid",is);
     svc.name = 'svc'+snum;
     svc.className = 'wdsvc';
     root.appendChild(svc);
-
-      
-      
+    addEvent(svc,'mouseover',mouseOverService);  
+  
     var tsvc = document.createElement('div');
     tsvc.id = 'tsvc'+snum;
     tsvc.name = 'tsvc'+snum;
@@ -144,7 +144,9 @@ function showService(is) {
     }
     cnt += '<table cellspacing="0" cellpadding="0" style="width:100%; border:0px">';
     cnt += '<tr onmouseover="showSvcIcons('+snum+')" onmouseout="hideSvcIcons('+snum+')">';
-    cnt += '<td onclick="showHideSvc('+snum+', true);" ><span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
+    cnt += '<td>';
+     cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc('+snum+',true);" src="[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd hide svc content]">';
+    cnt += '<span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
  
     cnt += '<td style="text-align:right">';
 
@@ -152,7 +154,6 @@ function showService(is) {
 
     cnt += '<img id="move'+snum+'" class="small_button" onmousedown="startMoveService(event, this, '+snum+')" onmouseup="endMoveService(event,'+snum+')"src="[IMGF:wd_svc_move.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd move service]">';
     cnt += '&nbsp;';
-    cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc('+snum+',true);" src="[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd hide svc content]">';
     if (vurl!='')
       cnt += '<img id="irsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="startUtempo(); loadSvcAsync('+snum+', true);endUtempo(); " src="[IMGF:wd_svc_reload.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reload svc content]">';
     if (eurl!='' && iseditable)
@@ -173,6 +174,7 @@ function showService(is) {
       csvc.innerHTML = '[TEXT:wd url for retrieving information not given]';
       csvc.className = 'wdsvc_content wdsvc_warning';
     } else {
+      csvc.innerHTML = '[TEXT:downloading content in progress...]';
       csvc.className = 'wdsvc_content';
     }
     csvc.style.overflow = 'auto';
@@ -366,10 +368,15 @@ function showHideSvc(sid, savegeo) {
 }
 
 function saveGeometry() {
-  var geo='';
-  for (var ic=0; ic<colsDesc.length; ic++) {
-    for (var il=0; il<colsDesc[ic].length; il++) {
-      if (services[colsDesc[ic][il]]) geo += (geo==''?'':'|')+services[colsDesc[ic][il]].snum+':'+ic+':'+il+':'+(services[colsDesc[ic][il]].open?"1":0);
+  var geo = '';
+  for (var ic=0; ic<colCount; ic++) { 
+    var curcol = document.getElementById('wdcol'+ic);
+    var rsvc = 0;
+    for (var id=0; id<curcol.childNodes.length; id++) {
+      if (curcol.childNodes[id].nodeName=='DIV' && curcol.childNodes[id].getAttribute('svcid')) {
+        var svcid = curcol.childNodes[id].getAttribute('svcid');
+	geo += (geo==''?'':'|')+services[svcid].snum+':'+ic+':'+id+':'+(services[svcid].open?"1":0);
+      }
     }
   }
   var xreq = null;
@@ -377,80 +384,14 @@ function saveGeometry() {
   else xreq = new ActiveXObject("Microsoft.XMLHTTP");
   if (xreq) {
     xreq.open("POST", "[CORE_STANDURL]app=WEBDESK&action=GEOSERVICE&sgeo="+geo, false);
-    xreq.send('');
-    if (xreq.status!=200) alert('[TEXT:wd error geo service] (HTTP Code '+xreq.status+')');	   
+     xreq.send('');
+     if (xreq.status!=200) alert('[TEXT:wd error geo service] (HTTP Code '+xreq.status+')');	   
   } else {
     alert('[TEXT:wd error geo service] (XMLHttpRequest contruction)');	   
   }
   return;
 }
 
-function moveSvc(snum,c,l) {
-  var is = getSvc(snum);
-  if (is===false) return;
-  var geo = '';
-  if (c==-1||c==1) {
-    if (services[is].col+c>=0&&services[is].col+c<colCount) {
-
-      var ocol = services[is].col;
-      var olin = services[is].lin;
-
-      services[is].col += c;
-      services[is].lin = colsDesc[services[is].col].length;
-      var ncol = services[is].col;
-      var clin = services[is].lin;
-
-      colsDesc[ncol][colsDesc[ncol].length] = is;
-      colsDesc[ocol].splice(olin,1);
-
-      var childo = document.getElementById('svc'+services[is].snum);
-      var insertCol = document.getElementById('wdcol'+ncol);
-
-      insertCol.insertBefore(childo,null);
-
-      saveGeometry();
-
-    } else {
-      return;
-    } 
-  } else if (l==-1||l==+1) {
-    var col = services[is].col;
-    if (services[is].lin+l<0) return;
-    var oli=services[is].lin;
-    if (l==-1) {
-      if (services[is].lin>0) {
-	var svc = colsDesc[col][services[is].lin-1];
-	colsDesc[col][services[is].lin] = svc;
-	colsDesc[col][services[is].lin-1] = is;
-	services[svc].lin = services[is].lin;
-	services[is].lin--;
-	var childo = document.getElementById('svc'+services[is].snum);
-	var brotho = document.getElementById('svc'+services[svc].snum);
-        childo.parentNode.insertBefore(childo,brotho);
-
-	saveGeometry();
-      }
-    } else {
-      if (services[is].lin<colsDesc[col].length) {
-	var svc = colsDesc[col][services[is].lin+1];
-	colsDesc[col][services[is].lin] = svc;
-	colsDesc[col][services[is].lin+1] = is;
-	services[svc].lin = services[is].lin;
-	services[is].lin++;
-	var childo = document.getElementById('svc'+services[is].snum);
-	var brotho = document.getElementById('svc'+services[svc].snum);
-        childo.parentNode.insertBefore(brotho,childo);
-
-	saveGeometry();
-      }
-    }
-  } else {
-    alert('moveSvc:: invalid line='+l+', column='+c);
-    return;
-  }
-  return;
-}
-  
 
 function unDisplaySvc(snum) {
   var is = getSvc(snum);
@@ -516,36 +457,39 @@ function loadSvcAsync(sid, shl, params) {
     if (shl) setWS(sid);
     dreq.onreadystatechange =  function() {
       if (dreq.readyState == 4) {
-	if (dreq.status!=200) {
-	  document.getElementById('csvc'+sid).innerHTML = '[TEXT:wd error retrieving content] (HTTP Code '+dreq.status+')';	   
-	} else { 
-
-	  var isxml = false;
-	  if (dreq.responseXML) {
-	    var elts = dreq.responseXML.getElementsByTagName("freedomsvc");
-	    if ((elts.length>0) && (typeof elts[0] == "object")) {
+	try {
+	  if (dreq.status!=200) {
+	    document.getElementById('csvc'+sid).innerHTML = '[TEXT:wd error retrieving content] (HTTP Code '+dreq.status+')';	   
+	  } else { 
+	    var isxml = false;
+	    if (dreq.responseXML) {
 	      var elts = dreq.responseXML.getElementsByTagName("freedomsvc");
-	      var uptime = elts[0].getAttribute("uptime");
-	      var title = elts[0].getAttribute("title");
-	      if (title) document.getElementById('tsvcti'+sid).innerHTML = title;
-	      if (uptime) document.getElementById('tsvcti'+sid).title = 'Mise à jour : '+uptime;
-	      document.getElementById('csvc'+sid).innerHTML = '<div>'+elts[0].firstChild.nodeValue+'</div>';
-	      isxml = true;
+	      if ((elts.length>0) && (typeof elts[0] == "object")) {
+		var elts = dreq.responseXML.getElementsByTagName("freedomsvc");
+		var uptime = elts[0].getAttribute("uptime");
+		var title = elts[0].getAttribute("title");
+		if (title) document.getElementById('tsvcti'+sid).innerHTML = title;
+		if (uptime) document.getElementById('tsvcti'+sid).title = 'Mise à jour : '+uptime;
+		document.getElementById('csvc'+sid).innerHTML = '<div>'+elts[0].firstChild.nodeValue+'</div>';
+		isxml = true;
+	      }
+	    } 
+	    
+	    if (!isxml) {
+	      alert('no valid XML content received\n'+dreq.responseText);
 	    }
-          } 
-	  
-	  if (!isxml) {
-	    alert('no valid XML content received\n'+dreq.responseText);
+	    
+	    if (services[is].rdel>0) {
+	      var dat = new Date();
+	      services[is].nextLoad = dat.getTime() + (services[is].rdel*60*1000);
+	    } else {
+	      timerOn[is] = -1;
+	    }	    
 	  }
-	  
-	  if (services[is].rdel>0) {
-	    var dat = new Date();
-	    services[is].nextLoad = dat.getTime() + (services[is].rdel*60*1000);
-	  } else {
-	    timerOn[is] = -1;
-	  }	    
+	  if (shl) unsetWS(sid);
+	} catch(e) {
+	  //          alert('Exception : ' + e);
 	}
-	if (shl) unsetWS(sid);
       }
     }
     var url = services[is].vurl +  services[is].purl;
@@ -605,30 +549,26 @@ function hideSvcIcons(snum) {
   svcIconsDisplayed = -1;
 }
 
-function trace(txt) {
-  if (document.getElementById('trace')) {
-    document.getElementById('trace').innerHTML = txt;
-  }
-}
 
 // Move service
+// -----------------------------
+
 var svcMove = '';
 var ghost = null;
 function startMoveService(event, elt, snum) {
   globalcursor('move');
-  document.addEventListener("mousemove", moveService, true);
-  document.addEventListener("mouseup", endMoveService, true);
-  event.stopPropagation( );
-  event.preventDefault( );
+  addEvent(document,'mouseup',endMoveService);  
+  stopPropagation(event);
   svcMove = 'svc'+snum;
 
   var svccur = document.getElementById(svcMove);
-
   var xy = getAnchorPosition('svc'+snum);
   var h=getObjectHeight(svccur);
   var w=getObjectWidth(svccur);
  
-  ghost = svccur.cloneNode(true); //document.createElement('div');
+  svccur.style.display = 'none';
+
+  ghost = document.createElement('div');
   ghost.setAttribute('id','ghost');
   ghost.setAttribute('name','ghost');
   ghost.style.visbility = 'hidden';
@@ -637,60 +577,48 @@ function startMoveService(event, elt, snum) {
   ghost.style.top = parseInt(xy.y)+'px';
   ghost.style.height = parseInt(h)+'px';
   ghost.style.width = parseInt(w)+'px';
-  ghost.style.position = 'absolute';
-  ghost.style.border = '1px dotted red';
+  ghost.className = 'wdsvcghost' ;
   ghost.style.visibility = 'visible';
-  curCol = -1;
+  svccur.parentNode.insertBefore(ghost, svccur);
+  overElt = null;
 }
 
-var curCol = -1;
-var curLine = 0;
-function moveService(event) {
-  var xp = (event.clientX) + "px";
-  var yp = (event.clientY) + "px";
-  ghost.style.left = parseInt(xp)+'px';
-  ghost.style.top = parseInt(yp)+'px';
-  event.stopPropagation( );
+var overElt = null;
 
-  var bw = getObjectWidth(document.body);
-  var pcol = parseInt(bw/colCount);
-  var currentc = -1;
-  for (var ic=0; ic<colCount && currentc==-1; ic++) {
-     if (parseInt(xp)>=(ic*parseInt(pcol)) && parseInt(xp)<((ic+1)*parseInt(pcol))) {
-      currentc = ic;
-    }
-  }
-  if (currentc>-1) curCol = currentc;
-
-  var coltd = document.getElementById('wdcol'+curCol);
-
-  var currentLine = -1;
-  for (var isvc=0; isvc<coltd.childNodes.length && currentLine<0; isvc++) {
-    if (coltd.childNodes[isvc].nodeName=='DIV' && coltd.childNodes[isvc].id!='') {
-      var xy = getAnchorPosition(coltd.childNodes[isvc].id);
-      var h=getObjectHeight(coltd.childNodes[isvc]);
-      if (parseInt(yp)>=parseInt(xy.y) && parseInt(yp)<parseInt(xy.y+h)) {
-	currentLine = isvc;
-      }
-    }
-  }
-  if (currentLine>-1) curLine = currentLine;
-  coltd.insertBefore(ghost, coltd.childNodes[curLine]);
-      
-  trace('Insertion a [colonne:'+curCol+';rang:'+curLine+']');
-
-}
 function endMoveService(event) {
-  if (curLine>-1 && curCol>-1 && svcMove!='') {
-    var coltd = document.getElementById('wdcol'+curCol);
+  event || (event = window.event);
+  var srcel = (event.target) ? event.target : event.srcElement;
+  if (svcMove!='' && overElt!=null) {
     var svccur = document.getElementById(svcMove);
-    coltd.insertBefore(svccur, coltd.childNodes[curLine]);
+    overElt.parentNode.insertBefore(svccur, overElt);
+    svccur.style.display = 'block';
+    stopPropagation(event);
+    saveGeometry();
   }
   svcMove = '';
-  document.removeEventListener("mouseup", endMoveService, true);
-  document.removeEventListener("mousemove", moveService, true);
+  overElt = null;
+  delEvent(document,'mouseup',endMoveService);
   event.stopPropagation( );
   ghost.parentNode.removeChild(ghost);
   ghost = null;
   unglobalcursor();
+}
+
+
+function mouseOverService(event) {
+  event || (event = window.event);
+  var srcel = (event.target) ? event.target : event.srcElement;
+  var efound = false;
+  if (svcMove!='') {
+    while (!efound && srcel.nodeName!='BODY') {
+     if (srcel.getAttribute('svcid')) {
+	efound = true;
+	overElt = srcel;
+	stopPropagation(event);
+	srcel.parentNode.insertBefore(ghost, srcel);
+     } else {
+	srcel = srcel.parentNode;
+      }
+    }
+  }
 }

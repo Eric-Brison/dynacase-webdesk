@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-06 17:01+0100\n"
+"POT-Creation-Date: 2006-11-07 10:57+0100\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -246,16 +246,7 @@ msgstr ""
 msgid "automatic reload all"
 msgstr ""
 
-msgid "wd go left"
-msgstr ""
-
-msgid "wd go down"
-msgstr ""
-
-msgid "wd go up"
-msgstr ""
-
-msgid "wd go right"
+msgid "wd move service"
 msgstr ""
 
 msgid "wd hide svc content"
@@ -271,6 +262,9 @@ msgid "wd delete svc"
 msgstr ""
 
 msgid "wd url for retrieving information not given"
+msgstr ""
+
+msgid "downloading content in progress..."
 msgstr ""
 
 msgid "wd show svc content"
@@ -316,6 +310,18 @@ msgid "display column x lines"
 msgstr ""
 
 msgid "wd entre rss link here"
+msgstr ""
+
+msgid "wd go left"
+msgstr ""
+
+msgid "wd go down"
+msgstr ""
+
+msgid "wd go up"
+msgstr ""
+
+msgid "wd go right"
 msgstr ""
 
 msgid "wd search for contact"

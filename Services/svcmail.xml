@@ -4,10 +4,17 @@
 <freedomsvc uptime="[uptime]" title="Mail, [account] : [new] / [old]"><![CDATA[
 [IF accset]
 [IF moremails]<div class="tdmail" style="font-style:italic">les [nfirst] derniers</div>[ENDIF moremails]
-[BLOCK mails]<div class="tdmail" style="margin:0px 0px 0px 0px" title="[subject]"><img class="small_button" src="[IMGF:wd_mail.gif:0,0,0|COLOR_BLACK]">
+<table cellspacing="0" style="width:100%">
+[BLOCK mails]<tr style="vertical-align:top">
+<td><img style="visibility:[IF newmail]visible[ENDIF newmail][IFNOT newmail]hidden[ENDIF newmail]" class="small_button" src="[IMGF:wd_mail.gif:0,0,0|COLOR_BLACK]"></td>
+<td style="border-bottom:1px solid [IF newmail][COLOR_C2][ENDIF newmail][IFNOT newmail][COLOR_A9][ENDIF newmail];">
 [mailtolink]
-[IF fulldisplay]<span style="color:[COLOR_A3]; margin:0px 0px 0px 5px">[subject]</span>[ENDIF fulldisplay]&nbsp;<span style="color:[COLOR_C0]; font-size:85%;">([date])</span>
-</div>[ENDBLOCK mails][ENDIF accset]
+[IF fulldisplay]<span style="color:[COLOR_A3]; margin:0px 0px 0px 5px">[subject]</span>[ENDIF fulldisplay]
+&nbsp;<span style="color:[COLOR_C0]; font-size:85%;">([date])</span>
+</td>
+</tr>
+[ENDBLOCK mails]</table>[ENDIF accset]
+
 [IF showmsg]<div style="font-size:80%; border:1px solid red">[msgtext]</div>[ENDIF showmsg]
 ]]></freedomsvc>
 [ENDIF OnlyCount]

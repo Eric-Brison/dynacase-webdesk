@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-06 17:01+0100\n"
+"POT-Creation-Date: 2006-11-07 10:57+0100\n"
 "PO-Revision-Date: 2006-09-21 12:27+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -256,17 +256,9 @@ msgstr "invalid service number returned by creation"
 msgid "automatic reload all"
 msgstr "mise à jour toutes les"
 
-msgid "wd go left"
-msgstr "déplacer vers la gauche"
-
-msgid "wd go down"
-msgstr "déplacer vers le bas"
-
-msgid "wd go up"
-msgstr "déplacer vers le haut"
-
-msgid "wd go right"
-msgstr "déplacer vers la droite"
+#, fuzzy
+msgid "wd move service"
+msgstr "Déplacer"
 
 msgid "wd hide svc content"
 msgstr "Masquer le contenu"
@@ -282,6 +274,9 @@ msgstr "Supprimer le service"
 
 msgid "wd url for retrieving information not given"
 msgstr "Url de récuperation des informations non fournie"
+
+msgid "downloading content in progress..."
+msgstr "Chargement du contenu en cours..."
 
 msgid "wd show svc content"
 msgstr "Afficher le contenu"
@@ -327,6 +322,18 @@ msgstr "Affichage colonnes x lignes"
 
 msgid "wd entre rss link here"
 msgstr "Saississez l'URL du flux RSS ici"
+
+msgid "wd go left"
+msgstr "déplacer vers la gauche"
+
+msgid "wd go down"
+msgstr "déplacer vers le bas"
+
+msgid "wd go up"
+msgstr "déplacer vers le haut"
+
+msgid "wd go right"
+msgstr "déplacer vers la droite"
 
 msgid "wd search for contact"
 msgstr "Rechercher un contact"
@@ -435,6 +442,3 @@ msgstr "produit par Freedom"
 
 #~ msgid "Rss feed"
 #~ msgstr "Flux Rss"
-
-#~ msgid "wd move svc"
-#~ msgstr "Déplacer"

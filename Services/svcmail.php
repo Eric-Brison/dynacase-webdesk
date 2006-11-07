@@ -2,8 +2,6 @@
 
 function svcmail(&$action) {
 
-  $maxm = 10; // how many mails shown ?
-
   header('Content-type: text/xml; charset=utf-8');
   $action->lay->setEncoding("utf-8");
 
@@ -19,6 +17,8 @@ function svcmail(&$action) {
   $srv = GetHttpVars("server", "");
   $pro = GetHttpVars("proto", "");
   $display = GetHttpVars("display", 0);
+  $shmails = GetHttpVars("shmails", 0);
+  $maxm  = GetHttpVars("cntm", 0);
   
 //   echo "account=[$acc] login=[$log] password=[$pas] serveur=[$srv] protocol=[$pro]<br>";
 
@@ -87,27 +87,30 @@ if ($acc=="" || $log=="" || $pas=="" || $srv=="" || $pro=="") {
 
  $action->lay->set("OnlyCount", false);
  if ($minfos["error"]=="") {
-   $action->lay->set("new", count($minfos["newmails"]));
-   $action->lay->set("old", count($minfos["oldmails"]));
-   if (count($minfos["newmails"])) {
+   $action->lay->set("new", $minfos["newcount"]);
+   $action->lay->set("old", $minfos["newcount"]+$minfos["oldcount"]);
+   if (count($minfos["mails"])) {
      $action->lay->set("bmails", true);
      $ms = array();
-     $nb = (count($minfos["newmails"])>$maxm ? count($minfos["newmails"])-$maxm : 0);
-     for ($ic=count($minfos["newmails"])-1; $ic>=$nb; $ic--) {
-      $sd = convertDH($minfos["newmails"][$ic]->date);
-      $rfrom = clearText($minfos["newmails"][$ic]->from);
-      $prfrom = preg_replace('/&lt;.*@.*&gt;/','',$rfrom);
-      $ms[] = array( "subject" => clearText($minfos["newmails"][$ic]->subject),
-		     "date" => $sd,
-		     "fulldisplay" => ($display==0||$display=="" ? true : false),
-                     "mailtolink" =>  setMailtoAnchor($rfrom,
-                                                      ($prfrom==""?$rfrom:$prfrom), 
-						      "Re: ".clearText($minfos["newmails"][$ic]->subject),
-						      "", "", "",
-						      array("class"=>"wd_amail", "target"=>"_blanck"))
-		     );
+     if ($maxm==0) $nb = count($minfos["mails"]);
+     else $nb = (count($minfos["mails"])>$maxm ? count($minfos["mails"])-$maxm : 0);
+     for ($ic=count($minfos["mails"])-1; $ic>=$nb; $ic--) {
+       if (!$minfos["mails"][$ic]->seen || ($shmails==1 && $minfos["mails"][$ic]->seen)) {
+	 $sd = convertDH($minfos["mails"][$ic]->date);
+	 $rfrom = clearText($minfos["mails"][$ic]->from);
+	 $prfrom = preg_replace('/&lt;.*@.*&gt;/','',$rfrom);
+	 $ms[] = array( "subject" => clearText($minfos["mails"][$ic]->subject),
+			"date" => $sd,
+			"fulldisplay" => ($display==0||$display=="" ? true : false),
+			"mailtolink" =>  setMailtoAnchor($rfrom,
+							 ($prfrom==""?$rfrom:$prfrom), 
+							 "Re: ".clearText($minfos["mails"][$ic]->subject),
+							 "", "", "",
+							 array("class"=>"wd_amail", "target"=>"_blanck")),
+			"newmail" =>  !$minfos["mails"][$ic]->seen);
+       }
      }
-     if (count($minfos["newmails"])>$maxm)  $action->lay->set("moremails", true);
+     if ($maxm!=0 && count($minfos["mails"])>$maxm)  $action->lay->set("moremails", true);
      $action->lay->setBlockData("mails", $ms);
    }  else $action->lay->setBlockData("mails", null);
  } else {
@@ -137,20 +140,24 @@ function getMbox($mbox, $login, $pass) {
     } else {
       $ni = imap_num_msg($mbx);
       $ovv = imap_fetch_overview($mbx, "$ni:1");
-      foreach ($ovv as $k => $v) {
+      $newm = $oldm = 0;
+      $mail = array();
+     foreach ($ovv as $k => $v) {
         if ($v->deleted) continue;
         if (!$v->seen) {
-          $newh[]= $v;
+	  $newm++;
         } else {
-          $oldh[]= $v;
+	  $oldm++;
         }
-      }
+	$mail[]= $v;
+     }
     }
     imap_close($mbx);
     $ftime = time() - $otime;
   }
-  $mailbox = array( "newmails" => $newh,
-                    "oldmails" => $oldh,
+  $mailbox = array( "mails" => $mail,
+		    "newcount" => $newm,
+		    "oldcount" => $oldm,
                     "error"    => $err,
                     "elapsed"  => $ftime );
 //      print_r2($mailbox);

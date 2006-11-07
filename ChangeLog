@@ -4,3 +4,6 @@
 - Application menu customisation
 - Don't reload service when portal is hidden
 - Force application reloading on ctrl-click
+- Drag'n drop to move services
+- Remake of the "Carnet d'adresse" service
+- Review mail service
