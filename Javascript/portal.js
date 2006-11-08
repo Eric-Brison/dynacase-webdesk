@@ -1,4 +1,4 @@
-// $Id: portal.js,v 1.24 2006/11/08 06:21:30 marc Exp $
+// $Id: portal.js,v 1.25 2006/11/08 12:29:06 marc Exp $
 
 // portal
 var portalRefreshInterval = 10;
@@ -125,6 +125,7 @@ function showService(is) {
   var col  = services[is].col;
   
   var root = document.getElementById('wdcol'+col);
+  var rootw = getObjectWidth(root);
   if (root) {
 
     var svc = document.createElement('div');
@@ -132,11 +133,12 @@ function showService(is) {
     svc.setAttribute("svcid",is);
     svc.name = 'svc'+snum;
     svc.className = 'wdsvc';
-    root.appendChild(svc);
-    if (!isNetscape) {
-      var w=getObjectWidth(svc);
-      svc.style.width = (parseInt(w) - 6) + 'px';
+    if (!isNetscape)  {
+      svc.style.display = 'block';
+      svc.style.width = '100%';
     }
+//     if (!isNetscape) svc.style.width = parseInt(rootw) - 6;
+    root.appendChild(svc);
     addEvent(svc,'mouseover',mouseOverService);  
   
     var tsvc = document.createElement('div');
@@ -225,6 +227,7 @@ function showService(is) {
       script.href = services[is].csslink;
       head.appendChild(script);
     }
+
 
     loadSvcAsync(snum);
   }
@@ -488,9 +491,9 @@ function loadSvcAsync(sid, shl, params) {
 		var elts = dreq.responseXML.getElementsByTagName("freedomsvc");
 		var uptime = elts[0].getAttribute("uptime");
 		var title = elts[0].getAttribute("title");
-		if (title) document.getElementById('tsvcti'+sid).innerHTML = title;
-		if (uptime) document.getElementById('tsvcti'+sid).title = 'Mise à jour : '+uptime;
-		document.getElementById('csvc'+sid).innerHTML = '<div>'+elts[0].firstChild.nodeValue+'</div>';
+ 		if (title) document.getElementById('tsvcti'+sid).innerHTML = title;
+ 		if (uptime) document.getElementById('tsvcti'+sid).title = 'Mise à jour : '+uptime;
+ 		document.getElementById('csvc'+sid).innerHTML = '<div style="padding:0; margin:0; display:block; border:0px; width:100%;">'+elts[0].firstChild.nodeValue+'</div>';
 		isxml = true;
 	      }
 	    } 
@@ -512,11 +515,13 @@ function loadSvcAsync(sid, shl, params) {
 	}
       }
     }
-    var url = services[is].vurl +  services[is].purl;
-    if (params) url += params;
+//     trace('url=['+services[is].vurl+'] purl=['+services[is].purl+'] params=['+params+']');
+    var url = services[is].vurl ;
+    var purl = services[is].purl;
+    if (params) purl += params;
     dreq.open("POST", url, true);
     dreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    dreq.send('');
+    dreq.send(purl);
   } else {
     document.getElementById('csvc'+sid).innerHTML = '[TEXT:wd error retrieving content] (XMLHttpRequest contruction)';	    
   }
@@ -675,6 +680,6 @@ function mouseOverService(event) {
 
 
 function trace(tt) {
-  if (document.getElementById('trace')) document.getElementById('trace').innerHTML = tt;
+  if (document.getElementById('trace')) document.getElementById('trace').innerHTML = tt + '<br>' + document.getElementById('trace').innerHTML;
 }
     

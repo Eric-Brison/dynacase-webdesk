@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: portal.php,v 1.16 2006/11/07 18:26:19 marc Exp $
+ * @version $Id: portal.php,v 1.17 2006/11/08 12:29:06 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WGCAL
@@ -14,10 +14,15 @@
 include_once('FDL/Lib.Dir.php');
 function portal(&$action) {
    
+  $debug = false; //true;
+
   $action->parent->AddJsRef("FDL:common.js", true);
-//   $action->parent->AddJsRef("WEBDESK:portal.js", true);
-  $jslay = new Layout("WEBDESK/Layout/portal.js", $action);
-  $action->parent->AddJsCode($jslay->gen());
+  $action->lay->set("debug", $debug);
+  if (!$debug) $action->parent->AddJsRef("WEBDESK:portal.js", true);
+  else {
+    $jslay = new Layout("WEBDESK/Layout/portal.js", $action);
+    $action->parent->AddJsCode($jslay->gen());
+  }
   $action->parent->AddCssRef("WEBDESK:webdesk.css", true);
 
   $colcount = getParam("WDK_COLCOUNT",3);

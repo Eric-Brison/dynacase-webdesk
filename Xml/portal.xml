@@ -41,7 +41,7 @@ function initPortal() {
 <td  id="wdcol[icol]" wdcol="[icol]" onmouseover="mouseOverService(event)" class="wdcols" style="width:33%;">
 [IF firstCol]
 <table cellspacing="0" style="width:100%"><tr>
-<td class="wdtitleb" style="margin:5px; text-align:left; vertical-align:middle">[TEXT:wd manage portal] <span id="trace" style="display:none">????</span>
+<td class="wdtitleb" style="margin:5px; text-align:left; vertical-align:middle">[TEXT:wd manage portal]
 <img class="small_button" id="wdparamimg" onclick="opencloseParams()" src="[IMGF:wd_open_services.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd show/hide service list]">
 <img class="small_button" onclick="document.location.reload(false)" src="[IMGF:wd_portal_reload.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reload portal view]">
 &nbsp;
@@ -84,6 +84,6 @@ function initPortal() {
 <tr><td colspan="[colsCount]" class="wdbuttonb" style="text-align:right"><img class="small_button" onclick="opencloseParams()" src="[IMGF:wd_cancel.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd close]"></td></td></table>
 </div>
 </div>
-
+ [IF debug]<div id="trace" style="border:1px solid red;display:block">????</div>[ENDIF debug]
 </body>
 </html>

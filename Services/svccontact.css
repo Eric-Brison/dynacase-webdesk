@@ -16,11 +16,12 @@ div#srresult {
   border-color: [COLOR_A9] [COLOR_A9] [COLOR_A9] [COLOR_A3]; 
   cursor:pointer; 
 }
-.sr_input {
-  background-color: [COLOR_A8];
+input.sr_input {
+  background-color: [COLOR_C9];
   border-width: 1px;
   border-style: solid;
-  border-color: [COLOR_A3];
+  border-color: [COLOR_C6];
+  -moz-border-radius:0px;
 }
 
 .sr_result_hover {
