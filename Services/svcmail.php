@@ -2,15 +2,12 @@
 
 function svcmail(&$action) {
 
-  header('Content-type: text/xml; charset=utf-8');
-  $action->lay->setEncoding("utf-8");
-
   $action->lay->set("showmsg", false);
   $action->lay->set("msgtext", "");
   $action->lay->set("accset", false); 
 
   $ocount = GetHttpVars("oc", "N"); 
- 
+  
   $acc = GetHttpVars("account", "");
   $log = GetHttpVars("login", "");
   $pas = GetHttpVars("password", "");
@@ -19,21 +16,23 @@ function svcmail(&$action) {
   $display = GetHttpVars("display", 0);
   $shmails = GetHttpVars("shmails", 0);
   $maxm  = GetHttpVars("cntm", 0);
+   
+  $action->lay->set("OnlyCount", ($ocount=="Y"?true:false));
+  if ($ocount!="Y") {
+    header('Content-type: text/xml; charset=utf-8');
+    $action->lay->setEncoding("utf-8");
+  }
+  $action->lay->set("new", "?");
+  $action->lay->set("ico", "");
+  $action->lay->set("status", "0");
+  $action->lay->set("msgtext", "");
   
-//   echo "account=[$acc] login=[$log] password=[$pas] serveur=[$srv] protocol=[$pro]<br>";
-
-
-if ($acc=="" || $log=="" || $pas=="" || $srv=="" || $pro=="") {
- if ($ocount=="Y") {
-   $action->lay->set("OnlyCount", true);
-   $action->lay->set("new", "?");
- } else {
-   $action->lay->set("OnlyCount", false);
-   $action->lay->set("showmsg", true);
-   $action->lay->set("msgtext", _("no account defined"));
- }
-  return;
- }
+  if ($acc=="" || $log=="" || $pas=="" || $srv=="" || $pro=="") {
+    $action->lay->set("showmsg", true);
+    $action->lay->set("status", "-1");
+    $action->lay->set("msgtext", _("no account defined"));
+    return;
+  }
 
  $action->lay->set("accset", true); 
 
@@ -75,24 +74,21 @@ if ($acc=="" || $log=="" || $pas=="" || $srv=="" || $pro=="") {
 
 
  if ($ocount=="Y") {
-
-   $action->lay->set("OnlyCount", true);
-   $action->lay->set("new", count($minfos["newmails"]));
-   if ($minfos["error"]!="") $action->lay->set("new", "?");
-   else $action->lay->set("new", count($minfos["newmails"]));
-   return;
-	  
+   if ($minfos["error"]!="") {
+     $action->lay->set("new", "?");
+     $action->lay->set("status", "-1");
+     $action->lay->set("msgtext", $minfos["error"]);
+   } else $action->lay->set("new", count($minfos["newmails"]));
+   return;  
  }
 
-
- $action->lay->set("OnlyCount", false);
  if ($minfos["error"]=="") {
    $action->lay->set("new", $minfos["newcount"]);
    $action->lay->set("old", $minfos["newcount"]+$minfos["oldcount"]);
    if (count($minfos["mails"])) {
      $action->lay->set("bmails", true);
      $ms = array();
-     if ($maxm==0) $nb = count($minfos["mails"]);
+     if ($maxm==0) $nb = 0;
      else $nb = (count($minfos["mails"])>$maxm ? count($minfos["mails"])-$maxm : 0);
      for ($ic=count($minfos["mails"])-1; $ic>=$nb; $ic--) {
        if (!$minfos["mails"][$ic]->seen || ($shmails==1 && $minfos["mails"][$ic]->seen)) {
@@ -112,7 +108,9 @@ if ($acc=="" || $log=="" || $pas=="" || $srv=="" || $pro=="") {
      }
      if ($maxm!=0 && count($minfos["mails"])>$maxm)  $action->lay->set("moremails", true);
      $action->lay->setBlockData("mails", $ms);
-   }  else $action->lay->setBlockData("mails", null);
+   }  else {
+     $action->lay->setBlockData("mails", null);
+   }
  } else {
    $action->lay->set("showmsg", true);
    $action->lay->set("msgtext", _("error retrieving mails")."[".$minfos["error"]."]");

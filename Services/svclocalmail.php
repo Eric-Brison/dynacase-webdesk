@@ -7,23 +7,25 @@ function svclocalmail(&$action) {
   $login = $_SERVER["PHP_AUTH_USER"];
   $password = $_SERVER["PHP_AUTH_PW"];
 
-  if ($login=="" || $password=="") {
-    $action->lay->set("OUT", "<div>Vous n'êtes pas connecté.</div>");
-    return;
-  }
-
   if ($action->user->iddomain==1) {
-    $action->lay->set("OUT", "<div>Vous n'avez pas de compte de messagerie locale.</div>");
-    return;
+    $domain = "";
+    $server = "";
+    $protocol = "";
+  } else {
+    $uacc = new MailAccount($action->dbaccess,$action->user->id);
+    $udom = new Domain($action->dbaccess,$uacc->iddomain);
+    $upop = new Pop($action->dbaccess,$uacc->pop);
+    $domain = $udom->name;
+    $server = $upop->popname;
+    $protocol = "imap";
   }
-  $uacc = new MailAccount($action->dbaccess,$action->user->id);
-  $udom = new Domain($action->dbaccess,$uacc->iddomain);
-  $upop = new Pop($action->dbaccess,$uacc->pop);
 
-  $domain = $udom->name;
-  $server = $upop->popname;
-  $protocol = "imap";
   
-  Redirect($action, "WEBDESK", "SVCMAIL&oc=$ocount&account=$domain&login=$login&password=$password&server=$server&proto=$protocol");
+  setHttpVar("account", $domain);
+  setHttpVar("login", $login);
+  setHttpVar("password", $password);
+  setHttpVar("server", $server);
+  setHttpVar("proto", $protocol);
+  Redirect($action, "WEBDESK", "SVCMAIL&oc=$ocount");
 }
 ?>

@@ -1,4 +1,4 @@
-[IF OnlyCount]var result='[new]';[ENDIF OnlyCount][IFNOT OnlyCount]<?xml version="1.0" encoding="UTF-8"?>[IF OnlyCount]var result='[new]';[ENDIF OnlyCount][IFNOT OnlyCount]
+[IF OnlyCount]var result = { text:'[new]', ico:'[ico]', status:'[status]', msg:'[msgtext]' };[ENDIF OnlyCount][IFNOT OnlyCount]<?xml version="1.0" encoding="UTF-8"?>
 <freedomsvc uptime="[uptime]" title="Mail, [account] : [new] / [old]"><![CDATA[
 [IF accset]
 [IF moremails]<div class="tdmail" style="font-style:italic">les [nfirst] derniers</div>[ENDIF moremails]
@@ -12,6 +12,5 @@
 </td>
 </tr>
 [ENDBLOCK mails]</table>[ENDIF accset]
-
 [IF showmsg]<div style="font-size:80%; border:1px solid red">[msgtext]</div>[ENDIF showmsg]
 ]]></freedomsvc>[ENDIF OnlyCount]

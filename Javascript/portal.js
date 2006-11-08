@@ -1,4 +1,4 @@
-// $Id: portal.js,v 1.23 2006/11/07 18:26:19 marc Exp $
+// $Id: portal.js,v 1.24 2006/11/08 06:21:30 marc Exp $
 
 // portal
 var portalRefreshInterval = 10;
@@ -149,7 +149,7 @@ function showService(is) {
       imgcyc = '<img src="[IMGF:wd_svc_cyclic.gif:0,0,0|COLOR_BLACK]" style="border:0px" title="[TEXT:automatic reload all] '+services[is].rdel+' minutes">';
     }
     cnt += '<table cellspacing="0" cellpadding="0" style="width:100%; border:0px">';
-    cnt += '<tr onmouseover="showSvcIcons('+snum+')" onmouseout="hideSvcIcons('+snum+')">';
+    cnt += '<tr onmouseover="mOverSvcTitle('+snum+')" onmouseout="mOutSvcTitle('+snum+')">';
     cnt += '<td>';
      cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc('+snum+',true);" src="[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd hide svc content]">';
     cnt += '<span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
@@ -553,6 +553,15 @@ function fontSizer(inc) {
     for (k = 0 ; k < getallTags.length ; k++)
       getallTags[k].style.fontSize = size+'pt';
   }
+}
+
+
+
+function mOverSvcTitle(snum) {
+  showSvcIcons(snum);
+}
+function mOutSvcTitle(snum) {
+  hideSvcIcons(snum);
 }
 
 
