@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: main.php,v 1.7 2006/10/31 06:05:46 marc Exp $
+ * @version $Id: main.php,v 1.8 2006/11/08 12:36:47 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WEBDESK
@@ -14,8 +14,34 @@
 include_once('Class.QueryDb.php');
 include_once('Class.Application.php');
 
+function haveAppAccess($appname) {
+  global $action;
+  $query=new QueryDb($action->dbaccess,"Application");
+  
+  // Check if application is installed and available
+  $query->basic_elem->sup_where=array("name='".$appname."'","available='Y'","displayable='Y'");
+  $list = $query->query(0,0,"TABLE");
+  if ($query->nb<=0) return false;
+  
+  // User have permission ?
+  if ($action->user->id==1) return true;
+  
+  $queryact=new QueryDb($action->dbaccess,"Action");
+  $queryact->AddQuery("id_application=".$list[0]["id"]);
+  $queryact->AddQuery("root='Y'");
+  $listact = $queryact->Query(0,0,"TABLE");
+  $root_acl_name=$listact[0]["acl"];
+  if (!$action->HasPermission($root_acl_name,$list[0]["id"])) return false;
+  
+  return true;
+}
+
 function main(&$action) {
 
+  $action->lay->set("Workspace", haveAppAccess("WORKSPACE"));
+  $action->lay->set("MailAccount", haveAppAccess("MAIL"));
+  $action->lay->set("Agenda", haveAppAccess("WGCAL"));
+    
   $action->parent->AddJsRef("WEBDESK:main.js", true);
   $action->parent->AddCssRef("WEBDESK:webdesk.css", true);
   

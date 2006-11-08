@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: portal.php,v 1.17 2006/11/08 12:29:06 marc Exp $
+ * @version $Id: portal.php,v 1.18 2006/11/08 12:36:47 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WGCAL
@@ -127,7 +127,6 @@ function portal(&$action) {
   }
   $action->lay->setBlockData("USvc", $tsvc); 
   
-    
 }
 
 
