@@ -1,4 +1,4 @@
-// $Id: portal.js,v 1.26 2006/11/08 14:33:00 marc Exp $
+// $Id: portal.js,v 1.27 2006/11/08 15:06:29 marc Exp $
 
 // portal
 var portalRefreshInterval = 10;
@@ -151,10 +151,10 @@ function showService(is) {
       imgcyc = '<img src="[IMGF:wd_svc_cyclic.gif:0,0,0|COLOR_BLACK]" style="border:0px" title="[TEXT:automatic reload all] '+services[is].rdel+' minutes">';
     }
     cnt += '<table cellspacing="0" cellpadding="0" style="width:100%; border:0px">';
-    cnt += '<tr style="cursor:move" onmousedown="return startMoveService(event, this, '+snum+');" onmouseup="endMoveService(event,'+snum+')"  onmouseover="mOverSvcTitle('+snum+')" onmouseout="mOutSvcTitle('+snum+')">';
-    cnt += '<td >';
-     cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc('+snum+',true);" src="[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd hide svc content]">';
-    cnt += '<span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
+    cnt += '<tr onmouseover="mOverSvcTitle('+snum+')" onmouseout="mOutSvcTitle('+snum+')">';
+    cnt += '<td>';
+     cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc(event, '+snum+',true);" src="[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd hide svc content]">';
+    cnt += '<span style="cursor:move" onmousedown="return startMoveService(event, this, '+snum+');" onmouseup="endMoveService(event,'+snum+')"  id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
  
     cnt += '<td style="text-align:right">';
 
@@ -163,11 +163,11 @@ function showService(is) {
 //     cnt += '<img id="move'+snum+'" class="small_button" src="[IMGF:wd_svc_move.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd move service]">';
     cnt += '&nbsp;';
     if (vurl!='')
-      cnt += '<img id="irsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="startUtempo(); loadSvcAsync('+snum+', true);endUtempo(); " src="[IMGF:wd_svc_reload.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reload svc content]">';
+      cnt += '<img id="irsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="startUtempo( ); loadSvcAsync('+snum+', true);endUtempo(); " src="[IMGF:wd_svc_reload.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reload svc content]">';
     if (eurl!='' && iseditable)
-      cnt += '<img id="iesvc'+snum+'" style="margin-left:2px" class="small_button" onclick="editSvc('+snum+');" src="[IMGF:wd_svc_edit.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd edit svc content]">';
+      cnt += '<img id="iesvc'+snum+'" style="margin-left:2px" class="small_button" onclick="return editSvc(event, '+snum+');" src="[IMGF:wd_svc_edit.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd edit svc content]">';
     if (!ismandatory)
-      cnt += '<img id="idsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="deleteSvc('+snum+');" src="[IMGF:wd_svc_delete.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd delete svc]">';
+      cnt += '<img id="idsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="deleteSvc(event, '+snum+'); return false" src="[IMGF:wd_svc_delete.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd delete svc]">';
     cnt += '</span>';
     cnt += '</td></tr></table>';
     tsvc.innerHTML = cnt;
@@ -263,9 +263,12 @@ function getSvc(snum) {
 
 var ereq = null;
 var editSnum = -1;
-function editSvc(snum) {
+function editSvc(event, snum) {
 
-  if (snum==editSnum) return;
+  if (snum==editSnum) {
+    cancelForm(); 
+    return;
+  }
 
   var is = getSvc(snum);
   if (is===false) return;
@@ -313,6 +316,8 @@ function editSvc(snum) {
       document.getElementById('editsvc_c').innerHTML = '[TEXT:wd error retrieving edit form] (XMLHttpRequest contruction)';	    
     }
   }
+  stopPropagation(event);
+  return false;
 }
 
 function cancelForm() {
@@ -323,6 +328,7 @@ function cancelForm() {
   var fedit = document.getElementById('editsvc'+snum);
   fedit.parentNode.removeChild(fedit);
   editSnum = -1;
+  return false;
 }
 
 function sendForm() {
@@ -360,18 +366,18 @@ function sendForm() {
 
 function openAllSvc() {
   for (var ix=0; ix<services.length; ix++) {
-    if (!services[ix].open) showHideSvc(services[ix].snum, false);
+    if (!services[ix].open) showHideSvc(false, services[ix].snum, false);
   }
   return false;
 }
 function closeAllSvc() {
   for (var ix=0; ix<services.length; ix++) {
-    if (services[ix].open) showHideSvc(services[ix].snum, false);
+    if (services[ix].open) showHideSvc(false, services[ix].snum, false);
   }
   return false;
 }
 
-function showHideSvc(sid, savegeo) {
+function showHideSvc(event, sid, savegeo) {
   var is = getSvc(sid);
   if (is===false) return;
   if (document.getElementById('csvc'+sid)) {
@@ -388,6 +394,7 @@ function showHideSvc(sid, savegeo) {
     }
     if (savegeo) saveGeometry();
   }
+  if (event) stopPropagation(event);
 }
 
 function saveGeometry() {
@@ -428,7 +435,7 @@ function unDisplaySvc(snum) {
 }
 
 
-function deleteSvc(snum) {
+function deleteSvc(event, snum) {
   var is = getSvc(snum);
   if (is===false) return;
   if (!confirm('[TEXT:wd confirm supress of] ['+services[is].stitle+']')) return false;
@@ -444,6 +451,7 @@ function deleteSvc(snum) {
   } else {
     alert('[TEXT:wd error add service] (XMLHttpRequest contruction)');	   
   }
+  stopPropagation(event);
 }
 
 function setWS(sid) {
