@@ -1,4 +1,4 @@
-// $Id: portal.js,v 1.25 2006/11/08 12:29:06 marc Exp $
+// $Id: portal.js,v 1.26 2006/11/08 14:33:00 marc Exp $
 
 // portal
 var portalRefreshInterval = 10;
@@ -151,8 +151,8 @@ function showService(is) {
       imgcyc = '<img src="[IMGF:wd_svc_cyclic.gif:0,0,0|COLOR_BLACK]" style="border:0px" title="[TEXT:automatic reload all] '+services[is].rdel+' minutes">';
     }
     cnt += '<table cellspacing="0" cellpadding="0" style="width:100%; border:0px">';
-    cnt += '<tr onmouseover="mOverSvcTitle('+snum+')" onmouseout="mOutSvcTitle('+snum+')">';
-    cnt += '<td>';
+    cnt += '<tr style="cursor:move" onmousedown="return startMoveService(event, this, '+snum+');" onmouseup="endMoveService(event,'+snum+')"  onmouseover="mOverSvcTitle('+snum+')" onmouseout="mOutSvcTitle('+snum+')">';
+    cnt += '<td >';
      cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc('+snum+',true);" src="[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd hide svc content]">';
     cnt += '<span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
  
@@ -160,7 +160,7 @@ function showService(is) {
 
     cnt += '<span id="iconbox'+snum+'" style="visibility:hidden">';
 
-    cnt += '<img id="move'+snum+'" class="small_button" onmousedown="return startMoveService(event, this, '+snum+');" onmouseup="endMoveService(event,'+snum+')" src="[IMGF:wd_svc_move.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd move service]">';
+//     cnt += '<img id="move'+snum+'" class="small_button" src="[IMGF:wd_svc_move.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd move service]">';
     cnt += '&nbsp;';
     if (vurl!='')
       cnt += '<img id="irsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="startUtempo(); loadSvcAsync('+snum+', true);endUtempo(); " src="[IMGF:wd_svc_reload.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reload svc content]">';
