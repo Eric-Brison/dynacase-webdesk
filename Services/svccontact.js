@@ -90,41 +90,16 @@ function resetsearch() {
 function mouseoverH(evt, elt, id) {
   elt.className='sr_result sr_result_hover';
   if (!document.getElementById('m'+id)) return; 
-
-  var xpage;
-  var ypage;
-  var xfenetre; 
-  var yfenetre;
-  if (document.layers) {
-    xpage = evt.pageX ;
-    ypage  = evt.pageY;
-    xfenetre = xpage ;
-    yfenetre = ypage ;		
-  } else if (document.all) {
-    xfenetre = evt.x ; 
-    yfenetre = evt.y ;		
-    xpage=xfenetre ; 
-    ypage=yfenetre	;	
-    if (document.body.scrollLeft) xpage = xfenetre + document.body.scrollLeft ; 
-    if (document.body.scrollTop) ypage = yfenetre + document.body.scrollTop;
-  } else if (document.getElementById) {
-
-    xpage = evt.clientX;
-    ypage = evt.clientY;
-    //xfenetre = evt.clientX ; 
-    //yfenetre = evt.clientY ;
-    //xpage=xfenetre ; 
-    //ypage=yfenetre	;	
-    //if(evt.pageX) xpage = evt.pageX ;
-    //if(evt.pageY) ypage  = evt.pageY ;
-  }
-
+  GetXY(evt);
+  var dnav = 0;
+  if (isNetscape) dnav=20;
   with (document.getElementById('m'+id).style) {
-    left = xpage+20+'px';
-    top = ypage+20+'px';  
+    left = (dnav+parseInt(Xpos))+'px';
+	    top = (dnav+parseInt(Ypos))+'px';  
     visibility='visible';
   }
 }
+
 function mouseoutH(event, elt, id) {
   elt.className='sr_result';
   if (!document.getElementById('m'+id)) return; 
