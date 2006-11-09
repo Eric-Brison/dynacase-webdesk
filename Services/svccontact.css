@@ -17,10 +17,10 @@ div#srresult {
   cursor:pointer; 
 }
 input.sr_input {
-  background-color: [COLOR_C9];
+  background-color: [COLOR_C7];
   border-width: 1px;
-  border-style: none none solid none;
-  border-color: [COLOR_C6];
+  border-style: inset;
+  border-color: [COLOR_C3];
   -moz-border-radius:0px;
   margin:2px 0px 2px 0px;
 }
