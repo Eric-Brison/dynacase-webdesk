@@ -1,4 +1,4 @@
-// $Id: portal.js,v 1.28 2006/11/09 07:38:50 marc Exp $
+// $Id: portal.js,v 1.29 2006/11/09 11:01:49 marc Exp $
 
 // portal
 var portalRefreshInterval = 10;
@@ -701,7 +701,7 @@ function openSubService(event, elt, mid) {
   var h = getObjectHeight(elt);
   var w = getObjectWidth(elt);
   document.getElementById(mid).style.left = os.x + (w/2);
-  document.getElementById(mid).style.top = os.y + h;
+  document.getElementById(mid).style.top = os.y + (h/2);
   document.getElementById(mid).style.display = 'inline';
   return;
 }

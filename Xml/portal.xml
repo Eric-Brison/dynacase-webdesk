@@ -76,15 +76,15 @@ function initPortal() {
 [BLOCK catS[nCols]]<div class="wdtitleb1">[categorie]</div>
 [BLOCK services[categorie]]
 [IF issubcat]
-<div  id="subcm[num]" onmouseover="openSubService(event, this, 'scat[num]');" onmouseout="tempoCloseSubService(event, this, 'scat[num]');" class="subcat"><img class="small_button" src="[IMGF:wd_svc_show.gif:0,0,0|COLOR_BLACK]">&nbsp;[subc_title]...</div>[ENDIF issubcat]
+<div  id="subcm[num]" onmouseover="this.className='app app_over'; openSubService(event, this, 'scat[num]');" onmouseout="this.className='app';  tempoCloseSubService(event, this, 'scat[num]');" class="app"><img class="small_button" src="[IMGF:wd_svc_show.gif:0,0,0|COLOR_BLACK]">&nbsp;[subc_title]...</div>[ENDIF issubcat]
 [IFNOT issubcat]<div title="[psvc_descr]" class="app" onmouseover="this.className='app app_over'" onmouseout="this.className='app'" >[IF Icon]<img style="height:16px" class="small_button" title="[psvc_title]" src="[CORE_BASEURL]app=FDL&action=EXPORTFILE&vid=[vid]&docid=[docid]&attrid=[attrid]&index=-1">[ENDIF Icon][IFNOT Icon]&nbsp;&middot;[ENDIF Icon]&nbsp;[psvc_title]&nbsp<img class="small_button" onclick="addNewService([id]); opencloseParams()" title="[TEXT:wd add service] [psvc_title]" src="[IMGF:wd_add_service.gif:0,0,0|COLOR_BLACK]"></div>[ENDIF issubcat][ENDBLOCK services[categorie]][ENDBLOCK catS[nCols]]</td>[ENDBLOCK COLS]<tr>
 <tr><td colspan="[colsCount]" class="wdbuttonb" style="text-align:right"><img class="small_button" onclick="opencloseParams()" src="[IMGF:wd_cancel.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd close]"></td></td></table>
 </div>
 </div>
 
 [BLOCK subcat]
-<div id="scat[num]" style="background-color:[COLOR_A9]; border:0px; margin:0px; padding:3px; position:absolute; left:0px; top:0px; display:none" >
-<div class="app_over" >[title]</div>
+<div id="scat[num]" style="background-color:[COLOR_WHITE]; border:3px solid [COLOR_A7]; margin:0px; padding:3px; position:absolute; left:0px; top:0px; display:none" >
+<div class="wdtitleb1" >[title]</div>
 [BLOCK subcatserv[num]]
 <div title="[psvc_descr]" class="app" onmouseover="unsetTempoCloseSubService(event, 'scat[num]'); this.className='app app_over'" onmouseout="tempoCloseSubService(event, this, 'scat[num]'); this.className='app'" >[IF Icon]<img style="height:16px" class="small_button" title="[psvc_title]" src="[CORE_BASEURL]app=FDL&action=EXPORTFILE&vid=[vid]&docid=[docid]&attrid=[attrid]&index=-1">[ENDIF Icon][IFNOT Icon]&nbsp;&middot;[ENDIF Icon]&nbsp;[psvc_title]&nbsp<img class="small_button" onclick="addNewService([id]); opencloseParams()" title="[TEXT:wd add service] [psvc_title]" src="[IMGF:wd_add_service.gif:0,0,0|COLOR_BLACK]"></div>
 [ENDBLOCK subcatserv[num]]

@@ -30,12 +30,6 @@ a, a:visited, .wd_alink  {
 .app_selected { font-weight:bold;  border:1px solid [COLOR_WHITE]; cursor:pointer; }
 .app_over { background-color:[COLOR_A8]; padding-left:5px; padding-right:5px; border:1px inset [COLOR_A8]; cursor:pointer; }
 
-.subcat {
-    background-color:[COLOR_WHITE]; 
-    padding-left:10px; 
-    cursor:pointer;
-}
-
 .wdhead { font-weight:bold; border-width:1px; border-style:none none solid none; border-color:[COLOR_A8];  }
 .wdtitle { border-width:1px; border-style:none none dotted none; border-color:[COLOR_A8];  }
 #wdtitle td span, #wdtitle td img { vertical-align: middle; }
@@ -73,7 +67,7 @@ a, a:visited, .wd_alink  {
   border:1px solid [COLOR_A7];
   background-color:[COLOR_A9]; 
   margin: 3px 3px 1px 1px; 
-  -moz-border-radius:5px;
+  -moz-border-radius:5px 5px 0px 0px;
  }
 
 .wdsvc_title { 
