@@ -1,4 +1,4 @@
-// $Id: portal.js,v 1.27 2006/11/08 15:06:29 marc Exp $
+// $Id: portal.js,v 1.28 2006/11/09 07:38:50 marc Exp $
 
 // portal
 var portalRefreshInterval = 10;
@@ -691,3 +691,40 @@ function trace(tt) {
   if (document.getElementById('trace')) document.getElementById('trace').innerHTML = tt + '<br>' + document.getElementById('trace').innerHTML;
 }
     
+
+
+// ----- Sub service menu 
+function openSubService(event, elt, mid) {
+  closeSubService();
+  if (!document.getElementById(mid)) return;
+  var os = getAnchorPosition(elt.id);
+  var h = getObjectHeight(elt);
+  var w = getObjectWidth(elt);
+  document.getElementById(mid).style.left = os.x + (w/2);
+  document.getElementById(mid).style.top = os.y + h;
+  document.getElementById(mid).style.display = 'inline';
+  return;
+}
+var menuId = '';
+var menuTempo = -1;
+
+function tempoCloseSubService(event, elt, mid) {
+  if (!document.getElementById(mid)) return;
+  if (mid!='' && mid!=menuId) closeSubService();
+  menuId = mid;
+  menuTempo = self.setTimeout("closeSubService()", 500);
+}
+
+function closeSubService() {
+  if (!document.getElementById(menuId)) return; 
+  document.getElementById(menuId).style.display = 'none';
+  menuId = '';
+  menuTempo = -1;
+  return;
+}
+
+function unsetTempoCloseSubService(event, mid) {
+  if (menuId==mid && menuTempo!=-1) clearTimeout(menuTempo);
+  menuId = '';
+  menuTempo = -1;
+}

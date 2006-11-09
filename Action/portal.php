@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: portal.php,v 1.18 2006/11/08 12:36:47 marc Exp $
+ * @version $Id: portal.php,v 1.19 2006/11/09 07:38:50 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WGCAL
@@ -14,7 +14,8 @@
 include_once('FDL/Lib.Dir.php');
 function portal(&$action) {
    
-  $debug = false; //true;
+//   $debug = true;
+   $debug = false;
 
   $action->parent->AddJsRef("FDL:common.js", true);
   $action->lay->set("debug", $debug);
@@ -41,7 +42,10 @@ function portal(&$action) {
   //
   $ts = GetChildDoc(getParam("FREEDOM_DB"), 0, 0, "ALL", array(), $action->user->id, "TABLE", "PORTAL_SERVICE");
   $tserv = array();
+  $tsubserv = array();
   $d = createDoc(getParam("FREEDOM_DB"), "PORTAL_SERVICE", false);
+  $acat = $d->GetAttribute("psvc_categorie");
+  $cat = $acat->getEnum();
   $query=new QueryDb($action->dbaccess,"Application");
   foreach ($ts as $k => $v) {
     $access = true;
@@ -55,13 +59,31 @@ function portal(&$action) {
       }
     }
     if ($access) {
+
+      $num_cat = getV($v,"psvc_categorie");
+      $title_cat = $cat[$num_cat];
+      $t_cat = explode(".", $num_cat);
+      $l1_cat = $t_cat[0];
+      $l2_cat = (isset($t_cat[1]) && is_numeric($t_cat[1]) ? $t_cat[1] : "");
       $ts[$k]["psvc_title_js"] = addslashes(getV($v, "psvc_title"));
-      $d->Affect($v);
+      $ts[$k]["psvc_title"] = getV($v, "psvc_title");
       $ts[$k]["Icon"] = false;
-      $acat = $d->GetAttribute("psvc_categorie");
-      $cat = $acat->getEnum();
-      $tserv[getV($v,"psvc_categorie")]["categorie"] = $cat[getV($v,"psvc_categorie")];
-      $tserv[getV($v,"psvc_categorie")]["svc"][] = $ts[$k];
+      $tserv[$l1_cat]["categorie"] = $title_cat;
+      if ($l2_cat=="") {
+	$ts[$k]["issubcat"] = false;
+	$tserv[$l1_cat]["svc"][] = $ts[$k];
+      } else {
+	$ts[$k]["issubcat"] = true;
+	$ts[$k]["subc_title"] = $title_cat;
+	$ts[$k]["num"] = $l1_cat."_".$l2_cat;
+	if (!isset($tsubserv[$num_cat])) {
+	  $tserv[$l1_cat]["svc"][] = $ts[$k];
+	  $tsubserv[$num_cat]["title"] = $title_cat;
+	  $tsubserv[$num_cat]["num"] = $l1_cat."_".$l2_cat;
+	  $tsubserv[$num_cat]["svc"] = array();
+	}
+	$tsubserv[$num_cat]["svc"][] = $ts[$k];
+      }
     }
   }
   
@@ -81,10 +103,13 @@ function portal(&$action) {
   $action->lay->set("colsWidth", (100/$svclist_colcount));
     
 
-//   $action->lay->setBlockData("catS", $tserv); 
-//   foreach ($tserv as $k => $v)  {
-//     $action->lay->setBlockData("services".$v["categorie"], $v["svc"]); 
-//   }
+  
+  foreach ($tsubserv as $k => $v) {
+    $action->lay->setBlockData("subcatserv".$v["num"], $v["svc"]);
+//     echo "**** $k ****** "; print_r2($v["svc"]);
+}
+  $action->lay->setBlockData("subcat", $tsubserv);
+  
 
 
   // Initialise user services
