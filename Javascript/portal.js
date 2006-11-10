@@ -1,4 +1,4 @@
-// $Id: portal.js,v 1.29 2006/11/09 11:01:49 marc Exp $
+// $Id: portal.js,v 1.30 2006/11/10 17:06:57 marc Exp $
 
 // portal
 var portalRefreshInterval = 10;
@@ -456,16 +456,16 @@ function deleteSvc(event, snum) {
 
 function setWS(sid) {
   var value = 40;
-  if (document.getElementById('svc'+sid)) {
-    var o = document.getElementById('svc'+sid);
+  if (document.getElementById(sid)) {
+    var o = document.getElementById(sid);
     o.style.opacity = value/100;
     o.style.filter = 'alpha(opacity=' + value + ')';
   }
 }
 function unsetWS(sid) {
   var value = 100;
-  if (document.getElementById('svc'+sid)) {
-    var o = document.getElementById('svc'+sid);
+  if (document.getElementById(sid)) {
+    var o = document.getElementById(sid);
     o.style.opacity = value/100;
     o.style.filter = 'alpha(opacity=' + value + ')';
   }
@@ -485,7 +485,7 @@ function loadSvcAsync(sid, shl, params) {
   if (window.XMLHttpRequest) dreq = new XMLHttpRequest();
   else dreq = new ActiveXObject("Microsoft.XMLHTTP");
   if (dreq) {
-    if (shl) setWS(sid);
+    if (shl) setWS('svc'+sid);
     dreq.onreadystatechange =  function() {
       if (dreq.readyState == 4) {
 	try {
@@ -517,7 +517,7 @@ function loadSvcAsync(sid, shl, params) {
 	      timerOn[is] = -1;
 	    }	    
 	  }
-	  if (shl) unsetWS(sid);
+	  if (shl) unsetWS('svc'+sid);
 	} catch(e) {
 	  //          alert('Exception : ' + e);
 	}
@@ -596,7 +596,6 @@ function hideSvcIcons(snum) {
 // -----------------------------
 
 var svcMove = '';
-var ghost = null;
 var overElt = null;
 
 function startMoveService(event, elt, snum) {
@@ -611,21 +610,7 @@ function startMoveService(event, elt, snum) {
   var h=getObjectHeight(svccur);
   var w=getObjectWidth(svccur);
  
-  svccur.style.display = 'none';
-
-  ghost = document.createElement('div');
-  ghost.setAttribute('id','ghost');
-  ghost.setAttribute('name','ghost');
-  ghost.style.visbility = 'hidden';
-  document.body.appendChild(ghost);
-  ghost.style.left = parseInt(xy.x)+'px';
-  ghost.style.top = parseInt(xy.y)+'px';
-  ghost.style.height = parseInt(h)+'px';
-  ghost.style.width = parseInt(w)+'px';
-  ghost.className = 'wdsvcghost' ;
-  ghost.style.visibility = 'visible';
-  ghost.style.border = '1px solid red';
-  svccur.parentNode.insertBefore(ghost, svccur);
+  setWS(svcMove);
   overElt = null;
 
   return false;
@@ -636,6 +621,7 @@ function endMoveService(event) {
   var srcel = (event.target) ? event.target : event.srcElement;
   if (svcMove!='') {
     var svccur = document.getElementById(svcMove);
+    unsetWS(svcMove);
     if (overElt!=null) {
       var svccur = document.getElementById(svcMove);
       if (overElt.nodeName=='TD') overElt.appendChild(svccur);
@@ -648,9 +634,7 @@ function endMoveService(event) {
     overElt = null;
     delEvent(document,'mouseup',endMoveService);
     stopPropagation(event);
-    ghost.parentNode.removeChild(ghost);
   }
-  ghost = null;
   unglobalcursor();
 }
 
@@ -664,13 +648,15 @@ function mouseOverService(event) {
   var srcorg = srcel;
   var efound = false;
   var foundCol = -1;
-  if (svcMove!='' && srcel.id!='ghost') {
+//   if (svcMove!='' && srcel.id!='ghost' && srcel.id!=svcMove) {
+   if (svcMove!='' && srcel.id!=svcMove) {
+    var emove = document.getElementById(svcMove);
     while (!efound && srcel.nodeName!='BODY') {
      if (srcel.getAttribute('svcid')) {
 	efound = true;
 	overElt = srcel;
 	stopPropagation(event);
-	srcel.parentNode.insertBefore(ghost, srcel);
+	srcel.parentNode.insertBefore(emove, srcel);
      }else {
        if (srcel.getAttribute('wdcol')) foundCol = srcel.getAttribute('wdcol');
      }
@@ -680,7 +666,7 @@ function mouseOverService(event) {
       trace('foundCol='+foundCol+' efound='+efound);
       overElt = document.getElementById('wdcol'+foundCol);
       stopPropagation(event);
-      overElt.appendChild(ghost);
+      overElt.appendChild(emove);
     }
   }
 }
