@@ -35,7 +35,7 @@ function initPortal() {
 </head>
 <body onload="initPortal()">
 
-<table cellspacing="0" style="width:100%">
+<table class="wdservices" cellspacing="0" style="width:100%">
 <tr>
 [BLOCK cols]
 <td  id="wdcol[icol]" wdcol="[icol]" onmouseover="mouseOverService(event)" class="wdcols" style="width:33%;">
