@@ -80,64 +80,44 @@ function computefbodywh() {
   var bodW = parseInt(getFrameWidth());
 
   var topH = getObjectHeight(document.getElementById('wdtitle'));
-  var wor = (isOpen ? 0.2 : 0.0);
 
   var md = document.getElementById('wdmenu');
   md.style.height = 'auto';
-
   if (isIE) bodW -= 20;
-  
   if (isMBarStatic) {
     md.className='wdmenufixed';
-   
     if ((currentApp>-1) ) { // undisplay before to avoid composition errors in mozilla
-	document.getElementById('fbody'+currentApp).style.display='none';
-      }
+      document.getElementById('fbody'+currentApp).style.display='none';
+    }
     document.getElementById('wdmbarmng').src = (isOpen?"[IMGF:wd_left_bar.gif:0,0,0|COLOR_BLACK]":"[IMGF:wd_right_bar.gif:0,0,0|COLOR_BLACK]");
     if (isNetscape) {
       md.style.display = 'none';
       md.style.display = 'block';
-      
     }
-
     md.style.display = (isOpen?'block':'none');
-
     var rh = bodH - (topH + 0);
     var ibody = bodW - getObjectWidth(md);
-
     md.style.height = rh;
     document.getElementById('wdbody').style.width = ibody - 0;//  - 18; 
-
     document.getElementById('wdbody').style.borderWidth = '0'; 
     if (currentApp>-1) {      
-	document.getElementById('fbody'+currentApp).style.height = rh;
-	document.getElementById('fbody'+currentApp).style.width = '100%';;
-	document.getElementById('fbody'+currentApp).style.display='';	
-	
-      //document.getElementById('fbody'+currentApp).style.width = getObjectWidth(document.getElementById('wdbody'));
-//       alert('body='+getObjectWidth(document.getElementById('wdbody'))+' iframe='+getObjectWidth(document.getElementById('fbody'+currentApp)));
+      document.getElementById('fbody'+currentApp).style.height = rh;
+      document.getElementById('fbody'+currentApp).style.width = '100%';;
+      document.getElementById('fbody'+currentApp).style.display='';	
     }
-
-
-
   } else {
     md.className='wdmenu';
     md.style.top = topH;
     md.style.left = '0px';
-    
     if (currentApp>-1) {
       document.getElementById('fbody'+currentApp).style.width = bodW;
       document.getElementById('fbody'+currentApp).style.height = bodH - topH;
-   }    
+    }    
     if (isOpen)  md.style.display = 'block';
     else md.style.display = 'none';
-
     document.getElementById('wdmbarmng').src = (isOpen?"[IMGF:wd_close_bar.gif:0,0,0|COLOR_BLACK]":"[IMGF:wd_open_bar.gif:0,0,0|COLOR_BLACK]");
-
   }
-
   setcurtime();
-    
 }
 
 function runappm(event, idapp, sidapp, params) {
