@@ -28,6 +28,7 @@ function addservice(&$action) {
     $svcrdel  = $up->getTValue("uport_refreshd");
     $svccol   = $up->getTValue("uport_column");
     $svcline  = $up->getTValue("uport_line");
+    $svcopen  = $up->getTValue("uport_open");
   }
 
   $svnnumber = $up->getNumSequence();
@@ -40,7 +41,7 @@ function addservice(&$action) {
   $svcrdel[]   = (getV($svc, "psvc_refreshd")==""?0:getV($svc, "psvc_refreshd"));
   $svccol[]   = 0;
   $svcline[]   = 0;
-
+  $svcopen[] = 1;
   $up->setValue("uport_svcnum",$svcnum);
   $up->setValue("uport_idsvc",$svcid);
   $up->setValue("uport_svc",$svctitle);
@@ -48,6 +49,7 @@ function addservice(&$action) {
   $up->setValue("uport_refreshd",$svcrdel);
   $up->setValue("uport_column",$svccol);
   $up->setValue("uport_line",$svcline);
+  $up->setValue("uport_open", $svcopen);
   
   $err = $up->modify();
   $up->postModify();

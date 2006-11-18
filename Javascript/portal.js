@@ -1,4 +1,4 @@
-// $Id: portal.js,v 1.31 2006/11/15 18:08:40 marc Exp $
+// $Id: portal.js,v 1.32 2006/11/18 14:43:31 marc Exp $
 
 // portal
 var portalRefreshInterval = 10;
@@ -84,6 +84,7 @@ function orderServices() {
     colsDesc[lcol][services[is].lin] = is;
     mm += ' col:'+services[is].col+' line='+services[is].lin+' ==> '+is+'\n';
   }
+//    alert(mm);
   return;
 }
 
@@ -92,10 +93,9 @@ function displayServices() {
 
 
   orderServices();
-
   for (var ic=0;ic<colCount; ic++) {
     for (var il=0;il<colsDesc[ic].length; il++) {
-      if (colsDesc[ic][il]) {
+      if (colsDesc[ic][il]>=0) {
 	showService(colsDesc[ic][il]);
       }
     }
@@ -106,7 +106,6 @@ function displayServices() {
 
 
 function showService(is) {
-
   if (!services[is]) {
     alert('Internal error : no service defined ');
     return;

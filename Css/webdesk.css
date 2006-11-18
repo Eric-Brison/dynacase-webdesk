@@ -2,6 +2,7 @@ body, div { padding:0px; margin:0px; border:0px; }
 
 input, select { border:1px solid [COLOR_A7]; background-color:[COLOR_A9]; } 
 
+
 a, a:visited, .wd_alink  { 
   text-decoration:none; 
   background-image: url([IMGF:wd_lnk_http.gif:0,0,0|COLOR_BLACK]);

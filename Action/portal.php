@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: portal.php,v 1.20 2006/11/09 11:01:49 marc Exp $
+ * @version $Id: portal.php,v 1.21 2006/11/18 14:43:30 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WGCAL
@@ -14,6 +14,9 @@
 include_once('FDL/Lib.Dir.php');
 function portal(&$action) {
    
+
+  $dbaccess = getParam("FREEDOM_DB");
+
 // $debug = true;
   $debug = false;
 
@@ -40,10 +43,10 @@ function portal(&$action) {
   //
   // List services ordered by category
   //
-  $ts = GetChildDoc(getParam("FREEDOM_DB"), 0, 0, "ALL", array(), $action->user->id, "TABLE", "PORTAL_SERVICE");
+  $ts = GetChildDoc($dbaccess, 0, 0, "ALL", array(), $action->user->id, "TABLE", "PORTAL_SERVICE");
   $tserv = array();
   $tsubserv = array();
-  $d = createDoc(getParam("FREEDOM_DB"), "PORTAL_SERVICE", false);
+  $d = createDoc($dbaccess, "PORTAL_SERVICE", false);
   $acat = $d->GetAttribute("psvc_categorie");
   $cat = $acat->getEnum();
 
@@ -127,7 +130,7 @@ function portal(&$action) {
 
   // Initialise user services
   $tsvc = array();
-  $tup = GetChildDoc( getParam("FREEDOM_DB"), 0, 0, "ALL", 
+  $tup = GetChildDoc( $dbaccess, 0, 0, "ALL", 
 		     array("uport_ownerid = ".$action->user->fid), $action->user->id, "LIST", "USER_PORTAL");
   if (is_object($tup[0]) && $tup[0]->isAffected()) {
     
@@ -143,7 +146,8 @@ function portal(&$action) {
     foreach ($svcnum as $k => $v) {
       $sd = getTDoc(getParam("FREEDOM_DB"), $svcid[$k]);
       if (getV($sd, "psvc_vurl")=="") continue;
-      $tsvc[] = array( "snum" => $v,
+      $tsvc[] = array( "rg" => count($tsvc),
+		       "snum" => $v,
 		       "sid" => $svcid[$k],
 		       "stitle" => addslashes($svctitle[$k]),
 		       "vurl" => getV($sd, "psvc_vurl"),
@@ -161,6 +165,58 @@ function portal(&$action) {
 		       "mandatory" => "false",
 		       "editable" => "true",
 		      );
+    }
+  } else {
+    $welc = getIdFromName($dbaccess, "PS_WELCOME");
+    if (is_numeric($welc) && $welc>0) {
+      $svc = new_Doc($dbaccess, $welc);
+      if ($svc->isAffected()) {
+	$up = createDoc($dbaccess, "USER_PORTAL");
+	$up->setValue("uport_ownerid", $action->user->fid);
+	$up->setValue("uport_owner", $action->user->firstname." ".$action->user->firstname);
+	$up->setValue("uport_title", "Mon portail (".$action->user->firstname." ".$action->user->firstname. ")");
+	$up->Add();
+	$svcnum   = $svcid = $svctitle = $svcparam = $svcrdel = $svccol = $svcline = array();
+	$svcnumber = $up->getNumSequence();
+	$svcnum[]   = $svcnumber;
+	$svcid[]    = $svc->id;
+	$svctitle[] = $svc->getValue("psvc_title");
+	$svcparam[] = " ";
+	$svcrdel[]   = 0;
+	$svccol[]   = 0;
+	$svcline[]   = 0;
+	$svcopen[] = 1;
+	$up->setValue("uport_svcnum",$svcnum);
+	$up->setValue("uport_idsvc",$svcid);
+	$up->setValue("uport_svc",$svctitle);
+	$up->setValue("uport_param",$svcparam);
+	$up->setValue("uport_refreshd",$svcrdel);
+	$up->setValue("uport_column",$svccol);
+	$up->setValue("uport_line",$svcline);
+	$up->setValue("uport_open", $svcopen);
+	$err = $up->modify();
+	$up->postModify();
+	
+	$tsvc[] = array( "rg" => count($tsvc),
+			 "snum" => $svcnumber,
+			 "sid" => $svc->id,
+			 "stitle" => addslashes($svc->getValue("psvc_title")),
+			 "vurl" => $svc->getValue("psvc_vurl"),
+			 "eurl" => $svc->getValue("psvc_eurl"),
+			 "purl" => "",
+			 "jslink" => "",
+			 "jslinkmd5" => "",
+			 "csslink" => "",
+			 "csslinkmd5" => "",
+			 "rdel" => 0, 
+			 "col" => 0, 
+			 "lin" => 0, 
+			 "open" => "true", 
+			 "interactif" => "false",  
+			 "mandatory" => "false", 
+			 "editable" => "true",
+			 );
+      }
     }
   }
   $action->lay->setBlockData("USvc", $tsvc); 
