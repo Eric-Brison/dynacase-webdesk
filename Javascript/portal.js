@@ -1,4 +1,4 @@
-// $Id: portal.js,v 1.32 2006/11/18 14:43:31 marc Exp $
+// $Id: portal.js,v 1.33 2006/11/18 19:35:25 marc Exp $
 
 // portal
 var portalRefreshInterval = 10;
@@ -150,17 +150,15 @@ function showService(is) {
       imgcyc = '<img src="[IMGF:wd_svc_cyclic.gif:0,0,0|COLOR_BLACK]" style="border:0px" title="[TEXT:automatic reload all] '+services[is].rdel+' minutes">';
     }
     cnt += '<table cellspacing="0" cellpadding="0" style="width:100%; border:0px">';
-    cnt += '<tr onmouseover="mOverSvcTitle('+snum+')" onmouseout="mOutSvcTitle('+snum+')">';
-    cnt += '<td>';
-     cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc(event, '+snum+',true);" src="[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd hide svc content]">';
-    cnt += '<span style="cursor:move" onmousedown="return startMoveService(event, this, '+snum+');" onmouseup="endMoveService(event,'+snum+')"  id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
+    cnt += '<tr style="cursor:move; border:1px solid red;" onmousedown="return startMoveService(event, this, '+snum+');" onmouseup="endMoveService(event,'+snum+')"  onmouseover="mOverSvcTitle('+snum+')" onmouseout="mOutSvcTitle('+snum+')">';
+    cnt += '<td >';
+     cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc(event, '+snum+',true); return false;" src="[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd hide svc content]">';
+    cnt += '<span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
  
     cnt += '<td style="text-align:right">';
 
     cnt += '<span id="iconbox'+snum+'" style="visibility:hidden">';
 
-//     cnt += '<img id="move'+snum+'" class="small_button" src="[IMGF:wd_svc_move.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd move service]">';
-    cnt += '&nbsp;';
     if (vurl!='')
       cnt += '<img id="irsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="startUtempo( ); loadSvcAsync('+snum+', true);endUtempo(); " src="[IMGF:wd_svc_reload.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reload svc content]">';
     if (eurl!='' && iseditable)

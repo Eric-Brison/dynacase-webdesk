@@ -48,7 +48,7 @@ function initPortal() {
 <img class="small_button"  src="[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd  close all services]" onclick="closeAllSvc()">
 <img class="small_button" src="[IMGF:wd_svc_show.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd open all services]" onclick="openAllSvc()">
 &nbsp;<img class="small_button" src="[IMGF:wd_font_smaller.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reduce font]" onclick="fontSizer(-1)"><img class="small_button"  src="[IMGF:wd_font_bigger.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd  enlarge font]" onclick="fontSizer(1)">
-<a style="padding:0px; text-decoration:none; background-image: none;" href="[CORE_STANDURL]app=CORE&action=HELPVIEW&filename=portal.pdf" target="_self"><img onclick="openHelp()" title="[TEXT:portal welcome manual]" class="small_button" src="[IMGF:wd_help.gif:0,0,0|COLOR_BLACK]" /></a>
+<a style="padding:0px; text-decoration:none; background-image: none;" href="[CORE_STANDURL]app=CORE&action=HELPVIEW&filename=portal.pdf" target="_self"><img title="[TEXT:portal welcome manual]" class="small_button" src="[IMGF:wd_help.gif:0,0,0|COLOR_BLACK]" /></a>
 </td>
 <td class="wdtitleb" style="margin:5px; text-align:right; vertical-align:middle">
 <span class="wdpnumber" title="Mon portail [page 1]">1</span>
