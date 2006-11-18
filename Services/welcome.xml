@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><freedomsvc uptime="" title="[TEXT:portal welcome service]"><![CDATA[
+<div>
+<div style="padding:5px; padding-right:10px; float:left">
+<img src="[IMG:webdesk.gif]">
+<div style="font-size:80%; font-style:italic; color:[COLOR_A5]">v [version]</div>
+</div>
+
+<div>
+<div style="padding-bottom:5px; font-weight:bold; font-style:italic; color:[COLOR_A0]">[TEXT:portal welcome title]</div>
+<div style="padding-bottom:5px; font-size:100%; text-align:justify"> [TEXT:portal welcome content]</div>
+<div style="padding-bottom:5px; color:[COLOR_A2]; text-align:justify"><a style="padding:0px; text-decoration:none; background-image: none;" href="[CORE_STANDURL]app=CORE&action=HELPVIEW&filename=portal.pdf" target="_self"><img onclick="openHelp()" title="[TEXT:portal welcome manual]" class="small_button" src="[IMGF:wd_help.gif:0,0,0|COLOR_BLACK]" /></a> [TEXT:portal welcome manual]</div>
+<div style="color:[COLOR_A5]; text-align:justify">[TEXT:portal welcome help] <a style="padding:0px; text-decoration:none; background-image: none;" href="[CORE_STANDURL]app=CORE&action=HELPVIEW&filename=portal.pdf" target="_self"><img onclick="openHelp()" title="[TEXT:portal welcome manual]" class="small_button" src="[IMGF:wd_help.gif:0,0,0|COLOR_BLACK]" /></a></div>
+</div>
+]]></freedomsvc>
