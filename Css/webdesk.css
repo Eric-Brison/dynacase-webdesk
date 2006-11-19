@@ -96,10 +96,13 @@ a, a:visited, .wd_alink  {
 .wdtitleb1 { text-align:left; border-bottom:1px solid [COLOR_A7]; border-bottom:1px solid [COLOR_A7]; margin: 5px 0px 5px 0px;  }
 
 .wdpnumber {
+  font-size: 90%; 
+  font-weight:bold; 
   color:[COLOR_A9];
   background-color:[COLOR_A6];
   border:1px solid [COLOR_A0]; 
   padding : 0px 3px 0px 3px; 
+  -moz-border-radius:0px 10px 0px 0px;
 } 
   
 .wdsvcghost {
