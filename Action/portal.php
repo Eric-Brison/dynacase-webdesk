@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: portal.php,v 1.21 2006/11/18 14:43:30 marc Exp $
+ * @version $Id: portal.php,v 1.22 2006/11/20 18:24:22 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WGCAL
@@ -54,9 +54,10 @@ function portal(&$action) {
   foreach ($cat as $kc => $vc) {
     $tc = explode(".", $kc);
     $tt = explode("/", $vc);
-    $ordercat[$tc[count($tc)-1]]["father"] = (isset($tc[count($tc)-2])?$tc[count($tc)-2]:$tc[count($tc)-1]);
-    $ordercat[$tc[count($tc)-1]]["level"] = count($tc);
-    $ordercat[$tc[count($tc)-1]]["label"] = $tt[count($tc)-1];
+    $ordercat[$kc]["father"] = (isset($tc[count($tc)-2])?$tc[count($tc)-2]:$tc[count($tc)-1]);
+    $ordercat[$kc]["level"] = count($tc);
+    $ordercat[$kc]["label"] = $tt[count($tc)-1];
+    $ordercat[$kc]["key"] = $kc;
   }
 
   $query=new QueryDb($action->dbaccess,"Application");
@@ -73,15 +74,10 @@ function portal(&$action) {
     }
     if ($access) {
       $num_cat = getV($v,"psvc_categorie");
-      if (!isset($ordercat[$num_cat])) {
-	$cattitle = "Sans";
-	$catlevel = 1;
-	$catfather = 1;
-      } else {
-	$cattitle = $ordercat[$num_cat]["label"];
-	$catlevel = $ordercat[$num_cat]["level"];
-	$catfather = $ordercat[$num_cat]["father"];
-      }
+      if (!isset($ordercat[$num_cat])) $num_cat = -1;
+      $cattitle = $ordercat[$num_cat]["label"];
+      $catlevel = $ordercat[$num_cat]["level"];
+      $catfather = $ordercat[$num_cat]["father"];
       $ts[$k]["psvc_title_js"] = addslashes(getV($v, "psvc_title"));
       $ts[$k]["psvc_title"] = getV($v, "psvc_title");
       $ts[$k]["Icon"] = false;
@@ -92,6 +88,8 @@ function portal(&$action) {
 	$ts[$k]["issubcat"] = false;
 	$tserv[$num_cat]["svc"][] = $ts[$k];
       } else {
+	$fcat = $ordercat[$num_cat]["father"];
+	$tserv[$fcat]["categorie"] = $ordercat[$fcat]["label"];
 	$ts[$k]["issubcat"] = true;
 	$ts[$k]["num"] = $num_cat;
 	if (!isset($tsubserv[$num_cat])) {
@@ -125,7 +123,6 @@ function portal(&$action) {
     $action->lay->setBlockData("subcatserv".$v["num"], $v["svc"]);
   }
   $action->lay->setBlockData("subcat", $tsubserv);
-  
 
 
   // Initialise user services

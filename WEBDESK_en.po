@@ -2,202 +2,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-18 09:47+0100\n"
+"POT-Creation-Date: 2006-11-20 09:54+0100\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-msgid "Theme chooser"
-msgstr ""
-
-msgid "font size chooser"
-msgstr ""
-
-msgid "small size"
-msgstr ""
-
-msgid "normal size"
-msgstr ""
-
-msgid "large size"
-msgstr ""
-
-msgid "x-large size"
-msgstr ""
-
-msgid "Apply"
-msgstr ""
-
-msgid "Change your theme"
-msgstr ""
-
-msgid "wd open/close menu"
-msgstr ""
-
-msgid "wd document received"
-msgstr ""
-
-msgid "wd unread mail count"
-msgstr ""
-
-msgid "wd waiting event count"
-msgstr ""
-
-msgid "Click here to login"
-msgstr ""
-
-msgid "wd fixe/release menu"
-msgstr ""
-
-msgid "Preview"
-msgstr ""
-
-msgid "Do not click here"
-msgstr ""
-
-msgid "wd manage portal"
-msgstr ""
-
-msgid "wd show/hide service list"
-msgstr ""
-
-msgid "wd reload portal view"
-msgstr ""
-
-msgid "wd  close all services"
-msgstr ""
-
-msgid "wd open all services"
-msgstr ""
-
-msgid "wd reduce font"
-msgstr ""
-
-msgid "wd  enlarge font"
-msgstr ""
-
-msgid "wd close"
-msgstr ""
-
-msgid "wd save"
-msgstr ""
-
-msgid "wd available services"
-msgstr ""
-
-msgid "wd add service"
-msgstr ""
-
-msgid "Change password"
-msgstr ""
-
-msgid "Change name and coordinates"
-msgstr ""
-
-msgid "produced by Freedom"
-msgstr ""
-
-msgid "webdesk application portal"
-msgstr ""
-
-msgid "Javascript must be enabled in your navigator"
-msgstr ""
-
-msgid "wd error add service"
-msgstr ""
-
-msgid "wd error getting service"
-msgstr ""
-
-msgid "wd invalid service number returned by creation"
-msgstr ""
-
-msgid "automatic reload all"
-msgstr ""
-
-msgid "wd hide svc content"
-msgstr ""
-
-msgid "wd move service"
-msgstr ""
-
-msgid "wd reload svc content"
-msgstr ""
-
-msgid "wd edit svc content"
-msgstr ""
-
-msgid "wd delete svc"
-msgstr ""
-
-msgid "wd url for retrieving information not given"
-msgstr ""
-
-msgid "downloading content in progress..."
-msgstr ""
-
-msgid "wd show svc content"
-msgstr ""
-
-msgid "edition url not given"
-msgstr ""
-
-msgid "wd loading edition forms"
-msgstr ""
-
-msgid "wd error retrieving edit form"
-msgstr ""
-
-msgid "wd error saving edit form"
-msgstr ""
-
-msgid "wd error geo service"
-msgstr ""
-
-msgid "wd confirm supress of"
-msgstr ""
-
-msgid "wd error retrieving content"
-msgstr ""
-
-msgid "portal welcome service"
-msgstr ""
-
-msgid "portal welcome title"
-msgstr ""
-
-msgid "portal welcome content"
-msgstr ""
-
-msgid "portal welcome manual"
-msgstr ""
-
-msgid "portal welcome help"
-msgstr ""
-
-msgid "wd search ..."
-msgstr ""
-
-msgid "open it in a new window"
-msgstr ""
-
-msgid "Click to search person containing..."
-msgstr ""
-
-msgid "Click to search both in society name..."
-msgstr ""
-
-msgid "wd entre rss link here"
-msgstr ""
-
-msgid "display full card in the same window"
-msgstr ""
-
-msgid "display column x lines"
-msgstr ""
 
 msgid "Theme preferences"
 msgstr ""
@@ -230,83 +41,6 @@ msgid "Administration"
 msgstr ""
 
 msgid "Webdesk administration"
-msgstr ""
-
-msgid "without category"
-msgstr ""
-
-#, c-format
-msgid "temperature %s c (dew %s c, heat %s c)"
-msgstr ""
-
-#, c-format
-msgid "wind, speed %s m/s direction [%s]"
-msgstr ""
-
-#, c-format
-msgid "relative humidity %s %%"
-msgstr ""
-
-#, c-format
-msgid "Pression %s hpa"
-msgstr ""
-
-#, c-format
-msgid "Visibility %s %s km"
-msgstr ""
-
-msgid "wd no freedom search given"
-msgstr ""
-
-msgid "wd invalid freedom search given"
-msgstr ""
-
-msgid "wd no rss link given"
-msgstr ""
-
-msgid ""
-"[TEXT:no information available, verify your server have http access to "
-"internet and/or check link please...]"
-msgstr ""
-
-msgid "no account defined"
-msgstr ""
-
-msgid "error retrieving mails"
-msgstr ""
-
-#, c-format
-msgid "more than %d results..."
-msgstr ""
-
-msgid "wd: result"
-msgstr ""
-
-msgid "no result for search"
-msgstr ""
-
-msgid "clear displayed results"
-msgstr ""
-
-msgid "wd: Private"
-msgstr ""
-
-msgid "wd: Public readonly"
-msgstr ""
-
-msgid "wd: Group access"
-msgstr ""
-
-msgid "wd: Special access"
-msgstr ""
-
-msgid "wd: secretary"
-msgstr ""
-
-msgid "wdd info society"
-msgstr ""
-
-msgid "wdd info personal"
 msgstr ""
 
 msgid "webdesk"
@@ -421,4 +155,282 @@ msgid "webdesk menu background image"
 msgstr ""
 
 msgid "webdesk menu background image width"
+msgstr ""
+
+msgid "no account defined"
+msgstr ""
+
+msgid "error retrieving mails"
+msgstr ""
+
+#, c-format
+msgid "temperature %s c (dew %s c, heat %s c)"
+msgstr ""
+
+#, c-format
+msgid "wind, speed %s m/s direction [%s]"
+msgstr ""
+
+#, c-format
+msgid "relative humidity %s %%"
+msgstr ""
+
+#, c-format
+msgid "Pression %s hpa"
+msgstr ""
+
+#, c-format
+msgid "Visibility %s %s km"
+msgstr ""
+
+msgid "wd no rss link given"
+msgstr ""
+
+msgid ""
+"[TEXT:no information available, verify your server have http access to "
+"internet and/or check link please...]"
+msgstr ""
+
+msgid "wd no freedom search given"
+msgstr ""
+
+msgid "wd invalid freedom search given"
+msgstr ""
+
+#, c-format
+msgid "more than %d results..."
+msgstr ""
+
+msgid "wd: result"
+msgstr ""
+
+msgid "no result for search"
+msgstr ""
+
+msgid "clear displayed results"
+msgstr ""
+
+msgid "wd: Private"
+msgstr ""
+
+msgid "wd: Public readonly"
+msgstr ""
+
+msgid "wd: Group access"
+msgstr ""
+
+msgid "wd: Special access"
+msgstr ""
+
+msgid "wd: secretary"
+msgstr ""
+
+msgid "wdd info society"
+msgstr ""
+
+msgid "wdd info personal"
+msgstr ""
+
+msgid "without category"
+msgstr ""
+
+msgid "wd error add service"
+msgstr ""
+
+msgid "wd error getting service"
+msgstr ""
+
+msgid "wd invalid service number returned by creation"
+msgstr ""
+
+msgid "automatic reload all"
+msgstr ""
+
+msgid "wd hide svc content"
+msgstr ""
+
+msgid "wd reload svc content"
+msgstr ""
+
+msgid "wd edit svc content"
+msgstr ""
+
+msgid "wd delete svc"
+msgstr ""
+
+msgid "wd url for retrieving information not given"
+msgstr ""
+
+msgid "downloading content in progress..."
+msgstr ""
+
+msgid "wd show svc content"
+msgstr ""
+
+msgid "edition url not given"
+msgstr ""
+
+msgid "wd loading edition forms"
+msgstr ""
+
+msgid "wd error retrieving edit form"
+msgstr ""
+
+msgid "wd error saving edit form"
+msgstr ""
+
+msgid "wd error geo service"
+msgstr ""
+
+msgid "wd confirm supress of"
+msgstr ""
+
+msgid "wd error retrieving content"
+msgstr ""
+
+msgid "Click to search person containing..."
+msgstr ""
+
+msgid "Click to search both in society name..."
+msgstr ""
+
+msgid "portal welcome service"
+msgstr ""
+
+msgid "portal welcome title"
+msgstr ""
+
+msgid "portal welcome content"
+msgstr ""
+
+msgid "portal welcome manual"
+msgstr ""
+
+msgid "portal welcome help"
+msgstr ""
+
+msgid "wd search ..."
+msgstr ""
+
+msgid "open it in a new window"
+msgstr ""
+
+msgid "display full card in the same window"
+msgstr ""
+
+msgid "display column x lines"
+msgstr ""
+
+msgid "wd entre rss link here"
+msgstr ""
+
+msgid "wd go left"
+msgstr ""
+
+msgid "wd go down"
+msgstr ""
+
+msgid "wd go up"
+msgstr ""
+
+msgid "wd go right"
+msgstr ""
+
+msgid "wd search for contact"
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+
+msgid "Do not click here"
+msgstr ""
+
+msgid "wd manage portal"
+msgstr ""
+
+msgid "wd show/hide service list"
+msgstr ""
+
+msgid "wd reload portal view"
+msgstr ""
+
+msgid "wd reduce font"
+msgstr ""
+
+msgid "wd  enlarge font"
+msgstr ""
+
+msgid "wd close"
+msgstr ""
+
+msgid "wd save"
+msgstr ""
+
+msgid "wd available services"
+msgstr ""
+
+msgid "wd add service"
+msgstr ""
+
+msgid "wd open/close menu"
+msgstr ""
+
+msgid "wd document received"
+msgstr ""
+
+msgid "wd unread mail count"
+msgstr ""
+
+msgid "wd waiting event count"
+msgstr ""
+
+msgid "Click here to login"
+msgstr ""
+
+msgid "wd fixe/release menu"
+msgstr ""
+
+msgid "Theme chooser"
+msgstr ""
+
+msgid "font size chooser"
+msgstr ""
+
+msgid "small size"
+msgstr ""
+
+msgid "normal size"
+msgstr ""
+
+msgid "large size"
+msgstr ""
+
+msgid "x-large size"
+msgstr ""
+
+msgid "Apply"
+msgstr ""
+
+msgid "Change your theme"
+msgstr ""
+
+msgid "webdesk application portal"
+msgstr ""
+
+msgid "Javascript must be enabled in your navigator"
+msgstr ""
+
+msgid "Change password"
+msgstr ""
+
+msgid "Change name and coordinates"
+msgstr ""
+
+msgid "produced by Freedom"
+msgstr ""
+
+msgid "wd open all services"
+msgstr ""
+
+msgid "wd  close all services"
 msgstr ""

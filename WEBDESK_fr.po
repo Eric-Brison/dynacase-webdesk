@@ -12,208 +12,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-18 09:47+0100\n"
+"POT-Creation-Date: 2006-11-20 09:54+0100\n"
 "PO-Revision-Date: 2006-09-21 12:27+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-msgid "Theme chooser"
-msgstr "Choix du thème"
-
-msgid "font size chooser"
-msgstr "Taille de la police"
-
-msgid "small size"
-msgstr "petite taille"
-
-msgid "normal size"
-msgstr "taille normale"
-
-msgid "large size"
-msgstr "grande taille"
-
-msgid "x-large size"
-msgstr "très grande taille"
-
-msgid "Apply"
-msgstr ""
-
-msgid "Change your theme"
-msgstr "Changer votre thème"
-
-msgid "wd open/close menu"
-msgstr "Ouvrir/fermer le menu"
-
-msgid "wd document received"
-msgstr "Documents affectés"
-
-msgid "wd unread mail count"
-msgstr "Mails non lus"
-
-msgid "wd waiting event count"
-msgstr "Rendez-vous proposés"
-
-msgid "Click here to login"
-msgstr ""
-
-msgid "wd fixe/release menu"
-msgstr "Afficher/masque le menu comme panneau latéral"
-
-msgid "Preview"
-msgstr "Prévisualisation"
-
-msgid "Do not click here"
-msgstr "Ne cliquez pas ici"
-
-msgid "wd manage portal"
-msgstr "Gestion du portail"
-
-msgid "wd show/hide service list"
-msgstr "Afficher/masquer la liste des services"
-
-msgid "wd reload portal view"
-msgstr "Raffraichir le portail"
-
-msgid "wd  close all services"
-msgstr "Fermer tous les services"
-
-msgid "wd open all services"
-msgstr "Ouvrir tous les services"
-
-msgid "wd reduce font"
-msgstr "Réduire la taille du texte..."
-
-msgid "wd  enlarge font"
-msgstr "Augmenter la taille du texte..."
-
-msgid "wd close"
-msgstr "Fermer"
-
-msgid "wd save"
-msgstr "Sauver"
-
-msgid "wd available services"
-msgstr "Liste des services disponibles"
-
-msgid "wd add service"
-msgstr "Ajouter le service"
-
-msgid "Change password"
-msgstr "Modifier mon mot de passe"
-
-msgid "Change name and coordinates"
-msgstr "Changer mon nom et mes coordonnées"
-
-msgid "produced by Freedom"
-msgstr "produit par Freedom"
-
-msgid "webdesk application portal"
-msgstr "Portail application WebDesk"
-
-msgid "Javascript must be enabled in your navigator"
-msgstr ""
-
-msgid "wd error add service"
-msgstr "wd error add service"
-
-msgid "wd error getting service"
-msgstr "wd error getting service"
-
-msgid "wd invalid service number returned by creation"
-msgstr "invalid service number returned by creation"
-
-msgid "automatic reload all"
-msgstr "mise à jour toutes les"
-
-msgid "wd hide svc content"
-msgstr "Masquer le contenu"
-
-msgid "wd move service"
-msgstr "Déplacer le service"
-
-msgid "wd reload svc content"
-msgstr "Afficher le contenu"
-
-msgid "wd edit svc content"
-msgstr "Editer les paramètres"
-
-msgid "wd delete svc"
-msgstr "Supprimer le service"
-
-msgid "wd url for retrieving information not given"
-msgstr "Url de récuperation des informations non fournie"
-
-msgid "downloading content in progress..."
-msgstr "Chargement du contenu en cours..."
-
-msgid "wd show svc content"
-msgstr "Afficher le contenu"
-
-msgid "edition url not given"
-msgstr "Url pour édition des param^etre non fournie"
-
-msgid "wd loading edition forms"
-msgstr "Chargement du formulaire de paramètrage"
-
-msgid "wd error retrieving edit form"
-msgstr "Erreur de récupération du formulaire édition"
-
-msgid "wd error saving edit form"
-msgstr "Erreur de sauvegarde du formulaire édition"
-
-msgid "wd error geo service"
-msgstr "wd error geo service"
-
-msgid "wd confirm supress of"
-msgstr "Etes-vous sur de vouloir supprimer le service "
-
-msgid "wd error retrieving content"
-msgstr "Erreur de récupération du contenu"
-
-msgid "portal welcome service"
-msgstr "Accueil"
-
-msgid "portal welcome title"
-msgstr "Bienvenue sur votre portail,"
-
-msgid "portal welcome content"
-msgstr ""
-"Le portail regroupe des services d'information. En un coup d'oeil vous consultez "
-"l'essentiel de l'information : vos mails reçus, vos rendez-vous à venir, "
-"les dernières nouvelles... Pour cela, vous pouvez organiser les différents "
-"services en terme de contenu, de disposition..." 
-
-msgid "portal welcome manual"
-msgstr "en cliquant ici vous accédez à l'aide à l'utilisation du portail et de ses services"
-
-msgid "portal welcome help"
-msgstr ""
-"Vous pouvez supprimer ce service, l'aide reste accessible par un simple clic "
-"sur le symbole (accessible en haut à gauche de votre portail)"
-
-msgid "wd search ..."
-msgstr "Texte recherché"
-
-msgid "open it in a new window"
-msgstr "ouvrir dans une nouvelle fenetre"
-
-msgid "Click to search person containing..."
-msgstr "Commençant par ...."
-
-msgid "Click to search both in society name..."
-msgstr "Sélectionner pour chercher dans les noms de société"
-
-msgid "wd entre rss link here"
-msgstr "Saississez l'URL du flux RSS ici"
-
-msgid "display full card in the same window"
-msgstr "Afficher les cartes complètes dans la même fenêtre"
-
-msgid "display column x lines"
-msgstr "Affichage colonnes x lignes"
 
 msgid "Theme preferences"
 msgstr "Préférences du thème"
@@ -247,83 +52,6 @@ msgstr "Administration"
 
 msgid "Webdesk administration"
 msgstr "Administration du WebDesk"
-
-msgid "without category"
-msgstr "sans catégorie"
-
-#, c-format
-msgid "temperature %s c (dew %s c, heat %s c)"
-msgstr "température %s°c (rosée %s°c, ressentie %s°c)"
-
-#, c-format
-msgid "wind, speed %s m/s direction [%s]"
-msgstr "vent, vitesse %s m/s, direction [%s]°"
-
-#, c-format
-msgid "relative humidity %s %%"
-msgstr "humidité relative %s %%"
-
-#, c-format
-msgid "Pression %s hpa"
-msgstr "Pression %s hpa"
-
-#, c-format
-msgid "Visibility %s %s km"
-msgstr "visibilité %s %s km"
-
-msgid "wd no freedom search given"
-msgstr "Pas de recherche Freedom fournie"
-
-msgid "wd invalid freedom search given"
-msgstr "recherche Freedom invalide"
-
-msgid "wd no rss link given"
-msgstr "Pas de flux RSS fourni"
-
-msgid ""
-"[TEXT:no information available, verify your server have http access to "
-"internet and/or check link please...]"
-msgstr "Pas d'information, vérifiez que l'URL du lien est accessible"
-
-msgid "no account defined"
-msgstr "pas de compte défini."
-
-msgid "error retrieving mails"
-msgstr "Erreur de récupération des messages"
-
-#, c-format
-msgid "more than %d results..."
-msgstr "plus de %d résultats..."
-
-msgid "wd: result"
-msgstr "résultat"
-
-msgid "no result for search"
-msgstr "Pas de résultat..."
-
-msgid "clear displayed results"
-msgstr "Effacer les résultats"
-
-msgid "wd: Private"
-msgstr "Accès privé"
-
-msgid "wd: Public readonly"
-msgstr "Accès public"
-
-msgid "wd: Group access"
-msgstr "Accès groupes"
-
-msgid "wd: Special access"
-msgstr "Accès spéciaux"
-
-msgid "wd: secretary"
-msgstr "secrétaire"
-
-msgid "wdd info society"
-msgstr "société...."
-
-msgid "wdd info personal"
-msgstr "personnel..."
 
 msgid "webdesk"
 msgstr "WebDesk"
@@ -439,20 +167,294 @@ msgstr "Image de fond pour le menu application"
 msgid "webdesk menu background image width"
 msgstr "Largeur de l'image de fond pour le menu application"
 
-#~ msgid "wd go left"
-#~ msgstr "déplacer vers la gauche"
+msgid "no account defined"
+msgstr "pas de compte défini."
 
-#~ msgid "wd go down"
-#~ msgstr "déplacer vers le bas"
+msgid "error retrieving mails"
+msgstr "Erreur de récupération des messages"
 
-#~ msgid "wd go up"
-#~ msgstr "déplacer vers le haut"
+#, c-format
+msgid "temperature %s c (dew %s c, heat %s c)"
+msgstr "température %s°c (rosée %s°c, ressentie %s°c)"
 
-#~ msgid "wd go right"
-#~ msgstr "déplacer vers la droite"
+#, c-format
+msgid "wind, speed %s m/s direction [%s]"
+msgstr "vent, vitesse %s m/s, direction [%s]°"
 
-#~ msgid "wd search for contact"
-#~ msgstr "Rechercher un contact"
+#, c-format
+msgid "relative humidity %s %%"
+msgstr "humidité relative %s %%"
+
+#, c-format
+msgid "Pression %s hpa"
+msgstr "Pression %s hpa"
+
+#, c-format
+msgid "Visibility %s %s km"
+msgstr "visibilité %s %s km"
+
+msgid "wd no rss link given"
+msgstr "Pas de flux RSS fourni"
+
+msgid ""
+"[TEXT:no information available, verify your server have http access to "
+"internet and/or check link please...]"
+msgstr "Pas d'information, vérifiez que l'URL du lien est accessible"
+
+msgid "wd no freedom search given"
+msgstr "Pas de recherche Freedom fournie"
+
+msgid "wd invalid freedom search given"
+msgstr "recherche Freedom invalide"
+
+#, c-format
+msgid "more than %d results..."
+msgstr "plus de %d résultats..."
+
+msgid "wd: result"
+msgstr "résultat"
+
+msgid "no result for search"
+msgstr "Pas de résultat..."
+
+msgid "clear displayed results"
+msgstr "Effacer les résultats"
+
+msgid "wd: Private"
+msgstr "Accès privé"
+
+msgid "wd: Public readonly"
+msgstr "Accès public"
+
+msgid "wd: Group access"
+msgstr "Accès groupes"
+
+msgid "wd: Special access"
+msgstr "Accès spéciaux"
+
+msgid "wd: secretary"
+msgstr "secrétaire"
+
+msgid "wdd info society"
+msgstr "société...."
+
+msgid "wdd info personal"
+msgstr "personnel..."
+
+msgid "without category"
+msgstr "sans catégorie"
+
+msgid "wd error add service"
+msgstr "wd error add service"
+
+msgid "wd error getting service"
+msgstr "wd error getting service"
+
+msgid "wd invalid service number returned by creation"
+msgstr "invalid service number returned by creation"
+
+msgid "automatic reload all"
+msgstr "mise à jour toutes les"
+
+msgid "wd hide svc content"
+msgstr "Masquer le contenu"
+
+msgid "wd reload svc content"
+msgstr "Afficher le contenu"
+
+msgid "wd edit svc content"
+msgstr "Editer les paramètres"
+
+msgid "wd delete svc"
+msgstr "Supprimer le service"
+
+msgid "wd url for retrieving information not given"
+msgstr "Url de récuperation des informations non fournie"
+
+msgid "downloading content in progress..."
+msgstr "Chargement du contenu en cours..."
+
+msgid "wd show svc content"
+msgstr "Afficher le contenu"
+
+msgid "edition url not given"
+msgstr "Url pour édition des param^etre non fournie"
+
+msgid "wd loading edition forms"
+msgstr "Chargement du formulaire de paramètrage"
+
+msgid "wd error retrieving edit form"
+msgstr "Erreur de récupération du formulaire édition"
+
+msgid "wd error saving edit form"
+msgstr "Erreur de sauvegarde du formulaire édition"
+
+msgid "wd error geo service"
+msgstr "wd error geo service"
+
+msgid "wd confirm supress of"
+msgstr "Etes-vous sur de vouloir supprimer le service "
+
+msgid "wd error retrieving content"
+msgstr "Erreur de récupération du contenu"
+
+msgid "Click to search person containing..."
+msgstr "Commençant par ...."
+
+msgid "Click to search both in society name..."
+msgstr "Sélectionner pour chercher dans les noms de société"
+
+msgid "portal welcome service"
+msgstr "Accueil"
+
+msgid "portal welcome title"
+msgstr "Bienvenue sur votre portail,"
+
+msgid "portal welcome content"
+msgstr ""
+"Le portail regroupe des services d'information. En un coup d'oeil vous "
+"consultez l'essentiel de l'information : vos mails reçus, vos rendez-vous à "
+"venir, les dernières nouvelles... Pour cela, vous pouvez organiser les "
+"différents services en terme de contenu, de disposition..."
+
+msgid "portal welcome manual"
+msgstr ""
+"en cliquant ici vous accédez à l'aide à l'utilisation du portail et de ses "
+"services"
+
+msgid "portal welcome help"
+msgstr ""
+"Vous pouvez supprimer ce service, l'aide reste accessible par un simple clic "
+"sur le symbole (accessible en haut à gauche de votre portail)"
+
+msgid "wd search ..."
+msgstr "Texte recherché"
+
+msgid "open it in a new window"
+msgstr "ouvrir dans une nouvelle fenetre"
+
+msgid "display full card in the same window"
+msgstr "Afficher les cartes complètes dans la même fenêtre"
+
+msgid "display column x lines"
+msgstr "Affichage colonnes x lignes"
+
+msgid "wd entre rss link here"
+msgstr "Saississez l'URL du flux RSS ici"
+
+msgid "wd go left"
+msgstr "déplacer vers la gauche"
+
+msgid "wd go down"
+msgstr "déplacer vers le bas"
+
+msgid "wd go up"
+msgstr "déplacer vers le haut"
+
+msgid "wd go right"
+msgstr "déplacer vers la droite"
+
+msgid "wd search for contact"
+msgstr "Rechercher un contact"
+
+msgid "Preview"
+msgstr "Prévisualisation"
+
+msgid "Do not click here"
+msgstr "Ne cliquez pas ici"
+
+msgid "wd manage portal"
+msgstr "Gestion du portail"
+
+msgid "wd show/hide service list"
+msgstr "Afficher/masquer la liste des services"
+
+msgid "wd reload portal view"
+msgstr "Raffraichir le portail"
+
+msgid "wd reduce font"
+msgstr "Réduire la taille du texte..."
+
+msgid "wd  enlarge font"
+msgstr "Augmenter la taille du texte..."
+
+msgid "wd close"
+msgstr "Fermer"
+
+msgid "wd save"
+msgstr "Sauver"
+
+msgid "wd available services"
+msgstr "Liste des services disponibles"
+
+msgid "wd add service"
+msgstr "Ajouter le service"
+
+msgid "wd open/close menu"
+msgstr "Ouvrir/fermer le menu"
+
+msgid "wd document received"
+msgstr "Documents affectés"
+
+msgid "wd unread mail count"
+msgstr "Mails non lus"
+
+msgid "wd waiting event count"
+msgstr "Rendez-vous proposés"
+
+msgid "Click here to login"
+msgstr ""
+
+msgid "wd fixe/release menu"
+msgstr "Afficher/masque le menu comme panneau latéral"
+
+msgid "Theme chooser"
+msgstr "Choix du thème"
+
+msgid "font size chooser"
+msgstr "Taille de la police"
+
+msgid "small size"
+msgstr "petite taille"
+
+msgid "normal size"
+msgstr "taille normale"
+
+msgid "large size"
+msgstr "grande taille"
+
+msgid "x-large size"
+msgstr "très grande taille"
+
+msgid "Apply"
+msgstr ""
+
+msgid "Change your theme"
+msgstr "Changer votre thème"
+
+msgid "webdesk application portal"
+msgstr "Portail application WebDesk"
+
+msgid "Javascript must be enabled in your navigator"
+msgstr ""
+
+msgid "Change password"
+msgstr "Modifier mon mot de passe"
+
+msgid "Change name and coordinates"
+msgstr "Changer mon nom et mes coordonnées"
+
+msgid "produced by Freedom"
+msgstr "produit par Freedom"
+
+msgid "wd open all services"
+msgstr "Ouvrir tous les services"
+
+msgid "wd  close all services"
+msgstr "Fermer tous les services"
+
+#~ msgid "wd move service"
+#~ msgstr "Déplacer le service"
 
 #, fuzzy
 #~ msgid "portal page number 1"
