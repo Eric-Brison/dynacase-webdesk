@@ -1,7 +1,10 @@
-0.2.1
+0.2.2
  - init service : welcome
  - ajout du manuel
  - oragnisation des services proposés
+
+0.2.1
+ - 0.2.0 Bug correction
 
 0.2.0
 - mail service look
