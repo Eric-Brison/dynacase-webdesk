@@ -1,5 +1,6 @@
 <?php
 include_once("XML/RSS.php");
+include_once("WEBDESK/Lib.Services.php");
 function svcrss(&$action) {
 
  header('Content-type: text/xml; charset=utf-8');
@@ -7,7 +8,8 @@ function svcrss(&$action) {
 
   $action->lay->set("rss", false);
 
-  $rsslink = GetHttpVars("rss", "");
+  $ilink = urldecode(GetHttpVars("rss", ""));
+  $rsslink = parseUrl($ilink);
   if ($rsslink=="") {
     $action->lay->set("msg", _("wd no rss link given"));
     return;
@@ -34,7 +36,7 @@ function svcrss(&$action) {
      $ic++;
     }
   } else {
-    $action->lay->set("msg", _("[TEXT:no information available, verify your server have http access to internet and/or check link please...]"). '(<a href="'.$rsslink.'">'.$rsslink.'</a>)');
+    $action->lay->set("msg", _("[TEXT:no information available, verify your server have http access to internet and/or check link please...]"). '(<a href="'.$ilink.'">'.$ilink.'</a>)');
     return;
   }
   $action->lay->set("title",$rssi->channel["title"]);
@@ -42,3 +44,5 @@ function svcrss(&$action) {
   $action->lay->setBlockData("rssnews", $tr);
 }
   
+
+?>

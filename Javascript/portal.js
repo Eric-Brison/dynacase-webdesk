@@ -1,4 +1,4 @@
-// $Id: portal.js,v 1.33 2006/11/18 19:35:25 marc Exp $
+// $Id: portal.js,v 1.34 2006/11/24 11:16:39 marc Exp $
 
 // portal
 var portalRefreshInterval = 10;
@@ -79,7 +79,7 @@ function orderServices() {
     if (!services[is].col || services[is].col<0 || services[is].col>=colCount) services[is].col=0; 
     lcol = services[is].col;
     if (services[is].lin<=0) { 
-       services[is].lin = colsDesc[lcol].length;
+      services[is].lin = colsDesc[lcol].length;
     }
     colsDesc[lcol][services[is].lin] = is;
     mm += ' col:'+services[is].col+' line='+services[is].lin+' ==> '+is+'\n';
@@ -150,12 +150,12 @@ function showService(is) {
       imgcyc = '<img src="[IMGF:wd_svc_cyclic.gif:0,0,0|COLOR_BLACK]" style="border:0px" title="[TEXT:automatic reload all] '+services[is].rdel+' minutes">';
     }
     cnt += '<table cellspacing="0" cellpadding="0" style="width:100%; border:0px">';
-    cnt += '<tr style="cursor:move; border:1px solid red;" onmousedown="return startMoveService(event, this, '+snum+');" onmouseup="endMoveService(event,'+snum+')"  onmouseover="mOverSvcTitle('+snum+')" onmouseout="mOutSvcTitle('+snum+')">';
+    cnt += '<tr style="vertical-align:baseline; cursor:move; border:1px solid red;" onmousedown="return startMoveService(event, this, '+snum+');" onmouseup="endMoveService(event,'+snum+')"  onmouseover="mOverSvcTitle('+snum+')" onmouseout="mOutSvcTitle('+snum+')">';
     cnt += '<td >';
      cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc(event, '+snum+',true); return false;" src="[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd hide svc content]">';
     cnt += '<span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
  
-    cnt += '<td style="text-align:right">';
+    cnt += '<td nowrap style="text-align:right">';
 
     cnt += '<span id="iconbox'+snum+'" style="visibility:hidden">';
 
@@ -246,7 +246,6 @@ function submitService(event) {
   for (var ie=0; ie<fsend.elements.length; ie++) {
     if (fsend.elements[ie].name!="") params += '&'+fsend.elements[ie].name+'='+escape(fsend.elements[ie].value);
   }
-
   loadSvcAsync(snum, true, params);
   return false;
 }
@@ -302,7 +301,7 @@ function editSvc(event, snum) {
 	      if (tpurl[ip]!='') {
 		var thisp = tpurl[ip].split('=');
 		if (fedit.elements[ie].name==thisp[0]) {
-		  fedit.elements[ie].value = thisp[1];
+		  fedit.elements[ie].value = unescape(thisp[1]);
 		}
 	      }
 	    }
@@ -338,14 +337,14 @@ function sendForm() {
 
   var purl = '';
   for (var ie=0; ie<fedit.elements.length; ie++) {
-    purl += '&'+fedit.elements[ie].name+'='+fedit.elements[ie].value;
+    purl += (purl==''?'':'&')+fedit.elements[ie].name+'='+escape(fedit.elements[ie].value);
   }
   if (window.XMLHttpRequest) ereq = new XMLHttpRequest();
   else ereq = new ActiveXObject("Microsoft.XMLHTTP");
   if (ereq) {
-    ereq.open("POST", encodeURI("[CORE_STANDURL]&app=WEBDESK&action=SAVESVC&snum="+editSnum+"&params="+escape(purl)), false);
+    ereq.open("POST", "[CORE_STANDURL]&app=WEBDESK&action=SAVESVC&snum="+editSnum, false);
     ereq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    ereq.send('');
+    ereq.send(purl);
     if (ereq.status!=200) {
       document.getElementById('csvc'+snum).innerHTML = '[TEXT:wd error saving edit form] (HTTP Code '+ereq.status+')';	   
     } else { 
