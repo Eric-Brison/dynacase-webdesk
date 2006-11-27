@@ -11,11 +11,11 @@ function svcrss(&$action) {
   $ilink = urldecode(GetHttpVars("rss", ""));
   $rsslink = parseUrl($ilink);
   if ($rsslink=="") {
-    $action->lay->set("msg", _("wd no rss link given"));
+    $action->lay->set("msg", _("wd no rss link given")."  [$ilink]");
     return;
   }
   $max = GetHttpVars("max", 5);
-  $textlg = GetHttpVars("dlg", 100);
+  $textlg = GetHttpVars("dlg", 0);
   $vfull = (GetHttpVars("vfull", 0)==1 ? true : false);
 
   $rssi =& new XML_RSS($rsslink);

@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: portal.php,v 1.22 2006/11/20 18:24:22 marc Exp $
+ * @version $Id: portal.php,v 1.23 2006/11/27 18:26:08 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WGCAL
@@ -17,8 +17,8 @@ function portal(&$action) {
 
   $dbaccess = getParam("FREEDOM_DB");
 
-// $debug = true;
-  $debug = false;
+//  $debug = true;
+   $debug = false;
 
   $action->parent->AddJsRef("FDL:common.js", true);
   $action->lay->set("debug", $debug);

@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <freedomsvc [IF rss]uptime="[uptime]" title="[title]"[ENDIF rss]><![CDATA[
 [IFNOT rss][msg][ENDIF rss]
-[IF rss]
-<table cellspacing="0" style="width:100%">
-[BLOCK rssnews]<tr style="vertical-align:top">
-<td><img class="small_button" src="[IMGF:wd_news.gif:0,0,0|COLOR_BLACK]"><a target="_blank" href="[link]">[title]</a></td></tr>
-[IF vfull]<tr><td style="padding:0px 10px 5px 10px; text-align:justify" id="rssct[id]">[descr]</td></tr>[ENDIF vfull]
-[ENDBLOCK rssnews]</table>
-[ENDIF rss]
+[IF rss]<table cellspacing="0" style="width:100%">
+[BLOCK rssnews]
+<tr style="vertical-align:top">
+  <td>
+    <img class="small_button" src="[IMGF:wd_news.gif:0,0,0|COLOR_BLACK]">
+    <a target="_blank" href="[link]">[title]</a>
+  </td>
+</tr>
+[IF vfull]<tr>
+<td style="padding:0px 10px 5px 10px; text-align:justify" id="rssct[id]">[descr]</td>
+</tr>[ENDIF vfull]
+[ENDBLOCK rssnews]
+</table>[ENDIF rss]
 ]]></freedomsvc>

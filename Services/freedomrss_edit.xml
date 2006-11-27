@@ -1,0 +1,9 @@
+<table style="width:100%">
+<tr><td colspan="3">
+<input autocomplete="off"  class="frss_input" name="rss"  id="rss" type="text" style="width:60%" onkeypress="return RssGetReturn(event)" onkeyup="RssRunSearch(event);"  value="">
+&nbsp;<input type="checkbox" class="frss_input" name="sysrss" id="sysrss" [sysrssst] title="[TEXT:rss: select to search in system RSS (else mine only)]">
+</td></tr>
+<tr><td colspan="3"><input type="hidden" name="rssid"  id="rssid" value=""/>&rarr; <input readonly class="frss_input" name="rsstitle" id="rsstitle" type="text" style="background-color:[COLOR_C5];font-weight:bold; width:90%;" value=""><td></tr>
+<tr><td style="text-align:right">Nombre d'item affich&eacute;s</td><td> : </td><td><select name="max"><option value="10">10<option value="20">20<option value="0">Tous</select></td></tr>
+<tr><td style="text-align:right">Affichage du d&eacute;tail</td><td> : </td><td><select name="fcard"><option value="0">Non<option value="1">Oui</td></tr>
+</table>

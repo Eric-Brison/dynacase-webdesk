@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<freedomsvc uptime="" title="Flux RSS Freedom"><![CDATA[
+<input type="hidden" id="rssid" value="[rssid]"/>
+<input autocomplete="off"  class="frss_input" id="rss" type="text" name="rss" style="width:60%" onkeypress="return rssGetReturn(event)" onkeyup="rssRunSearch(event);"  value="[rss]">
+&nbsp;<input type="checkbox" class="frss_input" name="sysrss" id="sysrss" [sysrssst] title="[TEXT:rss: select to search in system RSS (else mine only)]">
+]]></freedomsvc>
