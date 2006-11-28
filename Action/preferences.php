@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: preferences.php,v 1.3 2006/09/15 15:38:38 eric Exp $
+ * @version $Id: preferences.php,v 1.4 2006/11/28 16:20:00 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WEBDESK
@@ -17,6 +17,7 @@ include_once('Class.Application.php');
 function preferences(&$action) {
 
   $action->parent->AddCssRef("WEBDESK:webdesk.css", true);
+  $action->parent->AddJsRef("WEBDESK:prefadmin.js", true);
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/subwindow.js");  
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/DHTMLapi.js");  
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/AnchorPosition.js");  
@@ -24,7 +25,8 @@ function preferences(&$action) {
   // Get application list
   $fuid=$action->user->fid;
   $query=new QueryDb($action->dbaccess,"Application");
-  $query->basic_elem->sup_where=array("available='Y'","displayable='Y'");
+//   $query->basic_elem->sup_where=array("available='Y'","displayable='Y'");
+  $query->basic_elem->sup_where=array("available='Y'");
   $list = $query->Query(0,0,"TABLE");
   $tab = array();
   $tab[]=array("description"=>_("Theme preferences"),

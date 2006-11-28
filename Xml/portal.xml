@@ -57,7 +57,7 @@ function initPortal() {
 
 <tr>
 [BLOCK cols]
-<td  id="wdcol[icol]" wdcol="[icol]" onmouseover="mouseOverService(event)" class="wdcols" style="width:33%;">
+<td  id="wdcol[icol]" wdcol="[icol]" onmouseover="mouseOverService(event)" class="wdcols" style="width:[cwidth]%;">
 </td>[ENDBLOCK cols]
 </tr></table>
 

@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: portal.php,v 1.24 2006/11/28 15:01:15 marc Exp $
+ * @version $Id: portal.php,v 1.25 2006/11/28 16:20:00 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WGCAL
@@ -35,9 +35,10 @@ function portal(&$action) {
 
   $action->lay->set("colCount", $colcount); 
 
+  $cwidth = floor(100/$colcount);
   $cols = array();
   for ($icol=0; $icol<$colcount; $icol++) {
-    $cols[] = array( "firstCol" => ($icol==0?true:false), "icol" => $icol );
+    $cols[] = array( "firstCol" => ($icol==0?true:false), "icol" => $icol, "cwidth" => $cwidth );
   }
   $action->lay->setBlockData("cols", $cols); 
  

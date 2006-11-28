@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: admins.php,v 1.1 2006/07/21 15:28:17 eric Exp $
+ * @version $Id: admins.php,v 1.2 2006/11/28 16:20:00 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WEBDESK
@@ -17,6 +17,8 @@ include_once('Class.Application.php');
 function admins(&$action) {
 
   $action->parent->AddCssRef("WEBDESK:webdesk.css", true);
+  $action->parent->AddJsRef("WEBDESK:prefadmin.js", true);
+
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/subwindow.js");  
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/DHTMLapi.js");  
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/AnchorPosition.js");  
@@ -24,7 +26,7 @@ function admins(&$action) {
   // Get application list
 
   $query=new QueryDb($action->dbaccess,"Application");
-  $query->basic_elem->sup_where=array("available='Y'","displayable='Y'");
+  $query->basic_elem->sup_where=array("available='Y'");
   $list = $query->Query(0,0,"TABLE");
   $tab = array();
   if ($query->nb > 0) {

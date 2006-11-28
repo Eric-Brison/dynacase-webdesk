@@ -8,31 +8,6 @@
 [JS:REF]
 <script>
 [JS:CODE]
-
-var appSelected = -1;
-function selectApp(id, url) {
-  if (appSelected!=-1) {
-    document.getElementById('app'+appSelected).className = 'app';
-  }
-  appSelected = id;
-  document.getElementById('appzone').src = url;
-  document.getElementById('app'+id).className = 'app app_selected';
-
-  document.getElementById('appzone').style.height = getFrameHeight()-20;
-  document.getElementById('appzone').style.display = 'block';
-  
-}
-function selectFirstApp() {
-  var da=document.getElementById('divapp');
-  if (da) {
-    var ds=da.getElementsByTagName('div');
-    if (ds.length > 0) {
-      var ds1=ds[0];
-      ds1.onclick.apply(ds1,[]);
-    }
-  }
-}
-
 addEvent(window,'load',selectFirstApp);
 </script>
 </head>
@@ -40,9 +15,9 @@ addEvent(window,'load',selectFirstApp);
 <table cellspacing="0" style="width:95%" ><tr style="vertical-align:top">
 <td>
 <div id="divapp" class="wdparamb">[BLOCK applist]
-<div id="app[id]" title="[description]" class="app" onmouseover="if (this.className=='app') this.className='app_over'" onmouseout="if (this.className=='app_over') this.className='app'" onclick="selectApp('[id]', '[CORE_STANDURL]&app=[name]&action=[action]');">
-<img src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]">&nbsp;[short_name]
-</div>[ENDBLOCK applist]</div>
+<div id="app[id]" title="[description]" class="app" onmouseover="if (this.className=='app') this.className='app_over'" onmouseout="if (this.className=='app_over') this.className='app'" onclick="selectApp('[id]', '[CORE_BASEURL]&app=[name]&action=[action]');">
+<img src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]">&nbsp;[short_name]</div>
+[ENDBLOCK applist]</div>
 </td>
 <td>
 <style>
