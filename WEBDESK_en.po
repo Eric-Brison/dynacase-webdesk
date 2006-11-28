@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-20 09:54+0100\n"
+"POT-Creation-Date: 2006-11-28 14:19+0100\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -309,6 +309,9 @@ msgstr ""
 msgid "portal welcome help"
 msgstr ""
 
+msgid "rss: select to search in system RSS (else mine only)"
+msgstr ""
+
 msgid "wd search ..."
 msgstr ""
 
@@ -322,6 +325,12 @@ msgid "display column x lines"
 msgstr ""
 
 msgid "wd entre rss link here"
+msgstr ""
+
+msgid "rss: clear displayed results"
+msgstr ""
+
+msgid "freedom rss search"
 msgstr ""
 
 msgid "wd go left"

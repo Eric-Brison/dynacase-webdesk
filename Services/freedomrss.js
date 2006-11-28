@@ -70,7 +70,7 @@ function RssRunSearch(event) {
 
 function RssSet(id, title) {
   document.getElementById('rssid').value = id;
-  document.getElementById('rsstitle').value = title;
+  document.getElementById('rsstitle').innerHTML = title;
   RssResetSearch();
   document.getElementById('rss').value = '';
 }

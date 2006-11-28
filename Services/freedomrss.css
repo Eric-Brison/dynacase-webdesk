@@ -9,9 +9,16 @@ div#rsslist {
 .rss_warn {
   text-decoration : underline;
 }
-
+.rsstitle {
+  width : 100%;
+  background-color:[COLOR_C2];
+  border-width: 1px;
+  border-style: solid;
+  border-color: [COLOR_A5];
+  font-weight:bold; 
+  width:90%;
+}
 .rss_result {
-  font-size:90%;
   padding : 0 5 0 5;
   margin : 0 3 3 0;
   background-color : [COLOR_C9];

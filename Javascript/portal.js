@@ -1,4 +1,4 @@
-// $Id: portal.js,v 1.34 2006/11/24 11:16:39 marc Exp $
+// $Id: portal.js,v 1.35 2006/11/28 15:01:15 marc Exp $
 
 // portal
 var portalRefreshInterval = 10;
@@ -287,7 +287,7 @@ function editSvc(event, snum) {
     if (window.XMLHttpRequest) ereq = new XMLHttpRequest();
     else ereq = new ActiveXObject("Microsoft.XMLHTTP");
     if (ereq) {
-      ereq.open("POST", services[is].eurl, false);
+      ereq.open("POST", services[is].eurl+'&'+services[is].purl, false);
       ereq.send('');
       if (ereq.status!=200) {
 	document.getElementById('editsvc_c').innerHTML = '[TEXT:wd error retrieving edit form] (HTTP Code '+ereq.status+')';	   
@@ -342,6 +342,7 @@ function sendForm() {
   if (window.XMLHttpRequest) ereq = new XMLHttpRequest();
   else ereq = new ActiveXObject("Microsoft.XMLHTTP");
   if (ereq) {
+    globalcursor('progress');
     ereq.open("POST", "[CORE_STANDURL]&app=WEBDESK&action=SAVESVC&snum="+editSnum, false);
     ereq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     ereq.send(purl);
@@ -349,8 +350,9 @@ function sendForm() {
       document.getElementById('csvc'+snum).innerHTML = '[TEXT:wd error saving edit form] (HTTP Code '+ereq.status+')';	   
     } else { 
       services[is].purl = purl;
-      loadSvcAsync(snum);
+      loadSvcAsync(snum, true);
     }
+    unglobalcursor();
   } else {
     document.getElementById('csvc'+snum).innerHTML = '[TEXT:wd error saving edit form] (XMLHttpRequest contruction)';	    
   }
@@ -538,6 +540,7 @@ function opencloseParams() {
     var dp = document.getElementById('wdparamset');
     var dpi = document.getElementById('wdparamimg');
     if (paramIsOpen) {
+      closeSubService();
       if (dpi) dpi.src = "[IMGF:wd_open_services.gif:0,0,0|COLOR_BLACK]";
       dp.style.display = 'none';
       paramIsOpen = false;
@@ -679,6 +682,7 @@ function trace(tt) {
 function openSubService(event, elt, mid) {
   closeSubService();
   if (!document.getElementById(mid)) return;
+  menuId = mid;
   var os = getAnchorPosition(elt.id);
   var h = getObjectHeight(elt);
   var w = getObjectWidth(elt);
@@ -707,6 +711,5 @@ function closeSubService() {
 
 function unsetTempoCloseSubService(event, mid) {
   if (menuId==mid && menuTempo!=-1) clearTimeout(menuTempo);
-  menuId = '';
   menuTempo = -1;
 }
