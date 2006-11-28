@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: main.php,v 1.8 2006/11/08 12:36:47 marc Exp $
+ * @version $Id: main.php,v 1.9 2006/11/28 18:32:52 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WEBDESK
@@ -43,6 +43,7 @@ function main(&$action) {
   $action->lay->set("Agenda", haveAppAccess("WGCAL"));
     
   $action->parent->AddJsRef("WEBDESK:main.js", true);
+  $action->parent->AddJsRef("FDC:setparamu.js", true);
   $action->parent->AddCssRef("WEBDESK:webdesk.css", true);
   
 
@@ -55,14 +56,21 @@ function main(&$action) {
 
   $defApp = false;
 
+
+  $appb = getParam("WDK_BARAPP", "");
+  if ($appb!="") {
+    $tapp = explode("|", $appb);
+  }
+  
   // Get application list
 
   $query=new QueryDb($action->dbaccess,"Application");
   $query->basic_elem->sup_where=array("available='Y'","displayable='Y'", "name!='WEBDESK'");
   $list = $query->Query(0,0,"TABLE");
   $tab = array();
+  $appinbar = array();
   if ($query->nb > 0) {
-    $i=0;
+    $i=0; $j=0;
     foreach($list as $k=>$appli) {
       if ($appli["access_free"] == "N") {
         $action->log->debug("Access not free for :".$appli["name"]);
@@ -80,6 +88,7 @@ function main(&$action) {
       }
       $appli["description"]= $action->text($appli["description"]); // translate
       $appli["short_name"]= $action->text($appli["short_name"]); // translate
+      $appli["jsname"]= addslashes($action->text($appli["short_name"])); // translate
 //       $appli["descriptionShort"]= substr($appli["description"],0,20).(strlen($appli["description"])>20?"...":""); // translate
       $appli["descriptionsla"]= addslashes($appli["description"]); // because its in between '' in layout
       if ($appli["machine"] != "") $appli["pubdir"]= "http://".$appli["machine"]."/what";
@@ -88,6 +97,7 @@ function main(&$action) {
       if ($appli["iconsrc"]=="CORE/Images/noimage.png") $appli["iconsrc"]=$appli["name"]."/Images/".$appli["icon"];
       $appli["params"] = "";
       $tab[$i++]=$appli;
+      if (in_array($appli["id"],$tapp) || in_array($appli["name"],$tapp)) $appinbar[$j++] = $appli;
     }
   }
   $action->lay->setBlockData("appList", $tab);
@@ -95,12 +105,16 @@ function main(&$action) {
 
   $specialapp[] = array( "id" => "100000", 
 			 "short_name" => _("My portal"), 
+			 "jsname" => addslashes(_("My portal")), 
 			 "description" => _("My portal"), 
 			 "name" => "WEBDESK", 
 			 "params" => "&action=PORTAL",
 			 "iconsrc" => "[IMG:wd_portal.gif]" );
+  if (in_array("100000",$tapp) || in_array("WEBDESK",$tapp)) $appinbar[$j++] = $specialapp[0];
+
   $specialapp[] = array( "id" => "100001", 
 			 "short_name" => _("My account"), 
+			 "jsname" => addslashes(_("My account")), 
 			 "name" => "WEBDESK", 
 			 "description" => _("Webdesk preferences"), 
 			 "params" => "&action=PREFERENCES",
@@ -114,8 +128,11 @@ function main(&$action) {
 			   "params" => "&action=ADMINS",
 			   "iconsrc" => "[IMG:wd_admin.gif]" );
   }
+
   $action->lay->setBlockData("specialAppList", $specialapp);
   $action->lay->setBlockData("specialAppListBody", $specialapp);
+
+  $action->lay->setBlockData("barAppList", $appinbar);
 
 
   $m_bgcolor = GetParam("WDESK_MENUCOLOR", GetParam("COLOR_A7"));

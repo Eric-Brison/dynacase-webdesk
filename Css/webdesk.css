@@ -116,3 +116,17 @@ TABLE.transparent TBODY TR TD,TABLE.transparent TBODY TR {
   background-color:transparent;
   padding:0px;
 }
+
+.appbar {
+  border-style : none;
+  border-width : 1px;
+  border-color: [COLOR_A8];
+}
+
+.appbar_button {
+  cursor:pointer;
+  height:[SIZE_IMG-X-SMALL];
+  border-style : none;
+  border-width : 1px;
+  border-color: [COLOR_A8];
+}

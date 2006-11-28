@@ -1,6 +1,6 @@
 <?php
 // ---------------------------------------------------------------
-// $Id: WEBDESK_init.php.in,v 1.4 2006/10/31 06:05:46 marc Exp $
+// $Id: WEBDESK_init.php.in,v 1.5 2006/11/28 18:32:52 marc Exp $
 // $Source: /home/cvsroot/anakeen/freedom/webdesk/WEBDESK_init.php.in,v $
 // ---------------------------------------------------------------
 //  O   Anakeen - 2001
@@ -33,6 +33,7 @@ array(
 "WDK_COLCOUNT" => array( "val"=>"3", "descr"=>N_("portal columns count"),"user"=>"Y"),
 "WDK_SVCCOLCOUNT" => array( "val"=>"3", "descr"=>N_("services list columns count"),"user"=>"Y"),
 "ARDOISE" => array( "val"=>"", "descr"=>N_("ardoise content"),"user"=>"Y"),
+"WDK_BARAPP" => array( "val"=>"", "descr"=>N_("application present in application bar"),"user"=>"Y"),
 
 "WDESK_MENUCOLOR" => array( "val"=>"", 
 			    "descr"=>N_("webdesk menu background color"),

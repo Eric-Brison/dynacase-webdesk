@@ -18,6 +18,16 @@
 var isIE = [IF ISIE]true[ENDIF ISIE][IFNOT ISIE]false[ENDIF ISIE];
 var isMBarStatic = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[ENDIF IsMBarStatic];
 var isOpen = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[ENDIF IsMBarStatic];
+
+function initWebdesk() {
+  getUnreadMsgCount();
+  getWaitingEventCount();
+  getAffectDocCount();
+  computefbodywh();  
+  [BLOCK barAppList]
+  addInBar([id], '[name]', '[jsname]', '[iconsrc]', '[params]' ); [ENDBLOCK barAppList]
+}
+
 </script>  
 [JS:REF]
 
@@ -27,8 +37,9 @@ var isOpen = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[
 
 <div id="wdtitle" class="wdhead">
 <table style="width:100%"><tr style="vertical-align:top">
-<td class="small_button" onclick="isOpen = !isOpen; computefbodywh();" style="text-align:left;"><img style="vertical-align:bottom;"  class="small_button" title="[TEXT:wd open/close menu]" id="wdmbarmng" src="[IFNOT IsMBarStatic][IMGF:wd_open_bar.gif:0,0,0|COLOR_BLACK][ENDIF IsMBarStatic][IF IsMBarStatic][IMGF:wd_right_bar.gif:0,0,0|COLOR_BLACK][ENDIF IsMBarStatic]"> <span id="wdappsel">Agenda</span></td>
-<td style="text-align:center">[title]</td>
+<td class="small_button" onclick="isOpen = !isOpen; computefbodywh();" style="text-align:left;"><img style="vertical-align:bottom;"  class="small_button" title="[TEXT:wd open/close menu]" id="wdmbarmng" src="[IFNOT IsMBarStatic][IMGF:wd_open_bar.gif:0,0,0|COLOR_BLACK][ENDIF IsMBarStatic][IF IsMBarStatic][IMGF:wd_right_bar.gif:0,0,0|COLOR_BLACK][ENDIF IsMBarStatic]"> <span id="wdappsel">--</span></td>
+<td style="text-align:center"><span class="appbar" id="appbar"></span></td>
+<td style="text-align:center"></td>
 <td style="text-align:right;">
 [IF Workspace]<img src="[IMGF:wd_docreceived.gif:0,0,0|COLOR_BLACK]" onclick="getAffectDocCount()" class="small_button" title="[TEXT:wd document received]"><span id="docreceived" style="font-weight:bold">?</span>&nbsp;[ENDIF Workspace]
 [IF MailAccount]<img src="[IMGF:wd_mailcount.gif:0,0,0|COLOR_BLACK]" onclick="getUnreadMsgCount()" class="small_button" title="[TEXT:wd unread mail count]"><span id="ureadmail" style="font-weight:bold">?</span>&nbsp;[ENDIF MailAccount]
@@ -41,12 +52,12 @@ var isOpen = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[
 <div id="inmenu" style="  padding: 0px 0px 0px [menu_imgwidth]px; background-image: url([menu_bgimage]);">
 
 [BLOCK appList]
-<div id="app[id]" class="app" onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" onclick="runappm(event, [id], '[name]', '[params]')"><img src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]; vertical-align:baseline">&nbsp;[short_name]</div>[ENDBLOCK appList]
+<div id="app[id]" class="app" onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" onclick="runappm(event, [id], '[name]', '[jsname]', '[iconsrc]','[params]', true); return false;"><img src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]; vertical-align:baseline">&nbsp;[short_name]</div>[ENDBLOCK appList]
 
 <div class="app">&nbsp;</div>
 
 [BLOCK specialAppList]
-<div id="app[id]" class="app" onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" onclick="runappm(event, [id], '[name]', '[params]')"><img src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]; vertical-align:baseline">&nbsp;[short_name]</div>[ENDBLOCK specialAppList]
+<div id="app[id]" class="app" onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" onclick="runappm(event, [id], '[name]', '[jsname]', '[iconsrc]', '[params]', true); return false;"><img src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]; vertical-align:baseline">&nbsp;[short_name]</div>[ENDBLOCK specialAppList]
 
 </div>
 

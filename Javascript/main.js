@@ -3,13 +3,6 @@ var currentIdApp = -1;
 
 var updateInfosTimeout = 5 * 60 * 1000;
 
-function initWebdesk() {
-  getUnreadMsgCount();
-  getWaitingEventCount();
-  getAffectDocCount();
-  computefbodywh();
-}
-  
 function getUnreadMsgCount() {
   var corestandurl=window.location.pathname+'?sole=Y&';
   var uu = corestandurl+'app=WEBDESK&action=SVCLOCALMAIL&oc=Y';
@@ -120,11 +113,74 @@ function computefbodywh() {
   setcurtime();
 }
 
-function runappm(event, idapp, sidapp, params) {
+function runappm(event, idapp, sidapp, sname, ico, params, normalapp) {
   var evt = (evt) ? evt : ((event) ? event : null );
+  var addb = evt.shiftKey ? true : false;
   var force = evt.ctrlKey ? true : false;
-  runapp(idapp, sidapp, params, force);
+  if (addb && normalapp) addInBar(idapp, sidapp, sname, ico, params);
+  else runapp(idapp, sidapp, params, force);
 }
+
+var inBarApp = new Array;
+function addInBar(idapp, sidapp, sname,  ico, params) {
+  for (var ia=0; ia<inBarApp.length; ia++) {
+    if (idapp==inBarApp[ia].id) return;
+  }  
+  inBarApp[inBarApp.length] = { id:idapp, code:sidapp, name:sname, ico:ico, prm:params };
+  reloadBarApp();
+  saveBarApp();
+  if (!isMBarStatic) isOpen = false;
+  computefbodywh();
+}
+
+function reloadBarApp() {
+  if (!document.getElementById('appbar')) {
+    alert('appbar not present!');
+    return;
+  }
+  document.getElementById('appbar').innerHTML = '';
+  if (inBarApp.length<1) return;
+  var bcontent = '';
+  for (var ia=0; ia<inBarApp.length; ia++) {
+    bcontent += '&nbsp;<img id="bappid'+inBarApp[ia].id+'" class="appbar_button" ';
+    bcontent += '   onclick="clickBarApp(event, '+inBarApp[ia].id+')" ';
+    bcontent += '   src="'+inBarApp[ia].ico+'" title="'+inBarApp[ia].name+'">';
+  }
+  if (bcontent!='') document.getElementById('appbar').innerHTML = bcontent;
+  return false;
+}
+
+function clickBarApp(event, idapp) {
+  var evt = (evt) ? evt : ((event) ? event : null );
+  var delb = evt.shiftKey ? true : false;
+  var force = evt.ctrlKey ? true : false;
+  var capp = -1;
+
+  for (var ia=0; ia<inBarApp.length; ia++) {
+    if (idapp==inBarApp[ia].id) capp = ia;
+  }
+  if (capp==-1) return false;
+  
+  if (delb) {
+    inBarApp.splice(capp,1);
+    reloadBarApp();
+    saveBarApp();
+  } else {
+    runapp(inBarApp[capp].id, inBarApp[capp].code, inBarApp[capp].prm, force);
+  }
+  return false;
+}
+
+function saveBarApp() {
+  var valp = '';
+  if (inBarApp.length>1) {
+    for (var ia=0; ia<inBarApp.length; ia++) {
+      valp += (valp==''?'':'|')+inBarApp[ia].code;
+    }
+  }
+  setparamu("WEBDESK", "WDK_BARAPP", valp);
+}
+
 
 function runapp(idapp, sidapp, params, force) {
 
