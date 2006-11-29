@@ -173,7 +173,7 @@ function clickBarApp(event, idapp) {
 
 function saveBarApp() {
   var valp = '';
-  if (inBarApp.length>1) {
+  if (inBarApp.length>0) {
     for (var ia=0; ia<inBarApp.length; ia++) {
       valp += (valp==''?'':'|')+inBarApp[ia].code;
     }

@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: main.php,v 1.9 2006/11/28 18:32:52 marc Exp $
+ * @version $Id: main.php,v 1.10 2006/11/29 06:01:38 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WEBDESK
@@ -58,6 +58,7 @@ function main(&$action) {
 
 
   $appb = getParam("WDK_BARAPP", "");
+  $tapp = array();
   if ($appb!="") {
     $tapp = explode("|", $appb);
   }
@@ -89,7 +90,6 @@ function main(&$action) {
       $appli["description"]= $action->text($appli["description"]); // translate
       $appli["short_name"]= $action->text($appli["short_name"]); // translate
       $appli["jsname"]= addslashes($action->text($appli["short_name"])); // translate
-//       $appli["descriptionShort"]= substr($appli["description"],0,20).(strlen($appli["description"])>20?"...":""); // translate
       $appli["descriptionsla"]= addslashes($appli["description"]); // because its in between '' in layout
       if ($appli["machine"] != "") $appli["pubdir"]= "http://".$appli["machine"]."/what";
       else $appli["pubdir"]=$action->getParam("CORE_PUBURL");
