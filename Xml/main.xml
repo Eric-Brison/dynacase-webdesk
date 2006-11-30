@@ -37,7 +37,7 @@ function initWebdesk() {
 
 <div id="wdtitle" class="wdhead">
 <table style="width:100%"><tr style="vertical-align:top">
-<td class="small_button" onclick="isOpen = !isOpen; computefbodywh();" style="text-align:left;"><img style="vertical-align:bottom;"  class="small_button" title="[TEXT:wd open/close menu]" id="wdmbarmng" src="[IFNOT IsMBarStatic][IMGF:wd_open_bar.gif:0,0,0|COLOR_BLACK][ENDIF IsMBarStatic][IF IsMBarStatic][IMGF:wd_right_bar.gif:0,0,0|COLOR_BLACK][ENDIF IsMBarStatic]"> <span id="wdappsel">--</span></td>
+<td class="small_button" onclick="isOpen = !isOpen; computefbodywh();" style="width:30%; text-align:left;"><img style="vertical-align:bottom;"  class="small_button" title="[TEXT:wd open/close menu]" id="wdmbarmng" src="[IFNOT IsMBarStatic][IMGF:wd_open_bar.gif:0,0,0|COLOR_BLACK][ENDIF IsMBarStatic][IF IsMBarStatic][IMGF:wd_right_bar.gif:0,0,0|COLOR_BLACK][ENDIF IsMBarStatic]"> <span id="wdappsel">--</span></td>
 <td style="text-align:center"><span class="appbar" id="appbar"></span></td>
 <td style="text-align:center"></td>
 <td style="text-align:right;">
@@ -94,8 +94,8 @@ function initWebdesk() {
   <input type="hidden" name="OldAuth" value="[PHP_AUTH_USER]">
 </form>
 
-<div id="ctxappmenu" style="background-color:[COLOR_WHITE]; border:3px solid [COLOR_A7]; margin:0px; padding:3px; position:absolute; left:0px; top:0px; display:none" >
-<div style="border-bottom:2px solid [COLOR_A7]" onmouseover="cancelTempoAppMenu()" 
+<div id="ctxappmenu" style="background-color:[COLOR_WHITE]; border:1px solid [COLOR_A7]; margin:0px; padding:3px; position:absolute; left:0px; top:0px; display:none" >
+<div style="border-bottom:1px solid [COLOR_A7]" onmouseover="cancelTempoAppMenu()" 
      onmouseout="setTempoAppMenu()" >
   <img id="appmenu_ico" src="" style="width:[SIZE_IMG-XX-SMALL]; vertical-align:baseline">&nbsp;<span id="appmenu_title">[short_name]</span>
 </div>
@@ -104,16 +104,30 @@ function initWebdesk() {
      onmouseout="this.className='app'; setTempoAppMenu()" 
      onclick="if (mcurApp.id==-1) return false; runapp(mcurApp.id, mcurApp.sid, mcurApp.prm, false); closeAppMenu()">
 [TEXT:wd display application]</div>
-<div class="app" 
-     onmouseover="this.className='app app_over'; cancelTempoAppMenu()" 
-     onmouseout="this.className='app'; setTempoAppMenu()" 
-     onclick="if (mcurApp.id==-1) return false; adddelAppShortCut(mcurApp.id, mcurApp.sid, mcurApp.name, mcurApp.ico, mcurApp.prm, false); closeAppMenu()">
-[TEXT:wd add/remove shortcut]</div>
+
 <div class="app"
      onmouseover="this.className='app app_over'; cancelTempoAppMenu()" 
      onmouseout="this.className='app'; setTempoAppMenu()" 
      onclick="if (mcurApp.id==-1) return false; runapp(mcurApp.id, mcurApp.sid, mcurApp.prm, true); closeAppMenu()">
 [TEXT:wd reload (force) application]</div>
+
+<div class="app"
+     onmouseover="this.className='app app_over'; cancelTempoAppMenu()" 
+     onmouseout="this.className='app'; setTempoAppMenu()" 
+     onclick="if (mcurApp.id==-1) return false; subwindowm(0,0,'_tab', '[CORE_BASEURL]app='+mcurApp.sid+mcurApp.prm); closeAppMenu()">
+[TEXT:wd open in new window]</div>
+
+<div class="app" style="padding:1px; margin:0px";
+     onmouseover="cancelTempoAppMenu()" 
+     onmouseout="setTempoAppMenu()" 
+<hr style="padding:0px; margin:0px; border:0px; border-top:1px solid [COLOR_A7]"></div>
+
+<div class="app" 
+     onmouseover="this.className='app app_over'; cancelTempoAppMenu()" 
+     onmouseout="this.className='app'; setTempoAppMenu()" 
+     onclick="if (mcurApp.id==-1) return false; adddelAppShortCut(mcurApp.id, mcurApp.sid, mcurApp.name, mcurApp.ico, mcurApp.prm, false); closeAppMenu()">
+[TEXT:wd add/remove shortcut]</div>
+
 </div>
 
 <script>

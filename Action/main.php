@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: main.php,v 1.11 2006/11/30 12:10:35 marc Exp $
+ * @version $Id: main.php,v 1.12 2006/11/30 15:11:18 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WEBDESK
@@ -42,6 +42,7 @@ function main(&$action) {
   $action->lay->set("MailAccount", haveAppAccess("MAIL"));
   $action->lay->set("Agenda", haveAppAccess("WGCAL"));
     
+  $action->parent->AddJsRef("WHAT:subwindow.js", true);
   $action->parent->AddJsRef("WEBDESK:main.js", true);
   $action->parent->AddJsRef("FDC:setparamu.js", true);
   $action->parent->AddCssRef("WEBDESK:webdesk.css", true);
