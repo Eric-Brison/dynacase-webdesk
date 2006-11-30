@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-30 04:57+0100\n"
+"POT-Creation-Date: 2006-11-30 06:22+0100\n"
 "PO-Revision-Date: 2006-09-21 12:27+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -51,6 +51,15 @@ msgstr ""
 
 msgid "wd fixe/release menu"
 msgstr "Afficher/masque le menu comme panneau latéral"
+
+msgid "wd display application"
+msgstr "Afficher..."
+
+msgid "wd add/remove shortcut"
+msgstr "Ajouter/Supprimer le raccourci..."
+
+msgid "wd reload (force) application"
+msgstr "Recharger l'application..."
 
 msgid "Preview"
 msgstr "Prévisualisation"

@@ -52,12 +52,25 @@ function initWebdesk() {
 <div id="inmenu" style="  padding: 0px 0px 0px [menu_imgwidth]px; background-image: url([menu_bgimage]);">
 
 [BLOCK appList]
-<div id="app[id]" class="app" onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" onclick="runappm(event, [id], '[name]', '[jsname]', '[iconsrc]','[params]', true); return false;"><img src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]; vertical-align:baseline">&nbsp;[short_name]</div>[ENDBLOCK appList]
+<div id="app[id]" 
+     class="app" onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" 
+     onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" 
+     onclick="runappm(event, [id], '[name]', '[jsname]', '[iconsrc]','[params]', true); return false;" 
+     oncontextmenu="openAppMenu(event, [id], '[name]', '[jsname]', '[iconsrc]','[params]'); return false;">
+<img src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]; vertical-align:baseline">&nbsp;[short_name]
+</div>[ENDBLOCK appList]
 
 <div class="app">&nbsp;</div>
 
 [BLOCK specialAppList]
-<div id="app[id]" class="app" onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" onclick="runappm(event, [id], '[name]', '[jsname]', '[iconsrc]', '[params]', true); return false;"><img src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]; vertical-align:baseline">&nbsp;[short_name]</div>[ENDBLOCK specialAppList]
+<div id="app[id]" 
+  class="app" 
+  onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" 
+  onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" 
+  onclick="runappm(event, [id], '[name]', '[jsname]', '[iconsrc]', '[params]', true); return false;"
+  oncontextmenu="openAppMenu(event, [id], '[name]', '[jsname]', '[iconsrc]','[params]'); return false;">
+<img src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]; vertical-align:baseline">&nbsp;[short_name]
+</div>[ENDBLOCK specialAppList]
 
 </div>
 
@@ -80,6 +93,28 @@ function initWebdesk() {
   <input type="hidden" name="rurl" value="[CORE_STANDURL]">
   <input type="hidden" name="OldAuth" value="[PHP_AUTH_USER]">
 </form>
+
+<div id="ctxappmenu" style="background-color:[COLOR_WHITE]; border:3px solid [COLOR_A7]; margin:0px; padding:3px; position:absolute; left:0px; top:0px; display:none" >
+<div style="border-bottom:2px solid [COLOR_A7]" onmouseover="cancelTempoAppMenu()" 
+     onmouseout="setTempoAppMenu()" >
+  <img id="appmenu_ico" src="" style="width:[SIZE_IMG-XX-SMALL]; vertical-align:baseline">&nbsp;<span id="appmenu_title">[short_name]</span>
+</div>
+<div class="app" 
+     onmouseover="this.className='app app_over'; cancelTempoAppMenu()" 
+     onmouseout="this.className='app'; setTempoAppMenu()" 
+     onclick="if (mcurApp.id==-1) return false; runapp(mcurApp.id, mcurApp.sid, mcurApp.prm, false); closeAppMenu()">
+[TEXT:wd display application]</div>
+<div class="app" 
+     onmouseover="this.className='app app_over'; cancelTempoAppMenu()" 
+     onmouseout="this.className='app'; setTempoAppMenu()" 
+     onclick="if (mcurApp.id==-1) return false; adddelAppShortCut(mcurApp.id, mcurApp.sid, mcurApp.name, mcurApp.ico, mcurApp.prm, false); closeAppMenu()">
+[TEXT:wd add/remove shortcut]</div>
+<div class="app"
+     onmouseover="this.className='app app_over'; cancelTempoAppMenu()" 
+     onmouseout="this.className='app'; setTempoAppMenu()" 
+     onclick="if (mcurApp.id==-1) return false; runapp(mcurApp.id, mcurApp.sid, mcurApp.prm, true); closeAppMenu()">
+[TEXT:wd reload (force) application]</div>
+</div>
 
 <script>
 // Load default app

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-11-30 04:57+0100\n"
+"POT-Creation-Date: 2006-11-30 06:22+0100\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -50,6 +50,15 @@ msgid "Click here to login"
 msgstr ""
 
 msgid "wd fixe/release menu"
+msgstr ""
+
+msgid "wd display application"
+msgstr ""
+
+msgid "wd add/remove shortcut"
+msgstr ""
+
+msgid "wd reload (force) application"
 msgstr ""
 
 msgid "Preview"

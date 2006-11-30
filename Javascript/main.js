@@ -122,6 +122,7 @@ function runappm(event, idapp, sidapp, sname, ico, params, normalapp) {
 }
 
 var inBarApp = new Array;
+
 function addInBar(idapp, sidapp, sname,  ico, params) {
   for (var ia=0; ia<inBarApp.length; ia++) {
     if (idapp==inBarApp[ia].id) return;
@@ -132,6 +133,28 @@ function addInBar(idapp, sidapp, sname,  ico, params) {
   if (!isMBarStatic) isOpen = false;
   computefbodywh();
 }
+
+
+function delInBar(idapp) {
+  var appDel = -1;
+  for (var ia=0; ia<inBarApp.length; ia++) {
+    if (idapp==inBarApp[ia].id) appDel = ia;
+  }  
+  if (appDel!=-1) {
+    inBarApp.splice(appDel,1);
+    reloadBarApp();
+    saveBarApp();
+  }
+}  
+
+function adddelAppShortCut(idapp, sidapp, sname,  ico, params) {
+  var alreadyInBar = false;
+  for (var ia=0; ia<inBarApp.length; ia++) {
+    if (idapp==inBarApp[ia].id) alreadyInBar = true;
+  }  
+  if (alreadyInBar) delInBar(idapp);
+  else addInBar(idapp, sidapp, sname,  ico, params);
+}  
 
 function reloadBarApp() {
   if (!document.getElementById('appbar')) {
@@ -144,6 +167,7 @@ function reloadBarApp() {
   for (var ia=0; ia<inBarApp.length; ia++) {
     bcontent += '&nbsp;<img id="bappid'+inBarApp[ia].id+'" class="appbar_button" ';
     bcontent += '   onclick="clickBarApp(event, '+inBarApp[ia].id+')" ';
+    bcontent += '   oncontextmenu="openAppMenu(event, '+inBarApp[ia].id+', \''+inBarApp[ia].code+'\', \''+inBarApp[ia].name+'\', \''+inBarApp[ia].ico+'\', \''+inBarApp[ia].prm+'\' ); return false" ';
     bcontent += '   src="'+inBarApp[ia].ico+'" title="'+inBarApp[ia].name+'">';
   }
   if (bcontent!='') document.getElementById('appbar').innerHTML = bcontent;
@@ -162,9 +186,7 @@ function clickBarApp(event, idapp) {
   if (capp==-1) return false;
   
   if (delb) {
-    inBarApp.splice(capp,1);
-    reloadBarApp();
-    saveBarApp();
+    delInBar(idapp);
   } else {
     runapp(inBarApp[capp].id, inBarApp[capp].code, inBarApp[capp].prm, force);
   }
@@ -225,4 +247,38 @@ function pad(s,l,p) {
   var str = String(s);
   if (str.length<l) str = pad(p+s, l, p);
   return str;
+}
+
+var mcurApp = { id:-1, sid:'', name:'', ico:'', prm:'' };
+function openAppMenu(event, idapp, sidapp, sname, icon, params ) {
+  mcurApp = { id:idapp, sid:sidapp, name:sname, ico:icon, prm:params};
+  if (!document.getElementById('ctxappmenu')) return false;
+
+  document.getElementById('appmenu_ico').src = icon;
+  document.getElementById('appmenu_title').innerHTML = sname;
+
+  GetXY(event);
+  with (document.getElementById('ctxappmenu')) {
+    style.left = (parseInt(Xpos) - 10) + 'px';
+    style.top = (parseInt(Ypos) - 10) + 'px';
+    style.display = 'inline';
+  }
+  return false;
+}
+
+var menuAppTempo = -1;
+function setTempoAppMenu() {
+  if (!document.getElementById('ctxappmenu')) return false;
+  menuAppTempo = self.setTimeout("closeAppMenu()", 500);
+}
+function cancelTempoAppMenu() {
+  if (menuAppTempo!=-1) clearTimeout(menuAppTempo);
+  menuAppTempo = -1;
+}
+
+function closeAppMenu() {
+  cancelTempoAppMenu();
+  if (!document.getElementById('ctxappmenu')) return false;
+  document.getElementById('ctxappmenu').style.display = 'none';
+  return false;
 }
