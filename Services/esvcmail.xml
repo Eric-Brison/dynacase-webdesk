@@ -17,11 +17,10 @@
 <option value="0">Non lus
 <option value="1">Tous
 </select></td></tr>
-<tr><td>Nombre maximum</td><td>:</td><td><select name="cntm">
+<tr><td>Parmis les </td><td>:</td><td><select name="cntm">
 <option value="10">10
 <option value="20">20
 <option value="50">50
 <option value="100">100
-<option value="0">Tous
-</select></td></tr>
+</select> premiers</td></tr>
 </table>

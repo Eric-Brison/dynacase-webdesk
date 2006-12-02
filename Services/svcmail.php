@@ -15,7 +15,7 @@ function svcmail(&$action) {
   $pro = GetHttpVars("proto", "");
   $display = GetHttpVars("display", 0);
   $shmails = GetHttpVars("shmails", 0);
-  $maxm  = GetHttpVars("cntm", 0);
+  $maxm  = GetHttpVars("cntm", 10);
    
   $action->lay->set("OnlyCount", ($ocount=="Y"?true:false));
   if ($ocount!="Y") {
@@ -31,6 +31,9 @@ function svcmail(&$action) {
     $action->lay->set("showmsg", true);
     $action->lay->set("status", "-1");
     $action->lay->set("msgtext", _("no account defined"));
+    $action->lay->set("new", "-");
+    $action->lay->set("old", "-");
+    $action->lay->set("account", _("no account defined"));
     return;
   }
 
@@ -45,12 +48,12 @@ function svcmail(&$action) {
  case "imap":
    $port = "143";
    $proto = "/imap4";
-   $mode = "/notls";
+   $mode = "/notls/readonly";
    break;
  case "imaps":
    $port = "993";
    $proto = "/imap4";
-   $mode = "/ssl/novalidate-cert";
+   $mode = "/ssl/novalidate-cert/readonly";
    break;
  default: // pop3
    $port = "110";
@@ -60,12 +63,12 @@ function svcmail(&$action) {
  }
 
  $mboxspec = "{".$srv.":".$port.$proto.$mode."}";
- $minfos = getMbox($mboxspec, $log,$pas);
+ $minfos = getMbox($mboxspec, $log, $pas, $maxm, ($shmails!=1?true:false));
 
  $action->lay->set("login", $log);
  $action->lay->set("spec", $mboxspec);
  $action->lay->set("server", $srv);
- $action->lay->set("account", $acc);
+ $action->lay->set("account", $acc );
  $action->lay->set("bmails", false);
  $action->lay->set("new", "-");
  $action->lay->set("old", "-");
@@ -91,20 +94,18 @@ function svcmail(&$action) {
      if ($maxm==0) $nb = 0;
      else $nb = (count($minfos["mails"])>$maxm ? count($minfos["mails"])-$maxm : 0);
      for ($ic=count($minfos["mails"])-1; $ic>=$nb; $ic--) {
-       if (!$minfos["mails"][$ic]->seen || ($shmails==1 && $minfos["mails"][$ic]->seen)) {
-	 $sd = convertDH($minfos["mails"][$ic]->date);
-	 $rfrom = clearText($minfos["mails"][$ic]->from);
-	 $prfrom = preg_replace('/&lt;.*@.*&gt;/','',$rfrom);
-	 $ms[] = array( "subject" => clearText($minfos["mails"][$ic]->subject),
-			"date" => $sd,
-			"fulldisplay" => ($display==0||$display=="" ? true : false),
-			"mailtolink" =>  setMailtoAnchor($rfrom,
-							 ($prfrom==""?$rfrom:$prfrom), 
-							 "Re: ".clearText($minfos["mails"][$ic]->subject),
-							 "", "", "",
-							 array("class"=>"wd_amail", "target"=>"_blanck")),
-			"newmail" =>  !$minfos["mails"][$ic]->seen);
-       }
+       $sd = convertDH($minfos["mails"][$ic]->date);
+       $rfrom = clearText($minfos["mails"][$ic]->from);
+       $prfrom = preg_replace('/&lt;.*@.*&gt;/','',$rfrom);
+       $ms[] = array( "subject" => clearText($minfos["mails"][$ic]->subject),
+		      "date" => $sd,
+		      "fulldisplay" => ($display==0||$display=="" ? true : false),
+		      "mailtolink" =>  setMailtoAnchor($rfrom,
+						       ($prfrom==""?$rfrom:$prfrom), 
+						       "Re: ".clearText($minfos["mails"][$ic]->subject),
+						       "", "", "",
+						       array("class"=>"wd_amail", "target"=>"_blanck")),
+		      "newmail" =>  !$minfos["mails"][$ic]->seen);
      }
      if ($maxm!=0 && count($minfos["mails"])>$maxm)  $action->lay->set("moremails", true);
      $action->lay->setBlockData("mails", $ms);
@@ -123,7 +124,7 @@ function clearText($s) {
   return htmlentities((utf8_decode(imap_utf8($s))));
 }
 
-function getMbox($mbox, $login, $pass) {
+function getMbox($mbox, $login, $pass, $count, $new=true) {
   $mailbox = array();
   $newh = $oldh = array();
   $err = "";
@@ -136,19 +137,21 @@ function getMbox($mbox, $login, $pass) {
     if (!$s) {
       $err = imap_last_error();
     } else {
-      $ni = imap_num_msg($mbx);
-      $ovv = imap_fetch_overview($mbx, "$ni:1");
-      $newm = $oldm = 0;
+
+      $stat = imap_status($mbx,$mbox,SA_ALL);
+      $newm = $stat->unseen;
+      $total = $stat->messages;
+      $oldm =  $total - $newm;
+
+      $max = ($count<$total ? $count : $total); 
+      $int = $total.":".($total-$max+1);
+      $ovv = imap_fetch_overview($mbx, $int);
       $mail = array();
-     foreach ($ovv as $k => $v) {
+      foreach ($ovv as $k => $v) {
         if ($v->deleted) continue;
-        if (!$v->seen) {
-	  $newm++;
-        } else {
-	  $oldm++;
-        }
+        if ($v->seen && $new) continue;
 	$mail[]= $v;
-     }
+      }
     }
     imap_close($mbx);
     $ftime = time() - $otime;
@@ -156,6 +159,7 @@ function getMbox($mbox, $login, $pass) {
   $mailbox = array( "mails" => $mail,
 		    "newcount" => $newm,
 		    "oldcount" => $oldm,
+		    "total" => $total,
                     "error"    => $err,
                     "elapsed"  => $ftime );
 //      print_r2($mailbox);
