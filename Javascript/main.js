@@ -165,12 +165,13 @@ function reloadBarApp() {
   if (inBarApp.length<1) return;
   var bcontent = '';
   for (var ia=0; ia<inBarApp.length; ia++) {
-    bcontent += '&nbsp;<img id="bappid'+inBarApp[ia].id+'" class="appbar_button" ';
+    bcontent += '&nbsp;<img needresize="1" id="bappid'+inBarApp[ia].id+'" class="appbar_button" ';
     bcontent += '   onclick="clickBarApp(event, '+inBarApp[ia].id+')" ';
     bcontent += '   oncontextmenu="openAppMenu(event, '+inBarApp[ia].id+', \''+inBarApp[ia].code+'\', \''+inBarApp[ia].name+'\', \''+inBarApp[ia].ico+'\', \''+inBarApp[ia].prm+'\' ); return false" ';
     bcontent += '   src="'+inBarApp[ia].ico+'" title="'+inBarApp[ia].name+'">';
   }
   if (bcontent!='') document.getElementById('appbar').innerHTML = bcontent;
+  if (resizeImages) resizeImages();
   return false;
 }
 

@@ -12,6 +12,7 @@
 <script src="WHAT/Layout/DHTMLapi.js"></script>
 <script src="WHAT/Layout/AnchorPosition.js"></script>
 <script src="WHAT/Layout/geometry.js"></script>
+<script src="WHAT/Layout/resizeimg.js"></script>
 
 <script>
 [JS:CODE]
@@ -57,7 +58,7 @@ function initWebdesk() {
      onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" 
      onclick="runappm(event, [id], '[name]', '[jsname]', '[iconsrc]','[params]', true); return false;" 
      oncontextmenu="openAppMenu(event, [id], '[name]', '[jsname]', '[iconsrc]','[params]'); return false;">
-<img src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]; vertical-align:baseline">&nbsp;[short_name]
+<img needresize="1" src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]; vertical-align:baseline">&nbsp;[short_name]
 </div>[ENDBLOCK appList]
 
 <div class="app">&nbsp;</div>
@@ -69,7 +70,7 @@ function initWebdesk() {
   onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" 
   onclick="runappm(event, [id], '[name]', '[jsname]', '[iconsrc]', '[params]', true); return false;"
   oncontextmenu="openAppMenu(event, [id], '[name]', '[jsname]', '[iconsrc]','[params]'); return false;">
-<img src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]; vertical-align:baseline">&nbsp;[short_name]
+<img needresize="1"  src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]; vertical-align:baseline">&nbsp;[short_name]
 </div>[ENDBLOCK specialAppList]
 
 </div>
