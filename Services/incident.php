@@ -6,6 +6,8 @@ include_once("FDL/Class.Doc.php");
 // include_once("FDL/Class.WDocPropo.php");
 function incident(&$action) {
 
+  header('Content-type: text/xml; charset=utf-8');
+  $action->lay->setEncoding("utf-8");
   $dbaccess = $action->GetParam("FREEDOM_DB");
   
   $myid = $action->user->fid;
@@ -13,9 +15,9 @@ function incident(&$action) {
   $interval=incidentdayinterval(&$action);
 
   $filters=array();
-  $filters[]=" (  (state='recorded' and in_qualifid=$myid) "
-    .        " or (state='qualified' and in_analid=$myid) "
-    .        " or (state='analyzed' and in_trtid=$myid) ) ";
+  $filters[]=" (  (state='recorded' ) "
+    .        " or (state='qualified' ) "
+    .        " or (state='analyzed') ) ";
 
   $action->lay->set("none", true);
   $cur=createDoc($dbaccess,"INCIDENT",false);
@@ -50,6 +52,8 @@ function incident(&$action) {
 		   );
   }
   $action->lay->setBlockData("inc", $inc);
+  $action->lay->set("location", _("incident in progress"));
+  $action->lay->set("uptime", strftime("%H:%M %d/%m/%Y", time()));
   
 }
 ?>

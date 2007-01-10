@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><freedomsvc uptime="[uptime]" title="[location]"><![CDATA[
 [IF none]<div style="font-style:italic; ">Pas d'incident en cours.</div>[ENDIF none]
 [IFNOT  none]<table cellspacing="0">
 [BLOCK inc]
@@ -12,3 +13,4 @@
 [ENDBLOCK inc]
 </table>
 [ENDIF none]
+]]></freedomsvc>
