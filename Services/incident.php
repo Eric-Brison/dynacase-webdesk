@@ -52,7 +52,8 @@ function incident(&$action) {
 		   );
   }
   $action->lay->setBlockData("inc", $inc);
-  $action->lay->set("location", _("incident in progress"));
+  $action->lay->set("location", sprintf(_("incident in progress -%d-"),count($ti)));
+
   $action->lay->set("uptime", strftime("%H:%M %d/%m/%Y", time()));
   
 }
