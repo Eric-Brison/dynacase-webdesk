@@ -12,7 +12,7 @@ function incident(&$action) {
   
   $myid = $action->user->fid;
 
-  $interval=incidentdayinterval(&$action);
+  $interval=incidentdayinterval($action);
 
   $filters=array();
   $filters[]=" (  (state='recorded' ) "
