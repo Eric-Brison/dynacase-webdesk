@@ -86,7 +86,7 @@ function initWebdesk() {
 [BLOCK specialAppListBody]<iframe id="fbody[id]" name="fbody[id]"  style="display:none; border:0px;" src="about:blank" scrolling="needed"></iframe>
 [ENDBLOCK specialAppListBody]</div>
 
-<form style="display:inline" action="index.php?sole=Y&&app=AUTHENT&action=LOGOUT" method="POST" name="authent">
+<form style="display:inline" action="[CORE_STANDURL]&app=AUTHENT&action=LOGOUT" method="POST" name="authent">
   <input type="hidden" name="SeenBefore" value="1">
   <input type="hidden" name="logout" value="Y">
   <input type="hidden" name="rapp" value="WEBDESK">
