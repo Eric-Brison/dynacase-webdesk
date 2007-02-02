@@ -7,11 +7,11 @@ Lieu :  <!-- select name="country" onchange="submitService(event);">
 [ENDBLOCK ICAO]</select><br>
 [IF stylefound]
 Style :<select name="iconstyle" onchange="submitService(event);document.getElementById('[iconid]').src='/phpweather/icons/'+this.options[this.selectedIndex].value+'/small_icons/34.png'">
-[BLOCK ICONSTYLE]<option value="[iconstyle]" [icon_selected]>[iconstyle]
+<option value="" >[TEXT:No style]>[BLOCK ICONSTYLE]<option value="[iconstyle]" [icon_selected]>[iconstyle]
 [ENDBLOCK ICONSTYLE]</select><img id="[iconid]" src="/phpweather/icons/[seliconstyle]/small_icons/34.png"<br>[ENDIF stylefound]
 <select name="fulldata">
-<option value="0">température
-<option value="1">complet
-<option value="2">complet & METAR
+<option value="0">température</option>
+<option value="1">complet</option>
+ <!-- option value="2">complet & METAR</option -->
 </select>
 </div>

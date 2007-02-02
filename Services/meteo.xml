@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><freedomsvc uptime="[datebull]" title="[location]"><![CDATA[
-<div style="height:120px;[IF data]background-image:url('[bgimg]'); background-repeat:no-repeat;background-position:100% 0%[ENDIF data]" title="[IF data]Bulletin du [ENDIF data][datebull]">
-<span onclick="document.getElementById('[buid]').style.display=''" style="cursor:pointer"> bulletin </span><div id="[buid]" onclick="this.style.display='none'" style="width:300px;border:solid 2px;background-color:[COLOR_WHITE];position:absolute;display:none;">  [bulletin]</div>
+<div style="height:110px;[IF data]background-image:url('[bodyimg]'); [ENDIF data]" >
+<img align="right" style="float:right" src="[bgimg]">
+<span onclick="document.getElementById('[buid]').style.display=''" style="clear:both;cursor:pointer" title="[TEXT:Click to see detail]">[IF data]Bulletin de [ENDIF data][datebull]...</span><div id="[buid]" onclick="this.style.display='none'" style="z-index:10;width:300px;border:inset 2px;background-color:[COLOR_WHITE];position:absolute;display:none;">[bulletin]</div>
 [IF data]<div style="background-color:transparent;"><span style="font-weight:bold; font-size:200%;" title="[temp]">[tempv]&deg;c</span> </div>
-[IF fulldata]<br><div>
+[IF fulldata]<br><div style="position:absolute;">
 <span title="[ventvms]"><span style="font-weight:bold;">[ventv]</span> km/h</span>
 &nbsp;|&nbsp;
 <span title="[rhumid]"><span style="font-weight:bold;">[rhumidv]</span> %</span>
@@ -11,7 +12,7 @@
 
 &nbsp;|&nbsp;
 <span title="[vist]"><span style="font-weight:bold;">[vis] [visd]</span> km</span>
-[IF withmetar]<br><div style="font-size:80%; font-family:courrier">[metar]</div>[ENDIF withmetar]
+[IF withmetar]<br><div style="position:absolute;font-size:80%; font-family:courrier">[metar]</div>[ENDIF withmetar]
 </div>[ENDIF fulldata][ENDIF data]
 </div> 
 ]]></freedomsvc>

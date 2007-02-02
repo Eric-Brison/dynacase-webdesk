@@ -47,7 +47,7 @@ function meteo_edit(&$action) {
   $action->lay->set("stylefound",(count($iconstyle) > 0));
   //  $iconstyle=array("Crystal","Grzanka");
   foreach ($iconstyle as $v) {
-    $tcions[]=array("icon_selected"=>"",
+    $tcions[]=array("icon_selected"=>($def_icon==$v?"selected":""),
 		    "iconstyle"=>$v);
   }
   $action->lay->setBlockData("ICONSTYLE", $tcions);

@@ -42,12 +42,20 @@ function meteo(&$action) {
   $data = $weather->decode_metar();
 
   $text=new pw_text_fr($weather);
+  $text->set_pref_units('only_metric');
   $thetext= $text->print_pretty();
   $action->lay->set("bulletin",$thetext);
   $action->lay->set("buid",uniqid('buid'));
   $img = $icons->get_sky_image();
+  
+  
+
   $iconstyle=getHttpVars("iconstyle");
+  $action->lay->set("oimg", $img);
   if (ereg("([a-z_0-9)]*)\.png",$img,$reg)) {
+    if ($reg[1][0]=='n') $bgimg=$action->getImageUrl('n_meteobg.png');
+    else $bgimg=$action->getImageUrl('meteobg.png');
+    $action->lay->set("bodyimg", $bgimg);
     global $iconmap;
     if (isset($iconmap[$reg[1]])) {
       $img2="icons/$iconstyle/large_icons/".$iconmap[$reg[1]].'.png';
@@ -72,7 +80,7 @@ function meteo(&$action) {
   $action->lay->set("withmetar", $wmetar);
   $action->lay->set("data", true);
     
-  $action->lay->set("datebull", strftime("%x %X", $data["time"]));
+  $action->lay->set("datebull", strftime("%H:%M", $data["time"]));
 
   //   print_r2($data);
 
