@@ -1,4 +1,4 @@
-// $Id: portal.js,v 1.35 2006/11/28 15:01:15 marc Exp $
+// $Id: portal.js,v 1.36 2007/02/02 20:23:11 eric Exp $
 
 // portal
 var portalRefreshInterval = 10;
@@ -182,7 +182,7 @@ function showService(is) {
       csvc.innerHTML = '[TEXT:downloading content in progress...]';
       csvc.className = 'wdsvc_content';
     }
-    csvc.style.overflow = 'auto';
+    //    csvc.style.overflow = 'auto';
 
     if (isinteractive) {
       var fsvc = document.createElement('form');
