@@ -1,4 +1,5 @@
 <?php
+include_once("WEBDESK/meteoiconmap.php");
 function meteo(&$action) {
 
   header('Content-type: text/xml; charset=utf-8');
@@ -6,6 +7,7 @@ function meteo(&$action) {
  
   require_once($_SERVER["DOCUMENT_ROOT"]."/phpweather/phpweather.php");
   require(PHPWEATHER_BASE_DIR . "/output/pw_images.php");
+  require(PHPWEATHER_BASE_DIR . "/output/pw_text_fr.php");
 
   $def_icao = GetHttpVars("icao", "LFBO");
   $def_lang = GetHttpVars("la", "fr");
@@ -39,7 +41,24 @@ function meteo(&$action) {
   $metar =  $weather->get_metar();
   $data = $weather->decode_metar();
 
+  $text=new pw_text_fr($weather);
+  $thetext= $text->print_pretty();
+  $action->lay->set("bulletin",$thetext);
+  $action->lay->set("buid",uniqid('buid'));
   $img = $icons->get_sky_image();
+  $iconstyle=getHttpVars("iconstyle");
+  if (ereg("([a-z_0-9)]*)\.png",$img,$reg)) {
+    global $iconmap;
+    if (isset($iconmap[$reg[1]])) {
+      $img2="icons/$iconstyle/large_icons/".$iconmap[$reg[1]].'.png';
+
+      if (file_exists(DEFAULT_PUBDIR."/phpweather/$img2")) {
+	$img=$img2;
+      }
+    }
+
+  }
+
   $action->lay->set("bgimg", "/phpweather/".$img);
 
   $action->lay->set("location", $weather->get_location());
@@ -55,7 +74,7 @@ function meteo(&$action) {
     
   $action->lay->set("datebull", strftime("%x %X", $data["time"]));
 
-//   print_r2($data);
+  //   print_r2($data);
 
   //// Temperature
   $action->lay->set("tempv", $data["temperature"]["temp_c"]);

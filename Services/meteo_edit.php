@@ -7,6 +7,7 @@ function meteo_edit(&$action) {
   $def_lang = GetHttpVars("la", "fr");
 
   $def_icao = GetHttpVars("icao", "LFBO");
+  $def_icon = GetHttpVars("iconstyle");
   
   $dd = false;
   if (GetHttpVars("dd", "")=="1") $dd = true;;
@@ -33,6 +34,25 @@ function meteo_edit(&$action) {
 		      "icao_selected" => ($def_icao==$kc?"selected":""));
   }
   $action->lay->setBlockData("ICAO", $ticaos);
+  $iconstyle=array();
+  if ($handle = opendir(DEFAULT_PUBDIR."/phpweather/icons")) {
+   while (false !== ($file = readdir($handle))) {
+       if ($file != "." && $file != "..") {
+
+	 if (is_dir(DEFAULT_PUBDIR."/phpweather/icons/$file")) $iconstyle[]=$file;
+       }
+   }
+   closedir($handle);
+}
+  $action->lay->set("stylefound",(count($iconstyle) > 0));
+  //  $iconstyle=array("Crystal","Grzanka");
+  foreach ($iconstyle as $v) {
+    $tcions[]=array("icon_selected"=>"",
+		    "iconstyle"=>$v);
+  }
+  $action->lay->setBlockData("ICONSTYLE", $tcions);
+  $action->lay->set("seliconstyle", $def_icon);
+  $action->lay->set("iconid", uniqid("icon"));
 
   return;
 }

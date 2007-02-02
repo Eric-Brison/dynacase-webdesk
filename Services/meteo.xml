@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?><freedomsvc uptime="[datebull]" title="[location]"><![CDATA[
-<div style="[IF data]background-image:url('[bgimg]'); background-repeat:no-repeat;background-position:100% 0%[ENDIF data]" title="[IF data]Bulletin du [ENDIF data][datebull]">
+<div style="height:120px;[IF data]background-image:url('[bgimg]'); background-repeat:no-repeat;background-position:100% 0%[ENDIF data]" title="[IF data]Bulletin du [ENDIF data][datebull]">
+<span onclick="document.getElementById('[buid]').style.display=''" style="cursor:pointer"> bulletin </span><div id="[buid]" onclick="this.style.display='none'" style="width:300px;border:solid 2px;background-color:[COLOR_WHITE];position:absolute;display:none;">  [bulletin]</div>
 [IF data]<div style="background-color:transparent;"><span style="font-weight:bold; font-size:200%;" title="[temp]">[tempv]&deg;c</span> </div>
-[IF fulldata]<div>
+[IF fulldata]<br><div>
 <span title="[ventvms]"><span style="font-weight:bold;">[ventv]</span> km/h</span>
 &nbsp;|&nbsp;
 <span title="[rhumid]"><span style="font-weight:bold;">[rhumidv]</span> %</span>
 &nbsp;|&nbsp;
 <span title="[pression]"><span style="font-weight:bold;">[pressionv]</span> hpa</span>
+
 &nbsp;|&nbsp;
 <span title="[vist]"><span style="font-weight:bold;">[vis] [visd]</span> km</span>
-[IF withmetar]<div style="font-size:80%; font-family:courrier">[metar]</div>[ENDIF withmetar]
+[IF withmetar]<br><div style="font-size:80%; font-family:courrier">[metar]</div>[ENDIF withmetar]
 </div>[ENDIF fulldata][ENDIF data]
 </div> 
 ]]></freedomsvc>
