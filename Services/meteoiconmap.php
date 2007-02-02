@@ -27,9 +27,9 @@ $iconmap = array(
 		 "4cloud_fog" => "20",
 		 "4cloud_hail" => "37",
 		 "4cloud_heavyrain" => "12",
-		 "4cloud_modrain" => "28",
+		 "4cloud_modrain" => "6",
 		 "4cloud_lightrain" => "11",
-		 "4cloud_norain" => "44",
+		 "4cloud_norain" => "26",
 		 "4cloud_snow" => "16",
 		 "4cloud_thunders" => "35",
 

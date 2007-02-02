@@ -48,12 +48,13 @@ function meteo(&$action) {
   $action->lay->set("buid",uniqid('buid'));
   $img = $icons->get_sky_image();
   
-  
+  $H=intval(strftime("%H", $data["time"]));
+  $night=($h<6)||($h<18); // not terrible but it is the algo of pw_images.php
 
   $iconstyle=getHttpVars("iconstyle");
   $action->lay->set("oimg", $img);
   if (ereg("([a-z_0-9)]*)\.png",$img,$reg)) {
-    if ($reg[1][0]=='n') $bgimg=$action->getImageUrl('n_meteobg.png');
+    if ($night) $bgimg=$action->getImageUrl('n_meteobg.png');
     else $bgimg=$action->getImageUrl('meteobg.png');
     $action->lay->set("bodyimg", $bgimg);
     global $iconmap;
@@ -82,7 +83,7 @@ function meteo(&$action) {
     
   $action->lay->set("datebull", strftime("%H:%M", $data["time"]));
 
-  //   print_r2($data);
+  // print_r($weather);
 
   //// Temperature
   $action->lay->set("tempv", $data["temperature"]["temp_c"]);
