@@ -1,7 +1,7 @@
 <div style="text-align:center">
-Lieu :  <!-- select name="country" onchange="submitService(event);">
+Lieu :  <select name="country" onchange="reloadEditSvc();">
 [BLOCK CC]<option value="[cc_code]" [cc_selected]>[cc_label]
-[ENDBLOCK CC]</select -->
+[ENDBLOCK CC]</select>
 <select name="icao" onchange="submitService(event);">
 [BLOCK ICAO]<option value="[icao_code]" [icao_selected]>[icao_label]
 [ENDBLOCK ICAO]</select><br>

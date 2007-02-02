@@ -8,13 +8,14 @@ function meteo_edit(&$action) {
 
   $def_icao = GetHttpVars("icao", "LFBO");
   $def_icon = GetHttpVars("iconstyle");
+  $def_cc = GetHttpVars("country");
   
   $dd = false;
   if (GetHttpVars("dd", "")=="1") $dd = true;;
 
   $weather = new phpweather();
   $weather->set_icao($def_icao);
-  $def_cc = $weather->get_country_code();
+  if (! $def_cc) $def_cc = $weather->get_country_code();
   
   $cc = $weather->db->get_countries();
   $tcc = array();

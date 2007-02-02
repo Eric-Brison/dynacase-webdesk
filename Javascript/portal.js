@@ -1,4 +1,4 @@
-// $Id: portal.js,v 1.36 2007/02/02 20:23:11 eric Exp $
+// $Id: portal.js,v 1.37 2007/02/02 21:24:47 eric Exp $
 
 // portal
 var portalRefreshInterval = 10;
@@ -259,6 +259,14 @@ function getSvc(snum) {
 
 var ereq = null;
 var editSnum = -1;
+
+function reloadEditSvc(event) {
+  var snum=editSnum;
+  sendForm();
+  editSvc(event,snum );
+}
+
+
 function editSvc(event, snum) {
 
   if (snum==editSnum) {
@@ -312,7 +320,7 @@ function editSvc(event, snum) {
       document.getElementById('editsvc_c').innerHTML = '[TEXT:wd error retrieving edit form] (XMLHttpRequest contruction)';	    
     }
   }
-  stopPropagation(event);
+  if (event) stopPropagation(event);
   return false;
 }
 
@@ -449,7 +457,7 @@ function deleteSvc(event, snum) {
   } else {
     alert('[TEXT:wd error add service] (XMLHttpRequest contruction)');	   
   }
-  stopPropagation(event);
+  if (event) stopPropagation(event);
 }
 
 function setWS(sid) {
