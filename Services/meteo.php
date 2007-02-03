@@ -49,7 +49,7 @@ function meteo(&$action) {
   $img = $icons->get_sky_image();
   
   $H=intval(strftime("%H", $data["time"]));
-  $night=($h<6)||($h<18); // not terrible but it is the algo of pw_images.php
+  $night=($H<6)||($H>18); // not terrible but it is the algo of pw_images.php
 
   $iconstyle=getHttpVars("iconstyle");
   $action->lay->set("oimg", $img);
