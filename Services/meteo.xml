@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><freedomsvc uptime="[datebull]" title="[location]"><![CDATA[
-<div style="height:110px;[IF data]background-image:url('[bodyimg]');background-repeat:no-repeat;background-position:100% 0% [ENDIF data]" >
+<div style="height:110px;[IF data]background-image:url('[bodyimg]');[ENDIF data]" >
 <img align="right" style="float:right" src="[bgimg]">
 <span onclick="document.getElementById('[buid]').style.display=''" style="clear:both;cursor:pointer" title="[TEXT:Click to see detail]">[IF data]Bulletin de [ENDIF data][datebull]...</span><div id="[buid]" onclick="this.style.display='none'" style="z-index:10;width:300px;border:inset 2px;background-color:[COLOR_WHITE];position:absolute;display:none;">[bulletin]</div>
-[IF data]<div style="background-color:transparent;"><span style="font-weight:bold; font-size:200%;" title="[temp]">[tempv]&deg;c</span> </div>
+[IF data]<div style="background-color:transparent;"><span style="font-size:36pt;margin-left:10px" title="[temp]">[tempv]&deg;c</span> </div>
 [IF fulldata]<br><div style="position:absolute;">
 <span title="[ventvms]"><span style="font-weight:bold;">[ventv]</span> km/h</span>
 &nbsp;|&nbsp;
