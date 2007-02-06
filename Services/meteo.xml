@@ -1,18 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?><freedomsvc uptime="[datebull]" title="[location]"><![CDATA[
 <div style="height:110px;[IF data]background-image:url('[bodyimg]');[ENDIF data]" >
-<img align="right" style="float:right" src="[bgimg]">
-<span onclick="document.getElementById('[buid]').style.display=''" style="clear:both;cursor:pointer" title="[TEXT:Click to see detail]">[IF data]Bulletin de [ENDIF data][datebull]...</span><div id="[buid]" onclick="this.style.display='none'" style="z-index:10;width:300px;border:inset 2px;background-color:[COLOR_WHITE];position:absolute;display:none;">[bulletin]</div>
-[IF data]<div style="background-color:transparent;"><span style="font-size:36pt;margin-left:10px" title="[temp]">[tempv]&deg;c</span> </div>
-[IF fulldata]<br><div style="position:absolute;">
-<span title="[ventvms]"><span style="font-weight:bold;">[ventv]</span> km/h</span>
-&nbsp;|&nbsp;
-<span title="[rhumid]"><span style="font-weight:bold;">[rhumidv]</span> %</span>
-&nbsp;|&nbsp;
-<span title="[pression]"><span style="font-weight:bold;">[pressionv]</span> hpa</span>
+<table cellspacing=0 cellpadding=0 style="width:100%"><tr style="background-color:transparent"><td style="vertical-align:top">
+<span onclick="document.getElementById('[buid]').style.display=''" style="white-space:nowrap;cursor:pointer" title="[TEXT:Click to see detail]">[IF data]Bulletin de [ENDIF data][datebull]...</span><div id="[buid]" onclick="this.style.display='none'" style="z-index:10;width:300px;border:inset 2px;background-color:[COLOR_WHITE];position:absolute;display:none;">[bulletin]</div>
 
-&nbsp;|&nbsp;
-<span title="[vist]"><span style="font-weight:bold;">[vis] [visd]</span> km</span>
+[IF data]<div style="background-color:transparent;"><span style="font-size:36pt;margin-left:10px" title="[temp]">[tempv]&deg;c</span> </div>[ENDIF data]
+
+</td><td style="width:30%;vertical-align:middle">
+[IF fulldata]
+<div  title="[ventvms]"><span style="font-weight:bold;">[ventv]</span> km/h</div>
+<div style="padding-top:5px" title="[rhumid]"><span style="font-weight:bold;">[rhumidv]</span> %</div>
+<div style="padding-top:5px" title="[pression]"><span style="font-weight:bold;">[pressionv]</span> hpa</div>
+<div style="padding-top:5px" title="[vist]"><span style="font-weight:bold;">[vis] [visd]</span> km</div>
 [IF withmetar]<br><div style="position:absolute;font-size:80%; font-family:courrier">[metar]</div>[ENDIF withmetar]
-</div>[ENDIF fulldata][ENDIF data]
+[ENDIF fulldata]
+
+
+
+</td><td style="width:110px">
+
+<img align="right"  src="[bgimg]">
+
+</td></tr></table>
+
+
+
 </div> 
 ]]></freedomsvc>
