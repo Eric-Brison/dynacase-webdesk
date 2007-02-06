@@ -75,6 +75,7 @@ function meteo(&$action) {
   if (!isset($data["icao"])) {
     $action->lay->set("datebull", "Pas d'information.");
     $action->lay->set("data", false);
+    $action->lay->set("fulldata", false);
     return;
   }
   $action->lay->set("fulldata", $full);
