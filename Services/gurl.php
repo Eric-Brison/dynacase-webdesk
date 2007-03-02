@@ -5,6 +5,8 @@ include_once('FDL/Lib.Dir.php');
 function gurl(&$action) {
 
   header('Content-type: text/xml; charset=utf-8');
+  $action->lay->setEncoding("utf-8");
+
   $url = GetHttpVars("url", "");
   $h = GetHttpVars("height", "auto");
   $nodetype = GetHttpVars("urltype", "iframe");
