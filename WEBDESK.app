@@ -38,6 +38,8 @@ $action_desc = array (
   array( "acl" => "USER",  "name" => "SAVESVC", "short_name" =>N_("save service parameters"), "toc" => "N", "root" =>"N"),
   array( "acl" => "USER",  "name" => "GEOSERVICE", "short_name" =>N_("position of service in user portal"), "toc" => "N", "root" =>"N"),
   array( "acl" => "USER",  "name" => "DELSERVICE", "short_name" =>N_("del service from user portal"), "toc" => "N", "root" =>"N"),
+   array( "acl" => "USER",  "name" => "GURL", "short_name" =>N_("view any url"), "toc" => "N", "root" =>"N"),	
+   array( "acl" => "USER",  "name" => "EGURL", "short_name" =>N_("edit for view any url"), "toc" => "N", "root" =>"N"),
 
   // For test
   array( "acl" => "USER",  "name" => "SVCTEST", "short_name" =>N_("service test view"), "toc" => "N", "root" =>"N"),
