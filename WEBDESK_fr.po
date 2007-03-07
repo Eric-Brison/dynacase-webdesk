@@ -12,13 +12,40 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-02 10:52+0100\n"
-"PO-Revision-Date: 2007-03-02 10:54+0100\n"
+"POT-Creation-Date: 2007-03-07 15:59+0100\n"
+"PO-Revision-Date: 2007-03-07 16:00+0100\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+msgid "My portal"
+msgstr "Mon portail"
+
+msgid "My account"
+msgstr "Mon compte"
+
+msgid "Webdesk preferences"
+msgstr "Préférences"
+
+msgid "Administration"
+msgstr "Administration"
+
+msgid "Webdesk administration"
+msgstr "Administration du WebDesk"
+
+msgid "Theme preferences"
+msgstr "Préférences du thème"
+
+msgid "Theme"
+msgstr "Thème"
+
+msgid "User identification"
+msgstr "Identification de l'utilisateur"
+
+msgid "Identification"
+msgstr "Identification"
 
 msgid "webdesk"
 msgstr "WebDesk"
@@ -68,6 +95,12 @@ msgstr "Position du service dans le portail"
 msgid "del service from user portal"
 msgstr "Supprimession du service du portail"
 
+msgid "view any url"
+msgstr "voir une url"
+
+msgid "edit for view any url"
+msgstr "éditer pour voir une url"
+
 msgid "service test view"
 msgstr "Service test - affichage"
 
@@ -116,38 +149,11 @@ msgstr "nombre de documents affectés"
 msgid "preview of theme"
 msgstr "prévisualisation du thème"
 
-msgid "My portal"
-msgstr "Mon portail"
+msgid "wd no freedom search given"
+msgstr "Pas de recherche Freedom fournie"
 
-msgid "My account"
-msgstr "Mon compte"
-
-msgid "Webdesk preferences"
-msgstr "Préférences"
-
-msgid "Administration"
-msgstr "Administration"
-
-msgid "Webdesk administration"
-msgstr "Administration du WebDesk"
-
-msgid "Theme preferences"
-msgstr "Préférences du thème"
-
-msgid "Theme"
-msgstr "Thème"
-
-msgid "User identification"
-msgstr "Identification de l'utilisateur"
-
-msgid "Identification"
-msgstr "Identification"
-
-msgid "view any url"
-msgstr "voir une url"
-
-msgid "edit for view any url"
-msgstr "éditer pour voir une url"
+msgid "wd invalid freedom search given"
+msgstr "recherche Freedom invalide"
 
 msgid "without category"
 msgstr "sans catégorie"
@@ -155,26 +161,6 @@ msgstr "sans catégorie"
 #, c-format
 msgid "incident in progress -%d-"
 msgstr "Incident en cours -%d-"
-
-msgid "no account defined"
-msgstr "pas de compte défini."
-
-msgid "error retrieving mails"
-msgstr "Erreur de récupération des messages"
-
-msgid "wd no rss link given"
-msgstr "Pas de flux RSS fourni"
-
-msgid ""
-"[TEXT:no information available, verify your server have http access to "
-"internet and/or check link please...]"
-msgstr "Pas d'information, vérifiez que l'URL du lien est accessible"
-
-msgid "wd no freedom search given"
-msgstr "Pas de recherche Freedom fournie"
-
-msgid "wd invalid freedom search given"
-msgstr "recherche Freedom invalide"
 
 #, c-format
 msgid "temperature %s c (dew %s c, heat %s c)"
@@ -195,6 +181,20 @@ msgstr "Pression %s hpa"
 #, c-format
 msgid "Visibility %s %s km"
 msgstr "visibilité %s %s km"
+
+msgid "no account defined"
+msgstr "pas de compte défini."
+
+msgid "error retrieving mails"
+msgstr "Erreur de récupération des messages"
+
+msgid "wd no rss link given"
+msgstr "Pas de flux RSS fourni"
+
+msgid ""
+"[TEXT:no information available, verify your server have http access to "
+"internet and/or check link please...]"
+msgstr "Pas d'information, vérifiez que l'URL du lien est accessible"
 
 #, c-format
 msgid "more than %d results..."
@@ -302,11 +302,38 @@ msgstr "Etes-vous sur de vouloir supprimer le service "
 msgid "wd error retrieving content"
 msgstr "Erreur de récupération du contenu"
 
+msgid "Url"
+msgstr "Url"
+
 msgid "wd entre rss link here"
-msgstr "Saississez l'URL du flux RSS ici"
+msgstr "Saisissez l'URL du flux RSS ici"
+
+msgid "Height"
+msgstr "Hauteur"
+
+msgid "Url type"
+msgstr "Type de page"
+
+msgid "html sheet"
+msgstr "page html"
+
+msgid "image"
+msgstr "image"
+
+msgid "flash sheet"
+msgstr "flash"
+
+msgid "wd search ..."
+msgstr "Texte recherché"
 
 msgid "open it in a new window"
 msgstr "ouvrir dans une nouvelle fenetre"
+
+msgid "Click to see detail"
+msgstr "Cliquer pour voir le détail"
+
+msgid "No style"
+msgstr "Pas de style"
 
 msgid "Click to search person containing..."
 msgstr "Commençant par ...."
@@ -316,15 +343,6 @@ msgstr "Sélectionner pour chercher dans les noms de société"
 
 msgid "wd rss more infos"
 msgstr "Plus d'informations..."
-
-msgid "wd search ..."
-msgstr "Texte recherché"
-
-msgid "Click to see detail"
-msgstr "Cliquer pour voir le détail"
-
-msgid "No style"
-msgstr "Pas de style"
 
 msgid "display full card in the same window"
 msgstr "Afficher les cartes complètes dans la même fenêtre"
@@ -365,50 +383,8 @@ msgstr "Recherche de fil RSS Freedom"
 msgid "rss: clear displayed results"
 msgstr "Effacer les résultats"
 
-msgid "Url"
-msgstr "Url"
-
-msgid "Height"
-msgstr "Hauteur"
-
-msgid "Url type"
-msgstr "Type de page"
-
-msgid "html sheet"
-msgstr "page html"
-
-msgid "image"
-msgstr "image"
-
-msgid "flash sheet"
-msgstr "flash"
-
-msgid "Preview"
-msgstr "Prévisualisation"
-
-msgid "Do not click here"
-msgstr "Ne cliquez pas ici"
-
-msgid "Theme chooser"
-msgstr "Choix du thème"
-
-msgid "font size chooser"
-msgstr "Taille de la police"
-
-msgid "small size"
-msgstr "petite taille"
-
-msgid "normal size"
-msgstr "taille normale"
-
-msgid "large size"
-msgstr "grande taille"
-
-msgid "x-large size"
-msgstr "très grande taille"
-
-msgid "Change your theme"
-msgstr "Changer votre thème"
+msgid "wd enter url"
+msgstr "Saisissez l'URL ici"
 
 msgid "wd open/close menu"
 msgstr "Ouvrir/fermer le menu"
@@ -470,6 +446,33 @@ msgstr "Liste des services disponibles"
 msgid "wd add service"
 msgstr "Ajouter le service"
 
+msgid "Theme chooser"
+msgstr "Choix du thème"
+
+msgid "font size chooser"
+msgstr "Taille de la police"
+
+msgid "small size"
+msgstr "petite taille"
+
+msgid "normal size"
+msgstr "taille normale"
+
+msgid "large size"
+msgstr "grande taille"
+
+msgid "x-large size"
+msgstr "très grande taille"
+
+msgid "Change your theme"
+msgstr "Changer votre thème"
+
+msgid "Preview"
+msgstr "Prévisualisation"
+
+msgid "Do not click here"
+msgstr "Ne cliquez pas ici"
+
 msgid "webdesk application portal"
 msgstr "Portail application WebDesk"
 
@@ -482,8 +485,8 @@ msgstr "Modifier mon mot de passe"
 msgid "Change name and coordinates"
 msgstr "Changer mon nom et mes coordonnées"
 
-msgid "application present in application bar"
-msgstr "Application présente dans la barre"
+#~ msgid "application present in application bar"
+#~ msgstr "Application présente dans la barre"
 
 #~ msgid "wd go left"
 #~ msgstr "déplacer vers la gauche"

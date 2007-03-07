@@ -1,5 +1,5 @@
 <table cellspacing="0" style="width:100%">
-[IFNOT static]<tr><td style="text-align:right">[TEXT:Url] <a href="http://fr.wikipedia.org/wiki/Really_Simple_Syndication" target="_blank" title="Qu'est ce que c'est">(?)</a></td><td> : </td><td><input style="width:100%" type="text" title="[TEXT:wd entre rss link here]" name="url"></td></tr>[ENDIF static]
+[IFNOT static]<tr><td style="text-align:right">[TEXT:Url] <a href="http://fr.wikipedia.org/wiki/Really_Simple_Syndication" target="_blank" title="Qu'est ce que c'est">(?)</a></td><td> : </td><td><input style="width:100%" type="text" title="[TEXT:wd enter url]" name="url"></td></tr>[ENDIF static]
 <tr><td style="text-align:right">[TEXT:Title]</td><td> : </td><td><input name="title"></td></tr>
 <tr><td style="text-align:right">[TEXT:Height]</td><td> : </td><td><input name="height"></td></tr>
 <tr><td style="text-align:right">[TEXT:Url type]</td><td> : </td><td>
