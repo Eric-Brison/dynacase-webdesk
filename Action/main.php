@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: main.php,v 1.12 2006/11/30 15:11:18 marc Exp $
+ * @version $Id: main.php,v 1.13 2007/03/09 20:32:52 eric Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WEBDESK
@@ -41,7 +41,10 @@ function main(&$action) {
   $action->lay->set("Workspace", haveAppAccess("WORKSPACE"));
   $action->lay->set("MailAccount", haveAppAccess("MAIL"));
   $action->lay->set("Agenda", haveAppAccess("WGCAL"));
-    
+  $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/DHTMLapi.js");
+  $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/AnchorPosition.js");
+  $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/geometry.js");
+  $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/resizeimg.js");
   $action->parent->AddJsRef("WHAT:subwindow.js", true);
   $action->parent->AddJsRef("WEBDESK:main.js", true);
   $action->parent->AddJsRef("FDC:setparamu.js", true);

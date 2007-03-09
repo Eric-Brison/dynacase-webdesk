@@ -9,10 +9,6 @@
 [CSS:CODE]
 </style>
 
-<script src="WHAT/Layout/DHTMLapi.js"></script>
-<script src="WHAT/Layout/AnchorPosition.js"></script>
-<script src="WHAT/Layout/geometry.js"></script>
-<script src="WHAT/Layout/resizeimg.js"></script>
 
 <script>
 [JS:CODE]
