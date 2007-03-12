@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: portal.php,v 1.26 2006/11/28 18:32:52 marc Exp $
+ * @version $Id: portal.php,v 1.27 2007/03/12 08:47:51 eric Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WGCAL
@@ -20,8 +20,11 @@ function portal(&$action) {
 //  $debug = true;
    $debug = false;
 
-  $action->parent->AddJsRef("WHAT:subwindow.js", true);
-  $action->parent->AddJsRef("FDL:common.js", true);
+  $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/DHTMLapi.js");
+  $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/AnchorPosition.js");
+  $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/geometry.js");
+  $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/resizeimg.js");
+  $action->parent->AddJsRef($action->GetParam("CORE_PUBURL")."/FDL/Layout/common.js");
   $action->lay->set("debug", $debug);
   if (!$debug) $action->parent->AddJsRef("WEBDESK:portal.js", true);
   else {

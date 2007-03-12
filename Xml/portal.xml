@@ -4,11 +4,6 @@
 [ZONE WEBDESK:HEAD]
 
 [CSS:REF]
-
-<script src="WHAT/Layout/DHTMLapi.js"></script>
-<script src="WHAT/Layout/AnchorPosition.js"></script>
-<script src="WHAT/Layout/geometry.js"></script>
-<script src="WHAT/Layout/subwindow.js"></script>
 <script>
 [JS:CODE]
 
