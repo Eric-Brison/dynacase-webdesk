@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><freedomsvc uptime="[uptime]" title="Freedom, recherche par famille"><![CDATA[
 <select name="sfamily" style="width:40%;">
-[BLOCK SFam]<option value="[value]">[label][ENDBLOCK SFam]
+[BLOCK SFam]<option value="[value]" [sel]>[label][ENDBLOCK SFam]
 </select>
-<input style="width:40%;" type="text" title="[TEXT:wd search ...]" name="sphrase">&nbsp;<input type="button" style="cursor:pointer;" title="chercher" value="?" onclick="submitService(event)">
+<input style="width:40%;" type="text" title="[TEXT:wd search ...]" name="sphrase" value="[sphrase]">&nbsp;<input type="button" style="cursor:pointer;" title="chercher" value="?" onclick="submitService(event)">
+&nbsp;<input type="checkbox" onclick="document.getElementById('tcheck').value = (this.checked?1:0);" [bcheck] title="[TEXT:checked : search only in titles]"><input type="hidden" id="tcheck" name="tcheck" value="[vtcheck]">
 [IF csearch]
 [BLOCK docs]
 <div title="[title] ([owner]) [familie]|[revdate]">&rarr; <a title="[title], [TEXT:open it in a new window]" class="wd_alink" href="[CORE_STANDURL]app=FDL&action=FDL_CARD&props=N&abstract=N&id=[id]" target="opendoc">[title]</a> <span style="font-size:80%;">[familie], [revdate]</span></div>

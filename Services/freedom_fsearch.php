@@ -7,28 +7,39 @@ function freedom_fsearch(&$action) {
   header('Content-type: text/xml; charset=utf-8');
   $action->lay->setEncoding("utf-8");
  
+  $sphrase = GetHttpVars("sphrase", "");
+  $sfamily = GetHttpVars("sfamily", 0);
+  $tcheck = GetHttpVars("tcheck", 0);
+  $max = GetHttpVars("max", 10);
+ 
   $dbaccess = getParam("FREEDOM_DB");
 
   // Interface init
   $tclass = GetClassesDoc($dbaccess, $action->user->id, array(1,2), "TABLE");
-  $stclass[] = array ( "value" => 0, "label" => "toutes" );
+  $stclass[] = array ( "value" => 0, "sel" => "", "label" => "toutes" );
   foreach($tclass as $k => $v) {
-    $stclass[] = array ( "value" => $v["initid"], "label" => $v["title"] );
+    $stclass[] = array ( "value" => $v["initid"],
+			 "sel" => ($sfamily==$v["id"] ? "selected" : ""),
+                         "label" => $v["title"] );
   }
   $action->lay->SetBlockData("SFam", $stclass);
- 
-  $sphrase = GetHttpVars("sphrase", "");
-  $sfamily = GetHttpVars("sfamily", 0);
-  $max = GetHttpVars("max", 10);
 
+  $action->lay->set("vtcheck", $tcheck);
+  $action->lay->set("bcheck", ($tcheck==1?"checked":""));
+  $action->lay->set("sphrase", $sphrase);
   $action->lay->set("csearch", false);
 
   if ($sphrase=="") return;
 
-
   // Search....
   $action->lay->set("csearch", true);
-  $docs = getChildDoc($dbaccess, 0, 0, $max, array("title ~* '".$sphrase."'"), $action->user->id, "TABLE", $sfamily, false, "title");
+
+  $attrs = "values";
+  if ($tcheck==1) $attrs = "title";
+  $tsp = explode(" ", $sphrase);
+  $fs = array();
+  foreach ($tsp as $ks => $vs) $fs[] = $attrs." ~* '".$vs."'";
+  $docs = getChildDoc($dbaccess, 0, 0, $max, $fs, $action->user->id, "TABLE", $sfamily, false, "title");
   $tdocs = array();
   foreach($docs as $k => $v) {
     $fam = getTDoc($dbaccess, getV($v, "fromid"));

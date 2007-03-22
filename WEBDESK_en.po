@@ -2,13 +2,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-03-07 15:59+0100\n"
+"POT-Creation-Date: 2007-03-22 16:04+0100\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+msgid "Theme preferences"
+msgstr ""
+
+msgid "Theme"
+msgstr ""
+
+msgid "User identification"
+msgstr ""
+
+msgid "Identification"
+msgstr ""
 
 msgid "description"
 msgstr ""
@@ -29,18 +41,6 @@ msgid "Administration"
 msgstr ""
 
 msgid "Webdesk administration"
-msgstr ""
-
-msgid "Theme preferences"
-msgstr ""
-
-msgid "Theme"
-msgstr ""
-
-msgid "User identification"
-msgstr ""
-
-msgid "Identification"
 msgstr ""
 
 msgid "webdesk"
@@ -145,17 +145,31 @@ msgstr ""
 msgid "preview of theme"
 msgstr ""
 
-msgid "wd no freedom search given"
+msgid "portal columns count"
 msgstr ""
 
-msgid "wd invalid freedom search given"
+msgid "services list columns count"
 msgstr ""
 
-msgid "without category"
+msgid "ardoise content"
 msgstr ""
 
-#, c-format
-msgid "incident in progress -%d-"
+msgid "application present in application bar"
+msgstr ""
+
+msgid "webdesk menu background color"
+msgstr ""
+
+msgid "webdesk menu background image"
+msgstr ""
+
+msgid "webdesk menu background image width"
+msgstr ""
+
+msgid "no account defined"
+msgstr ""
+
+msgid "error retrieving mails"
 msgstr ""
 
 #, c-format
@@ -178,18 +192,18 @@ msgstr ""
 msgid "Visibility %s %s km"
 msgstr ""
 
-msgid "no account defined"
-msgstr ""
-
-msgid "error retrieving mails"
-msgstr ""
-
 msgid "wd no rss link given"
 msgstr ""
 
 msgid ""
 "[TEXT:no information available, verify your server have http access to "
 "internet and/or check link please...]"
+msgstr ""
+
+msgid "wd no freedom search given"
+msgstr ""
+
+msgid "wd invalid freedom search given"
 msgstr ""
 
 #, c-format
@@ -226,22 +240,11 @@ msgstr ""
 msgid "wdd info personal"
 msgstr ""
 
-msgid "portal columns count"
+msgid "without category"
 msgstr ""
 
-msgid "services list columns count"
-msgstr ""
-
-msgid "ardoise content"
-msgstr ""
-
-msgid "webdesk menu background color"
-msgstr ""
-
-msgid "webdesk menu background image"
-msgstr ""
-
-msgid "webdesk menu background image width"
+#, c-format
+msgid "incident in progress -%d-"
 msgstr ""
 
 msgid "wd error add service"
@@ -298,55 +301,10 @@ msgstr ""
 msgid "wd error retrieving content"
 msgstr ""
 
-msgid "Url"
-msgstr ""
-
-msgid "wd entre rss link here"
-msgstr ""
-
-msgid "Title"
-msgstr ""
-
-msgid "Height"
-msgstr ""
-
-msgid "Url type"
-msgstr ""
-
-msgid "html sheet"
-msgstr ""
-
-msgid "image"
-msgstr ""
-
-msgid "flash sheet"
-msgstr ""
-
-msgid "wd search ..."
-msgstr ""
-
-msgid "open it in a new window"
-msgstr ""
-
-msgid "Click to see detail"
-msgstr ""
-
-msgid "No style"
-msgstr ""
-
 msgid "Click to search person containing..."
 msgstr ""
 
 msgid "Click to search both in society name..."
-msgstr ""
-
-msgid "wd rss more infos"
-msgstr ""
-
-msgid "display full card in the same window"
-msgstr ""
-
-msgid "display column x lines"
 msgstr ""
 
 msgid "portal welcome service"
@@ -367,43 +325,82 @@ msgstr ""
 msgid "rss: select to search in system RSS (else mine only)"
 msgstr ""
 
-msgid "freedom rss search"
+msgid "wd rss more infos"
+msgstr ""
+
+msgid "wd search ..."
+msgstr ""
+
+msgid "checked : search only in titles"
+msgstr ""
+
+msgid "open it in a new window"
+msgstr ""
+
+msgid "display full card in the same window"
+msgstr ""
+
+msgid "display column x lines"
+msgstr ""
+
+msgid "wd entre rss link here"
+msgstr ""
+
+msgid "Click to see detail"
+msgstr ""
+
+msgid "No style"
 msgstr ""
 
 msgid "rss: clear displayed results"
 msgstr ""
 
+msgid "Url"
+msgstr ""
+
 msgid "wd enter url"
 msgstr ""
 
-msgid "wd open/close menu"
+msgid "Title"
 msgstr ""
 
-msgid "wd document received"
+msgid "Height"
 msgstr ""
 
-msgid "wd unread mail count"
+msgid "Url type"
 msgstr ""
 
-msgid "wd waiting event count"
+msgid "html sheet"
 msgstr ""
 
-msgid "Click here to login"
+msgid "image"
 msgstr ""
 
-msgid "wd fixe/release menu"
+msgid "flash sheet"
 msgstr ""
 
-msgid "wd display application"
+msgid "freedom rss search"
 msgstr ""
 
-msgid "wd reload (force) application"
+msgid "wd go left"
 msgstr ""
 
-msgid "wd open in new window"
+msgid "wd go down"
 msgstr ""
 
-msgid "wd add/remove shortcut"
+msgid "wd go up"
+msgstr ""
+
+msgid "wd go right"
+msgstr ""
+
+msgid "wd search for contact"
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+
+msgid "Do not click here"
 msgstr ""
 
 msgid "wd manage portal"
@@ -413,12 +410,6 @@ msgid "wd show/hide service list"
 msgstr ""
 
 msgid "wd reload portal view"
-msgstr ""
-
-msgid "wd open all services"
-msgstr ""
-
-msgid "wd  close all services"
 msgstr ""
 
 msgid "wd reduce font"
@@ -437,6 +428,24 @@ msgid "wd available services"
 msgstr ""
 
 msgid "wd add service"
+msgstr ""
+
+msgid "wd open/close menu"
+msgstr ""
+
+msgid "wd document received"
+msgstr ""
+
+msgid "wd unread mail count"
+msgstr ""
+
+msgid "wd waiting event count"
+msgstr ""
+
+msgid "Click here to login"
+msgstr ""
+
+msgid "wd fixe/release menu"
 msgstr ""
 
 msgid "Theme chooser"
@@ -463,23 +472,35 @@ msgstr ""
 msgid "Change your theme"
 msgstr ""
 
-msgid "Preview"
-msgstr ""
-
-msgid "Do not click here"
-msgstr ""
-
 msgid "webdesk application portal"
 msgstr ""
 
 msgid "Javascript must be enabled in your navigator"
 msgstr ""
 
-msgid "produced by Freedom"
-msgstr ""
-
 msgid "Change password"
 msgstr ""
 
 msgid "Change name and coordinates"
+msgstr ""
+
+msgid "produced by Freedom"
+msgstr ""
+
+msgid "wd open all services"
+msgstr ""
+
+msgid "wd  close all services"
+msgstr ""
+
+msgid "wd display application"
+msgstr ""
+
+msgid "wd reload (force) application"
+msgstr ""
+
+msgid "wd open in new window"
+msgstr ""
+
+msgid "wd add/remove shortcut"
 msgstr ""
