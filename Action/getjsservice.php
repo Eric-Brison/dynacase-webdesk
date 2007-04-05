@@ -61,7 +61,7 @@ function getjsservice(&$action) {
     .    "     csslinkmd5:'".md5(getV($svc, "psvc_cssfile"))."',"
     .    "     purl:'".$sparam."'," 
     .    "     rdel:".$rdel."," 
-    .    "     nextLoad:0," 
+    .    "     nextLoad:-1," 
     .    "     col:".$scol."," 
     .    "     lin:".$slin.","
     .    "     open:true,"

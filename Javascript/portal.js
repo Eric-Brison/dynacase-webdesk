@@ -1,4 +1,4 @@
-// $Id: portal.js,v 1.37 2007/02/02 21:24:47 eric Exp $
+// $Id: portal.js,v 1.38 2007/04/05 16:06:47 marc Exp $
 
 // portal
 var portalRefreshInterval = 10;
@@ -10,15 +10,17 @@ function startRefresh() {
     var mdat = dat.getTime();
     sl = '('+mdat+') ';
     for (var is=0; is<services.length; is++) {
-      sl += '\n'+services[is].title+'('+services[is].rdel+')'+':'+services[is].nextLoad+' > ';
-      if (services[is].rdel>0 && services[is].nextLoad>0 && services[is].nextLoad<=mdat) {
-	services[is].nextLoad == 0;
+      sl += '\n'+services[is].stitle+'('+services[is].rdel+')'+':'+services[is].nextLoad+' > ';
+      if (services[is].nextLoad==-1 || (services[is].rdel>0 && services[is].nextLoad>0 && services[is].nextLoad<=mdat)) {
+	services[is].nextLoad = 0;
 	loadSvcAsync(services[is].snum, true);
+	//	loadSvcSync(services[is].snum);
 	sl += 'reload';
       } else {
 	sl += 'no';
       } 
     }
+//      alert(sl);
   }
   setTimeout("startRefresh()", portalRefreshInterval*1000);
 }  
@@ -40,25 +42,25 @@ function addNewService(sid) {
     xreq.open("POST", "[CORE_STANDURL]app=WEBDESK&action=ADDSERVICE&sid="+sid, false);
     xreq.send('');
     if (xreq.status!=200) {
-      alert('[TEXT:wd error add service] (HTTP Code '+xreq.status+')');	   
+      trace('[TEXT:wd error add service] (HTTP Code '+xreq.status+')');	   
     } else { 
       eval(xreq.responseText);
       if (svcnum && svcnum>-1) {
 	xreq.open("POST", "[CORE_STANDURL]app=WEBDESK&action=GETJSSERVICE&snum="+svcnum, false);
 	xreq.send('');
 	if (xreq.status!=200) {
-	  alert('[TEXT:wd error getting service] (HTTP Code '+xreq.status+')');	   
+	  trace('[TEXT:wd error getting service] (HTTP Code '+xreq.status+')');	   
 	} else { 
 	  eval(xreq.responseText);
 	  services[services.length] = svc;
 	  displayServices();
 	}
       } else {
-	alert('[TEXT:wd invalid service number returned by creation]');	   
+	trace('[TEXT:wd invalid service number returned by creation]');	   
       }
     }
   } else {
-    alert('[TEXT:wd error add service] (XMLHttpRequest contruction)');	   
+    trace('[TEXT:wd error add service] (XMLHttpRequest contruction)');	   
   }
   endUtempo();
 }
@@ -107,7 +109,7 @@ function displayServices() {
 
 function showService(is) {
   if (!services[is]) {
-    alert('Internal error : no service defined ');
+    trace('Internal error : no service defined ');
     return;
   }
   
@@ -150,7 +152,7 @@ function showService(is) {
       imgcyc = '<img src="[IMGF:wd_svc_cyclic.gif:0,0,0|COLOR_BLACK]" style="border:0px" title="[TEXT:automatic reload all] '+services[is].rdel+' minutes">';
     }
     cnt += '<table cellspacing="0" cellpadding="0" style="width:100%; border:0px">';
-    cnt += '<tr style="vertical-align:baseline; cursor:move; border:1px solid red;" onmousedown="return startMoveService(event, this, '+snum+');" onmouseup="endMoveService(event,'+snum+')"  onmouseover="mOverSvcTitle('+snum+')" onmouseout="mOutSvcTitle('+snum+')">';
+    cnt += '<tr style="vertical-align:baseline; cursor:move; border:1px solid red;" onmousedown="return startMoveService(event, this, '+snum+');" onmouseup="endMoveService(event,'+snum+')"  onmouseover="mOverSvcTitle('+snum+')" onmouseout="mOutSvcTitle('+snum+')"onDblClick="showHideSvc(event, '+snum+',true); return false;">';
     cnt += '<td >';
      cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc(event, '+snum+',true); return false;" src="[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd hide svc content]">';
     cnt += '<span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
@@ -226,7 +228,8 @@ function showService(is) {
     }
 
 
-    loadSvcAsync(snum);
+//     loadSvcAsync(snum,true);
+//     loadSvcSync(snum);
   }
 }
 
@@ -283,6 +286,7 @@ function editSvc(event, snum) {
   }
 
   // initialize form
+  trace('Modification des paramètres...');
   editSnum = snum;
 
   var esvc = document.getElementById('editsvc').cloneNode(true);
@@ -336,6 +340,7 @@ function cancelForm() {
 }
 
 function sendForm() {
+  trace('Sauvegarde des paramètres...');
   var fedit = document.getElementById('editsvcf');
   if (editSnum===-1) return;
   var snum = editSnum;
@@ -421,9 +426,9 @@ function saveGeometry() {
   if (xreq) {
     xreq.open("POST", "[CORE_STANDURL]app=WEBDESK&action=GEOSERVICE&sgeo="+geo, false);
      xreq.send('');
-     if (xreq.status!=200) alert('[TEXT:wd error geo service] (HTTP Code '+xreq.status+')');	   
+     if (xreq.status!=200) trace('[TEXT:wd error geo service] (HTTP Code '+xreq.status+')');	   
   } else {
-    alert('[TEXT:wd error geo service] (XMLHttpRequest contruction)');	   
+    trace('[TEXT:wd error geo service] (XMLHttpRequest contruction)');	   
   }
   return;
 }
@@ -445,6 +450,7 @@ function deleteSvc(event, snum) {
   var is = getSvc(snum);
   if (is===false) return;
   if (!confirm('[TEXT:wd confirm supress of] ['+services[is].stitle+']')) return false;
+  trace('Service '+services[is].stitle+' supprimé.');
   unDisplaySvc(snum);
   services.splice(is,1);
   var xreq = null;
@@ -453,9 +459,9 @@ function deleteSvc(event, snum) {
   if (xreq) {
     xreq.open("POST", "[CORE_STANDURL]app=WEBDESK&action=DELSERVICE&snum="+snum, false);
     xreq.send('');
-    if (xreq.status!=200) alert('[TEXT:wd error add service] (HTTP Code '+xreq.status+')');	   
+    if (xreq.status!=200) trace('[TEXT:wd error add service] (HTTP Code '+xreq.status+')');	   
   } else {
-    alert('[TEXT:wd error add service] (XMLHttpRequest contruction)');	   
+    trace('[TEXT:wd error add service] (XMLHttpRequest contruction)');	   
   }
   if (event) stopPropagation(event);
 }
@@ -479,9 +485,8 @@ function unsetWS(sid) {
 
 
 
-var timerOn = new Array();
 
-function loadSvcAsync(sid, shl, params) {
+function loadSvcSync(sid, params) {
   var dreq = null;
   var is = getSvc(sid);
   if (is===false) return;
@@ -491,7 +496,8 @@ function loadSvcAsync(sid, shl, params) {
   if (window.XMLHttpRequest) dreq = new XMLHttpRequest();
   else dreq = new ActiveXObject("Microsoft.XMLHTTP");
   if (dreq) {
-    if (shl) setWS('svc'+sid);
+    trace('Mise à jour -sync- de '+services[is].stitle+'...');
+    setWS('svc'+sid);
     dreq.onreadystatechange =  function() {
       if (dreq.readyState == 4) {
 	try {
@@ -513,7 +519,7 @@ function loadSvcAsync(sid, shl, params) {
 	    } 
 	    
 	    if (!isxml) {
-	      alert('no valid XML content received\n'+dreq.responseText);
+	      trace('no valid XML content received\n'+dreq.responseText);
 	    }
 	    
 	    if (services[is].rdel>0) {
@@ -523,19 +529,79 @@ function loadSvcAsync(sid, shl, params) {
 	      timerOn[is] = -1;
 	    }	    
 	  }
-	  if (shl) unsetWS('svc'+sid);
+	  unsetWS('svc'+sid);
 	} catch(e) {
 	  //          alert('Exception : ' + e);
 	}
       }
     }
-//     trace('url=['+services[is].vurl+'] purl=['+services[is].purl+'] params=['+params+']');
     var url = services[is].vurl ;
     var purl = services[is].purl;
     if (params) purl += params;
     dreq.open("POST", url, true);
     dreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     dreq.send(purl);
+  } else {
+    document.getElementById('csvc'+sid).innerHTML = '[TEXT:wd error retrieving content] (XMLHttpRequest contruction)';	    
+  }
+}
+
+
+
+
+var timerOn = new Array();
+
+
+
+
+function loadSvcAsync(sid, shl, params) {
+  var dreq = null;
+  var is = getSvc(sid);
+  if (is===false) return;
+
+  if (services[is].vurl=='') return;
+
+  if (window.XMLHttpRequest) dreq = new XMLHttpRequest();
+  else dreq = new ActiveXObject("Microsoft.XMLHTTP");
+  if (dreq) {
+    trace('Mise à jour -async- de '+services[is].stitle+'...');
+    setWS('svc'+sid);
+
+    var url = services[is].vurl ;
+    var purl = services[is].purl;
+    if (params) purl += params;
+    dreq.open("POST", url, false);
+    dreq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    dreq.send(purl);
+    if (dreq.status!=200) {
+      document.getElementById('csvc'+sid).innerHTML = '[TEXT:wd error retrieving content] (HTTP Code '+dreq.status+')';	   
+    } else { 
+      var isxml = false;
+      if (dreq.responseXML) {
+	var elts = dreq.responseXML.getElementsByTagName("freedomsvc");
+	if ((elts.length>0) && (typeof elts[0] == "object")) {
+	  var elts = dreq.responseXML.getElementsByTagName("freedomsvc");
+	  var uptime = elts[0].getAttribute("uptime");
+	  var title = elts[0].getAttribute("title");
+	  if (title) document.getElementById('tsvcti'+sid).innerHTML = title;
+	  if (uptime) document.getElementById('tsvcti'+sid).title = 'Mise à jour : '+uptime;
+	  document.getElementById('csvc'+sid).innerHTML = '<div style="padding:0; margin:0; display:block; border:0px; width:100%;">'+elts[0].firstChild.nodeValue+'</div>';
+	  isxml = true;
+	}
+      } 
+      
+      if (!isxml) {
+	trace('no valid XML content received\n'+dreq.responseText);
+      }
+      
+      if (services[is].rdel>0) {
+	var dat = new Date();
+	services[is].nextLoad = dat.getTime() + (services[is].rdel*60*1000);
+      } else {
+	timerOn[is] = -1;
+      }	    
+    }
+    unsetWS('svc'+sid);
   } else {
     document.getElementById('csvc'+sid).innerHTML = '[TEXT:wd error retrieving content] (XMLHttpRequest contruction)';	    
   }
@@ -670,7 +736,7 @@ function mouseOverService(event) {
      srcel = srcel.parentNode;
     }
     if (foundCol>-1 && !efound) {
-      trace('foundCol='+foundCol+' efound='+efound);
+      //      trace('foundCol='+foundCol+' efound='+efound);
       overElt = document.getElementById('wdcol'+foundCol);
       stopPropagation(event);
       overElt.appendChild(emove);
@@ -680,9 +746,21 @@ function mouseOverService(event) {
 
 
 
+var traceTempo = -1;
 function trace(tt) {
-  if (document.getElementById('trace')) document.getElementById('trace').innerHTML = tt + '<br>' + document.getElementById('trace').innerHTML;
+  if (document.getElementById('trace')) {
+    closeTrace();
+    document.getElementById('trace').innerHTML = tt;
+    document.getElementById('trace').style.visibility = 'visible';    
+    traceTempo = setTimeout("closeTrace()", 5000);
+  }
 }
+function closeTrace() {
+  if (traceTempo!=-1) clearTimeout(traceTempo);
+  document.getElementById('trace').style.visibility = 'hidden';
+  menuTempo = -1;
+}
+  
     
 
 

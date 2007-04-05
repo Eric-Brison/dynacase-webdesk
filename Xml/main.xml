@@ -17,12 +17,13 @@ var isMBarStatic = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]
 var isOpen = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[ENDIF IsMBarStatic];
 
 function initWebdesk() {
-  getUnreadMsgCount();
-  getWaitingEventCount();
-  getAffectDocCount();
+   getUnreadMsgCount();
+   getWaitingEventCount();
+   getAffectDocCount();
   computefbodywh();  
   [BLOCK barAppList]
   addInBar([id], '[name]', '[jsname]', '[iconsrc]', '[params]' ); [ENDBLOCK barAppList]
+
 }
 
 </script>  

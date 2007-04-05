@@ -18,10 +18,13 @@ function initPortal() {
   services[[rg]] = { snum:[snum], sid:[sid], stitle:'[stitle]', 
 				vurl:'[vurl]', eurl:'[eurl]', purl:'[purl]', 
 				jslink:'[jslink]', jslinkmd5:'[jslinkmd5]', csslink:'[csslink]', csslinkmd5:'[csslinkmd5]',
-				rdel:[rdel], nextLoad:0, col:[col], lin:[lin], open:[open],
-				i:[interactif], m:[mandatory], e:[editable], d:false }; [ENDBLOCK USvc]							 
+		     rdel:[rdel], nextLoad:-1, col:[col], lin:[lin], open:[open],
+				i:[interactif], m:[mandatory], e:[editable], d:false }; [ENDBLOCK USvc]					    										 						       		
+if (document.getElementById('trace')) {
+  document.getElementById('trace').style.top=parseInt(getFrameHeight())-20;
+ }
   displayServices();
-  setTimeout("startRefresh()", portalRefreshInterval*1000);
+  startRefresh();
 }
 
 </script>
@@ -90,6 +93,6 @@ function initPortal() {
 </div>[ENDBLOCK subcat]
 
 
- [IF debug]<div id="trace" style="border:1px solid red;display:block">????</div>[ENDIF debug]
+[IFNOT ISIE]<div id="trace" onclick="closeTrace();" style="cursor:pointer; visibility:hidden; background-color:[COLOR_A0]; color:[COLOR_C0]; font-weight:bold; border:0px; padding:5px 10px; position:fixed; top:0px; left:0px; height:20px;"></div>[ENDIF ISIE]
 </body>
 </html>
