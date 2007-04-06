@@ -14,16 +14,21 @@ var services = new Array();
 var initSize = parseInt('[SIZE_MEDIUM]');
 
 function initPortal() {
-  [BLOCK USvc]
-  services[[rg]] = { snum:[snum], sid:[sid], stitle:'[stitle]', 
-				vurl:'[vurl]', eurl:'[eurl]', purl:'[purl]', 
-				jslink:'[jslink]', jslinkmd5:'[jslinkmd5]', csslink:'[csslink]', csslinkmd5:'[csslinkmd5]',
-		     rdel:[rdel], nextLoad:-1, col:[col], lin:[lin], open:[open],
-				i:[interactif], m:[mandatory], e:[editable], d:false }; [ENDBLOCK USvc]					    										 						       		
-if (document.getElementById('trace')) {
-  document.getElementById('trace').style.top=parseInt(getFrameHeight())-20;
- }
+  [BLOCK USvc]services[[rg]] = { snum:[snum], sid:[sid], stitle:'[stitle]', 
+                                 vurl:'[vurl]', eurl:'[eurl]', purl:'[purl]',
+                                 jslink:'[jslink]', jslinkmd5:'[jslinkmd5]', 
+                                 csslink:'[csslink]', csslinkmd5:'[csslinkmd5]',
+	                         rdel:[rdel], nextLoad:-1, col:[col], lin:[lin], open:[open],
+                                 i:[interactif], m:[mandatory], e:[editable], d:false }; 
+  [ENDBLOCK USvc]
+    if (document.getElementById('trace')) {
+      document.getElementById('trace').style.top=parseInt(getFrameHeight())-20;
+    }
+  trace('Initialisation des servics...');
   displayServices();
+
+
+//   setTimeout("startRefresh()", portalRefreshInterval*1000);
   startRefresh();
 }
 

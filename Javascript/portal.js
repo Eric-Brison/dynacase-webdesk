@@ -1,4 +1,4 @@
-// $Id: portal.js,v 1.38 2007/04/05 16:06:47 marc Exp $
+// $Id: portal.js,v 1.39 2007/04/06 09:51:02 marc Exp $
 
 // portal
 var portalRefreshInterval = 10;
@@ -13,8 +13,8 @@ function startRefresh() {
       sl += '\n'+services[is].stitle+'('+services[is].rdel+')'+':'+services[is].nextLoad+' > ';
       if (services[is].nextLoad==-1 || (services[is].rdel>0 && services[is].nextLoad>0 && services[is].nextLoad<=mdat)) {
 	services[is].nextLoad = 0;
-	loadSvcAsync(services[is].snum, true);
-	//	loadSvcSync(services[is].snum);
+	trace(services[is].stitle);
+	loadSvcSync(services[is].snum, true);
 	sl += 'reload';
       } else {
 	sl += 'no';
@@ -107,7 +107,7 @@ function displayServices() {
 
 
 
-function showService(is) {
+function showService(is, updates) {
   if (!services[is]) {
     trace('Internal error : no service defined ');
     return;
@@ -226,10 +226,7 @@ function showService(is) {
       script.href = services[is].csslink;
       head.appendChild(script);
     }
-
-
-//     loadSvcAsync(snum,true);
-//     loadSvcSync(snum);
+//     loadSvcAsync(snum);
   }
 }
 
@@ -486,7 +483,7 @@ function unsetWS(sid) {
 
 
 
-function loadSvcSync(sid, params) {
+function loadSvcAsync(sid, params) {
   var dreq = null;
   var is = getSvc(sid);
   if (is===false) return;
@@ -496,7 +493,7 @@ function loadSvcSync(sid, params) {
   if (window.XMLHttpRequest) dreq = new XMLHttpRequest();
   else dreq = new ActiveXObject("Microsoft.XMLHTTP");
   if (dreq) {
-    trace('Mise à jour -sync- de '+services[is].stitle+'...');
+    trace('Mise à jour -async- de '+services[is].stitle+'...');
     setWS('svc'+sid);
     dreq.onreadystatechange =  function() {
       if (dreq.readyState == 4) {
@@ -554,7 +551,7 @@ var timerOn = new Array();
 
 
 
-function loadSvcAsync(sid, shl, params) {
+function loadSvcSync(sid, shl, params) {
   var dreq = null;
   var is = getSvc(sid);
   if (is===false) return;
@@ -564,7 +561,7 @@ function loadSvcAsync(sid, shl, params) {
   if (window.XMLHttpRequest) dreq = new XMLHttpRequest();
   else dreq = new ActiveXObject("Microsoft.XMLHTTP");
   if (dreq) {
-    trace('Mise à jour -async- de '+services[is].stitle+'...');
+    trace('Mise à jour -Sync- de '+services[is].stitle+'...');
     setWS('svc'+sid);
 
     var url = services[is].vurl ;
