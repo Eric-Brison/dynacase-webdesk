@@ -1,4 +1,4 @@
-// $Id: portal.js,v 1.39 2007/04/06 09:51:02 marc Exp $
+// $Id: portal.js,v 1.40 2007/05/30 13:57:50 marc Exp $
 
 // portal
 var portalRefreshInterval = 10;
@@ -493,7 +493,7 @@ function loadSvcAsync(sid, params) {
   if (window.XMLHttpRequest) dreq = new XMLHttpRequest();
   else dreq = new ActiveXObject("Microsoft.XMLHTTP");
   if (dreq) {
-    trace('Mise à jour -async- de '+services[is].stitle+'...');
+    trace('Mise à jour (a) de '+services[is].stitle+'...');
     setWS('svc'+sid);
     dreq.onreadystatechange =  function() {
       if (dreq.readyState == 4) {
@@ -561,7 +561,7 @@ function loadSvcSync(sid, shl, params) {
   if (window.XMLHttpRequest) dreq = new XMLHttpRequest();
   else dreq = new ActiveXObject("Microsoft.XMLHTTP");
   if (dreq) {
-    trace('Mise à jour -Sync- de '+services[is].stitle+'...');
+    trace('Mise à jour (S) de '+services[is].stitle+'...');
     setWS('svc'+sid);
 
     var url = services[is].vurl ;

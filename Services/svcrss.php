@@ -20,29 +20,33 @@ function svcrss(&$action) {
 
   $rssi =& new XML_RSS($rsslink);
   $pret = $rssi->parse();
-  $rssc = $rssi->getItems();
-  $ic = 0;
-  if (count($rssc)>0) {
+  if (isset($rssi->channel["link"])) {
+    $action->lay->set("nocontent", false);
     $action->lay->set("rss", true);
-    while ($ic<=$max && list($k, $v) = each($rssc)) {
-      if ($v["title"]=="") continue;
-      $tr[$ic] = $v;
-      $tr[$ic]["id"] = $k;
-      $tr[$ic]["title"] = htmlentities(utf8_decode($v["title"]));
-      $sdesc = ($textlg>0 ? substr($v["description"],0,$textlg).(strlen($v["description"])>$textlg?"...":"") : $v["description"]);
-      $tr[$ic]["descr"] = utf8_decode($sdesc);
-      $tr[$ic]["date"] = $v["dc:date"];
-      $tr[$ic]["vfull"] = $vfull;
-     $ic++;
+    $action->lay->set("title",$rssi->channel["title"]);
+    $action->lay->set("uptime", strftime("%H:%M %d/%m/%Y", time()));
+    $rssc = $rssi->getItems();
+    $ic = 0;
+    if (count($rssc)>0) {
+      while ($ic<=$max && list($k, $v) = each($rssc)) {
+        if ($v["title"]=="") continue;
+        $tr[$ic] = $v;
+        $tr[$ic]["id"] = $k;
+        $tr[$ic]["title"] = htmlentities(utf8_decode($v["title"]));
+        $sdesc = ($textlg>0 ? substr($v["description"],0,$textlg).(strlen($v["description"])>$textlg?"...":"") : $v["description"]);
+        $tr[$ic]["descr"] = utf8_decode($sdesc);
+        $tr[$ic]["date"] = $v["dc:date"];
+        $tr[$ic]["vfull"] = $vfull;
+       $ic++;
+      }
+      $action->lay->setBlockData("rssnews", $tr);
+    } else {
+      $action->lay->set("nocontent", true);
     }
   } else {
     $action->lay->set("msg", _("[TEXT:no information available, verify your server have http access to internet and/or check link please...]"). '(<a href="'.$ilink.'">'.$ilink.'</a>)');
-    return;
   }
-  $action->lay->set("title",$rssi->channel["title"]);
-  $action->lay->set("uptime", strftime("%H:%M %d/%m/%Y", time()));
-  $action->lay->setBlockData("rssnews", $tr);
+  return;
 }
-  
 
 ?>

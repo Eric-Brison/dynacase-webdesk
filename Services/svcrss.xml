@@ -12,5 +12,6 @@
 <div style="padding:0px 0px 0px 10px;">[descr]</div>
 </div>[ENDIF vfull]
 [ENDBLOCK rssnews]
+[IF nocontent][TEXT:no rss item][ENDIF nocontent]
 [ENDIF rss]
 ]]></freedomsvc>
