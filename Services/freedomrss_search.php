@@ -6,7 +6,7 @@ include_once("FDL/Lib.Dir.php");
 function freedomrss_search(&$action) {
 
   $str    = GetHttpVars("str", "");
-  $sys    = GetHttpVars("str", 0);
+  $sys    = GetHttpVars("sys", 0);
   $user   = GetHttpVars("user", $action->user->id);
   $lim    = 10;
 
@@ -16,7 +16,7 @@ function freedomrss_search(&$action) {
 
   $filter[0] = "(title ~* '".$str."')";
   $filter[1] = "(gui_isrss = 'yes')";
-  if ($sys==1) $filter[2] = "(owner = ".$user." || gui_sysrss = 'yes')";
+  if ($sys==1) $filter[2] = "(owner = ".$user." or gui_sysrss = 'yes')";
   else $filter[2] = "(owner = ".$user.")";
 
   $rfilter = ($beg==0?"":"^");
