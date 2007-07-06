@@ -1,5 +1,5 @@
 # ============================================
-# $Id: Makefile.in,v 1.10 2006/11/20 18:24:22 marc Exp $
+# $Id: Makefile.in,v 1.11 2007/07/06 12:25:33 yannick Exp $
 # ============================================
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@
@@ -16,7 +16,7 @@ GZIP_ENV = --best
 
 export targetdir PACKAGE
 
-SUBDIR=  Xml Action Css Javascript Images Zone Freedom Services Doc
+SUBDIR=  Xml Action Css Javascript Images Zone Freedom Services Doc debian
 
 include $(utildir)/PubRule
 

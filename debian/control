@@ -1,0 +1,12 @@
+Source: freedom-webdesk
+Section: web
+Priority: extra
+Maintainer: yannick <yannick.lebriquer@anakeen.com>
+Build-Depends: debhelper (>= 5), autoconf
+Standards-Version: 3.7.2
+
+Package: freedom-webdesk
+Architecture: all
+Depends: weather-icons, phpweather (>= 2.2.2) , freedom-common, freedom-usercard, freedom-what, php5-imap
+Description:  The Freedom Web Desk
+ This package offers the freedom Web Desktop
