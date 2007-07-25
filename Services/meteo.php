@@ -51,7 +51,7 @@ function meteo(&$action) {
   $H=intval(strftime("%H", $data["time"]));
   $night=($H<6)||($H>18); // not terrible but it is the algo of pw_images.php
 
-  $iconstyle=getHttpVars("iconstyle");
+  $iconstyle=getHttpVars("iconstyle","Aqua");
   $action->lay->set("oimg", $img);
   if (ereg("([a-z_0-9)]*)\.png",$img,$reg)) {
     if ($night) $bgimg=$action->getImageUrl('n_meteobg.png');
