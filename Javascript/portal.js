@@ -1,26 +1,20 @@
-// $Id: portal.js,v 1.41 2007/07/25 12:14:25 marc Exp $
+// $Id: portal.js,v 1.42 2007/07/25 12:29:59 marc Exp $
 
 // portal
 var portalRefreshInterval = 10;
 function startRefresh() {
   var fapp = parent.document.getElementById(window.name);
   if (fapp.style.display=='block') {
-    var  sl = '';
     var dat = new Date();
     var mdat = dat.getTime();
-    sl = '('+mdat+') ';
     for (var is=0; is<services.length; is++) {
-      sl += '\n'+services[is].stitle+'('+services[is].rdel+')'+':'+services[is].nextLoad+' > ';
       if (services[is].nextLoad==-1 || (services[is].rdel>0 && services[is].nextLoad>0 && services[is].nextLoad<=mdat)) {
 	services[is].nextLoad = 0;
 	trace(services[is].stitle);
-	loadSvcSync(services[is].snum, true);
-	sl += 'reload';
+	loadSvcAsync(services[is].snum);
       } else {
-	sl += 'no';
       } 
     }
-//      alert(sl);
   }
   setTimeout("startRefresh()", portalRefreshInterval*1000);
 }  

@@ -32,11 +32,13 @@ function initPortal() {
   startRefresh();
 }
 
+addEvent(window,"load", initPortal);
+
 </script>
 [JS:REF]
 
 </head>
-<body onload="initPortal()">
+<body>
 
 <table class="wdservices" cellspacing="0" style="width:100%">
 
