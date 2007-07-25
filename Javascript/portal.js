@@ -1,4 +1,4 @@
-// $Id: portal.js,v 1.40 2007/05/30 13:57:50 marc Exp $
+// $Id: portal.js,v 1.41 2007/07/25 12:14:25 marc Exp $
 
 // portal
 var portalRefreshInterval = 10;
@@ -246,7 +246,7 @@ function submitService(event) {
   for (var ie=0; ie<fsend.elements.length; ie++) {
     if (fsend.elements[ie].name!="") params += '&'+fsend.elements[ie].name+'='+escape(fsend.elements[ie].value);
   }
-  loadSvcAsync(snum, true, params);
+  loadSvcAsync(snum,  params);
   return false;
 }
 
@@ -353,6 +353,7 @@ function sendForm() {
   else ereq = new ActiveXObject("Microsoft.XMLHTTP");
   if (ereq) {
     globalcursor('progress');
+//     alert(editSnum);
     ereq.open("POST", "[CORE_STANDURL]&app=WEBDESK&action=SAVESVC&snum="+editSnum, false);
     ereq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     ereq.send(purl);
@@ -360,7 +361,7 @@ function sendForm() {
       document.getElementById('csvc'+snum).innerHTML = '[TEXT:wd error saving edit form] (HTTP Code '+ereq.status+')';	   
     } else { 
       services[is].purl = purl;
-      loadSvcAsync(snum, true);
+      loadSvcAsync(snum);
     }
     unglobalcursor();
   } else {

@@ -97,7 +97,7 @@ function initPortal() {
 [ENDBLOCK subcatserv[num]]
 </div>[ENDBLOCK subcat]
 
+[IFNOT ISIE]<div id="trace" onclick="closeTrace();" style="visibility:hidden;"></div>[ENDIF ISIE]
 
-[IFNOT ISIE]<div id="trace" onclick="closeTrace();" style="cursor:pointer; visibility:hidden; background-color:[COLOR_A0]; color:[COLOR_C0]; font-weight:bold; border:0px; padding:5px 10px; position:fixed; top:0px; left:0px; height:20px;"></div>[ENDIF ISIE]
 </body>
 </html>

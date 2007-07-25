@@ -130,3 +130,19 @@ TABLE.transparent TBODY TR TD,TABLE.transparent TBODY TR {
   border-width : 1px;
   border-color: [COLOR_A8];
 }
+
+
+#trace {
+  font-size: 90%; 
+  font-weight:bold; 
+  cursor:pointer; 
+  background-color:[COLOR_A9]; 
+  color:[COLOR_A5]; 
+  font-weight:bold; 
+  border:1px solid [COLOR_A2];
+  padding : 5px;
+  position:fixed; 
+  top:-10px; 
+  left:10px; 
+  height:20px;
+}
