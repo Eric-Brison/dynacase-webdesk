@@ -10,6 +10,8 @@
 </style>
 
 
+[JS:REF]
+
 <script>
 [JS:CODE]
 var isIE = [IF ISIE]true[ENDIF ISIE][IFNOT ISIE]false[ENDIF ISIE];
@@ -26,11 +28,12 @@ function initWebdesk() {
 
 }
 
-</script>  
-[JS:REF]
+addEvent(window,"load", initWebdesk);
+addEvent(window, "resize", computefbodywh);
 
+</script>  
 </head>
-<body onload="initWebdesk()" scrollable="no" onresize="computefbodywh()">
+<body scrollable="no">
 
 
 <div id="wdtitle" class="wdhead">

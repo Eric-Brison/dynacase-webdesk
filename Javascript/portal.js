@@ -1,4 +1,4 @@
-// $Id: portal.js,v 1.42 2007/07/25 12:29:59 marc Exp $
+// $Id: portal.js,v 1.43 2007/07/26 08:57:17 marc Exp $
 
 // portal
 var portalRefreshInterval = 10;
@@ -156,7 +156,7 @@ function showService(is, updates) {
     cnt += '<span id="iconbox'+snum+'" style="visibility:hidden">';
 
     if (vurl!='')
-      cnt += '<img id="irsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="startUtempo( ); loadSvcAsync('+snum+', true);endUtempo(); " src="[IMGF:wd_svc_reload.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reload svc content]">';
+      cnt += '<img id="irsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="startUtempo( ); loadSvcAsync('+snum+');endUtempo(); " src="[IMGF:wd_svc_reload.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reload svc content]">';
     if (eurl!='' && iseditable)
       cnt += '<img id="iesvc'+snum+'" style="margin-left:2px" class="small_button" onclick="return editSvc(event, '+snum+');" src="[IMGF:wd_svc_edit.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd edit svc content]">';
     if (!ismandatory)
@@ -263,10 +263,8 @@ function reloadEditSvc(event) {
 
 function editSvc(event, snum) {
 
-  if (snum==editSnum) {
-    cancelForm(); 
-    return;
-  }
+  cancelForm(); 
+  if (snum==editSnum)  return;
 
   var is = getSvc(snum);
   if (is===false) return;
@@ -488,7 +486,7 @@ function loadSvcAsync(sid, params) {
   if (window.XMLHttpRequest) dreq = new XMLHttpRequest();
   else dreq = new ActiveXObject("Microsoft.XMLHTTP");
   if (dreq) {
-    trace('Mise à jour (a) de '+services[is].stitle+'...');
+    trace('Mise à jour de '+services[is].stitle+'...');
     setWS('svc'+sid);
     dreq.onreadystatechange =  function() {
       if (dreq.readyState == 4) {
