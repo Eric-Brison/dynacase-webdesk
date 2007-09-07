@@ -1,7 +1,7 @@
 #! /bin/rpm
 #
 #  File: 
-#  $Id: WEBDESK.spec.in,v 1.16 2007/06/13 13:36:02 eric Exp $
+#  $Id: WEBDESK.spec.in,v 1.17 2007/09/07 09:16:17 eric Exp $
 #
 #  This is the SPEC file for the What Users Module
 #  Anakeen What Application
@@ -9,7 +9,7 @@
 
 %define cerbere         %(rpm -q --queryformat '%{VENDOR}' rpm |grep -q 'none' && echo 1 || echo 0)
 %define pld		%(rpm -q --queryformat '%{VENDOR}' rpm |grep -q 'PLD' && echo 1 || echo 0)
-%define redhat	        %(rpm -q --queryformat '%{VENDOR}' rpm | grep -q 'Red Hat, Inc.' && echo 1 || echo 0)
+%define redhat	        %(rpm -q --queryformat '%{VENDOR}' rpm | grep -q -e 'Red Hat, Inc.' -e "Fedora"  && echo 1 || echo 0)
 %{?ncerbere:%define cerbere 1}
 %{?ncerbere:%define redhat 0}
 %{?ncerbere:%define pld 0}
@@ -20,22 +20,25 @@
 %{?npld:%define redhat 0}
 %{?npld:%define pld 1}
 %if %{cerbere}
-%define destdir /home/httpd/what
-%define httpuser http
-%define apacheconfdir /etc/httpd/httpd.conf
-%define releasepostfix %(echo)
-%endif
-%if %{pld}
-%define destdir /usr/share/what
-%define httpuser http
-%define apacheconfdir /etc/webapps/what
-%define releasepostfix cb
-%endif
-%if %{redhat}
-%define destdir /usr/share/what
-%define apacheconfdir /etc/httpd/conf.d
-%define httpuser apache
-%define releasepostfix fc5
+  %define destdir /home/httpd/what
+  %define httpuser http
+  %define releasepostfix %(echo)
+%else
+  %if %{pld}
+    %define destdir /usr/share/what
+    %define httpuser http
+    %define releasepostfix cb
+   %else
+      %if %{redhat}
+        %define destdir /usr/share/what
+        %define httpuser apache
+        %define releasepostfix fc%(cat /etc/fedora-release | sed -e 's/.* release \\([[:digit:]]\\+\\) .*/\\1/')
+      %else        
+        %define destdir /usr/share/what
+        %define httpuser apache
+        %define releasepostfix unk
+      %endif
+  %endif
 %endif
 %{?ndestdir:%define destdir %{ndestdir}}
 %{?nhttpuser:%define httpuser %{nhttpuser}}
