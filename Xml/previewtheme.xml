@@ -37,11 +37,11 @@ table.color {
 <td>
 <table class="example">
 <tr class="headcell"><th class="headtitle">Formulaire</th></tr>
-<tr><td><input size="10" value="texte"></td></tr>
+<tr><td><input size="10" type="text" value="texte"></td></tr>
 <tr><td><select><option>Choix 1</option><option>Choix 2</option><option>Choix 3</option></select></td></tr>
 </table>
 </td></tr></table>
-<a href="javascript:void(0)">[TEXT:Do not click here]</a>
+<a href="javascript:void(0)">[TEXT:Do not click here]</a> <input type="button" onclick="return false" value="[TEXT:Here either]">
 </td>
 <td>
 <table class="color" cellspacing="0" cellpadding="0">
