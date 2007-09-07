@@ -1,7 +1,7 @@
 #! /bin/rpm
 #
 #  File: 
-#  $Id: WEBDESK.spec.in,v 1.17 2007/09/07 09:16:17 eric Exp $
+#  $Id: WEBDESK.spec.in,v 1.18 2007/09/07 09:19:12 eric Exp $
 #
 #  This is the SPEC file for the What Users Module
 #  Anakeen What Application
@@ -22,20 +22,24 @@
 %if %{cerbere}
   %define destdir /home/httpd/what
   %define httpuser http
+  %define apacheconfdir /etc/httpd/httpd.conf
   %define releasepostfix %(echo)
 %else
   %if %{pld}
     %define destdir /usr/share/what
     %define httpuser http
+    %define apacheconfdir /etc/webapps/what
     %define releasepostfix cb
    %else
       %if %{redhat}
         %define destdir /usr/share/what
         %define httpuser apache
+        %define apacheconfdir /etc/httpd/conf.d
         %define releasepostfix fc%(cat /etc/fedora-release | sed -e 's/.* release \\([[:digit:]]\\+\\) .*/\\1/')
       %else        
         %define destdir /usr/share/what
         %define httpuser apache
+        %define apacheconfdir /etc/httpd/conf.d
         %define releasepostfix unk
       %endif
   %endif
