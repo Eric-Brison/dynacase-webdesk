@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: portal.php,v 1.29 2007/09/28 05:24:42 marc Exp $
+ * @version $Id: portal.php,v 1.30 2007/09/28 09:01:02 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WGCAL
@@ -146,10 +146,11 @@ function portal(&$action) {
     $svccol   = $tup[0]->getTValue("uport_column");
     $svcline  = $tup[0]->getTValue("uport_line");
     $svcopen  = $tup[0]->getTValue("uport_open");
-    $svcpage  = ($tup[0]->getTValue("uport_page")==""?1:$tup[0]->getTValue("uport_page"));
+    $svcpage  = $tup[0]->getTValue("uport_page");
 
     foreach ($svcnum as $k => $v) {
-      if ($ppage!=$svcpage[$k]) continue;
+      $spage = ($svcpage[$k]=="" ? 1 : $svcpage[$k]);
+      if ($ppage!=$spage) continue;
       $sd = getTDoc(getParam("FREEDOM_DB"), $svcid[$k]);
       if (getV($sd, "psvc_vurl")=="") continue;
       $tsvc[] = array( "rg" => count($tsvc),

@@ -3,20 +3,27 @@
 include_once('FDL/Lib.Dir.php');
 function addservice(&$action) {
    
-  $dbaccess = getParam("FREEDOM_DB");
+  $dbaccess = $action->getParam("FREEDOM_DB"); 
 
+  $silent = GetHttpVars("silent", "no");
+  $oid = GetHttpVars("oid", -1);
   $sid = GetHttpVars("sid", -1);
+
   if ($sid==-1 || $sid=="") {
     $action->lay->set("OUT", "var svcnum = -1;");
   }
 
-  $tup = GetChildDoc( getParam("FREEDOM_DB"), 0, 0, "ALL", 
-		     array("uport_ownerid = ".$action->user->fid), $action->user->id, "LIST", "USER_PORTAL");
+  $owner = $action->user->fid;
+  if ($oid!=-1) $owner = $oid;
+  $downer = new_Doc($dbaccess, $owner);
+
+  $tup = GetChildDoc($dbaccess, 0, 0, "ALL", 
+		     array("uport_ownerid = ".$owner), $action->user->id, "LIST", "USER_PORTAL");
   if (count($tup)<1 || !$tup[0]->isAffected()) {
     $up = createDoc($dbaccess, "USER_PORTAL");
-    $up->setValue("uport_ownerid", $action->user->fid);
-    $up->setValue("uport_owner", $action->user->firstname." ".$action->user->firstname);
-    $up->setValue("uport_title", "Mon portail (".$action->user->firstname." ".$action->user->firstname. ")");
+    $up->setValue("uport_ownerid", $owner);
+    $up->setValue("uport_owner", $downer->getValue("us_firstname")." ".$downer->getValue("us_lastname"));
+    $up->setValue("uport_title", "Mon portail (".$downer->getValue("us_firstname")." ".$downer->getValue("us_lastname").")");
     $up->Add();
     $svcnum   = $svcid = $svctitle = $svcparam = $svcrdel = $svccol = $svcline = array();
   } else {
@@ -53,7 +60,6 @@ function addservice(&$action) {
   
   $err = $up->modify();
   $up->postModify();
-
-  $action->lay->set("OUT", "var svcnum = $svnnumber;");
+  if ($silent!="yes") $action->lay->set("OUT", "var svcnum = $svnnumber;");
 }
 ?>
