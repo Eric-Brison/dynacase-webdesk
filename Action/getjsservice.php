@@ -66,7 +66,7 @@ function getjsservice(&$action) {
     .    "     lin:".$slin.","
     .    "     open:true,"
     .    "     i:".(getV($svc,"psvc_interactif")==1?"true":"false").","
-    .    "     m:false,"
+    .    "     m:".(getV($svc,"psvc_mandatory")==1?"true":"false").","
     .    "     e:true,"
     .    "     d:false };"; 
 
