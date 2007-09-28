@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: portal.php,v 1.28 2007/09/28 05:09:36 marc Exp $
+ * @version $Id: portal.php,v 1.29 2007/09/28 05:24:42 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WGCAL
@@ -130,7 +130,9 @@ function portal(&$action) {
   $action->lay->setBlockData("subcat", $tsubserv);
 
 
-  // Initialise user services
+  // Initialise user services --------------------------------------------------------------
+  $ppage = 1;
+
   $tsvc = array();
   $tup = GetChildDoc( $dbaccess, 0, 0, "ALL", 
 		     array("uport_ownerid = ".$action->user->fid), $action->user->id, "LIST", "USER_PORTAL");
@@ -144,8 +146,10 @@ function portal(&$action) {
     $svccol   = $tup[0]->getTValue("uport_column");
     $svcline  = $tup[0]->getTValue("uport_line");
     $svcopen  = $tup[0]->getTValue("uport_open");
+    $svcpage  = ($tup[0]->getTValue("uport_page")==""?1:$tup[0]->getTValue("uport_page"));
 
     foreach ($svcnum as $k => $v) {
+      if ($ppage!=$svcpage[$k]) continue;
       $sd = getTDoc(getParam("FREEDOM_DB"), $svcid[$k]);
       if (getV($sd, "psvc_vurl")=="") continue;
       $tsvc[] = array( "rg" => count($tsvc),
