@@ -67,7 +67,7 @@ function getjsservice(&$action) {
     .    "     open:true,"
     .    "     i:".(getV($svc,"psvc_interactif")==1?"true":"false").","
     .    "     m:".(getV($svc,"psvc_mandatory")==1?"true":"false").","
-    .    "     e:true,"
+    .    "     e:".(getV($svc,"psvc_umode")==1?"true":"false").","
     .    "     d:false };"; 
 
   $action->lay->set("OUT", $ret);

@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: portal.php,v 1.30 2007/09/28 09:01:02 marc Exp $
+ * @version $Id: portal.php,v 1.31 2007/09/28 09:14:16 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WGCAL
@@ -170,7 +170,7 @@ function portal(&$action) {
 		       "open" => ($svcopen[$k]==1?"true":"false"),
 		       "interactif" => (getV($sd, "psvc_interactif")==1?"true":"false"),
 		       "mandatory" => (getV($sd, "psvc_mandatory")==1?"true":"false"),
-		       "editable" => "true",
+		       "editable" => (getV($sd, "psvc_umode")==1?"true":"false"),
 		      );
     }
   } else {
