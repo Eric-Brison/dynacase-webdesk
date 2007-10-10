@@ -24,7 +24,7 @@ function initPortal() {
     if (document.getElementById('trace')) {
       document.getElementById('trace').style.top=parseInt(getFrameHeight())-20;
     }
-  trace('Initialisation des servics...');
+  trace('Initialisation des services...');
   displayServices();
 
 
@@ -54,7 +54,8 @@ addEvent(window,"load", initPortal);
   <img class="small_button" src="[IMGF:wd_svc_show.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd open all services]" onclick="openAllSvc()"><img class="small_button"  src="[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd  close all services]" onclick="closeAllSvc()"><img class="small_button" src="[IMGF:wd_font_smaller.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reduce font]" onclick="fontSizer(-1)"><img class="small_button"  src="[IMGF:wd_font_bigger.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd  enlarge font]" onclick="fontSizer(1)">
 </td>
 <td class="wdtitleb" style="margin:5px; text-align:right; vertical-align:middle">
-<span class="wdpnumber" title="Mon portail [page 1]">Page 1</span>
+<span class="wdaddp" title="[TEXT:wd add page]">(+)</span>
+[BLOCK plist]<span class="wdpnumber" title="Page [name]">[name]</span>[ENDBLOCK plist]
 </td>
 </tr></table>
 
@@ -63,6 +64,9 @@ addEvent(window,"load", initPortal);
 <tr>
 [BLOCK cols]
 <td  id="wdcol[icol]" wdcol="[icol]" onmouseover="mouseOverService(event)" class="wdcols" style="width:[cwidth]%;">
+[IFNOT lastCol]<div onmouseover="startResizePortalCol(event,[icol])" 
+     onmouseout="endResizePortalCol(event,[icol])" 
+     style="float:right; cursor:ew-resize; width:3px;height:100%; "></div>[ENDIF lastCol]
 </td>[ENDBLOCK cols]
 </tr></table>
 

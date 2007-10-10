@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: portal.php,v 1.31 2007/09/28 09:14:16 marc Exp $
+ * @version $Id: portal.php,v 1.32 2007/10/10 17:12:37 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WGCAL
@@ -32,19 +32,9 @@ function portal(&$action) {
     $action->parent->AddJsCode($jslay->gen());
   }
   $action->parent->AddCssRef("WEBDESK:webdesk.css", true);
-
-  $colcount = getParam("WDK_COLCOUNT",3);
+  
   $svclist_colcount = getParam("WDK_SVCCOLCOUNT",3);
-
-  $action->lay->set("colCount", $colcount); 
-
-  $cwidth = floor(100/$colcount);
-  $cols = array();
-  for ($icol=0; $icol<$colcount; $icol++) {
-    $cols[] = array( "firstCol" => ($icol==0?true:false), "icol" => $icol, "cwidth" => $cwidth );
-  }
-  $action->lay->setBlockData("cols", $cols); 
- 
+  
   //
   // List services ordered by category
   //
@@ -54,7 +44,7 @@ function portal(&$action) {
   $d = createDoc($dbaccess, "PORTAL_SERVICE", false);
   $acat = $d->GetAttribute("psvc_categorie");
   $cat = $acat->getEnum();
-
+  
   $ordercat = array();
   foreach ($cat as $kc => $vc) {
     $tc = explode(".", $kc);
@@ -128,14 +118,51 @@ function portal(&$action) {
     $action->lay->setBlockData("subcatserv".$v["num"], $v["svc"]);
   }
   $action->lay->setBlockData("subcat", $tsubserv);
+  
+  
+
+  // Initialise page structures
+  $pspec  = getParam("WDK_PORTALSPEC","??|33:33:33");
+  $ts = explode("%", $pspec);
+  $pages = array(); $ip=0;
+  foreach ($ts as $k => $v) {
+    if ($v=="") continue;
+    $sts = explode("|",$v);
+    $pages[$ip]["name"] =  $sts[0];
+    $scol = explode(":", $sts[1]);
+    $pages[$ip]["coln"] = count($scol);
+    $pages[$ip]["colw"] = $scol;
+    $ip++;
+  }
+  
+   foreach ($pages as $pn => $page) {
+     
+     $colcount = $page["coln"];
+     
+     $action->lay->set("colCount", $colcount); 
+     
+     $cwidth = floor(100/$colcount);
+     $cols = array();
+     for ($icol=0; $icol<$colcount; $icol++) {
+       $cols[] = array( "firstCol" => ($icol==0?true:false), 
+			"lastCol" => ($icol==($colcount-1)?true:false),
+			"icol" => $icol, 
+			"cwidth" => $page["colw"][$icol] );
+     }
+     $action->lay->setBlockData("cols", $cols); 
+  }
+  $action->lay->setBlockData("plist", $pages); 
+ 
+  
+
 
 
   // Initialise user services --------------------------------------------------------------
   $ppage = 1;
-
+  
   $tsvc = array();
   $tup = GetChildDoc( $dbaccess, 0, 0, "ALL", 
-		     array("uport_ownerid = ".$action->user->fid), $action->user->id, "LIST", "USER_PORTAL");
+		      array("uport_ownerid = ".$action->user->fid), $action->user->id, "LIST", "USER_PORTAL");
   if (is_object($tup[0]) && $tup[0]->isAffected()) {
     
     $svcnum   = $tup[0]->getTValue("uport_svcnum");
@@ -147,7 +174,7 @@ function portal(&$action) {
     $svcline  = $tup[0]->getTValue("uport_line");
     $svcopen  = $tup[0]->getTValue("uport_open");
     $svcpage  = $tup[0]->getTValue("uport_page");
-
+    
     foreach ($svcnum as $k => $v) {
       $spage = ($svcpage[$k]=="" ? 1 : $svcpage[$k]);
       if ($ppage!=$spage) continue;
@@ -171,7 +198,7 @@ function portal(&$action) {
 		       "interactif" => (getV($sd, "psvc_interactif")==1?"true":"false"),
 		       "mandatory" => (getV($sd, "psvc_mandatory")==1?"true":"false"),
 		       "editable" => (getV($sd, "psvc_umode")==1?"true":"false"),
-		      );
+		       );
     }
   } else {
     $welc = getIdFromName($dbaccess, "PS_WELCOME");
@@ -225,13 +252,13 @@ function portal(&$action) {
 			 );
       }
     }
-  }
+  } 
   $action->lay->setBlockData("USvc", $tsvc); 
-  
+    
 }
+  
 
-
-
+  
   function haveAppAccess($appname) {
     global $action;
     $query=new QueryDb($action->dbaccess,"Application");

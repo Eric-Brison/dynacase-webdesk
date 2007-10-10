@@ -1,4 +1,4 @@
-// $Id: portal.js,v 1.43 2007/07/26 08:57:17 marc Exp $
+// $Id: portal.js,v 1.44 2007/10/10 17:12:37 marc Exp $
 
 // portal
 var portalRefreshInterval = 10;
@@ -146,7 +146,7 @@ function showService(is, updates) {
       imgcyc = '<img src="[IMGF:wd_svc_cyclic.gif:0,0,0|COLOR_BLACK]" style="border:0px" title="[TEXT:automatic reload all] '+services[is].rdel+' minutes">';
     }
     cnt += '<table cellspacing="0" cellpadding="0" style="width:100%; border:0px">';
-    cnt += '<tr style="vertical-align:baseline; cursor:move; border:1px solid red;" onmousedown="return startMoveService(event, this, '+snum+');" onmouseup="endMoveService(event,'+snum+')"  onmouseover="mOverSvcTitle('+snum+')" onmouseout="mOutSvcTitle('+snum+')"onDblClick="showHideSvc(event, '+snum+',true); return false;">';
+    cnt += '<tr style="vertical-align:baseline; cursor:e-resize; border:1px solid red;" onmousedown="return startMoveService(event, this, '+snum+');" onmouseup="endMoveService(event,'+snum+')"  onmouseover="mOverSvcTitle('+snum+')" onmouseout="mOutSvcTitle('+snum+')"onDblClick="showHideSvc(event, '+snum+',true); return false;">';
     cnt += '<td >';
      cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc(event, '+snum+',true); return false;" src="[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd hide svc content]">';
     cnt += '<span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
@@ -788,4 +788,52 @@ function closeSubService() {
 function unsetTempoCloseSubService(event, mid) {
   if (menuId==mid && menuTempo!=-1) clearTimeout(menuTempo);
   menuTempo = -1;
+}
+
+
+// Resizing columns
+var colResize = -1;
+var colElt = null;
+function startResizePortalCol(event, ncol) {
+  event || (event = window.event);
+  var srcel = (event.target) ? event.target : event.srcElement;
+
+  srcel.style.borderRight = '3px outset [COLOR_A8]';
+  colElt = srcel;
+  addEvent(document,'mousemove',mouseResizeCols);  
+  addEvent(document,'mouseup',endResizeCols);  
+  stopPropagation(event);
+  colResize = ncol;
+  return;
+}
+
+function mouseResizeCols(event) {
+  if (colResize>=0) {
+    GetXY(event);
+    colElt.style.left = Xpos;
+    document.getElementById('wdcol'+colResize).style.width = parseInt(Xpos);
+    trace(' X='+Xpos);
+  }
+  return false;
+}
+
+function endResizeCols(event) {
+  event || (event = window.event);
+  var srcel = (event.target) ? event.target : event.srcElement;
+  if (colResize>=0) {
+    GetXY(event);
+    trace('ca bouge : X='+Xpos+' Y='+Ypos);
+    srcel.style.borderRight = '0px';
+    colElt = null;
+    colResize = -1;
+    delEvent(document,'mouseup',endResizeCols);
+ }
+  return;
+}
+function endResizePortalCol(event, ncol) {
+  event || (event = window.event);
+  var srcel = (event.target) ? event.target : event.srcElement;
+
+  //  alert('resizing col #'+ncol);
+
 }
