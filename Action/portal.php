@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: portal.php,v 1.33 2007/10/11 10:12:50 marc Exp $
+ * @version $Id: portal.php,v 1.34 2007/10/11 10:24:35 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WGCAL
@@ -39,7 +39,7 @@ function portal(&$action) {
   //
   // List services ordered by category
   //
-  $ts = GetChildDoc($dbaccess, 0, 0, "ALL", array(), $action->user->id, "TABLE", "PORTAL_SERVICE");
+  $ts = GetChildDoc($dbaccess, 0, 0, "ALL", array(), $action->user->id, "TABLE", "PORTAL_SERVICE", false, "psvc_title");
   $tserv = array();
   $tsubserv = array();
   $d = createDoc($dbaccess, "PORTAL_SERVICE", false);
