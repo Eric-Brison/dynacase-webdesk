@@ -8,6 +8,7 @@
 [JS:CODE]
 
 var isIE = [IF ISIE]true[ENDIF ISIE][IFNOT ISIE]false[ENDIF ISIE];
+var pages = [ { num:1, name:'Page 1'} ];
 var colCount = [colCount];
 var colContent = new Array;
 var services = new Array();
@@ -51,10 +52,10 @@ addEvent(window,"load", initPortal);
 &nbsp;<a style="padding:0px; text-decoration:none; background-image: none;" href="[CORE_STANDURL]app=CORE&action=HELPVIEW&filename=portal.pdf" target="_self"><img title="[TEXT:portal welcome manual]" class="small_button" src="[IMGF:wd_help.gif:0,0,0|COLOR_BLACK]" /></a>
 </td>
 <td class="wdtitleb" style="margin:5px; text-align:center; vertical-align:middle">
-  <img class="small_button" src="[IMGF:wd_svc_show.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd open all services]" onclick="openAllSvc()"><img class="small_button"  src="[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd  close all services]" onclick="closeAllSvc()"><img class="small_button" src="[IMGF:wd_font_smaller.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reduce font]" onclick="fontSizer(-1)"><img class="small_button"  src="[IMGF:wd_font_bigger.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd  enlarge font]" onclick="fontSizer(1)">
+  <img class="small_button" src="[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd open all services]" onclick="openAllSvc()"><img class="small_button"  src="[IMGF:wd_svc_show.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd  close all services]" onclick="closeAllSvc()"><img class="small_button" src="[IMGF:wd_font_smaller.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reduce font]" onclick="fontSizer(-1)"><img class="small_button"  src="[IMGF:wd_font_bigger.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd  enlarge font]" onclick="fontSizer(1)"><img class="small_button"  src="[IMGF:wd_resizecols.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd  reset colums]" onclick="resetColsSize()">
 </td>
 <td class="wdtitleb" style="margin:5px; text-align:right; vertical-align:middle">
-<span class="wdaddp" title="[TEXT:wd add page]">(+)</span>
+<!-- <span class="wdaddp" title="[TEXT:wd add page]">(+)</span> -->
 [BLOCK plist]<span class="wdpnumber" title="Page [name]">[name]</span>[ENDBLOCK plist]
 </td>
 </tr></table>
@@ -65,10 +66,10 @@ addEvent(window,"load", initPortal);
 [BLOCK cols]
 <td  id="wdcol[icol]" wdcol="[icol]" onmouseover="mouseOverService(event)" class="wdcols" style="width:[cwidth]%;">
 [IFNOT lastCol]
-<div onmouseover="initResizePortalCol(event,[icol])"
+<div id="handcol[icol]" onmouseover="initResizePortalCol(event,[icol])"
      onmousedown="startResizePortalCol(event,[icol])" 
      onmouseout="endResizePortalCol(event,[icol])" 
-     style="float:right; width:3px;height:100%; "></div>[ENDIF lastCol]
+     style="margin:0;padding:0; border-width: 0px 3px 0px 0px; border-style:solid; border-color:[COLOR_A9]; float:right; width:3px; [IF ISIE]height:200px;[ENDIF ISIE][IFNOT ISIE]height:100%;[ENDIF ISIE] "></div>[ENDIF lastCol]
 </td>[ENDBLOCK cols]
 </tr></table>
 

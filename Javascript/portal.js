@@ -1,7 +1,9 @@
-// $Id: portal.js,v 1.45 2007/10/11 05:23:31 marc Exp $
+// $Id: portal.js,v 1.46 2007/10/11 10:12:50 marc Exp $
 
 // portal
 var portalRefreshInterval = 10;
+var currentPage = 0;
+
 function startRefresh() {
   var fapp = parent.document.getElementById(window.name);
   if (fapp.style.display=='block') {
@@ -803,7 +805,6 @@ function initResizePortalCol(event, ncol) {
   if (colResize==-1) {
     srcel.style.borderRight = '3px outset [COLOR_A8]';
     globalcursor('ew-resize');
-    trace('sélectionnée ==> '+ncol);
   }
   return false;
 }
@@ -833,58 +834,69 @@ function startResizePortalCol(event, ncol) {
 }
 
 function mouseResizeCols(event) {
-  var tw = 1.0;
-  var pc = 0.0;
+  var r = 1.0;
   if (colResize>=0) {
     GetXY(event);
-    if (cLeft[colResize]<Xpos && Xpos<pWidth) {
-      var dv = Xpos - (cLeft[colResize]+cWidth[colResize]);
+
+    if (Xpos>cLeft[colResize] && Xpos<pWidth) {
+
+     var dv = Xpos - (cLeft[colResize]+cWidth[colResize]);
       var nw = new Array();
+
+      var oldW = pWidth - cWidth[colResize];
+      var newW = pWidth - (cWidth[colResize] + dv);
+      
       nw[colResize] = parseInt(100 / (pWidth / (cWidth[colResize] + dv)));
-      tw = pWidth - (cWidth[colResize] + dv);
-      var mmm = ' tw='+tw+'   : ';
-      for (var icol=0; icol<colCount; icol++) {
-	pc =  parseInt(100 / (pWidth / cWidth[icol]));
-        if (icol!=colResize) {
-	  nw[icol] = parseInt((100 / (pWidth / (tw * (pc/100) )))/100);
-	}
-	mmm += ' col['+icol+']='+nw[icol]+'% (pc:'+pc+')';
+      for (var icol=(colResize+1); icol<colCount; icol++) {
+	var r = 1.0 * (oldW / cWidth[icol]);
+	nw[icol] = parseInt(100 / (pWidth / (newW / r)));
       }
-      trace(mmm);
-
-
-
-      for (var icol=0; icol<colCount; icol++) {
-// 	document.getElementById('wdcol'+colResize).style.width = nw[icol]+'%';
-// 	cWidth[icol] = getObjectWidth(document.getElementById('wdcol'+icol));
+      for (var icol=colResize; icol<colCount; icol++) {
+ 	document.getElementById('wdcol'+icol).style.width = nw[icol]+'%';
+ 	cWidth[icol] = getObjectWidth(document.getElementById('wdcol'+icol));
       }
     }
   }
   return false;
 }
 
+function resetColsSize() {
+  
+  pWidth = getFrameWidth();
+  var colw = parseInt(100/(pWidth/(pWidth / colCount)));
+  var pval = pages[currentPage].name+'|';
+  for (var icol=0; icol<colCount; icol++) {
+    document.getElementById('wdcol'+icol).style.width = colw+'%';
+    cWidth[icol] = getObjectWidth(document.getElementById('wdcol'+icol));
+    pval += colw;
+    if (icol<(colCount-1)) pval+=':';
+  }
+  setparamu('WEBDESK', 'WDK_PORTALSPEC', pval);
+}
+
 function endResizeCols(event) {
   event || (event = window.event);
   var srcel = (event.target) ? event.target : event.srcElement;
   if (colResize>=0) {
-    srcel.style.borderRight = '0px';
+    document.getElementById('handcol'+colResize).style.borderRight = '3px solid [COLOR_A9]';
+    delEvent(document,'mouseup',endResizeCols);
+    var pval = pages[currentPage].name+'|';
+    for (var icol=0; icol<colCount; icol++) {
+      pval += parseInt(100/(pWidth/cWidth[icol]));
+      if (icol<(colCount-1)) pval += ':';
+    }
     unglobalcursor();
     colElt = null;
     colResize = -1;
-    delEvent(document,'mouseup',endResizeCols);
-    var mmm = 'Store page=1 : ';
-    for (var icol=0; icol<colCount; icol++) {
-      mmm += ' col['+icol+'] ='+parseInt(100/(pWidth/cWidth[icol]))+'% ';
-    }
-    trace(mmm);
- }
-  return;
+    setparamu('WEBDESK', 'WDK_PORTALSPEC', pval);
+  }
+  return false;
 }
 function endResizePortalCol(event, ncol) {
   event || (event = window.event);
   var srcel = (event.target) ? event.target : event.srcElement;
   if (colResize==-1) {
-    srcel.style.borderRight = '0px';
+    srcel.style.borderRight = '3px solid [COLOR_A9]';
     unglobalcursor();
   }
   return false;

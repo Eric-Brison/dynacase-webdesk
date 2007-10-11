@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: portal.php,v 1.32 2007/10/10 17:12:37 marc Exp $
+ * @version $Id: portal.php,v 1.33 2007/10/11 10:12:50 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WGCAL
@@ -25,6 +25,7 @@ function portal(&$action) {
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/geometry.js");
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/resizeimg.js");
   $action->parent->AddJsRef($action->GetParam("CORE_PUBURL")."/FDL/Layout/common.js");
+  $action->parent->AddJsRef($action->GetParam("CORE_PUBURL")."/FDC/Layout/setparamu.js");
   $action->lay->set("debug", $debug);
   if (!$debug) $action->parent->AddJsRef("WEBDESK:portal.js", true);
   else {
@@ -151,7 +152,8 @@ function portal(&$action) {
      }
      $action->lay->setBlockData("cols", $cols); 
   }
-  $action->lay->setBlockData("plist", $pages); 
+   if (count($pages)>1) $action->lay->setBlockData("plist", $pages); 
+   else $action->lay->setBlockData("plist", null);
  
   
 

@@ -12,13 +12,31 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-08 10:44+0200\n"
+"POT-Creation-Date: 2007-10-11 11:50+0200\n"
 "PO-Revision-Date: 2007-08-08 10:44+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+msgid "Theme preferences"
+msgstr "Préférences du thème"
+
+msgid "Theme"
+msgstr "Thème"
+
+msgid "User identification"
+msgstr "Identification de l'utilisateur"
+
+msgid "Identification"
+msgstr "Identification"
+
+msgid "description"
+msgstr ""
+
+msgid "short_name"
+msgstr ""
 
 msgid "My portal"
 msgstr "Mon portail"
@@ -34,18 +52,6 @@ msgstr "Administration"
 
 msgid "Webdesk administration"
 msgstr "Administration du WebDesk"
-
-msgid "Theme preferences"
-msgstr "Préférences du thème"
-
-msgid "Theme"
-msgstr "Thème"
-
-msgid "User identification"
-msgstr "Identification de l'utilisateur"
-
-msgid "Identification"
-msgstr "Identification"
 
 msgid "webdesk"
 msgstr "WebDesk"
@@ -149,18 +155,35 @@ msgstr "nombre de documents affectés"
 msgid "preview of theme"
 msgstr "prévisualisation du thème"
 
-msgid "wd no freedom search given"
-msgstr "Pas de recherche Freedom fournie"
+msgid "portal colums specification"
+msgstr "Colonnes du portail"
 
-msgid "wd invalid freedom search given"
-msgstr "recherche Freedom invalide"
+msgid "portal columns count"
+msgstr "nombre de colonne du portail"
 
-msgid "without category"
-msgstr "sans catégorie"
+msgid "services list columns count"
+msgstr "nombre de colonnes pour la liste de services"
 
-#, c-format
-msgid "incident in progress -%d-"
-msgstr "Incident en cours -%d-"
+msgid "ardoise content"
+msgstr "contenu de l'ardoise"
+
+msgid "application present in application bar"
+msgstr "Application présente dans la barre"
+
+msgid "webdesk menu background color"
+msgstr "Couleur de fond pour le menu application"
+
+msgid "webdesk menu background image"
+msgstr "Image de fond pour le menu application"
+
+msgid "webdesk menu background image width"
+msgstr "Largeur de l'image de fond pour le menu application"
+
+msgid "no account defined"
+msgstr "pas de compte défini."
+
+msgid "error retrieving mails"
+msgstr "Erreur de récupération des messages"
 
 #, c-format
 msgid "temperature %s c (dew %s c, heat %s c)"
@@ -182,12 +205,6 @@ msgstr "Pression %s hpa"
 msgid "Visibility %s %s km"
 msgstr "visibilité %s %s km"
 
-msgid "no account defined"
-msgstr "pas de compte défini."
-
-msgid "error retrieving mails"
-msgstr "Erreur de récupération des messages"
-
 msgid "wd no rss link given"
 msgstr "Pas de flux RSS fourni"
 
@@ -195,6 +212,12 @@ msgid ""
 "[TEXT:no information available, verify your server have http access to "
 "internet and/or check link please...]"
 msgstr "Pas d'information, vérifiez que l'URL du lien est accessible"
+
+msgid "wd no freedom search given"
+msgstr "Pas de recherche Freedom fournie"
+
+msgid "wd invalid freedom search given"
+msgstr "recherche Freedom invalide"
 
 #, c-format
 msgid "more than %d results..."
@@ -230,23 +253,12 @@ msgstr "société...."
 msgid "wdd info personal"
 msgstr "personnel..."
 
-msgid "portal columns count"
-msgstr "nombre de colonne du portail"
+msgid "without category"
+msgstr "sans catégorie"
 
-msgid "services list columns count"
-msgstr "nombre de colonnes pour la liste de services"
-
-msgid "ardoise content"
-msgstr "contenu de l'ardoise"
-
-msgid "webdesk menu background color"
-msgstr "Couleur de fond pour le menu application"
-
-msgid "webdesk menu background image"
-msgstr "Image de fond pour le menu application"
-
-msgid "webdesk menu background image width"
-msgstr "Largeur de l'image de fond pour le menu application"
+#, c-format
+msgid "incident in progress -%d-"
+msgstr "Incident en cours -%d-"
 
 msgid "wd error add service"
 msgstr "wd error add service"
@@ -302,41 +314,11 @@ msgstr "Etes-vous sur de vouloir supprimer le service "
 msgid "wd error retrieving content"
 msgstr "Erreur de récupération du contenu"
 
-msgid "wd entre rss link here"
-msgstr "Saisissez l'URL du flux RSS ici"
-
-msgid "wd search ..."
-msgstr "Texte recherché"
-
-msgid "checked : search only in titles"
-msgstr "coché : rechercher seulement dans les titres"
-
-msgid "open it in a new window"
-msgstr "ouvrir dans une nouvelle fenetre"
-
-msgid "Click to see detail"
-msgstr "Cliquer pour voir le détail"
-
-msgid "No style"
-msgstr "Pas de style"
-
 msgid "Click to search person containing..."
 msgstr "Commençant par ...."
 
 msgid "Click to search both in society name..."
 msgstr "Sélectionner pour chercher dans les noms de société"
-
-msgid "wd rss more infos"
-msgstr "Plus d'informations..."
-
-msgid "no rss item"
-msgstr "Pas de nouvelles, bonne nouvelle"
-
-msgid "display full card in the same window"
-msgstr "Afficher les cartes complètes dans la même fenêtre"
-
-msgid "display column x lines"
-msgstr "Affichage colonnes x lignes"
 
 msgid "portal welcome service"
 msgstr "Accueil"
@@ -365,8 +347,35 @@ msgid "rss: select to search in system RSS (else mine only)"
 msgstr ""
 "Cochez pour rechercher dans les RSS système (sinon seulement les miennes)"
 
-msgid "freedom rss search"
-msgstr "Recherche de fil RSS Freedom"
+msgid "wd rss more infos"
+msgstr "Plus d'informations..."
+
+msgid "no rss item"
+msgstr "Pas de nouvelles, bonne nouvelle"
+
+msgid "wd search ..."
+msgstr "Texte recherché"
+
+msgid "checked : search only in titles"
+msgstr "coché : rechercher seulement dans les titres"
+
+msgid "open it in a new window"
+msgstr "ouvrir dans une nouvelle fenetre"
+
+msgid "display full card in the same window"
+msgstr "Afficher les cartes complètes dans la même fenêtre"
+
+msgid "display column x lines"
+msgstr "Affichage colonnes x lignes"
+
+msgid "wd entre rss link here"
+msgstr "Saisissez l'URL du flux RSS ici"
+
+msgid "Click to see detail"
+msgstr "Cliquer pour voir le détail"
+
+msgid "No style"
+msgstr "Pas de style"
 
 msgid "rss: clear displayed results"
 msgstr "Effacer les résultats"
@@ -376,6 +385,9 @@ msgstr "Url"
 
 msgid "wd enter url"
 msgstr "Saisissez l'URL ici"
+
+msgid "Title"
+msgstr ""
 
 msgid "Height"
 msgstr "Hauteur"
@@ -392,38 +404,17 @@ msgstr "image"
 msgid "flash sheet"
 msgstr "flash"
 
+msgid "freedom rss search"
+msgstr "Recherche de fil RSS Freedom"
+
 msgid "Preview"
 msgstr "Prévisualisation"
 
 msgid "Do not click here"
 msgstr "Ne cliquez pas ici"
 
-msgid "wd open/close menu"
-msgstr "Ouvrir/fermer le menu"
-
-msgid "wd document received"
-msgstr "Documents affectés"
-
-msgid "wd unread mail count"
-msgstr "Mails non lus"
-
-msgid "wd waiting event count"
-msgstr "Rendez-vous proposés"
-
-msgid "wd fixe/release menu"
-msgstr "Afficher/masque le menu comme panneau latéral"
-
-msgid "wd display application"
-msgstr "Afficher..."
-
-msgid "wd reload (force) application"
-msgstr "Recharger l'application..."
-
-msgid "wd open in new window"
-msgstr "Ouvrir dans une nouvelle fenêtre"
-
-msgid "wd add/remove shortcut"
-msgstr "Ajouter/Supprimer le raccourci..."
+msgid "Here either"
+msgstr "Ici non plus"
 
 msgid "wd manage portal"
 msgstr "Gestion du portail"
@@ -446,6 +437,12 @@ msgstr "Réduire la taille du texte..."
 msgid "wd  enlarge font"
 msgstr "Augmenter la taille du texte..."
 
+msgid "wd  reset colums"
+msgstr "Réinitialiser les largeurs des colonnes"
+
+msgid "wd add page"
+msgstr "Ajouter une page"
+
 msgid "wd close"
 msgstr "Fermer"
 
@@ -457,6 +454,36 @@ msgstr "Liste des services disponibles"
 
 msgid "wd add service"
 msgstr "Ajouter le service"
+
+msgid "wd open/close menu"
+msgstr "Ouvrir/fermer le menu"
+
+msgid "wd document received"
+msgstr "Documents affectés"
+
+msgid "wd unread mail count"
+msgstr "Mails non lus"
+
+msgid "wd waiting event count"
+msgstr "Rendez-vous proposés"
+
+msgid "Click here to login"
+msgstr ""
+
+msgid "wd fixe/release menu"
+msgstr "Afficher/masque le menu comme panneau latéral"
+
+msgid "wd display application"
+msgstr "Afficher..."
+
+msgid "wd reload (force) application"
+msgstr "Recharger l'application..."
+
+msgid "wd open in new window"
+msgstr "Ouvrir dans une nouvelle fenêtre"
+
+msgid "wd add/remove shortcut"
+msgstr "Ajouter/Supprimer le raccourci..."
 
 msgid "Theme chooser"
 msgstr "Choix du thème"
@@ -476,17 +503,17 @@ msgstr "grande taille"
 msgid "x-large size"
 msgstr "très grande taille"
 
+msgid "Apply"
+msgstr ""
+
 msgid "Change your theme"
 msgstr "Changer votre thème"
-
-msgid "Here either"
-msgstr "Ici non plus"
 
 msgid "webdesk application portal"
 msgstr "Portail application WebDesk"
 
-msgid "produced by Freedom"
-msgstr "produit par Freedom"
+msgid "Javascript must be enabled in your navigator"
+msgstr ""
 
 msgid "Change password"
 msgstr "Modifier mon mot de passe"
@@ -494,8 +521,8 @@ msgstr "Modifier mon mot de passe"
 msgid "Change name and coordinates"
 msgstr "Changer mon nom et mes coordonnées"
 
-#~ msgid "application present in application bar"
-#~ msgstr "Application présente dans la barre"
+msgid "produced by Freedom"
+msgstr "produit par Freedom"
 
 #~ msgid "wd go left"
 #~ msgstr "déplacer vers la gauche"
