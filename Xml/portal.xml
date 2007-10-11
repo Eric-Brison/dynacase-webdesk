@@ -64,9 +64,11 @@ addEvent(window,"load", initPortal);
 <tr>
 [BLOCK cols]
 <td  id="wdcol[icol]" wdcol="[icol]" onmouseover="mouseOverService(event)" class="wdcols" style="width:[cwidth]%;">
-[IFNOT lastCol]<div onmouseover="startResizePortalCol(event,[icol])" 
+[IFNOT lastCol]
+<div onmouseover="initResizePortalCol(event,[icol])"
+     onmousedown="startResizePortalCol(event,[icol])" 
      onmouseout="endResizePortalCol(event,[icol])" 
-     style="float:right; cursor:ew-resize; width:3px;height:100%; "></div>[ENDIF lastCol]
+     style="float:right; width:3px;height:100%; "></div>[ENDIF lastCol]
 </td>[ENDBLOCK cols]
 </tr></table>
 
