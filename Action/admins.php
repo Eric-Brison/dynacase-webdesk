@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: admins.php,v 1.2 2006/11/28 16:20:00 marc Exp $
+ * @version $Id: admins.php,v 1.3 2007/10/16 09:07:27 eric Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WEBDESK
@@ -23,6 +23,7 @@ function admins(&$action) {
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/DHTMLapi.js");  
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/AnchorPosition.js");  
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/geometry.js");  
+  $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/resizeimg.js");  
   // Get application list
 
   $query=new QueryDb($action->dbaccess,"Application");

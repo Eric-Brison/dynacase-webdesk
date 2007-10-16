@@ -16,7 +16,7 @@ addEvent(window,'load',selectFirstApp);
 <td>
 <div id="divapp" class="wdparamb">[BLOCK applist]
 <div id="app[id]" title="[description]" class="app" onmouseover="if (this.className=='app') this.className='app_over'" onmouseout="if (this.className=='app_over') this.className='app'" onclick="selectApp('[id]', '[CORE_BASEURL]&app=[name]&action=[action]');">
-<img src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]">&nbsp;[short_name]</div>
+<img needresize="1" src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]">&nbsp;[short_name]</div>
 [ENDBLOCK applist]</div>
 </td>
 <td>

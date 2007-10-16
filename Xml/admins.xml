@@ -16,7 +16,7 @@ addEvent(window,'load',selectFirstApp);
 <td style="width:200px;">
 <div id="divapp" class="wdparamb">[BLOCK applist]
 <div id="app[id]" title="[description]" class="app" onclick="selectApp([id], '[CORE_BASEURL]&app=[name]&action=[action]');">
-<img src="[iconsrc]" style="width:16px;">&nbsp;[short_name]
+<img needresize="1" src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL];">&nbsp;[short_name]
 </div>[ENDBLOCK applist]</div>
 </td>
 <td ><iframe id="appzone" name="appzone" style="display:none;  height:100%; width:100%" src="about:blank"></iframe>
