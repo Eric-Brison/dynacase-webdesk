@@ -121,7 +121,16 @@ function svcmail(&$action) {
 }
 
 function clearText($s) {
-  return htmlentities((utf8_decode(imap_utf8($s))));
+  $t=imap_mime_header_decode($s);
+  $ot='';
+  foreach ($t as $st) {
+    if ($st->charset=="utf-8") $ot.=utf8_decode($st->text);
+    else $ot.=$st->text;
+  }
+
+  if ($ot[0]=='"') $ot=str_replace('"',"",$ot);
+
+  return $ot;
 }
 
 function getMbox($mbox, $login, $pass, $count, $new=true) {
