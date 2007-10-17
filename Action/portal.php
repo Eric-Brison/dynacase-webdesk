@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: portal.php,v 1.34 2007/10/11 10:24:35 marc Exp $
+ * @version $Id: portal.php,v 1.35 2007/10/17 13:09:40 eric Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WGCAL
@@ -44,16 +44,18 @@ function portal(&$action) {
   $tsubserv = array();
   $d = createDoc($dbaccess, "PORTAL_SERVICE", false);
   $acat = $d->GetAttribute("psvc_categorie");
-  $cat = $acat->getEnum();
-  
+  $cat = $acat->getEnum();  
+
   $ordercat = array();
   foreach ($cat as $kc => $vc) {
     $tc = explode(".", $kc);
     $tt = explode("/", $vc);
-    $ordercat[$kc]["father"] = (isset($tc[count($tc)-2])?$tc[count($tc)-2]:$tc[count($tc)-1]);
-    $ordercat[$kc]["level"] = count($tc);
-    $ordercat[$kc]["label"] = $tt[count($tc)-1];
-    $ordercat[$kc]["key"] = $kc;
+    $kcat=$tc[count($tc)-1];
+
+    $ordercat[$kcat]["father"] = (isset($tc[count($tc)-2])?$tc[count($tc)-2]:$tc[count($tc)-1]);
+    $ordercat[$kcat]["level"] = count($tc);
+    $ordercat[$kcat]["label"] = $tt[count($tc)-1];
+    $ordercat[$kcat]["key"] = $kc;
   }
 
   $query=new QueryDb($action->dbaccess,"Application");
