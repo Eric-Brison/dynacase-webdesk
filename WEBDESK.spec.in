@@ -1,7 +1,7 @@
 #! /bin/rpm
 #
 #  File: 
-#  $Id: WEBDESK.spec.in,v 1.19 2007/10/01 07:15:02 marc Exp $
+#  $Id: WEBDESK.spec.in,v 1.20 2007/10/17 08:21:51 eric Exp $
 #
 #  This is the SPEC file for the What Users Module
 #  Anakeen What Application
@@ -48,7 +48,7 @@
 %{?nhttpuser:%define httpuser %{nhttpuser}}
 %{?rpost:%define releasepostfix %{rpost}}
 
-Summary: Webdesk
+Summary: Services pages for freedom ECM
 Name: @PACKAGE@
 Version: @VERSION@
 Release: @RELEASE@%{releasepostfix}
@@ -76,7 +76,7 @@ Requires: FREEDOM-USERCARD >= 2.5.1
 Requires: WHAT >= 2.3.2
 
 %description
-Webdesk aids users
+This module is use to allow user to configure the main page of freedom ECM with several available services like RSS, weather, searches.
 
 
 %prep
