@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: portal.php,v 1.36 2007/10/17 15:33:06 eric Exp $
+ * @version $Id: portal.php,v 1.37 2007/10/22 12:37:53 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WGCAL
@@ -269,7 +269,7 @@ function portal(&$action) {
     $query=new QueryDb($action->dbaccess,"Application");
 
     // Check if application is installed and available
-    $query->basic_elem->sup_where=array("name='".$appname."'","available='Y'","displayable='Y'");
+    $query->basic_elem->sup_where=array("name='".$appname."'","available='Y'");
     $list = $query->query(0,0,"TABLE");
     if ($query->nb<=0) return false;
 
