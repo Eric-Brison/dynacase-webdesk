@@ -1,15 +1,7 @@
 # ============================================
-# $Id: Makefile,v 1.2 2007/07/06 12:25:05 yannick Exp $
+# $Id: Makefile,v 1.3 2007/10/22 15:16:10 marc Exp $
 # ============================================
-
-
 export targetdir
 export utildir
-
-#SUBDIR= Users
-
-
 include $(utildir)/PubRule
-
-
 DISTFILES+=changelog changelog.in compat control copyright dirs postinst rules 
