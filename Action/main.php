@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: main.php,v 1.13 2007/03/09 20:32:52 eric Exp $
+ * @version $Id: main.php,v 1.14 2007/11/29 17:42:38 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WEBDESK
@@ -74,6 +74,7 @@ function main(&$action) {
   $list = $query->Query(0,0,"TABLE");
   $tab = array();
   $appinbar = array();
+  $action->lay->set("fgsearch_installed",true);
   if ($query->nb > 0) {
     $i=0; $j=0;
     foreach($list as $k=>$appli) {
@@ -102,6 +103,13 @@ function main(&$action) {
       $appli["params"] = "";
       $tab[$i++]=$appli;
       if (in_array($appli["id"],$tapp) || in_array($appli["name"],$tapp)) $appinbar[$j++] = $appli;
+      
+      if ($appli["name"]=='FGSEARCH') {
+	$action->lay->set("fgsearch_installed",true);
+	$action->lay->set("fgsearch_id", $appli["id"]);
+	$action->lay->set("fgsearch_name", $appli["name"]);
+      }
+
     }
   }
   $action->lay->setBlockData("appList", $tab);
