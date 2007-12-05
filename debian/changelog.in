@@ -1,4 +1,4 @@
-freedom-selfregister (@VERSION@-@RELEASE@) stable; urgency=low
+freedom-webdesk (@VERSION@-@RELEASE@) stable; urgency=low
 
   * Initial release (Closes: #nnnn)  <nnnn is the bug number of your ITP>
 
