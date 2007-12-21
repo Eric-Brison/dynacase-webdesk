@@ -18,7 +18,15 @@ function svcrss(&$action) {
   $textlg = GetHttpVars("dlg", 0);
   $vfull = (GetHttpVars("vfull", 0)==1 ? true : false);
 
-  $rssi =& new XML_RSS($rsslink);
+  $local = parse_url($action->getParam("CORE_URLINDEX"));
+  $tu = parse_url($rsslink);
+  if ($local["host"]==$tu["host"] && $local["scheme"]=="https") {
+    $r2link = str_replace("http:", "https:", $rsslink);
+    $r2link = str_replace(":80", ":443", $r2link);
+  } else {
+    $r2link  = $rsslink;
+  }
+  $rssi =& new XML_RSS($r2link);
   $pret = $rssi->parse();
   if (isset($rssi->channel["link"])) {
     $action->lay->set("nocontent", false);
