@@ -62,8 +62,6 @@ install: build
 
 	# Add here commands to install the package into debian/freedom-what.
 	make -i pubdir=$(CURDIR)/debian/freedom-webdesk/usr/share/what rootprefix=$(CURDIR)/debian/freedom-webdesk publish
-	install -d $(CURDIR)/debian/freedom-webdesk/usr/share/what/FDL
-	(cd $(CURDIR)/debian/freedom-webdesk/usr/share/what/FDL; ln -s ../WEBDESK/Method*.php .)
 	install -d $(CURDIR)/debian/freedom-webdesk/etc/apache2/freedom.d
 	install $(CURDIR)/debian/freedom-webdesk/usr/share/what/WEBDESK/71_webdesk.conf $(CURDIR)/debian/freedom-webdesk/etc/apache2/freedom.d
 
