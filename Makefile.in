@@ -1,10 +1,10 @@
 # ============================================
-# $Id: Makefile.in,v 1.13 2007/12/21 14:46:44 eric Exp $
+# $Id: Makefile.in,v 1.14 2008/03/28 09:08:13 eric Exp $
 # ============================================
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@
 utildir = @PUBRULE@
-appname = @PACKAGE@
+appname = @APPNAME@
 applib = FDL
 pubdir  = @prefix@
 srcdir  = @srcdir@
@@ -22,7 +22,7 @@ SUBDIR=  Xml Action Api Css Javascript Images Zone Freedom Services Doc debian
 include $(utildir)/PubRule
 
 DISTFILES += $(SUBDIR) \
-	$(PACKAGE).app \
+	$(appname).app \
         RELEASE VERSION \
 	71_webdesk.conf \
 	Freedom/webdesk.ods \

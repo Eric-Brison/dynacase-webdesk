@@ -7,7 +7,7 @@
 #   as published by the Free Software Foundation; either version
 #   2 of the License, or (at your option) any later version.
 #
-AC_REVISION($Id: configure.in,v 1.5 2007/07/06 12:25:37 yannick Exp $)
+AC_REVISION($Id: configure.in,v 1.6 2008/03/28 09:08:13 eric Exp $)
 dnl
 dnl Process this file with autoconf to produce a configure script.
 dnl
@@ -18,7 +18,9 @@ VERSION=`cat VERSION`
 AC_SUBST(RELEASE)
 RELEASE=`cat RELEASE`
 AC_SUBST(PACKAGE)
-PACKAGE=WEBDESK
+PACKAGE=freedom-webdesk
+AC_SUBST(APPNAME)
+APPNAME=WEBDESK
 
 ac_default_prefix=/usr/share/what
 
@@ -53,4 +55,4 @@ AC_ARG_WITH(dbport,
 [  --with-dbport=port number  the database port (default 5432)], DBPORT=$withval)
 
 
-AC_OUTPUT(71_webdesk.conf Makefile WEBDESK_init.php WEBDESK.spec debian/changelog)
+AC_OUTPUT(71_webdesk.conf Makefile WEBDESK_init.php freedom-webdesk.spec debian/changelog)

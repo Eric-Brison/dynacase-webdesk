@@ -1,7 +1,7 @@
 #! /bin/rpm
 #
 #  File: 
-#  $Id: WEBDESK.spec.in,v 1.22 2008/03/13 08:15:20 eric Exp $
+#  $Id: freedom-webdesk.spec.in,v 1.1 2008/03/28 09:08:13 eric Exp $
 #
 #  This is the SPEC file for the What Users Module
 #  Anakeen What Application
@@ -72,7 +72,7 @@ Requires: phpweather >= 2.2.2
 Requires: weather-icons
 
 Requires: FREEDOM-COMMON >= 0.0.0 
-Requires: FREEDOM-USERCARD >= 2.9.1
+Requires: freedom-usercard >= 2.9.1
 
 %description
 This module is use to allow user to configure the main page of freedom ECM with several available services like RSS, weather, searches.
@@ -91,7 +91,7 @@ autoconf
 	     --prefix=%{destdir}
 make  pubdir=$RPM_BUILD_ROOT%{destdir} 
 install -d $RPM_BUILD_ROOT/%{apacheconfdir}
-install  $RPM_BUILD_ROOT/%{destdir}/%{name}/71_webdesk.conf $RPM_BUILD_ROOT/%{apacheconfdir}/71_webdesk.conf
+install  $RPM_BUILD_ROOT/%{destdir}/@APPNAME@/71_webdesk.conf $RPM_BUILD_ROOT/%{apacheconfdir}/71_webdesk.conf
 
 
 %clean
@@ -106,8 +106,8 @@ install  $RPM_BUILD_ROOT/%{destdir}/%{name}/71_webdesk.conf $RPM_BUILD_ROOT/%{ap
 
 %files
 %defattr(-,%{httpuser},%{httpuser})
-%dir %{destdir}/%{name}
-%{destdir}/%{name}/*
+%dir %{destdir}/@APPNAME@
+%{destdir}/@APPNAME@/*
 %{destdir}/FDL/Method.*.php
 %{destdir}/API/*
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{apacheconfdir}/71_webdesk.conf
