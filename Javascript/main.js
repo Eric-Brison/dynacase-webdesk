@@ -156,6 +156,10 @@ function adddelAppShortCut(idapp, sidapp, sname,  ico, params) {
   else addInBar(idapp, sidapp, sname,  ico, params);
 }  
 
+function setDefaultApp(idapp, sidapp, sname,  ico, params) {
+  setparamu("WEBDESK", "WDK_DEFAPP", sidapp);
+}  
+
 function reloadBarApp() {
   if (!document.getElementById('appbar')) {
     alert('appbar not present!');

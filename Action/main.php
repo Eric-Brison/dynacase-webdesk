@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: main.php,v 1.14 2007/11/29 17:42:38 marc Exp $
+ * @version $Id: main.php,v 1.15 2008/05/02 08:43:47 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WEBDESK
@@ -60,6 +60,7 @@ function main(&$action) {
 
   $defApp = false;
 
+  $appinbar = array();
 
   $appb = getParam("WDK_BARAPP", "");
   $tapp = array();
@@ -67,14 +68,50 @@ function main(&$action) {
     $tapp = explode("|", $appb);
   }
   
+  $specialapp[] = array( "id" => "100000", 
+			 "short_name" => _("My portal"), 
+			 "jsname" => addslashes(_("My portal")), 
+			 "description" => _("My portal"), 
+			 "name" => "WEBDESK", 
+			 "params" => "&action=PORTAL",
+			 "iconsrc" => "[IMG:wd_portal.gif]" );
+  if (in_array("100000",$tapp) || in_array("WEBDESK",$tapp)) $appinbar[$j++] = $specialapp[0];
+
+  $specialapp[] = array( "id" => "100001", 
+			 "short_name" => _("My account"), 
+			 "jsname" => addslashes(_("My account")), 
+			 "name" => "WEBDESK", 
+			 "description" => _("Webdesk preferences"), 
+			 "params" => "&action=PREFERENCES",
+			 "iconsrc" => "[IMG:wd_myaccount.png]" );
+  $cexec = $action->canExecute("ADMINS", $action->parent->id);
+  if ($cexec=="") {
+    $specialapp[] = array( "id" => "100020", 
+			   "short_name" => _("Administration"), 
+			   "description" => _("Webdesk administration"), 
+			   "name" => "WEBDESK", 
+			   "params" => "&action=ADMINS",
+			   "iconsrc" => "[IMG:wd_admin.gif]" );
+  }
+
+  $action->lay->setBlockData("specialAppList", $specialapp);
+  $action->lay->setBlockData("specialAppListBody", $specialapp);
+
+  $defappid = $specialapp[0]["id"];
+  $defappname = $specialapp[0]["name"];
+  $defappparams = $specialapp[0]["params"];
+  $canChangeDefApp = $action->HasPermission("APPCHG", $specialapp[0]["name"]);
+  $action->lay->set("canChangeDefApp", $canChangeDefApp);
+  
+  $action->lay->set("fgsearch_installed",false);
+ 
   // Get application list
+  $dapp = $action->getParam("WDK_DEFAPP");
 
   $query=new QueryDb($action->dbaccess,"Application");
   $query->basic_elem->sup_where=array("available='Y'","displayable='Y'", "name!='WEBDESK'");
   $list = $query->Query(0,0,"TABLE");
   $tab = array();
-  $appinbar = array();
-  $action->lay->set("fgsearch_installed",true);
   if ($query->nb > 0) {
     $i=0; $j=0;
     foreach($list as $k=>$appli) {
@@ -92,6 +129,11 @@ function main(&$action) {
 	  }
         } else { continue; }
       }
+      if ($canChangeDefApp && $dapp==$appli["name"]) {
+	$defappid = $appli["id"];
+	$defappname = $appli["name"];
+	$defappparams = "";
+      }
       $appli["description"]= $action->text($appli["description"]); // translate
       $appli["short_name"]= $action->text($appli["short_name"]); // translate
       $appli["jsname"]= addslashes($action->text($appli["short_name"])); // translate
@@ -104,7 +146,7 @@ function main(&$action) {
       $tab[$i++]=$appli;
       if (in_array($appli["id"],$tapp) || in_array($appli["name"],$tapp)) $appinbar[$j++] = $appli;
       
-      if ($appli["name"]=='FGSEARCH') {
+      if ($appli["name"]=='FGSEARCH' && $action->HasPermission("FGSEARCH_READ", "FGSEARCH")) {
 	$action->lay->set("fgsearch_installed",true);
 	$action->lay->set("fgsearch_id", $appli["id"]);
 	$action->lay->set("fgsearch_name", $appli["name"]);
@@ -114,36 +156,6 @@ function main(&$action) {
   }
   $action->lay->setBlockData("appList", $tab);
   $action->lay->setBlockData("appListBody", $tab);
-
-  $specialapp[] = array( "id" => "100000", 
-			 "short_name" => _("My portal"), 
-			 "jsname" => addslashes(_("My portal")), 
-			 "description" => _("My portal"), 
-			 "name" => "WEBDESK", 
-			 "params" => "&action=PORTAL",
-			 "iconsrc" => "[IMG:wd_portal.gif]" );
-  if (in_array("100000",$tapp) || in_array("WEBDESK",$tapp)) $appinbar[$j++] = $specialapp[0];
-
-  $specialapp[] = array( "id" => "100001", 
-			 "short_name" => _("My account"), 
-			 "jsname" => addslashes(_("My account")), 
-			 "name" => "WEBDESK", 
-			 "description" => _("Webdesk preferences"), 
-			 "params" => "&action=PREFERENCES",
-			 "iconsrc" => "[IMG:wd_myaccount.png]" );
-// 			 "iconsrc" => "[IMG:wd_preferences.gif]" );
-  $cexec = $action->canExecute("ADMINS", $action->parent->id);
-  if ($cexec=="") {
-    $specialapp[] = array( "id" => "100020", 
-			   "short_name" => _("Administration"), 
-			   "description" => _("Webdesk administration"), 
-			   "name" => "WEBDESK", 
-			   "params" => "&action=ADMINS",
-			   "iconsrc" => "[IMG:wd_admin.gif]" );
-  }
-
-  $action->lay->setBlockData("specialAppList", $specialapp);
-  $action->lay->setBlockData("specialAppListBody", $specialapp);
 
   $action->lay->setBlockData("barAppList", $appinbar);
 
@@ -156,9 +168,9 @@ function main(&$action) {
   $action->lay->set("menu_bgimage", $action->GetImageUrl($m_bgimage));
 
   if (!$defApp) {
-    $action->lay->set("defid", $specialapp[0]["id"]);
-    $action->lay->set("defname", $specialapp[0]["name"]);
-    $action->lay->set("defparams", $specialapp[0]["params"]);
+    $action->lay->set("defid", $defappid);
+    $action->lay->set("defname", $defappname);
+    $action->lay->set("defparams", $defappparams);
   }    	   
   
 }

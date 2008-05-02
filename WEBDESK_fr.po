@@ -1,18 +1,8 @@
-# #-#-#-#-#  double1.po (WEBDESK)  #-#-#-#-#
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-# #-#-#-#-#  double2.po (WEBDESK)  #-#-#-#-#
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-11 11:50+0200\n"
+"POT-Creation-Date: 2008-05-02 09:37+0200\n"
 "PO-Revision-Date: 2007-08-08 10:44+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -61,6 +51,9 @@ msgstr "Application WebDesk"
 
 msgid "webdesk access"
 msgstr "Accès au WebDesk"
+
+msgid "webdesk change default application"
+msgstr "Modification de l'application affichée par défaut dans le portail"
 
 msgid "webdesk admin"
 msgstr "administration webdesk"
@@ -154,6 +147,9 @@ msgstr "nombre de documents affectés"
 
 msgid "preview of theme"
 msgstr "prévisualisation du thème"
+
+msgid "default application displayed"
+msgstr "Application affichée par défault"
 
 msgid "portal colums specification"
 msgstr "Colonnes du portail"
@@ -481,6 +477,9 @@ msgstr "Recharger l'application..."
 
 msgid "wd open in new window"
 msgstr "Ouvrir dans une nouvelle fenêtre"
+
+msgid "wd default application"
+msgstr "Application par défaut"
 
 msgid "wd add/remove shortcut"
 msgstr "Ajouter/Supprimer le raccourci..."

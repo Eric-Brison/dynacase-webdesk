@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-10-11 11:50+0200\n"
+"POT-Creation-Date: 2008-05-02 09:37+0200\n"
 "PO-Revision-Date: 2005-06-03 16:32+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -50,6 +50,9 @@ msgid "webdesk application"
 msgstr ""
 
 msgid "webdesk access"
+msgstr ""
+
+msgid "webdesk change default application"
 msgstr ""
 
 msgid "webdesk admin"
@@ -143,6 +146,9 @@ msgid "number of affected document"
 msgstr ""
 
 msgid "preview of theme"
+msgstr ""
+
+msgid "default application displayed"
 msgstr ""
 
 msgid "portal colums specification"
@@ -461,6 +467,9 @@ msgid "wd reload (force) application"
 msgstr ""
 
 msgid "wd open in new window"
+msgstr ""
+
+msgid "wd default application"
 msgstr ""
 
 msgid "wd add/remove shortcut"
