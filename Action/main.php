@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: main.php,v 1.15 2008/05/02 08:43:47 marc Exp $
+ * @version $Id: main.php,v 1.16 2008/05/13 10:47:32 marc Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WEBDESK
@@ -102,6 +102,8 @@ function main(&$action) {
   $defappparams = $specialapp[0]["params"];
   $canChangeDefApp = $action->HasPermission("APPCHG", $specialapp[0]["name"]);
   $action->lay->set("canChangeDefApp", $canChangeDefApp);
+  $canSetTopBar = $action->HasPermission("BARSET", $specialapp[0]["name"]);
+  $action->lay->set("canSetTopBar", $canSetTopBar);
   
   $action->lay->set("fgsearch_installed",false);
  

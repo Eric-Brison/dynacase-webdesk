@@ -12,9 +12,10 @@ $app_desc= array (
 );
 
 $app_acl = array (
-		  array ( "name" => "USER", "description" => N_("webdesk access"), "group_default"  => "Y" ),
+		  array ( "name" => "USER",   "description" => N_("webdesk access"), "group_default"  => "Y" ),
+		  array ( "name" => "BARSET", "description" => N_("webdesk change top bar content"), "group_default"  => "Y" ),
 		  array ( "name" => "APPCHG", "description" => N_("webdesk change default application"), "group_default"  => "Y" ),
-		  array ( "name" => "ADMIN", "description" => N_("webdesk admin") )
+		  array ( "name" => "ADMIN",  "description" => N_("webdesk admin") )
 );
 
 include_once("Lib.Prefix.php");
