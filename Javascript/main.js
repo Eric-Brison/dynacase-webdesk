@@ -222,7 +222,7 @@ function runapp(idapp, sidapp, params, force) {
   currentApp = idapp; //(idapp>10000?0:idapp);
   var fapp = document.getElementById('fbody'+currentApp);
 
-  if (fapp.src=='about:blank' || currentApp==0 || force) {
+  if (/1x1.gif/i.test(fapp.src) || currentApp==0 || force) {
     fapp.src = '[CORE_BASEURL]app='+sidapp+params;
   }
   fapp.style.display = 'block';
