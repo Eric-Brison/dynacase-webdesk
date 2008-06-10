@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: main.php,v 1.16 2008/05/13 10:47:32 marc Exp $
+ * @version $Id: main.php,v 1.17 2008/06/10 15:00:46 jerome Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WEBDESK
@@ -57,6 +57,12 @@ function main(&$action) {
   $action->lay->set("sessionId",$action->session->id); 
   $action->lay->set("title", ""); 
   $action->lay->set("PHP_AUTH_USER",$_SERVER['PHP_AUTH_USER']);    
+
+  if( file_exists('maintenance.lock') ) {
+    $action->lay->set("MAINTENANCE", '<span id="maintenance">M A I N T E N A N C E</span>');
+  } else {
+    $action->lay->set("MAINTENANCE", "");
+  }
 
   $defApp = false;
 

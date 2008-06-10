@@ -152,3 +152,11 @@ TABLE.transparent TBODY TR TD,TABLE.transparent TBODY TR {
   left:10px; 
   height:20px;
 }
+
+#maintenance {
+  font-weight: bold;
+  background-color: red;
+  color: white;
+  padding-left: 1em;
+  padding-right: 1em;
+}
