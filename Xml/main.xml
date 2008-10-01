@@ -128,7 +128,7 @@ addEvent(window, "resize", computefbodywh);
 
 [IF canSetTopBar]<div class="app" style="padding:1px; margin:0px";
      onmouseover="cancelTempoAppMenu()" 
-     onmouseout="setTempoAppMenu()" 
+     onmouseout="setTempoAppMenu()"> 
 <hr style="padding:0px; margin:0px; border:0px; border-top:1px solid [COLOR_A7]"></div>
 
 <div class="app" 
