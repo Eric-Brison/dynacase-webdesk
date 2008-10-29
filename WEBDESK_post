@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ "$dbpsql" == "" ]; then
+if [ "$freedom_context" == "" ]; then
     #load environement variable for freedom
   . /etc/freedom.conf
    wchoose -b
