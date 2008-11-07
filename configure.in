@@ -7,7 +7,7 @@
 #   as published by the Free Software Foundation; either version
 #   2 of the License, or (at your option) any later version.
 #
-AC_REVISION($Id: configure.in,v 1.6 2008/03/28 09:08:13 eric Exp $)
+AC_REVISION($Id: configure.in,v 1.7 2008/11/07 17:13:47 eric Exp $)
 dnl
 dnl Process this file with autoconf to produce a configure script.
 dnl
@@ -23,11 +23,25 @@ AC_SUBST(APPNAME)
 APPNAME=WEBDESK
 
 ac_default_prefix=/usr/share/what
-
 AC_SUBST(PUBRULE)
-PUBRULE=`dirname ~/anakeen/what/.`
-AC_ARG_WITH(pubrule,
-[  --with-pubrule=dir	Path to PubRule], PUBRULE=$withval)
+PUBRULE=
+AC_ARG_WITH(pubrule, [  --with-pubrule=dir	Path to PubRule], PUBRULE=$withval)
+if test "x$PUBRULE" != "x"; then
+  PUBRULEDIR=$PUBRULE
+else
+  if test "x$PUBRULEDIR" == "x"; then
+     AC_CHECK_FILE($HOME/anakeen/devtools/PubRule, PUBRULEDIR=$HOME/anakeen/devtools/)
+     if test "x$PUBRULEDIR" = "x"; then
+          PUBRULEDIR=.
+     fi
+  fi
+fi
+AC_CHECK_FILE($PUBRULEDIR/PubRule, PUBRULE=$PUBRULEDIR)
+if test "x$PUBRULE" = "x"; then
+  AC_MSG_ERROR([Could not find PubRule])
+fi
+AC_MSG_NOTICE([PubRule located at $PUBRULE])
+
 
 AC_SUBST(DEBUG)
 DEBUG=N
