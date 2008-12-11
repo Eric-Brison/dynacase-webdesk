@@ -33,7 +33,7 @@ addEvent(window, "resize", computefbodywh);
 
 </script>  
 </head>
-<body scrollable="no">
+<body class="core" scrollable="no">
 
 
 <div id="wdtitle" class="wdhead">
