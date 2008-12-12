@@ -1,6 +1,6 @@
 <?php
 // ---------------------------------------------------------------
-// $Id: WEBDESK_init.php.in,v 1.7 2008/05/02 08:43:47 marc Exp $
+// $Id: WEBDESK_init.php.in,v 1.8 2008/12/12 10:51:36 marc Exp $
 // $Source: /home/cvsroot/anakeen/freedom/webdesk/WEBDESK_init.php.in,v $
 // ---------------------------------------------------------------
 //  O   Anakeen - 2001
@@ -30,8 +30,8 @@ array(
 "VERSION" => "@VERSION@-@RELEASE@",
 "INIT" => "yes",
 
-"WDK_DEFAPP" => array( "val"=>"WEBDESK", "descr"=>N_("default application displayed"),"user"=>"Y", "kind"=>"static"),
 "WDK_PORTALSPEC" => array( "val"=>"d&eacute;faut|33:33:33", "descr"=>N_("portal colums specification"), "user"=>"Y", "kind"=> "static"),
+"WDK_DEFAPP" => array( "val"=>"WEBDESK", "descr"=>N_("default application displayed"),"user"=>"Y", "kind"=>"text"),
 "WDK_COLCOUNT" => array( "val"=>"3", "descr"=>N_("portal columns count"),"user"=>"Y"),
 "WDK_SVCCOLCOUNT" => array( "val"=>"3", "descr"=>N_("services list columns count"),"user"=>"Y"),
 "ARDOISE" => array( "val"=>"", "descr"=>N_("ardoise content"),"user"=>"Y", "kind"=>"static"),
