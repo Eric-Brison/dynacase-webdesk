@@ -28,7 +28,7 @@ $action_desc = array (
   array( "acl" => "USER",  "name" => "PORTAL",      "short_name" =>N_("portal page"), "toc" => "N", "root" =>"N"),
   array( "acl" => "USER",  "name" => "PREFERENCES", "short_name" =>N_("preferences page"), "toc" => "N", "root" =>"N"),
   array( "acl" => "USER",  "name" => "THEME", 	    "short_name" =>N_("theme preferences"), "toc" => "N", "root" =>"N"),
-  array( "acl" => "ADMIN", "name" => "ADMIN",       "short_name" =>N_("administration page"), "toc" => "N", "root" =>"N"),
+  array( "acl" => "ADMIN", "name" => "ADMIN",       "short_name" =>N_("administration page"), "toc" => "N", "available" =>"N"),
   array( "acl" => "ADMIN", "name" => "ADMINS",      "short_name" =>N_("list all admin pages"), "toc" => "N", "root" =>"N"),
 
   array( "acl" => "ADMIN",  "name" => "APPADMIN", "short_name" =>N_("webdesk general admnistration"), "toc" => "N", "root" =>"N"),

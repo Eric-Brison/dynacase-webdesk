@@ -3,7 +3,7 @@
  * Generated Header (not documented yet)
  *
  * @author Anakeen 2000 
- * @version $Id: admins.php,v 1.3 2007/10/16 09:07:27 eric Exp $
+ * @version $Id: admins.php,v 1.4 2008/12/30 17:07:40 eric Exp $
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @package FREEDOM
  * @subpackage WEBDESK
@@ -29,21 +29,33 @@ function admins(&$action) {
   $query=new QueryDb($action->dbaccess,"Application");
   $query->basic_elem->sup_where=array("available='Y'");
   $list = $query->Query(0,0,"TABLE");
+  $tappli=array();
+  foreach ($list as $k=>$v) {
+    $tappli[$v["id"]]=$v;
+  }
+
+  $qact=new QueryDb($action->dbaccess,"Action");
+  $qact->addQuery("available='Y'");
+  $qact->addQuery("name ~ '^ADMIN'");
+  $qact->addQuery("name != 'ADMINS'");
+  $tact = $qact->Query(0,0,"TABLE");
+
   $tab = array();
-  if ($query->nb > 0) {
+  if ($qact->nb > 0) {
     $i=0;
-    foreach($list as $k=>$appli) {
-      if ($action->Exists("ADMIN", $appli["id"])) {
-	if ($action->canExecute("ADMIN", $appli["id"])=="") {
+    foreach($tact as $k=>$act) {
+      if ($act["available"]=="Y") {
+	$appli=$tappli[$act["id_application"]];
+	if ($appli && ($action->canExecute($act["name"], $appli["id"])=="")) {
 	  $appli["description"]= $action->text($appli["description"]); // translate
-	  $appli["short_name"]= $action->text($appli["short_name"]); // translate
+	  $appli["short_name"]= $action->text($act["short_name"]); // translate
 	  $appli["descriptionsla"]= addslashes($appli["description"]); // because its in between '' in layout
 	  if ($appli["machine"] != "") $appli["pubdir"]= "http://".$appli["machine"]."/what";
 	  else $appli["pubdir"]=$action->getParam("CORE_PUBURL");
 	  $appli["iconsrc"]=$action->GetImageUrl($appli["icon"]);
 	  if ($appli["iconsrc"]=="CORE/Images/noimage.png") $appli["iconsrc"]=$appli["name"]."/Images/".$appli["icon"];
 	  $appli["params"] = "";
-	  $appli["action"] = "ADMIN";
+	  $appli["action"] = $act["name"];
 	  $tab[$i++]=$appli;
 	}
       }
