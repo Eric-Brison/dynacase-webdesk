@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<module name="freedom-webdesk" version="@VERSION@" release="@RELEASE@" basecomponent="yes">
+  <description>This module is used to allow user to configure the main page of freedom ECM with several available services like RSS, weather, searches.</description>
+  <requires>
+    <module name="freedom-core" />
+  </requires>
+</module>
