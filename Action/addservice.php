@@ -18,7 +18,7 @@ function addservice(&$action) {
   $downer = new_Doc($dbaccess, $owner);
 
   $tup = GetChildDoc($dbaccess, 0, 0, "ALL", 
-		     array("uport_ownerid = ".$owner), $action->user->id, "LIST", "USER_PORTAL");
+		     array("uport_ownerid = '".$owner."'"), $action->user->id, "LIST", "USER_PORTAL");
   if (count($tup)<1 || !$tup[0]->isAffected()) {
     $up = createDoc($dbaccess, "USER_PORTAL");
     $up->setValue("uport_ownerid", $owner);

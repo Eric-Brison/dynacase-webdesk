@@ -167,7 +167,7 @@ function portal(&$action) {
   
   $tsvc = array();
   $tup = GetChildDoc( $dbaccess, 0, 0, "ALL", 
-		      array("uport_ownerid = ".$action->user->fid), $action->user->id, "LIST", "USER_PORTAL");
+		      array("uport_ownerid = '".$action->user->fid."'"), $action->user->id, "LIST", "USER_PORTAL");
   if (is_object($tup[0]) && $tup[0]->isAffected()) {
     
     $svcnum   = $tup[0]->getTValue("uport_svcnum");
