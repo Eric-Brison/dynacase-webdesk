@@ -31,7 +31,7 @@ function svcrss(&$action) {
   if (isset($rssi->channel["link"])) {
     $action->lay->set("nocontent", false);
     $action->lay->set("rss", true);
-    $action->lay->set("title",$rssi->channel["title"]);
+    $action->lay->set("title",str_replace('"','',$rssi->channel["title"]));
     $action->lay->set("uptime", strftime("%H:%M %d/%m/%Y", time()));
     $rssc = $rssi->getItems();
     $ic = 0;
