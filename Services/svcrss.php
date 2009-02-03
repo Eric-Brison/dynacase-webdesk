@@ -40,9 +40,9 @@ function svcrss(&$action) {
         if ($v["title"]=="") continue;
         $tr[$ic] = $v;
         $tr[$ic]["id"] = $k;
-        $tr[$ic]["title"] = htmlentities(utf8_decode($v["title"]));
+        $tr[$ic]["title"] = htmlentities($v["title"],ENT_COMPAT,"UTF-8");
         $sdesc = ($textlg>0 ? substr($v["description"],0,$textlg).(strlen($v["description"])>$textlg?"...":"") : $v["description"]);
-        $tr[$ic]["descr"] = utf8_decode($sdesc);
+        $tr[$ic]["descr"] = $sdesc;
         $tr[$ic]["date"] = $v["dc:date"];
         $tr[$ic]["vfull"] = $vfull;
        $ic++;

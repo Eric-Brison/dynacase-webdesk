@@ -19,7 +19,7 @@ function delservice(&$action) {
   }
 
   $tup = GetChildDoc( $dbaccess, 0, 0, "ALL", 
-		      array("uport_ownerid = ".$owner), $action->user->id, "LIST", "USER_PORTAL");
+		      array("uport_ownerid = '".$owner."'"), $action->user->id, "LIST", "USER_PORTAL");
   if (count($tup)<1 || !$tup[0]->isAffected()) {
     $action->lay->set("OUT", "var svcnum = -1;");
     return;

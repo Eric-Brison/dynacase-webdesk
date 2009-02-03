@@ -124,8 +124,8 @@ function clearText($s) {
   $t=imap_mime_header_decode($s);
   $ot='';
   foreach ($t as $st) {
-    if ($st->charset=="utf-8") $ot.=utf8_decode($st->text);
-    else $ot.=$st->text;
+    if ($st->charset=="utf-8") $ot.=$st->text;
+    else $ot.=utf8_encode($st->text);
   }
 
   if ($ot[0]=='"') $ot=str_replace('"',"",$ot);

@@ -5,7 +5,6 @@ include_once('FDL/Lib.Dir.php');
 function freedom_search(&$action) {
 
   header('Content-type: text/xml; charset=utf-8');
-  $action->lay->setEncoding("utf-8");
  
   $dbaccess = getParam("FREEDOM_DB");
 
@@ -28,8 +27,8 @@ function freedom_search(&$action) {
     $action->lay->set("csearch", false);
     return;
   }
- 
-  $action->lay->set("stitle", utf8_encode($fs->getTitle()));
+  
+  $action->lay->set("stitle", $fs->getTitle());
 
   $rdoc = $fs->getContent();
 
