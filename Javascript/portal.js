@@ -240,7 +240,7 @@ function submitService(event) {
   var params = ''
   var fsend = document.getElementById('fsvc'+snum);
   for (var ie=0; ie<fsend.elements.length; ie++) {
-    if (fsend.elements[ie].name!="") params += '&'+fsend.elements[ie].name+'='+escape(fsend.elements[ie].value);
+    if (fsend.elements[ie].name!="") params += '&'+fsend.elements[ie].name+'='+encodeURI(fsend.elements[ie].value);
   }
   loadSvcAsync(snum,  params);
   return false;
