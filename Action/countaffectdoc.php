@@ -16,12 +16,12 @@ function countaffectdoc(&$action) {
 
   $doc = new_doc($dbaccess,"WS_MYAFFECTDOC");
   $count='x';
-  $text = "L\'espace d\'échange n\'est peut-être pas installé.";
+  $text = "L\'espace d\'Ã©change n\'est peut-Ãªtre pas installÃ©.";
   if ($doc->isAlive()) {
     $count=$doc->count();
-    if ($count==0) $text = "Aucun document affecté.";
-    else if ($count==1) $text = "$count document vous est affecté.";
-    else $text = "$count documents vous sont affectés.";
+    if ($count==0) $text = "Aucun document affectÃ©.";
+    else if ($count==1) $text = "$count document vous est affectÃ©.";
+    else $text = "$count documents vous sont affectÃ©s.";
   }
   $action->lay->template = 
     sprintf("var result = { text:'%s', ico:'', status:'0', msg:'%s' };",$count, $text);

@@ -12,7 +12,7 @@ $this->properties['icao'] = 'LFBO';
 $this->properties['pref_units'] = 'only_metric';
 $this->properties['language'] = 'fr';
 $this->properties['use_proxy']     = false;
-// AVEC PROXY pour récupération des données (http)
+// AVEC PROXY pour rÃ©cupÃ©ration des donnÃ©es (http)
 // $this->properties['use_proxy']     = true;
 // $this->properties['proxy_host']    = 'proxy.domain.com';
 // $this->properties['proxy_port']    = '3128';

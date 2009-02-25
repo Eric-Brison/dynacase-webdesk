@@ -46,7 +46,7 @@ function incident(&$action) {
 		    "title" => getV($v, "in_title"),
 		    "desc" => getV($v, "in_pbdesc"),
 		    "date" => getV($v, "in_createdate"),
-		    "grav" => (getV($v, "in_grav")==""?'pas de gravité':getV($v, "in_grav")),
+		    "grav" => (getV($v, "in_grav")==""?'pas de gravitÃ©':getV($v, "in_grav")),
 		    "site" => getV($v, "in_site"),
 		    "ref" => $v["title"],
 		   );

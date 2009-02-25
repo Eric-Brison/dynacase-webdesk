@@ -277,7 +277,7 @@ function editSvc(event, snum) {
   }
 
   // initialize form
-  trace('Modification des paramètres...');
+  trace('Modification des paramÃ¨tres...');
   editSnum = snum;
 
   var esvc = document.getElementById('editsvc').cloneNode(true);
@@ -331,7 +331,7 @@ function cancelForm() {
 }
 
 function sendForm() {
-  trace('Sauvegarde des paramètres...');
+  trace('Sauvegarde des paramÃ¨tres...');
   var fedit = document.getElementById('editsvcf');
   if (editSnum===-1) return;
   var snum = editSnum;
@@ -341,7 +341,7 @@ function sendForm() {
 
   var purl = '';
   for (var ie=0; ie<fedit.elements.length; ie++) {
-    purl += (purl==''?'':'&')+fedit.elements[ie].name+'='+escape(fedit.elements[ie].value);
+    purl += (purl==''?'':'&')+fedit.elements[ie].name+'='+encodeURI(fedit.elements[ie].value);
   }
   if (window.XMLHttpRequest) ereq = new XMLHttpRequest();
   else ereq = new ActiveXObject("Microsoft.XMLHTTP");
@@ -442,7 +442,7 @@ function deleteSvc(event, snum) {
   var is = getSvc(snum);
   if (is===false) return;
   if (!confirm('[TEXT:wd confirm supress of] ['+services[is].stitle+']')) return false;
-  trace('Service '+services[is].stitle+' supprimé.');
+  trace('Service '+services[is].stitle+' supprimÃ©.');
   unDisplaySvc(snum);
   services.splice(is,1);
   var xreq = null;
@@ -488,7 +488,7 @@ function loadSvcAsync(sid, params) {
   if (window.XMLHttpRequest) dreq = new XMLHttpRequest();
   else dreq = new ActiveXObject("Microsoft.XMLHTTP");
   if (dreq) {
-    trace('Mise à jour de '+services[is].stitle+'...');
+    trace('Mise Ã  jour de '+services[is].stitle+'...');
     setWS('svc'+sid);
     dreq.onreadystatechange =  function() {
       if (dreq.readyState == 4) {
@@ -504,7 +504,7 @@ function loadSvcAsync(sid, params) {
 		var uptime = elts[0].getAttribute("uptime");
 		var title = elts[0].getAttribute("title");
  		if (title) document.getElementById('tsvcti'+sid).innerHTML = title;
- 		if (uptime) document.getElementById('tsvcti'+sid).title = 'Mise à jour : '+uptime;
+ 		if (uptime) document.getElementById('tsvcti'+sid).title = 'Mise Ã  jour : '+uptime;
  		document.getElementById('csvc'+sid).innerHTML = '<div style="padding:0; margin:0; display:block; border:0px; width:100%;">'+elts[0].firstChild.nodeValue+'</div>';
 		isxml = true;
 	      }
@@ -556,7 +556,7 @@ function loadSvcSync(sid, shl, params) {
   if (window.XMLHttpRequest) dreq = new XMLHttpRequest();
   else dreq = new ActiveXObject("Microsoft.XMLHTTP");
   if (dreq) {
-    trace('Mise à jour (S) de '+services[is].stitle+'...');
+    trace('Mise Ã  jour (S) de '+services[is].stitle+'...');
     setWS('svc'+sid);
 
     var url = services[is].vurl ;
@@ -576,7 +576,7 @@ function loadSvcSync(sid, shl, params) {
 	  var uptime = elts[0].getAttribute("uptime");
 	  var title = elts[0].getAttribute("title");
 	  if (title) document.getElementById('tsvcti'+sid).innerHTML = title;
-	  if (uptime) document.getElementById('tsvcti'+sid).title = 'Mise à jour : '+uptime;
+	  if (uptime) document.getElementById('tsvcti'+sid).title = 'Mise Ã  jour : '+uptime;
 	  document.getElementById('csvc'+sid).innerHTML = '<div style="padding:0; margin:0; display:block; border:0px; width:100%;">'+elts[0].firstChild.nodeValue+'</div>';
 	  isxml = true;
 	}

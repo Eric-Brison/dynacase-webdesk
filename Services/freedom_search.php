@@ -50,7 +50,7 @@ function freedom_search(&$action) {
     }    
     $action->lay->set("csearch", true);
     $pd = (count($rdoc)>1);
-    $action->lay->set("msg", "[".$fs->getTitle()."] ".count($rdoc)." document".($pd?"s":"")." trouvé".($pd?"s":"").", les $max premiers...");
+    $action->lay->set("msg", "[".$fs->getTitle()."] ".count($rdoc)." document".($pd?"s":"")." trouvÃ©".($pd?"s":"").", les $max premiers...");
     $action->lay->setBlockData("docs", $tdocs);    
   }
 
