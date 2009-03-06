@@ -78,7 +78,7 @@ function computefbodywh() {
   md.style.height = 'auto';
   if (isIE) bodW -= 20;
   if (isMBarStatic) {
-    md.className='wdmenufixed';
+    md.className='wdmenufixed select-free';
     if ((currentApp>-1) ) { // undisplay before to avoid composition errors in mozilla
       document.getElementById('fbody'+currentApp).style.display='none';
     }
