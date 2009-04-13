@@ -5,16 +5,18 @@ function freedomrss(&$action) {
   include_once("FDL/Lib.Dir.php");
   include_once("WEBDESK/svcrss.php");
   
-  if ($action->auth) $addauth='&authtype=basic';
-  else $addauth='';
 
+  $dbaccess=$action->getParam("FREEDOM_DB");
   header('Content-type: text/xml; charset=utf-8');
   $action->lay->setEncoding("utf-8");
 
   $rssid = GetHttpVars("rssid", -1);
 
   if ($rssid==-1) $rsslink="";
-  else $rsslink = urlencode(str_replace('://', '://[user]:[pass]@', getParam("CORE_ABSURL"))."/".getParam("CORE_STANDURL").$addauth."&app=FREEDOM&action=FREEDOM_RSS&id=$rssid");
+  else {
+    $doc=new_doc($dbaccess, $rssid);
+    $rsslink = urlencode($doc->getRssLink());
+  }
   $max = (GetHttpVars("max",10)>0 ? GetHttpVars("max",10) : 100);
   $fcard = GetHttpVars("fcard",0);
 
