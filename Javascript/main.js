@@ -78,7 +78,7 @@ function computefbodywh() {
   md.style.height = 'auto';
   if (isIE) bodW -= 20;
   if (isMBarStatic) {
-    md.className='wdmenufixed';
+    md.className='wdmenufixed'+((isIE6)?' select-free':'');
     if ((currentApp>-1) ) { // undisplay before to avoid composition errors in mozilla
       document.getElementById('fbody'+currentApp).style.display='none';
     }
@@ -99,7 +99,7 @@ function computefbodywh() {
       document.getElementById('fbody'+currentApp).style.display='';	
     }
   } else {
-    md.className='wdmenu';
+    md.className='wdmenu'+((isIE6)?' select-free':'');
     md.style.top = topH;
     md.style.left = '0px';
     if (currentApp>-1) {
