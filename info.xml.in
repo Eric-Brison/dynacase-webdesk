@@ -17,18 +17,18 @@
   </pre-install>
 
   <post-install>
-    <process program="programs/app_post WEBDESK I" />
-    <process program="programs/record_application WEBDESK" />
-    <process program="programs/app_post WEBDESK U" />
-    <process program="programs/update_catalog" />
+    <process command="programs/app_post WEBDESK I" />
+    <process command="programs/record_application WEBDESK" />
+    <process command="programs/app_post WEBDESK U" />
+    <process command="programs/update_catalog" />
   </post-install>
 
   <post-upgrade>
-    <process program="programs/pre_migration WEBDESK" />
-    <process program="programs/app_post WEBDESK U" />
-    <process program="programs/record_application WEBDESK" />
-    <process program="programs/post_migration WEBDESK" />
-    <process progrem="programs/update_catalog" />
+    <process command="programs/pre_migration WEBDESK" />
+    <process command="programs/app_post WEBDESK U" />
+    <process command="programs/record_application WEBDESK" />
+    <process command="programs/post_migration WEBDESK" />
+    <process command="programs/update_catalog" />
   </post-upgrade>
 
 </module>
