@@ -5,6 +5,7 @@
   <requires>
     <module name="freedom-core" />
     <module name="freedom-common" />
+    <module name="freedom" />
   </requires>
 
   <pre-install>
