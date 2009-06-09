@@ -1,7 +1,34 @@
 <?xml version="1.0"?>
 <module name="freedom-webdesk" version="@VERSION@" release="@RELEASE@" basecomponent="yes">
   <description>This module is used to allow user to configure the main page of freedom ECM with several available services like RSS, weather, searches.</description>
+
   <requires>
     <module name="freedom-core" />
+    <module name="freedom-common" />
   </requires>
+
+  <pre-install>
+    <check type="phpclass" include="XML/RSS.php" class="XML_RSS">
+      <help>You might need to install a php-pear-XML_RSS package form your distribution of run 'pear install XML_RSS' in order to get RSS parsing support in PHP.</help>
+    </check>
+    <check type="phpfunction" function="imap_open">
+      <help>You might need to install a php-imap package from your distribution in order to get IMAP support in PHP.</help>
+    </check>
+  </pre-install>
+
+  <post-install>
+    <process program="programs/app_post WEBDESK I" />
+    <process program="programs/record_application WEBDESK" />
+    <process program="programs/app_post WEBDESK U" />
+    <process program="programs/update_catalog" />
+  </post-install>
+
+  <post-upgrade>
+    <process program="programs/pre_migration WEBDESK" />
+    <process program="programs/app_post WEBDESK U" />
+    <process program="programs/record_application WEBDESK" />
+    <process program="programs/post_migration WEBDESK" />
+    <process progrem="programs/update_catalog" />
+  </post-upgrade>
+
 </module>
