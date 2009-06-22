@@ -3,8 +3,6 @@
   <description>This module is used to allow user to configure the main page of freedom ECM with several available services like RSS, weather, searches.</description>
 
   <requires>
-    <module name="freedom-core" />
-    <module name="freedom-common" />
     <module name="freedom" />
   </requires>
 
