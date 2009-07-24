@@ -10,7 +10,7 @@ Style :<select name="iconstyle" onchange="submitService(event);if (this.selected
 [BLOCK ICONSTYLE]<option value="[iconstyle]" [icon_selected]>[iconstyle]
 [ENDBLOCK ICONSTYLE]<option value="" >[TEXT:No style]</option></select><img id="[iconid]" [IFNOT seliconstyle]src="[IMG:1x1.gif]"[ENDIF seliconstyle][IF seliconstyle]src="/phpweather/icons/[seliconstyle]/small_icons/34.png"[ENDIF seliconstyle]<br>[ENDIF stylefound]
 <select name="fulldata">
-<option value="0">température</option>
+<option value="0">tempÃ©rature</option>
 <option value="1">complet</option>
  <!-- option value="2">complet & METAR</option -->
 </select>
