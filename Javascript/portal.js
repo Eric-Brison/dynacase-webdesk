@@ -240,7 +240,22 @@ function submitService(event) {
   var params = ''
   var fsend = document.getElementById('fsvc'+snum);
   for (var ie=0; ie<fsend.elements.length; ie++) {
-    if (fsend.elements[ie].name!="") params += '&'+fsend.elements[ie].name+'='+encodeURI(fsend.elements[ie].value);
+    if (fsend.elements[ie].name != "") {// params += '&'+fsend.elements[ie].name+'='+encodeURI(fsend.elements[ie].value);
+    	var elmt = fsend.elements[ie];
+		if(elmt.type == "select-multiple"){
+			console.log('multiple');
+			var nextparams = '';
+			for( var i in elmt.options ){
+				if(elmt.options[i].selected){
+					nextparams += (nextparams==''?'':'&')+elmt.name+'='+encodeURI(elmt.options[i].value);
+				}
+			}
+		} else {
+			console.log('other');
+			var nextparams = elmt.name+'='+encodeURI(elmt.value)
+		}
+	    params += '&'+nextparams;
+		}
   }
   loadSvcAsync(snum,  params);
   return false;
@@ -296,19 +311,29 @@ function editSvc(event, snum) {
 	document.getElementById('editsvc_c').innerHTML = '[TEXT:wd error retrieving edit form] (HTTP Code '+ereq.status+')';	   
       } else { 
  	document.getElementById('editsvc_c').innerHTML = '<div>'+ereq.responseText+'</div>';
+	var preserveResponse = false;
 	if (services[is].purl!='') {
 	  var tpurl = services[is].purl.split('&');
 	  var fedit = document.getElementById('editsvcf');
-	  for (var ie=0; ie<fedit.elements.length; ie++) {
+	  /* COMPATIBILITY: This code does not seems to be needed any more */
+	  oldPortalMode: for (var ie=0; ie<fedit.elements.length; ie++) {
 	    for (var ip=0; ip<tpurl.length; ip++) {
 	      if (tpurl[ip]!='') {
-		var thisp = tpurl[ip].split('=');
-		if (fedit.elements[ie].name==thisp[0]) {
-		  fedit.elements[ie].value = unescape(thisp[1]);
-		}
+		    var thisp = tpurl[ip].split('=');
+		    if (fedit.elements[ie].name==thisp[0]) {
+				if(fedit.elements[ie].name.toLowerCase() == 'preserveresponse'){
+					preserveResponse = true;
+					//break oldPortalMode;
+				}
+		      fedit.elements[ie].value = unescape(thisp[1]);
+		    }
 	      }
 	    }
 	  }
+	  /* EO COMPATIBILITY: This code does not seems to be needed any more */
+	}
+	if(preserveResponse){
+		document.getElementById('editsvc_c').innerHTML = '<div>'+ereq.responseText+'</div>';
 	}
       }
     } else {
@@ -341,7 +366,20 @@ function sendForm() {
 
   var purl = '';
   for (var ie=0; ie<fedit.elements.length; ie++) {
-    purl += (purl==''?'':'&')+fedit.elements[ie].name+'='+encodeURI(fedit.elements[ie].value);
+  	var elmt = fedit.elements[ie];
+  	if(elmt.type == "select-multiple"){
+		console.log('multiple');
+		var nextpurl = '';
+		for( var i in elmt.options ){
+			if(elmt.options[i].selected){
+				nextpurl += (nextpurl==''?'':'&')+elmt.name+'='+encodeURI(elmt.options[i].value);
+			}
+		}
+	} else {
+		console.log('other');
+		var nextpurl = elmt.name+'='+encodeURI(elmt.value)
+	}
+    purl += (purl==''?'':'&')+nextpurl;
   }
   if (window.XMLHttpRequest) ereq = new XMLHttpRequest();
   else ereq = new ActiveXObject("Microsoft.XMLHTTP");
