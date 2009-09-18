@@ -243,7 +243,6 @@ function submitService(event) {
     if (fsend.elements[ie].name != "") {// params += '&'+fsend.elements[ie].name+'='+encodeURI(fsend.elements[ie].value);
     	var elmt = fsend.elements[ie];
 		if(elmt.type == "select-multiple"){
-			console.log('multiple');
 			var nextparams = '';
 			for( var i in elmt.options ){
 				if(elmt.options[i].selected){
@@ -251,7 +250,6 @@ function submitService(event) {
 				}
 			}
 		} else {
-			console.log('other');
 			var nextparams = elmt.name+'='+encodeURI(elmt.value)
 		}
 	    params += '&'+nextparams;
@@ -368,7 +366,6 @@ function sendForm() {
   for (var ie=0; ie<fedit.elements.length; ie++) {
   	var elmt = fedit.elements[ie];
   	if(elmt.type == "select-multiple"){
-		console.log('multiple');
 		var nextpurl = '';
 		for( var i in elmt.options ){
 			if(elmt.options[i].selected){
@@ -376,7 +373,6 @@ function sendForm() {
 			}
 		}
 	} else {
-		console.log('other');
 		var nextpurl = elmt.name+'='+encodeURI(elmt.value)
 	}
     purl += (purl==''?'':'&')+nextpurl;
