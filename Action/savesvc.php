@@ -32,7 +32,11 @@ function savesvc(&$action) {
   $p = "";
   foreach ($allvars as $k => $v) {
     if (in_array($k, $excludev)) continue;
-    $p .= ($p==""?"":"&").$k."=".urlencode($v);
+	if(is_array($v)){
+		$p .= ($p==""?"":"&").urlencode_array($v, $k);
+	} else {
+		$p .= ($p==""?"":"&").$k."=".urlencode($v);
+	}
   }
 
   $svcnum   = $up->getTValue("uport_svcnum");
@@ -51,5 +55,21 @@ function savesvc(&$action) {
     $up->postModify();
     $action->lay->set("OUT", "var svcnum = $snum;");
   } else $action->lay->set("OUT", "var svcnum = -1;");
+}
+
+function urlencode_array(
+    $var,				// the array value
+    $varName,			// variable name to be used in the query string
+    $separator = '&'	// what separating character to use in the query string
+) {
+    $toImplode = array();
+    foreach ($var as $key => $value) {
+        if (is_array($value)) {
+            $toImplode[] = urlencode_array($value, "{$varName}[{$key}]", $separator);
+        } else {
+            $toImplode[] = "{$varName}[{$key}]=".urlencode($value);
+        }
+    }
+    return implode($separator, $toImplode);
 }
 ?>

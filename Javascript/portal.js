@@ -22,7 +22,7 @@ function startRefresh() {
 }  
 
 function startUtempo() {
-  globalcursor('progress');
+  globalcursor('progress');sss
 }
 
 function endUtempo() {
@@ -309,29 +309,30 @@ function editSvc(event, snum) {
 	document.getElementById('editsvc_c').innerHTML = '[TEXT:wd error retrieving edit form] (HTTP Code '+ereq.status+')';	   
       } else { 
  	document.getElementById('editsvc_c').innerHTML = '<div>'+ereq.responseText+'</div>';
-	var preserveResponse = false;
-	if (services[is].purl!='') {
-	  var tpurl = services[is].purl.split('&');
-	  var fedit = document.getElementById('editsvcf');
-	  /* COMPATIBILITY: This code does not seems to be needed any more */
-	  oldPortalMode: for (var ie=0; ie<fedit.elements.length; ie++) {
-	    for (var ip=0; ip<tpurl.length; ip++) {
-	      if (tpurl[ip]!='') {
-		    var thisp = tpurl[ip].split('=');
-		    if (fedit.elements[ie].name==thisp[0]) {
-				if(fedit.elements[ie].name.toLowerCase() == 'preserveresponse'){
-					preserveResponse = true;
-					//break oldPortalMode;
+	
+	if (services[is].purl != '') {
+		var tpurl = services[is].purl.split('&');
+		var fedit = document.getElementById('editsvcf');
+		for (var ie = 0; ie < fedit.elements.length; ie++) {
+			for (var ip = 0; ip < tpurl.length; ip++) {
+				if (tpurl[ip] != '') {
+					var thisp = tpurl[ip].split('=');
+		    		if (fedit.elements[ie].name == thisp[0]) {
+						var thispv = unescape(thisp[1]);
+						if (fedit.elements[ie].type == 'select-multiple'){
+							for (var io = 0; io < fedit.elements[ie].options.length; io++) {
+								if(fedit.elements[ie].options[io].value == thispv){
+									fedit.elements[ie].options[io].selected = true;
+									continue;
+								}
+							}
+						} else {
+							fedit.elements[ie].value = thispv;
+						}
+					}
 				}
-		      fedit.elements[ie].value = unescape(thisp[1]);
-		    }
-	      }
-	    }
-	  }
-	  /* EO COMPATIBILITY: This code does not seems to be needed any more */
-	}
-	if(preserveResponse){
-		document.getElementById('editsvc_c').innerHTML = '<div>'+ereq.responseText+'</div>';
+			}
+		}
 	}
       }
     } else {
