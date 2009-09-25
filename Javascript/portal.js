@@ -22,7 +22,7 @@ function startRefresh() {
 }  
 
 function startUtempo() {
-  globalcursor('progress');sss
+  globalcursor('progress');
 }
 
 function endUtempo() {
@@ -246,11 +246,11 @@ function submitService(event) {
 			var nextparams = '';
 			for( var i in elmt.options ){
 				if(elmt.options[i].selected){
-					nextparams += (nextparams==''?'':'&')+elmt.name+'='+encodeURI(elmt.options[i].value);
+					nextparams += (nextparams==''?'':'&')+elmt.name+'='+encodeURIComponent(elmt.options[i].value);
 				}
 			}
 		} else {
-			var nextparams = elmt.name+'='+encodeURI(elmt.value)
+			var nextparams = elmt.name+'='+encodeURIComponent(elmt.value)
 		}
 	    params += '&'+nextparams;
 		}
@@ -318,7 +318,7 @@ function editSvc(event, snum) {
 				if (tpurl[ip] != '') {
 					var thisp = tpurl[ip].split('=');
 		    		if (fedit.elements[ie].name == thisp[0]) {
-						var thispv = unescape(thisp[1]);
+						var thispv = decodeURIComponent(thisp[1]);
 						if (fedit.elements[ie].type == 'select-multiple'){
 							for (var io = 0; io < fedit.elements[ie].options.length; io++) {
 								if(fedit.elements[ie].options[io].value == thispv){
@@ -370,11 +370,11 @@ function sendForm() {
 		var nextpurl = '';
 		for( var i in elmt.options ){
 			if(elmt.options[i].selected){
-				nextpurl += (nextpurl==''?'':'&')+elmt.name+'='+encodeURI(elmt.options[i].value);
+				nextpurl += (nextpurl==''?'':'&')+elmt.name+'='+encodeURIComponent(elmt.options[i].value);
 			}
 		}
 	} else {
-		var nextpurl = elmt.name+'='+encodeURI(elmt.value)
+		var nextpurl = elmt.name+'='+encodeURIComponent(elmt.value)
 	}
     purl += (purl==''?'':'&')+nextpurl;
   }
