@@ -7,7 +7,7 @@ function svcrss(&$action) {
  $action->lay->setEncoding("utf-8");
 
   $action->lay->set("rss", false);
-
+  $ilink = (GetHttpVars("rss", ""));
   $ilink = urldecode(GetHttpVars("rss", ""));
   $rsslink = parseUrl($ilink);
   if ($rsslink=="") {
@@ -26,6 +26,8 @@ function svcrss(&$action) {
   } else {
     $r2link  = $rsslink;
   }
+
+  
   $rssi =& new XML_RSS($r2link);
   $pret = $rssi->parse();
   if (isset($rssi->channel["link"])) {
