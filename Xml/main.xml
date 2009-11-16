@@ -119,7 +119,7 @@ addEvent(window, "resize", computefbodywh);
 <div class="app"
      onmouseover="this.className='app app_over'; cancelTempoAppMenu()" 
      onmouseout="this.className='app'; setTempoAppMenu()" 
-     onclick="if (mcurApp.id==-1) return false; subwindowm(0,0,'_tab', '[CORE_BASEURL]app='+mcurApp.sid+mcurApp.prm); closeAppMenu()">
+     onclick="if (mcurApp.id==-1) return false; subwindowm(0,0,'_tab'+mcurApp.sid, '[CORE_BASEURL]app='+mcurApp.sid+mcurApp.prm); closeAppMenu()">
 [TEXT:wd open in new window]</div>
 
 [IF canChangeDefApp]<div class="app"
