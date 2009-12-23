@@ -53,7 +53,7 @@ function meteo(&$action) {
 
   $iconstyle=getHttpVars("iconstyle","Aqua");
   $action->lay->set("oimg", $img);
-  if (ereg("([a-z_0-9)]*)\.png",$img,$reg)) {
+  if (preg_match("/([a-z_0-9)]*)\.png/",$img,$reg)) {
     if ($night) $bgimg=$action->getImageUrl('n_meteobg.png');
     else $bgimg=$action->getImageUrl('meteobg.png');
     $action->lay->set("bodyimg", $bgimg);
