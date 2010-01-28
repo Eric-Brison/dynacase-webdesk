@@ -4,7 +4,7 @@
  *
  * @author Anakeen 2006
  * @version $Id: previewtheme.php,v 1.1 2006/08/07 16:31:49 eric Exp $
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
  * @package WEBDESK
  * @subpackage 
  */

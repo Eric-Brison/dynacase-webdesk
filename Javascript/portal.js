@@ -1,3 +1,9 @@
+
+/**
+ * @author Anakeen
+ * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
+ */
+
 // $Id: portal.js,v 1.46 2007/10/11 10:12:50 marc Exp $
 
 // portal

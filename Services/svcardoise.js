@@ -1,3 +1,9 @@
+
+/**
+ * @author Anakeen
+ * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
+ */
+
 function ardoiseSaveNeeded(event) {
   var evt = (evt) ? evt : ((event) ? event : null );
   intKeyCode = event.which;

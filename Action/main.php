@@ -4,7 +4,7 @@
  *
  * @author Anakeen 2000 
  * @version $Id: main.php,v 1.17 2008/06/10 15:00:46 jerome Exp $
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
  * @package FREEDOM
  * @subpackage WEBDESK
  */

@@ -4,7 +4,7 @@
  *
  * @author Anakeen 2000 
  * @version $Id: portal.php,v 1.37 2007/10/22 12:37:53 marc Exp $
- * @license http://opensource.org/licenses/gpl-license.php GNU Public License
+ * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
  * @package FREEDOM
  * @subpackage WGCAL
  */

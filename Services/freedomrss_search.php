@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * @author Anakeen
+ * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
+ */
+
 include_once("WHAT/Lib.Http.php");
 include_once("WHAT/Class.Layout.php");
 include_once("FDL/Lib.Dir.php");
