@@ -7,8 +7,8 @@
  <img class="small_button" src="[IMGF:wd_news.gif:0,0,0|COLOR_BLACK]">
  <a target="_blank" href="[link]">[title]</a>
 </div>[ENDIF vfull]
-[IF vfull]<div style="border:1px solid [COLOR_WHITE]; cursor:pointer; padding:0px; padding-top:5px; text-align:justify" id="rssct[id]" onclick="subwindow(300, 400, '_rsslink', '[link]')" title="[TEXT:wd rss more infos]">
-<div style="border-bottom:1px solid [COLOR_A2]"><a target="_blank" href="[link]">[title]</a></div>
+[IF vfull]<div style="border:1px solid [COLOR_WHITE];  padding:0px; padding-top:5px; text-align:justify" id="rssct[id]" >
+<div style="border-bottom:1px solid [COLOR_A2]"><a target="_blank" href="[link]" title="[TEXT:wd rss more infos]">[title]</a></div>
 <div style="padding:0px 0px 0px 10px;">[descr]</div>
 </div>[ENDIF vfull]
 [ENDBLOCK rssnews]
