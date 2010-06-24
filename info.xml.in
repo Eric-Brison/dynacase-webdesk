@@ -45,6 +45,9 @@
   </post-upgrade>
 
   <changelog>
+    <version number="1.2.1-1" date="2010-06-24">
+      <change title="Correct RSS freedom access" url="http://dev.freedom-ecm.org/issues/848" />
+    </version>
     <version number="1.2.0-5" date="2010-03-04">
       <change title="Changed infopath link" />
     </version>
