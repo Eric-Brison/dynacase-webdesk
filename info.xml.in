@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
-<module name="freedom-webdesk" version="@VERSION@" release="@RELEASE@" basecomponent="yes" infopath="http://www.freedom-ecm.org/modules/freedom-webdesk/freedom-webdesk">
-  <description>This module is used to allow user to configure the main page of freedom ECM with several available services like RSS, weather, searches.</description>
+<module name="dynacase-webdesk" version="@VERSION@" release="@RELEASE@" basecomponent="yes" infopath="http://www.dynacase.org/modules/dynacase-webdesk/dynacase-webdesk">
+  <description>This module is used to allow user to configure the main page of dynacase ECM with several available services like RSS, weather, searches.</description>
+
+  <replaces>
+        <module name="freedom-webdesk" />
+  </replaces>
 
   <requires>
   </requires>
@@ -46,10 +50,10 @@
 
   <changelog>
     <version number="1.2.2-1" date="2010-07-12">
-      <change title="Correct login label" url="http://dev.freedom-ecm.org/issues/886" />
+      <change title="Correct login label" url="http://dev.dynacase.org/issues/886" />
     </version>
     <version number="1.2.1-1" date="2010-06-24">
-      <change title="Correct RSS freedom access" url="http://dev.freedom-ecm.org/issues/848" />
+      <change title="Correct RSS dynacase access" url="http://dev.dynacase.org/issues/848" />
     </version>
     <version number="1.2.0-5" date="2010-03-04">
       <change title="Changed infopath link" />
