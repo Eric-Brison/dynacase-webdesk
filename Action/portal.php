@@ -211,6 +211,10 @@ function portal(&$action) {
       $svc = new_Doc($dbaccess, $welc);
       if ($svc->isAffected()) {
 	$up = createDoc($dbaccess, "USER_PORTAL");
+	if( ! is_object($up) ) {
+		$action->addWarningMsg(_("Could not create user portal."));
+		return;
+	}
 	$up->setValue("uport_ownerid", $action->user->fid);
 	$up->setValue("uport_owner", $action->user->firstname." ".$action->user->firstname);
 	$up->setValue("uport_title", "Mon portail (".$action->user->firstname." ".$action->user->firstname. ")");
