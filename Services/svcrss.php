@@ -34,7 +34,7 @@ function svcrss(&$action) {
   }
 
   
-  $rssi =& new XML_RSS($r2link);
+  $rssi = new XML_RSS($r2link);
   $pret = $rssi->parse();
   if (isset($rssi->channel["link"])) {
     $action->lay->set("nocontent", false);
