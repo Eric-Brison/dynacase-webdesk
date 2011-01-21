@@ -458,9 +458,6 @@ msgstr ""
 msgid "service mail"
 msgstr ""
 
-msgid "service local mail"
-msgstr ""
-
 msgid "service mail edition"
 msgstr ""
 

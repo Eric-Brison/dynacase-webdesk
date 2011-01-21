@@ -467,9 +467,6 @@ msgstr "Service Incidents"
 msgid "service mail"
 msgstr "Service Messagerie"
 
-msgid "service local mail"
-msgstr "Service Messagerie locale"
-
 msgid "service mail edition"
 msgstr "Service Mail, édition"
 

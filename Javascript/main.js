@@ -9,13 +9,6 @@ var currentIdApp = -1;
 
 var updateInfosTimeout = 5 * 60 * 1000;
 
-function getUnreadMsgCount() {
-  var corestandurl=window.location.pathname+'?sole=Y&';
-  var uu = corestandurl+'app=WEBDESK&action=SVCLOCALMAIL&oc=Y';
-  updateInfos(uu, 'ureadmail', "getUnreadMsgCount()", updateInfosTimeout);
-}
-  
-
 function getWaitingEventCount() {
   var corestandurl=window.location.pathname+'?sole=Y&';
   var uu = corestandurl+'app=WGCAL&action=WGCAL_WAITRV&oc=Y';

@@ -49,7 +49,6 @@ $action_desc = array (
   array( "acl" => "USER",  "name" => "INCIDENT", "short_name" =>N_("service incident"), "toc" => "N", "root" =>"N"),
 
   array( "acl" => "USER",  "name" => "SVCMAIL", "short_name" =>N_("service mail"), "toc" => "N", "root" =>"N"),
-  array( "acl" => "USER",  "name" => "SVCLOCALMAIL", "short_name" =>N_("service local mail"), "toc" => "N", "root" =>"N"),
   array( "acl" => "USER",  "name" => "ESVCMAIL", "short_name" =>N_("service mail edition"), "toc" => "N", "root" =>"N"),
 
    array( "acl" => "USER",  "name" => "SVCCONTACT", "short_name" =>N_("service contact"), "toc" => "N", "root" =>"N"),

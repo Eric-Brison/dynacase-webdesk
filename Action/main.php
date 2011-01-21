@@ -39,7 +39,6 @@ function haveAppAccess($appname) {
 function main(&$action) {
 
   $action->lay->set("Workspace", haveAppAccess("WORKSPACE"));
-  $action->lay->set("MailAccount", haveAppAccess("MAIL"));
   $action->lay->set("Agenda", haveAppAccess("WGCAL"));
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/DHTMLapi.js");
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/AnchorPosition.js");
