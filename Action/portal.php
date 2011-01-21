@@ -50,12 +50,11 @@ function portal(&$action) {
   $ordercat = array();
   foreach ($cat as $kc => $vc) {
     $tc = explode(".", $kc);
-    $tt = explode("/", $vc);
     $kcat=$tc[count($tc)-1];
 
     $ordercat[$kcat]["father"] = (isset($tc[count($tc)-2])?$tc[count($tc)-2]:$tc[count($tc)-1]);
     $ordercat[$kcat]["level"] = count($tc);
-    $ordercat[$kcat]["label"] = $tt[count($tc)-1];
+    $ordercat[$kcat]["label"] = $vc;
     $ordercat[$kcat]["key"] = $kc;
   }
 
