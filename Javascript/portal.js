@@ -12,7 +12,7 @@ var currentPage = 0;
 
 function startRefresh() {
   var fapp = parent.document.getElementById(window.name);
-  if (fapp.style.display=='block') {
+  if ((!fapp)  || (fapp.style.display=='block')) {
     var dat = new Date();
     var mdat = dat.getTime();
     for (var is=0; is<services.length; is++) {
