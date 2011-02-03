@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-01-26 18:07+0100\n"
-"PO-Revision-Date: 2011-01-14 16:33+0100\n"
+"PO-Revision-Date: 2011-02-03 17:20+0100\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
 "Language: fr\n"
@@ -99,13 +99,13 @@ msgid "service edit rss"
 msgstr ""
 
 msgid "service freedom search execution"
-msgstr ""
+msgstr "Dynacase service"
 
 msgid "service freedom search in familie"
-msgstr ""
+msgstr "Dynacase family search service"
 
 msgid "service edit freedom search in familie"
-msgstr ""
+msgstr "Dynacase family search service (edit)"
 
 msgid "generic service"
 msgstr ""
@@ -219,10 +219,10 @@ msgid "incident in progress -%d-"
 msgstr ""
 
 msgid "wd no freedom search given"
-msgstr ""
+msgstr "No Dynacase search given"
 
 msgid "wd invalid freedom search given"
-msgstr ""
+msgstr "Invalid Dynacase search given"
 
 msgid "description"
 msgstr ""
@@ -336,7 +336,7 @@ msgid "no rss item"
 msgstr ""
 
 msgid "freedom rss search"
-msgstr ""
+msgstr "Search for Dynacase RSS feeds"
 
 msgid "portal welcome service"
 msgstr ""
