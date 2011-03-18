@@ -19,7 +19,7 @@ array(
 "INIT" => "yes",
 
 "WDK_PORTALSPEC" => array( "val"=>"d&eacute;faut|33:33:33", "descr"=>N_("portal colums specification"), "user"=>"Y", "kind"=> "static"),
-"WDK_DEFAPP" => array( "val"=>"WEBDESK", "descr"=>N_("default application displayed"),"user"=>"Y", "kind"=>"text"),
+"WDK_DEFAPP" => array( "val"=>"CORE", "descr"=>N_("default application displayed"),"user"=>"Y", "kind"=>"text"),
 "WDK_COLCOUNT" => array( "val"=>"3", "descr"=>N_("portal columns count"),"user"=>"Y"),
 "WDK_SVCCOLCOUNT" => array( "val"=>"3", "descr"=>N_("services list columns count"),"user"=>"Y"),
 "ARDOISE" => array( "val"=>"", "descr"=>N_("ardoise content"),"user"=>"Y", "kind"=>"static"),
