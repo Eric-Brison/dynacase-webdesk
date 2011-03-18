@@ -11,15 +11,6 @@ a, a:visited, .wd_alink  {
   padding-right: 11px;
 }
 
-.wd_amail { 
-  text-decoration:none; 
-/*
-  background-image: url([IMGF:wd_lnk_mailto.gif:0,0,0|COLOR_BLACK]);
-  background-repeat: no-repeat;
-  background-position: right center;
-  padding-right: 11px;
-*/
-}
 
 .small_button { border:0px; cursor:pointer; vertical-align:baseline }
 .app { 
@@ -32,9 +23,29 @@ div.app:hover { background-color:[COLOR_C8]; }
 .app_selected { background-color:[COLOR_B8];  border:1px solid [COLOR_WHITE]; cursor:pointer; }
 .app_over { background-color:[COLOR_A8]; padding-left:5px; padding-right:5px; border:1px inset [COLOR_A8]; cursor:pointer; }
 
-.wdhead { font-weight:bold; border-width:1px; border-style:none none solid none; border-color:[COLOR_A8];  }
+.wdhead { 
+    background-image: url([IMG:bg-main.png]);
+    background-position: bottom right;
+    background-repeat: repeat-x;
+    font-weight:bold; 
+    border-style:none;
+}
 .wdtitle { border-width:1px; border-style:none none dotted none; border-color:[COLOR_A8];  }
 #wdtitle td span, #wdtitle td img { vertical-align: middle; }
+#wdtitle form.bform { padding:0 10px 0 10px; }
+#wdtitle input[type="text"] { 
+   border-width:1px;
+   border-color:#555 #CCC #CCC #555;
+   background-color:#fcffff;
+   background-image: url([IMG:magnifier.png]);
+   background-position: right center;
+   background-repeat: no-repeat;
+   font-family:sans; font-size:80%; color:#555; 
+}
+#name { font-family:sans; font-size:80%; color:#555; padding:0 10px 0 10px;}
+#logo { padding:0 10px 0 10px;}
+
+
 .wdmenu { 
   border-style:none solid none none; 
   border-color:[COLOR_A8];

@@ -38,8 +38,6 @@ function haveAppAccess($appname) {
 
 function main(&$action) {
 
-  $action->lay->set("Workspace", haveAppAccess("WORKSPACE"));
-  $action->lay->set("Agenda", haveAppAccess("WGCAL"));
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/DHTMLapi.js");
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/AnchorPosition.js");
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL")."/geometry.js");
@@ -52,8 +50,6 @@ function main(&$action) {
 
   $action->lay->set("IsMBarStatic", getParam("WDK_MBARSTATIC",1)==0); 
   $action->lay->set("userRealName",$action->user->firstname." ".$action->user->lastname); 
-  $action->lay->set("userDomain",getParam("CORE_CLIENT"));
-  $action->lay->set("sessionId",$action->session->id); 
   $action->lay->set("title", ""); 
   $action->lay->set("PHP_AUTH_USER",$_SERVER['PHP_AUTH_USER']);    
 
