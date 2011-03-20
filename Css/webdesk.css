@@ -23,6 +23,7 @@ a, a:visited, .wd_alink  {
 }
 .app_selected { 
     background-image:url([IMG:menu_on.png]); 
+    background-color: [COLOR_C9];
     border-color:[COLOR_B4]; 
     cursor:pointer; 
 }
@@ -31,6 +32,7 @@ a, a:visited, .wd_alink  {
     background-image:url([IMG:menu_off.png]); 
     background-repeat: repeat-x
     background-position: top right;
+    background-color: [COLOR_C9];
 }
 hr.separator { 
     margin:0;
@@ -82,12 +84,11 @@ img#appmenu_ico  { width:12px; }
     border:1px solid [COLOR_A8]; 
 }
 #wdmenu.clipsed { 
-  border-style:none solid none none; 
-  border-color:[COLOR_A8]; 
-  border-width:1px;
-  width:auto;
-  float:left;
-  background-color:[COLOR_A7];
+    padding:0;
+    border-style:none solid none none; 
+    border-color:[COLOR_A6]; 
+    border-width:1px;
+    background-color:[COLOR_A9];
 }
 #inmenu > div > img { padding-right:10px; }
 

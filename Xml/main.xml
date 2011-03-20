@@ -35,11 +35,11 @@ addEvent(window, "resize", computefbodywh);
 <div id="wdtitle" class="wdhead">
 <table style="width:100%"><tr style="vertical-align:top">
     <td class="small_button appzone" [IFNOT MAINTENANCE]onclick="isOpen = !isOpen; computefbodywh();"[ENDIF MAINTENANCE]>
-      <img class="small_button"  needresize="1" title="[TEXT:wd open/close menu]" id="wdmbarmng" src="[IFNOT IsMBarStatic][IMGF:wd_open_bar.gif:0,0,0|COLOR_BLACK][ENDIF IsMBarStatic][IF IsMBarStatic][IMGF:wd_right_bar.gif:0,0,0|COLOR_BLACK][ENDIF IsMBarStatic]" />
+      <img [IF MAINTENANCE]style="visibility:hidden" [ENDIF MAINTENANCE]class="small_button"  needresize="1" title="[TEXT:wd open/close menu]" id="wdmbarmng" src="[IFNOT IsMBarStatic][IMGF:wd_open_bar.gif:0,0,0|COLOR_BLACK][ENDIF IsMBarStatic][IF IsMBarStatic][IMGF:wd_right_bar.gif:0,0,0|COLOR_BLACK][ENDIF IsMBarStatic]" />
       <span id="wdappsel">--</span>
     </td>
     <td class="appbar">
-      [IF MAINTENANCE]<span id="maintenance">MAINTENANCE</span>[ENDIF MAINTENANCE]
+      [IF MAINTENANCE]<span id="maintenance">[TEXT:en maintenance]</span>[ENDIF MAINTENANCE]
       <span class="appbar" [IF MAINTENANCE]style="display:none"[ENDIF MAINTENANCE] id="appbar"></span>
     </td>
     [IF fgsearch_installed]<td class="search">

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-20 14:06+0100\n"
+"POT-Creation-Date: 2011-03-20 18:20+0100\n"
 "PO-Revision-Date: 2011-02-03 17:20+0100\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -64,6 +64,9 @@ msgstr ""
 
 msgid "wd open/close menu"
 msgstr ""
+
+msgid "en maintenance"
+msgstr "Maintenance in progress..."
 
 msgid "top bar search"
 msgstr "enter your search"
