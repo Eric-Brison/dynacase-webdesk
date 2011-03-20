@@ -48,7 +48,7 @@ addEvent(window, "resize", computefbodywh);
       <td class="user">
 	<span class="name">[userRealName]</span>
 	<span class="logos" onclick="document.authent.submit()" >
-	  <img title="[TEXT:Click here to logout]" class="small_button" needresize="1" style="width:16px"src="[IMG:exit.png]" />logout
+	  <img title="[TEXT:Click here to logout]" class="small_button" needresize="1" style="width:[SIZE_IMG-SMALL]"src="[IMG:exit.png]" />logout
 	</span>
       </td>
   </tr></table>
@@ -61,7 +61,7 @@ addEvent(window, "resize", computefbodywh);
 			onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" 
 			onclick="runappm(event, [id], '[name]', '[jsname]', '[iconsrc]','[params]', true); return false;" 
 			oncontextmenu="openAppMenu(event, [id], '[name]', '[jsname]', '[iconsrc]','[params]'); return false;">
-      <img needresize="1" src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]; vertical-align:baseline" />[short_name]
+      <img needresize="1" src="[iconsrc]" />[short_name]
     </div>[ENDBLOCK appList]
 
     <hr class="separator" />
