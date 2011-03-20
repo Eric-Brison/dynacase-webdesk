@@ -54,9 +54,9 @@ function main(&$action) {
   $action->lay->set("PHP_AUTH_USER",$_SERVER['PHP_AUTH_USER']);    
 
   if( file_exists('maintenance.lock') ) {
-    $action->lay->set("MAINTENANCE", '<span id="maintenance">M A I N T E N A N C E</span>');
+    $action->lay->set("MAINTENANCE", true);
   } else {
-    $action->lay->set("MAINTENANCE", "");
+    $action->lay->set("MAINTENANCE", false);
   }
 
   $defApp = false;

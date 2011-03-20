@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-01-26 18:07+0100\n"
+"POT-Creation-Date: 2011-03-20 14:06+0100\n"
 "PO-Revision-Date: 2011-02-03 17:20+0100\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -10,6 +10,294 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+msgid "Could not create user portal."
+msgstr "Could not create user portal."
+
+msgid "My portal"
+msgstr ""
+
+msgid "My account"
+msgstr ""
+
+msgid "Webdesk preferences"
+msgstr ""
+
+msgid "Administration"
+msgstr ""
+
+msgid "Webdesk administration"
+msgstr ""
+
+msgid "description"
+msgstr ""
+
+msgid "short_name"
+msgstr ""
+
+msgid "Theme preferences"
+msgstr ""
+
+msgid "Theme"
+msgstr ""
+
+msgid "User identification"
+msgstr ""
+
+msgid "Identification"
+msgstr ""
+
+msgid "webdesk application portal"
+msgstr ""
+
+msgid "Javascript must be enabled in your navigator"
+msgstr ""
+
+msgid "by Anakeen"
+msgstr ""
+
+msgid "Change password"
+msgstr ""
+
+msgid "Change name and coordinates"
+msgstr ""
+
+msgid "wd open/close menu"
+msgstr ""
+
+msgid "top bar search"
+msgstr "enter your search"
+
+msgid "Click here to logout"
+msgstr ""
+
+msgid "wd fixe/release menu"
+msgstr ""
+
+msgid "wd display application"
+msgstr ""
+
+msgid "wd reload (force) application"
+msgstr ""
+
+msgid "wd open in new window"
+msgstr ""
+
+msgid "wd default application"
+msgstr ""
+
+msgid "wd add/remove shortcut"
+msgstr ""
+
+msgid "wd manage portal"
+msgstr ""
+
+msgid "wd show/hide service list"
+msgstr ""
+
+msgid "wd reload portal view"
+msgstr ""
+
+msgid "portal welcome manual"
+msgstr ""
+
+msgid "wd open all services"
+msgstr ""
+
+msgid "wd  close all services"
+msgstr ""
+
+msgid "wd reduce font"
+msgstr ""
+
+msgid "wd  enlarge font"
+msgstr ""
+
+msgid "wd  reset colums"
+msgstr ""
+
+msgid "wd add page"
+msgstr ""
+
+msgid "wd close"
+msgstr ""
+
+msgid "wd save"
+msgstr ""
+
+msgid "wd available services"
+msgstr ""
+
+msgid "wd add service"
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+
+msgid "Do not click here"
+msgstr ""
+
+msgid "Here either"
+msgstr ""
+
+msgid "Theme chooser"
+msgstr ""
+
+msgid "font size chooser"
+msgstr ""
+
+msgid "small size"
+msgstr ""
+
+msgid "normal size"
+msgstr ""
+
+msgid "large size"
+msgstr ""
+
+msgid "x-large size"
+msgstr ""
+
+msgid "Apply"
+msgstr ""
+
+msgid "Change your theme"
+msgstr ""
+
+msgid "wd error add service"
+msgstr ""
+
+msgid "wd error getting service"
+msgstr ""
+
+msgid "wd invalid service number returned by creation"
+msgstr ""
+
+msgid "automatic reload all"
+msgstr ""
+
+msgid "wd hide svc content"
+msgstr ""
+
+msgid "wd reload svc content"
+msgstr ""
+
+msgid "wd edit svc content"
+msgstr ""
+
+msgid "wd delete svc"
+msgstr ""
+
+msgid "wd url for retrieving information not given"
+msgstr ""
+
+msgid "downloading content in progress..."
+msgstr ""
+
+msgid "wd show svc content"
+msgstr ""
+
+msgid "edition url not given"
+msgstr ""
+
+msgid "wd loading edition forms"
+msgstr ""
+
+msgid "wd error retrieving edit form"
+msgstr ""
+
+msgid "wd error saving edit form"
+msgstr ""
+
+msgid "wd error geo service"
+msgstr ""
+
+msgid "wd confirm supress of"
+msgstr ""
+
+msgid "wd error retrieving content"
+msgstr ""
+
+msgid "rss: clear displayed results"
+msgstr ""
+
+msgid "Click to search person containing..."
+msgstr ""
+
+msgid "Click to search both in society name..."
+msgstr ""
+
+msgid "open it in a new window"
+msgstr ""
+
+msgid "Url"
+msgstr ""
+
+msgid "wd enter url"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Height"
+msgstr ""
+
+msgid "Url type"
+msgstr ""
+
+msgid "html sheet"
+msgstr ""
+
+msgid "image"
+msgstr ""
+
+msgid "flash sheet"
+msgstr ""
+
+msgid "wd search ..."
+msgstr ""
+
+msgid "checked : search only in titles"
+msgstr ""
+
+msgid "Click to see detail"
+msgstr ""
+
+msgid "No style"
+msgstr ""
+
+msgid "wd rss more infos"
+msgstr ""
+
+msgid "no rss item"
+msgstr ""
+
+msgid "display full card in the same window"
+msgstr ""
+
+msgid "display column x lines"
+msgstr ""
+
+msgid "freedom rss search"
+msgstr "Search for Dynacase RSS feeds"
+
+msgid "rss: select to search in system RSS (else mine only)"
+msgstr ""
+
+msgid "wd entre rss link here"
+msgstr ""
+
+msgid "portal welcome service"
+msgstr ""
+
+msgid "portal welcome title"
+msgstr ""
+
+msgid "portal welcome content"
+msgstr ""
+
+msgid "portal welcome help"
+msgstr ""
 
 msgid "webdesk"
 msgstr ""
@@ -143,25 +431,18 @@ msgstr ""
 msgid "webdesk menu background image width"
 msgstr ""
 
-#, c-format
-msgid "temperature %s c (dew %s c, heat %s c)"
+msgid "without category"
 msgstr ""
 
 #, c-format
-msgid "wind, speed %s m/s direction [%s]"
+msgid "incident in progress -%d-"
 msgstr ""
 
-#, c-format
-msgid "relative humidity %s %%"
-msgstr ""
+msgid "wd no freedom search given"
+msgstr "No Dynacase search given"
 
-#, c-format
-msgid "Pression %s hpa"
-msgstr ""
-
-#, c-format
-msgid "Visibility %s %s km"
-msgstr ""
+msgid "wd invalid freedom search given"
+msgstr "Invalid Dynacase search given"
 
 #, c-format
 msgid "more than %d results..."
@@ -203,314 +484,30 @@ msgstr ""
 msgid "error retrieving mails"
 msgstr ""
 
+#, c-format
+msgid "temperature %s c (dew %s c, heat %s c)"
+msgstr ""
+
+#, c-format
+msgid "wind, speed %s m/s direction [%s]"
+msgstr ""
+
+#, c-format
+msgid "relative humidity %s %%"
+msgstr ""
+
+#, c-format
+msgid "Pression %s hpa"
+msgstr ""
+
+#, c-format
+msgid "Visibility %s %s km"
+msgstr ""
+
 msgid "wd no rss link given"
 msgstr ""
 
 msgid ""
 "[TEXT:no information available, verify your server have http access to "
 "internet and/or check link please...]"
-msgstr ""
-
-msgid "without category"
-msgstr ""
-
-#, c-format
-msgid "incident in progress -%d-"
-msgstr ""
-
-msgid "wd no freedom search given"
-msgstr "No Dynacase search given"
-
-msgid "wd invalid freedom search given"
-msgstr "Invalid Dynacase search given"
-
-msgid "description"
-msgstr ""
-
-msgid "short_name"
-msgstr ""
-
-msgid "Theme preferences"
-msgstr ""
-
-msgid "Theme"
-msgstr ""
-
-msgid "User identification"
-msgstr ""
-
-msgid "Identification"
-msgstr ""
-
-msgid "My portal"
-msgstr ""
-
-msgid "My account"
-msgstr ""
-
-msgid "Webdesk preferences"
-msgstr ""
-
-msgid "Administration"
-msgstr ""
-
-msgid "Webdesk administration"
-msgstr ""
-
-msgid "Could not create user portal."
-msgstr "Could not create user portal."
-
-msgid "Change password"
-msgstr ""
-
-msgid "Change name and coordinates"
-msgstr ""
-
-msgid "by Anakeen"
-msgstr ""
-
-msgid "webdesk application portal"
-msgstr ""
-
-msgid "Javascript must be enabled in your navigator"
-msgstr ""
-
-msgid "display full card in the same window"
-msgstr ""
-
-msgid "display column x lines"
-msgstr ""
-
-msgid "rss: select to search in system RSS (else mine only)"
-msgstr ""
-
-msgid "Click to see detail"
-msgstr ""
-
-msgid "Click to search person containing..."
-msgstr ""
-
-msgid "Click to search both in society name..."
-msgstr ""
-
-msgid "wd entre rss link here"
-msgstr ""
-
-msgid "Url"
-msgstr ""
-
-msgid "wd enter url"
-msgstr ""
-
-msgid "Title"
-msgstr ""
-
-msgid "Height"
-msgstr ""
-
-msgid "Url type"
-msgstr ""
-
-msgid "html sheet"
-msgstr ""
-
-msgid "image"
-msgstr ""
-
-msgid "flash sheet"
-msgstr ""
-
-msgid "No style"
-msgstr ""
-
-msgid "rss: clear displayed results"
-msgstr ""
-
-msgid "open it in a new window"
-msgstr ""
-
-msgid "wd rss more infos"
-msgstr ""
-
-msgid "no rss item"
-msgstr ""
-
-msgid "freedom rss search"
-msgstr "Search for Dynacase RSS feeds"
-
-msgid "portal welcome service"
-msgstr ""
-
-msgid "portal welcome title"
-msgstr ""
-
-msgid "portal welcome content"
-msgstr ""
-
-msgid "portal welcome manual"
-msgstr ""
-
-msgid "portal welcome help"
-msgstr ""
-
-msgid "wd search ..."
-msgstr ""
-
-msgid "checked : search only in titles"
-msgstr ""
-
-msgid "wd error add service"
-msgstr ""
-
-msgid "wd error getting service"
-msgstr ""
-
-msgid "wd invalid service number returned by creation"
-msgstr ""
-
-msgid "automatic reload all"
-msgstr ""
-
-msgid "wd hide svc content"
-msgstr ""
-
-msgid "wd reload svc content"
-msgstr ""
-
-msgid "wd edit svc content"
-msgstr ""
-
-msgid "wd delete svc"
-msgstr ""
-
-msgid "wd url for retrieving information not given"
-msgstr ""
-
-msgid "downloading content in progress..."
-msgstr ""
-
-msgid "wd show svc content"
-msgstr ""
-
-msgid "edition url not given"
-msgstr ""
-
-msgid "wd loading edition forms"
-msgstr ""
-
-msgid "wd error retrieving edit form"
-msgstr ""
-
-msgid "wd error saving edit form"
-msgstr ""
-
-msgid "wd error geo service"
-msgstr ""
-
-msgid "wd confirm supress of"
-msgstr ""
-
-msgid "wd error retrieving content"
-msgstr ""
-
-msgid "wd open/close menu"
-msgstr ""
-
-msgid "wd document received"
-msgstr ""
-
-msgid "wd waiting event count"
-msgstr ""
-
-msgid "Click here to logout"
-msgstr ""
-
-msgid "wd fixe/release menu"
-msgstr ""
-
-msgid "wd display application"
-msgstr ""
-
-msgid "wd reload (force) application"
-msgstr ""
-
-msgid "wd open in new window"
-msgstr ""
-
-msgid "wd default application"
-msgstr ""
-
-msgid "wd add/remove shortcut"
-msgstr ""
-
-msgid "wd manage portal"
-msgstr ""
-
-msgid "wd show/hide service list"
-msgstr ""
-
-msgid "wd reload portal view"
-msgstr ""
-
-msgid "wd open all services"
-msgstr ""
-
-msgid "wd  close all services"
-msgstr ""
-
-msgid "wd reduce font"
-msgstr ""
-
-msgid "wd  enlarge font"
-msgstr ""
-
-msgid "wd  reset colums"
-msgstr ""
-
-msgid "wd add page"
-msgstr ""
-
-msgid "wd close"
-msgstr ""
-
-msgid "wd save"
-msgstr ""
-
-msgid "wd available services"
-msgstr ""
-
-msgid "wd add service"
-msgstr ""
-
-msgid "Theme chooser"
-msgstr ""
-
-msgid "font size chooser"
-msgstr ""
-
-msgid "small size"
-msgstr ""
-
-msgid "normal size"
-msgstr ""
-
-msgid "large size"
-msgstr ""
-
-msgid "x-large size"
-msgstr ""
-
-msgid "Apply"
-msgstr ""
-
-msgid "Change your theme"
-msgstr ""
-
-msgid "Preview"
-msgstr ""
-
-msgid "Do not click here"
-msgstr ""
-
-msgid "Here either"
 msgstr ""
