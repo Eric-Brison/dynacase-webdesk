@@ -82,12 +82,13 @@ img#appmenu_ico  { width:12px; }
     padding:5px;
     border:1px solid [COLOR_A8]; 
 }
-#wdmenu.clipsed { 
+.clipsed { 
     padding:0;
     border-style:none solid none none; 
     border-color:[COLOR_A6]; 
     border-width:1px;
     background-color:[COLOR_A9];
+    width:auto;
 }
 #inmenu > div > img { padding-right:10px; width:[SIZE_IMG-X-SMALL]; vertical-align:bottom; }
 #inmenu .app  { border-left-width: 10px; }
@@ -117,6 +118,8 @@ img#appmenu_ico  { width:12px; }
 #ctxappmenu > div > img#appmenu_ico { width:24px; padding-right:10px; }
 #ctxappmenu > div > span#appmenu_title { vertical-align:middle ; font-weight:bold; }
 
+#wdbody { float:none; border:0px; width:auto; }
+#wdbody.clipsed { float:right;  }
 
 #wdbody iframe {
   width:100%;

@@ -86,7 +86,7 @@ addEvent(window, "resize", computefbodywh);
 </div>
 
   
-<div id="wdbody" style="float:left;  border:0px; width:auto;">
+<div id="wdbody">
 [BLOCK appListBody]<iframe id="fbody[id]" name="fbody[id]"  style="display:none; border:0px;" src="[IMG:1x1.gif]" scrolling="needed"></iframe>
 [ENDBLOCK appListBody]
 [BLOCK specialAppListBody]<iframe id="fbody[id]" name="fbody[id]"  style="display:none; border:0px;"  src="[IMG:1x1.gif]" scrolling="needed"></iframe>

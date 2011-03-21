@@ -50,6 +50,7 @@ function computefbodywh() {
     md.style.height = rh;
     document.getElementById('wdbody').style.width = ibody - 0;//  - 18; 
     document.getElementById('wdbody').style.borderWidth = '0'; 
+    document.getElementById('wdbody').className = 'clipsed'; 
     if (currentApp>-1) {      
       document.getElementById('fbody'+currentApp).style.height = rh;
       document.getElementById('fbody'+currentApp).style.width = '100%';;
@@ -62,6 +63,7 @@ function computefbodywh() {
     if (currentApp>-1) {
       document.getElementById('fbody'+currentApp).style.width = bodW;
       document.getElementById('fbody'+currentApp).style.height = bodH - topH;
+      document.getElementById('wdbody').className = ''; 
     }    
     if (isOpen)  md.style.display = 'block';
     else md.style.display = 'none';
