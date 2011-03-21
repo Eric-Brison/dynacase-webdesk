@@ -102,8 +102,6 @@ img#appmenu_ico  { width:12px; }
 }
 #wdmenu.clipsed #wdcmdtext {  margin-left:0px; }
 
-#wdappsel img { width:[SIZE_IMG-X-SMALL]; }
-
 #ctxappmenu {
     background-color:[COLOR_WHITE]; 
     margin:0px; 

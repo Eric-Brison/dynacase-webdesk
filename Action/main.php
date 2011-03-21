@@ -143,7 +143,7 @@ function main(&$action) {
       $appli["descriptionsla"]= addslashes($appli["description"]); // because its in between '' in layout
       if ($appli["machine"] != "") $appli["pubdir"]= "http://".$appli["machine"]."/what";
       else $appli["pubdir"]=$action->getParam("CORE_PUBURL");
-      $appli["iconsrc"]=$action->GetImageUrl($appli["icon"]);
+      $appli["iconsrc"]=$action->getImageUrl($appli["icon"]);
       if ($appli["iconsrc"]=="CORE/Images/noimage.png") $appli["iconsrc"]=$appli["name"]."/Images/".$appli["icon"];
       $appli["params"] = "";
       $tab[$i++]=$appli;
