@@ -47,9 +47,8 @@ addEvent(window, "resize", computefbodywh);
       </td>[ENDIF fgsearch_installed]
       <td class="user">
 	<span class="name">[userRealName]</span>
-	<span class="logos" onclick="document.authent.submit()" >
-	  <img title="[TEXT:Click here to logout]" class="small_button" needresize="1" style="width:[SIZE_IMG-SMALL]"src="[IMG:exit.png]" />logout
-	</span>
+	<span alt="[TEXT:Click here to logout]" class="logos" onclick="document.authent.submit()" >
+	  <img title="[TEXT:Click here to logout]" alt="[TEXT:Click here to logout]" class="small_button" needresize="1" style="width:[SIZE_IMG-X-SMALL]"src="[IMG:exit.png]" />[TEXT:platform logout]</span>
       </td>
   </tr></table>
 </div>

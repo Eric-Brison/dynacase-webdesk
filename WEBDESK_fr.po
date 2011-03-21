@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-20 19:35+0100\n"
+"POT-Creation-Date: 2011-03-21 13:00+0100\n"
 "PO-Revision-Date: 2011-02-03 17:45+0100\n"
 "Last-Translator: Arnaud BUATHIER <arnaud.buathier@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -73,6 +73,9 @@ msgstr "recherchez dans Dynacase..."
 
 msgid "Click here to logout"
 msgstr "Cliquez ici pour se déconnecter"
+
+msgid "platform logout"
+msgstr "quitter"
 
 msgid "wd fixe/release menu"
 msgstr "Afficher/masque le menu comme panneau latéral"

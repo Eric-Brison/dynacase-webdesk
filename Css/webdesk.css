@@ -56,17 +56,17 @@ hr.separator {
    background-position: right center;
    background-repeat: no-repeat;
    font-size:80%; 
-   width:75%;
+   width:90%;
 }
-#wdtitle td.appzone { width:20%; text-align:left;}
+#wdtitle td.appzone { text-align:left;}
 #wdtitle td.appzone img { width:[SIZE_IMG-X-SMALL]; padding-right:5px;}
-#wdtitle td.appbar { width:30%; text-align:center;}
+#wdtitle td.appbar { text-align:center;}
 img.appbar_button {
   cursor:pointer;
   width:[SIZE_IMG-X-SMALL];
   border-style : none;
 }
-#wdtitle td.search { width:30%; text-align:right;}
+#wdtitle td.search { text-align:right;}
 #wdtitle input.setter { color:#555; }
 #wdtitle input.unsetter { color:#CCC;  }
 #wdtitle td.user {  text-align:right; }
