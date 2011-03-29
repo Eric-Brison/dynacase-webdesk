@@ -53,7 +53,7 @@ addEvent(window, "resize", computefbodywh);
   </tr></table>
 </div>
 
-<div id="wdmenu" class="[IF IsMBarStatic]clipsed [ENDIF IsMBarStatic][IF ISIE6] select-free[ENDIF ISIE6]">
+<div id="wdmenu" style="position:absolute;" class="[IF IsMBarStatic]clipsed [ENDIF IsMBarStatic][IF ISIE] select-free[ENDIF ISIE]">
   <div id="inmenu">
     [BLOCK appList]<div id="app[id]"
 			class="app" onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" 
@@ -77,7 +77,7 @@ addEvent(window, "resize", computefbodywh);
     
   </div>
 
-  <div title="[TEXT:wd fixe/release menu]" id="wdcmdtext" style=" border:1px [IF IsMBarStatic]inset[ENDIF IsMBarStatic][IFNOT IsMBarStatic]outset[ENDIF IsMBarStatic] [COLOR_A6]" onclick="alternMBar();">
+  <div title="[TEXT:wd fixe/release menu]" id="wdcmdtext" style="border:1px [IF IsMBarStatic]inset[ENDIF IsMBarStatic][IFNOT IsMBarStatic]outset[ENDIF IsMBarStatic] [COLOR_A6]" onclick="alternMBar();">
     <img src="[IMG:1x1.gif]" />
   </div>
   
