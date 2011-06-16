@@ -28,7 +28,7 @@ a, a:visited, .wd_alink  {
     border-color:[COLOR_B4]; 
     cursor:pointer; 
 }
-.app_over { 
+div.app:hover { 
     border-color:[COLOR_A5] [COLOR_A8] [COLOR_A8] [COLOR_C5]; 
     background-image:url([IMG:menu_off.png]); 
     background-color: [COLOR_C9];

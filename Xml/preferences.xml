@@ -13,9 +13,9 @@ addEvent(window,'load',selectFirstApp);
 </head>
 <body>
 <table cellspacing="0" style="width:95%" ><tr style="vertical-align:top">
-<td>
+<td width="200px">
 <div id="divapp" class="wdparamb">[BLOCK applist]
-<div id="app[id]" title="[description]" class="app" onmouseover="if (this.className=='app') this.className='app_over'" onmouseout="if (this.className=='app_over') this.className='app'" onclick="selectApp('[id]', '[CORE_BASEURL]&app=[name]&action=[action]');">
+<div id="app[id]" title="[description]" class="app"  onclick="selectApp('[id]', '[CORE_BASEURL]&app=[name]&action=[action]');">
 <img needresize="1" src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]">&nbsp;[short_name]</div>
 [ENDBLOCK applist]</div>
 </td>
