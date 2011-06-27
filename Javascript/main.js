@@ -49,12 +49,12 @@ function computefbodywh() {
     md.style.display = (isOpen?'block':'none');
     var rh = bodH - (topH + 0);
     var ibody = bodW - getObjectWidth(md);
-    md.style.height = rh;
-    document.getElementById('wdbody').style.width = ibody - 0;//  - 18; 
+    md.style.height = rh+'px';
+    document.getElementById('wdbody').style.width = (ibody - 0)+'px';//  - 18; 
     document.getElementById('wdbody').style.borderWidth = '0'; 
     document.getElementById('wdbody').className = 'clipsed'; 
     if (currentApp>-1) {      
-      document.getElementById('fbody'+currentApp).style.height = rh;
+      document.getElementById('fbody'+currentApp).style.height = rh+'px';
       document.getElementById('fbody'+currentApp).style.width = '100%';;
       document.getElementById('fbody'+currentApp).style.display='';	
     }
@@ -62,11 +62,11 @@ function computefbodywh() {
   } else { // Menu float
 
     md.className= ((isIE6)?' select-free':'');
-    md.style.top = topH;
+    md.style.top = topH+'px';
     md.style.left = '0px';
     if (currentApp>-1) {
-      document.getElementById('fbody'+currentApp).style.width = bodW;
-      document.getElementById('fbody'+currentApp).style.height = bodH - topH;
+      document.getElementById('fbody'+currentApp).style.width = bodW+'px';
+      document.getElementById('fbody'+currentApp).style.height = (bodH - topH)+'px';
       document.getElementById('wdbody').className = ''; 
       md.style.display = (isOpen?'block':'none');
     }    

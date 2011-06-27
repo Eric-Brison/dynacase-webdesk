@@ -49,7 +49,7 @@ hr.separator {
 #wdtitle { vertical-align:middle; height:2.5em;}
 #wdtitle table tr td { font-family:Trebuchet MS,Verdana,sans; color:#555; border-style:none; padding:0; margin:0; }
 #wdtitle td span, #wdtitle td img { vertical-align: middle; }
-#wdtitle form.bform { padding:0 10px 0 10px; }
+#wdtitle form.bform { padding:0 10px 0 10px; width:400px;}
 #wdtitle input[type="text"] { 
    border-width:1px;
    border-color:#555 #CCC #CCC #555;
@@ -62,19 +62,21 @@ hr.separator {
 }
 #wdtitle td.appzone { text-align:left;}
 #wdtitle td.appzone img { width:[SIZE_IMG-X-SMALL]; padding-right:5px;}
-#wdtitle td.appbar { text-align:center;}
+#wdtitle td.appbar { text-align:right;}
 img.appbar_button {
   cursor:pointer;
   width:[SIZE_IMG-X-SMALL];
   border-style : none;
 }
-#wdtitle td.search { text-align:right;}
+
+#wdtitle span.appbar { text-align:center;width:50px; white-space:nowrap;}
+#wdtitle td.search { text-align:right;width:30%}
 #wdtitle input.setter { color:#555; }
 #wdtitle input.unsetter { color:#CCC;  }
-#wdtitle td.user {  text-align:right; }
-#wdtitle span.name { padding:0 10px 0 10px; }
-#wdtitle span.logos { cursor:pointer; padding:0 10px 0 10px; }
-#wdtitle span.logos > img { padding:0 3px 0 0; }
+#wdtitle td.user {  text-align:right;  white-space:nowrap;width:60px}
+#wdtitle span.name { padding:0 10px 0 10px; white-space:nowrap;width:50px;}
+#wdtitle span.logos { cursor:pointer; padding:0 10px 0 10px; width:50px;}
+#wdtitle span.logos > img { padding:0 3px 0 0; ; white-space:nowrap;}
 
 img#appmenu_ico  { width:12px; }
 
