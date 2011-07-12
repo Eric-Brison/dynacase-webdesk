@@ -33,7 +33,7 @@ function computefbodywh() {
 
   var md = document.getElementById('wdmenu');
   md.style.height = 'auto';
-  if (isIE) bodW -= 20;
+  if (isIE8) bodW -= 5;
 
   if (isMBarStatic) {  // Menu fixed
 
@@ -49,6 +49,7 @@ function computefbodywh() {
     md.style.display = (isOpen?'block':'none');
     var rh = bodH - (topH + 0);
     var ibody = bodW - getObjectWidth(md);
+    if (isIE8) rh-=5;
     md.style.height = rh+'px';
     document.getElementById('wdbody').style.width = (ibody - 0)+'px';//  - 18; 
     document.getElementById('wdbody').style.borderWidth = '0'; 
@@ -65,8 +66,10 @@ function computefbodywh() {
     md.style.top = topH+'px';
     md.style.left = '0px';
     if (currentApp>-1) {
+        var delta=0;
+        if (isIE8) delta-=5;
       document.getElementById('fbody'+currentApp).style.width = bodW+'px';
-      document.getElementById('fbody'+currentApp).style.height = (bodH - topH)+'px';
+      document.getElementById('fbody'+currentApp).style.height = (bodH - topH+delta)+'px';
       document.getElementById('wdbody').className = ''; 
       md.style.display = (isOpen?'block':'none');
     }    
