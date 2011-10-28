@@ -1,79 +1,88 @@
 <?php
-
+/*
+ * @author Anakeen
+ * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
+ * @package FDL
+ */
 /**
  * @author Anakeen
  * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
  */
 
-
-include_once('FDL/Lib.Dir.php');
-function savesvc(&$action) {
-
-  $dbaccess = getParam("FREEDOM_DB");
-  
-  $excludev = array("sole","app","action","snum");
-  global $_GET,$_POST,$ZONE_ARGS;
-  $allvars = array();
-  if (!isset($ZONE_ARGS)) $ZONE_ARGS = array();
-  if (!isset($_GET)) $_GET = array();
-  if (!isset($_POST)) $_POST = array();
-  $allvars = array_merge($_GET,$_POST,$ZONE_ARGS);
-
-
-  $snum = GetHttpVars("snum", -1);
-  if ($snum==-1 || $snum=="") {
-    $action->lay->set("OUT", "var svcnum = -1;");
-    return;
-  }
-
-  $tup = GetChildDoc( getParam("FREEDOM_DB"), 0, 0, "ALL", 
-		     array("uport_ownerid = '".$action->user->fid."'"), $action->user->id, "LIST", "USER_PORTAL");
-  if (count($tup)<1 || !$tup[0]->isAffected()) {
-    $action->lay->set("OUT", "var svcnum = -1;");
-    return;
-  } else {
-    $up = $tup[0];
-  }
-
-  $p = "";
-  foreach ($allvars as $k => $v) {
-    if (in_array($k, $excludev)) continue;
-	if(is_array($v)){
-		$p .= ($p==""?"":"&").urlencode_array($v, $k);
-	} else {
-		$p .= ($p==""?"":"&").$k."=".urlencode($v);
-	}
-  }
-
-  $svcnum   = $up->getTValue("uport_svcnum");
-  $svcparam = $up->getTValue("uport_param");
-
-  $change = false;
-  foreach ($svcnum as $k => $v) {
-    if ($snum==$v) {
-      $svcparam[$k] = $p;
-      $change = true;
+include_once ('FDL/Lib.Dir.php');
+function savesvc(&$action)
+{
+    
+    $dbaccess = getParam("FREEDOM_DB");
+    
+    $excludev = array(
+        "sole",
+        "app",
+        "action",
+        "snum"
+    );
+    global $_GET, $_POST, $ZONE_ARGS;
+    $allvars = array();
+    if (!isset($ZONE_ARGS)) $ZONE_ARGS = array();
+    if (!isset($_GET)) $_GET = array();
+    if (!isset($_POST)) $_POST = array();
+    $allvars = array_merge($_GET, $_POST, $ZONE_ARGS);
+    
+    $snum = GetHttpVars("snum", -1);
+    if ($snum == - 1 || $snum == "") {
+        $action->lay->set("OUT", "var svcnum = -1;");
+        return;
     }
-  }
-  if ($change) {
-    $up->setValue("uport_param", $svcparam);
-    $err = $up->modify();
-    $up->postModify();
-    $action->lay->set("OUT", "var svcnum = $snum;");
-  } else $action->lay->set("OUT", "var svcnum = -1;");
+    
+    $tup = GetChildDoc(getParam("FREEDOM_DB") , 0, 0, "ALL", array(
+        "uport_ownerid = '" . $action->user->fid . "'"
+    ) , $action->user->id, "LIST", "USER_PORTAL");
+    if (count($tup) < 1 || !$tup[0]->isAffected()) {
+        $action->lay->set("OUT", "var svcnum = -1;");
+        return;
+    } else {
+        $up = $tup[0];
+    }
+    
+    $p = "";
+    foreach ($allvars as $k => $v) {
+        if (in_array($k, $excludev)) continue;
+        if (is_array($v)) {
+            $p.= ($p == "" ? "" : "&") . urlencode_array($v, $k);
+        } else {
+            $p.= ($p == "" ? "" : "&") . $k . "=" . urlencode($v);
+        }
+    }
+    
+    $svcnum = $up->getTValue("uport_svcnum");
+    $svcparam = $up->getTValue("uport_param");
+    
+    $change = false;
+    foreach ($svcnum as $k => $v) {
+        if ($snum == $v) {
+            $svcparam[$k] = $p;
+            $change = true;
+        }
+    }
+    if ($change) {
+        $up->setValue("uport_param", $svcparam);
+        $err = $up->modify();
+        $up->postModify();
+        $action->lay->set("OUT", "var svcnum = $snum;");
+    } else $action->lay->set("OUT", "var svcnum = -1;");
 }
 
-function urlencode_array(
-    $var,				// the array value
-    $varName,			// variable name to be used in the query string
-    $separator = '&'	// what separating character to use in the query string
-) {
+function urlencode_array($var, // the array value
+$varName, // variable name to be used in the query string
+$separator = '&' // what separating character to use in the query string
+)
+{
     $toImplode = array();
     foreach ($var as $key => $value) {
         if (is_array($value)) {
             $toImplode[] = urlencode_array($value, "{$varName}[{$key}]", $separator);
         } else {
-            $toImplode[] = "{$varName}[{$key}]=".urlencode($value);
+            $toImplode[] = "{$varName}[{$key}]=" . urlencode($value);
         }
     }
     return implode($separator, $toImplode);
