@@ -1,0 +1,3 @@
+<Directory "@prefix@">
+    SetEnv FREEDOM_ACCESS       WEBDESK
+</Directory>

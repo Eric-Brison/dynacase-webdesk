@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<module name="dynacase-webdesk" version="@VERSION@" release="@RELEASE@" basecomponent="yes" infopath="http://www.dynacase.org/modules/dynacase-webdesk/dynacase-webdesk">
+  <description>This module is used to allow user to configure the main page of dynacase ECM with several available services like RSS, weather, searches.</description>
+
+  <replaces>
+        <module name="freedom-webdesk" />
+  </replaces>
+
+  <requires>
+  </requires>
+
+  <pre-install>
+    <check type="phpclass" include="XML/Parser.php" class="XML_Parser">
+      <help>You might need to install a php-pear-XML_Parser package from your distribution, or run 'pear install XML_Parser', in order to have XML_Parser support in PHP.</help> 
+    </check>
+    <check type="phpclass" include="XML/RSS.php" class="XML_RSS">
+      <help>You might need to install a php-pear-XML_RSS package form your distribution, or run 'pear install XML_RSS', in order to get RSS parsing support in PHP.</help>
+    </check>
+    <check type="phpfunction" function="imap_open">
+      <help>You might need to install a php-imap package from your distribution in order to get IMAP support in PHP.</help>
+    </check>
+  </pre-install>
+  
+  <pre-upgrade>
+    <check type="phpclass" include="XML/Parser.php" class="XML_Parser">
+      <help>You might need to install a php-pear-XML_Parser package from your distribution, or run 'pear install XML_Parser', in roder to have XML_Parser support in PHP.</help> 
+    </check>
+    <check type="phpclass" include="XML/RSS.php" class="XML_RSS">
+      <help>You might need to install a php-pear-XML_RSS package form your distribution, or run 'pear install XML_RSS', in order to get RSS parsing support in PHP.</help>
+    </check>
+    <check type="phpfunction" function="imap_open">
+      <help>You might need to install a php-imap package from your distribution in order to get IMAP support in PHP.</help>
+    </check>
+  </pre-upgrade>
+
+  <post-install>
+    <process command="programs/app_post WEBDESK I" />
+    <process command="programs/record_application WEBDESK" />
+    <process command="programs/app_post WEBDESK U" />
+    <process command="programs/update_catalog" />
+  </post-install>
+
+  <post-upgrade>
+    <process command="programs/pre_migration WEBDESK" />
+    <process command="programs/app_post WEBDESK U" />
+    <process command="programs/record_application WEBDESK" />
+    <process command="programs/post_migration WEBDESK" />
+    <process command="programs/update_catalog" />
+  </post-upgrade>
+
+  <changelog>
+    <version number="1.2.2-1" date="2010-07-12">
+      <change title="Correct login label" url="http://dev.dynacase.org/issues/886" />
+    </version>
+    <version number="1.2.1-1" date="2010-06-24">
+      <change title="Correct RSS dynacase access" url="http://dev.dynacase.org/issues/848" />
+    </version>
+    <version number="1.2.0-5" date="2010-03-04">
+      <change title="Changed infopath link" />
+    </version>
+    <version number="1.2.0-3" date="2009-12-28">
+      <change title="Removed PHP 5.3 deprecated functions" />
+    </version>
+  </changelog>
+
+</module>

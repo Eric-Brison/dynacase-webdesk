@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+
+[ZONE WEBDESK:HEAD]
+
+<link rel="stylesheet" type="text/css" href="[CORE_SBASEURL]app=CORE&action=CORE_CSS" >
+[CSS:REF]
+
+<style type="text/css">
+[CSS:CODE]
+</style>
+
+
+[JS:REF]
+
+<script>
+[JS:CODE]
+var isIE = [IF ISIE]true[ENDIF ISIE][IFNOT ISIE]false[ENDIF ISIE];
+var isMBarStatic = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[ENDIF IsMBarStatic];
+var isOpen = [IF IsMBarStatic]true[ENDIF IsMBarStatic][IFNOT IsMBarStatic]false[ENDIF IsMBarStatic];
+
+function initWebdesk() {
+  computefbodywh();  
+  [BLOCK barAppList]
+  addInBar([id], '[name]', '[jsname]', '[iconsrc]', '[params]' ); [ENDBLOCK barAppList]
+
+}
+
+addEvent(window,"load", initWebdesk);
+addEvent(window, "resize", computefbodywh);
+
+</script>  
+</head>
+<body class="core" scrollable="no">
+<div id="wdtitle" class="wdhead">
+<table style="width:100%"><tr style="vertical-align:top">
+    <td class="small_button appzone" [IFNOT MAINTENANCE]onclick="isOpen = !isOpen; computefbodywh();"[ENDIF MAINTENANCE]>
+      <img [IF MAINTENANCE]style="visibility:hidden" [ENDIF MAINTENANCE]class="small_button"  needresize="1" title="[TEXT:wd open/close menu]" id="wdmbarmng" src="[IFNOT IsMBarStatic][IMGF:wd_open_bar.gif:0,0,0|COLOR_BLACK][ENDIF IsMBarStatic][IF IsMBarStatic][IMGF:wd_right_bar.gif:0,0,0|COLOR_BLACK][ENDIF IsMBarStatic]" />
+      <span id="wdappsel">--</span>
+    </td>
+    <td class="appbar">
+      [IF MAINTENANCE]<span id="maintenance">[TEXT:en maintenance]</span>[ENDIF MAINTENANCE]
+      <span class="appbar" [IF MAINTENANCE]style="display:none"[ENDIF MAINTENANCE] id="appbar"></span>
+    </td>
+    [IF fgsearch_installed]<td class="search">
+      <form class="bform" onsubmit="if (document.getElementById('rsearch').value=='') return false; args='&keyword='+document.getElementById('rsearch').value;  runapp([fgsearch_id],'[fgsearch_name]',args,true); return false" style="display:inline" method="POST">[IFNOT MAINTENANCE]<input type="text" value="[TEXT:top bar search]" onBlur="searchOnBlur(this)" onFocus="searchOnFocus(this)" id="rsearch" class="unsetter"/>[ENDIF MAINTENANCE]</form>
+      </td>[ENDIF fgsearch_installed]
+      <td class="user"><span class="name">[userRealName]</span><span alt="[TEXT:Click here to logout]" class="logos" onclick="document.authent.submit()" ><img title="[TEXT:Click here to logout]" alt="[TEXT:Click here to logout]" class="small_button" needresize="1" style="width:[SIZE_IMG-X-SMALL]"src="[IMG:exit.png]" />[TEXT:platform logout]</span>
+      </td>
+  </tr></table>
+</div>
+
+<div id="wdmenu" style="position:absolute;" class="[IF IsMBarStatic]clipsed [ENDIF IsMBarStatic][IF ISIE] select-free[ENDIF ISIE]">
+  <div id="inmenu">
+    [BLOCK appList]<div id="app[id]"
+			class="app" onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" 
+			onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" 
+			onclick="runappm(event, [id], '[name]', '[jsname]', '[iconsrc]','[params]', true); return false;" 
+			oncontextmenu="openAppMenu(event, [id], '[name]', '[jsname]', '[iconsrc]','[params]'); return false;">
+      <img needresize="1" style="width:[SIZE_IMG-X-SMALL];" src="[iconsrc]" />[short_name]
+    </div>[ENDBLOCK appList]
+
+    <hr class="separator" />
+    
+    [BLOCK specialAppList]
+    <div id="app[id]" 
+	 class="app" 
+	 onmouseover="if (currentIdApp!=[id]) this.className='app app_over'" 
+	 onmouseout="if (currentIdApp!=[id]) this.className='app'" title="[description]" 
+	 onclick="runappm(event, [id], '[name]', '[jsname]', '[iconsrc]', '[params]', true); return false;"
+	 oncontextmenu="openAppMenu(event, [id], '[name]', '[jsname]', '[iconsrc]','[params]'); return false;">
+      <img needresize="1"  src="[iconsrc]" style="width:[SIZE_IMG-XX-SMALL]; vertical-align:baseline" />[short_name]
+      </div>[ENDBLOCK specialAppList]
+    
+  </div>
+
+  <div title="[TEXT:wd fixe/release menu]" id="wdcmdtext" style="border:1px [IF IsMBarStatic]inset[ENDIF IsMBarStatic][IFNOT IsMBarStatic]outset[ENDIF IsMBarStatic] [COLOR_A6]" onclick="alternMBar();">
+    <img src="[IMG:1x1.gif]" />
+  </div>
+  
+  [IF ISIE6]<iframe class="innerFixer" src="[IMG:1x1.gif]"></iframe>[ENDIF ISIE6]
+</div>
+
+  
+<div id="wdbody">
+[BLOCK appListBody]<iframe id="fbody[id]" name="fbody[id]"  style="display:none; border:0px;" src="[IMG:1x1.gif]" scrolling="needed"></iframe>
+[ENDBLOCK appListBody]
+[BLOCK specialAppListBody]<iframe id="fbody[id]" name="fbody[id]"  style="display:none; border:0px;"  src="[IMG:1x1.gif]" scrolling="needed"></iframe>
+[ENDBLOCK specialAppListBody]</div>
+
+<form style="display:inline" action="[CORE_STANDURL]&app=AUTHENT&action=LOGOUT" method="POST" name="authent">
+  <input type="hidden" name="SeenBefore" value="1">
+  <input type="hidden" name="logout" value="Y">
+  <input type="hidden" name="rapp" value="WEBDESK">
+  <input type="hidden" name="raction" value="MAIN">
+  <input type="hidden" name="rurl" value="[CORE_STANDURL]">
+  <input type="hidden" name="OldAuth" value="[PHP_AUTH_USER]">
+</form>
+
+<div id="ctxappmenu" [IF ISIE6] class="select-free"[ENDIF ISIE6] >
+<div onmouseover="cancelTempoAppMenu()"  onmouseout="setTempoAppMenu()" >
+  <img id="appmenu_ico" src="" ><span id="appmenu_title">[short_name]</span>
+</div>
+<div class="app" 
+     onmouseover="this.className='app app_over'; cancelTempoAppMenu()" 
+     onmouseout="this.className='app'; setTempoAppMenu()" 
+     onclick="if (mcurApp.id==-1) return false; runapp(mcurApp.id, mcurApp.sid, mcurApp.prm, false); closeAppMenu()">
+[TEXT:wd display application]</div>
+
+<div class="app"
+     onmouseover="this.className='app app_over'; cancelTempoAppMenu()" 
+     onmouseout="this.className='app'; setTempoAppMenu()" 
+     onclick="if (mcurApp.id==-1) return false; runapp(mcurApp.id, mcurApp.sid, mcurApp.prm, true); closeAppMenu()">
+[TEXT:wd reload (force) application]</div>
+
+<div class="app"
+     onmouseover="this.className='app app_over'; cancelTempoAppMenu()" 
+     onmouseout="this.className='app'; setTempoAppMenu()" 
+     onclick="if (mcurApp.id==-1) return false; subwindowm(0,0,'_tab'+mcurApp.sid, '[CORE_BASEURL]app='+mcurApp.sid+mcurApp.prm); closeAppMenu()">
+[TEXT:wd open in new window]</div>
+
+[IF canChangeDefApp]<div class="app"
+     onmouseover="this.className='app app_over'; cancelTempoAppMenu()" 
+     onmouseout="this.className='app'; setTempoAppMenu()" 
+     onclick="if (mcurApp.id==-1) return false; setDefaultApp(mcurApp.id, mcurApp.sid, mcurApp.name, mcurApp.ico, mcurApp.prm, false); closeAppMenu()">
+[TEXT:wd default application]</div>
+[ENDIF canChangeDefApp]
+
+[IF canSetTopBar]<div class="app" style="padding:1px; margin:0px";
+     onmouseover="cancelTempoAppMenu()" 
+     onmouseout="setTempoAppMenu()"> 
+<hr style="padding:0px; margin:0px; border:0px; border-top:1px solid [COLOR_A7]"></div>
+
+<div class="app" 
+     onmouseover="this.className='app app_over'; cancelTempoAppMenu()" 
+     onmouseout="this.className='app'; setTempoAppMenu()" 
+     onclick="if (mcurApp.id==-1) return false; adddelAppShortCut(mcurApp.id, mcurApp.sid, mcurApp.name, mcurApp.ico, mcurApp.prm, false); closeAppMenu()">
+[TEXT:wd add/remove shortcut]</div>
+[ENDIF canSetTopBar]
+[IF ISIE6]<iframe class="innerFixer" src="[IMG:1x1.gif]"></iframe>[ENDIF ISIE6]
+</div>
+
+<script>
+// Load default app
+runapp([defid], '[defname]', '[defparams]', false);
+</script>
+</body>
+</html>

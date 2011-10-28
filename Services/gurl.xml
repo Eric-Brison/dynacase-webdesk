@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?><freedomsvc title="[title]"><![CDATA[
+[IFNOT nodata]<div style="width:100%;border:none;margin:0px;padding:0px;text-align:center">
+  <[nodetype] style="height:[height];width:100%;border:none;margin:0px;padding:0px" src="[url]"></div>[ENDIF nodata]
+]]></freedomsvc>

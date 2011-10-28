@@ -1,0 +1,4 @@
+<div>
+<div class="rss_info" title="[TEXT:rss: clear displayed results]" onclick="RssResetSearch()">[atext]</div>
+[BLOCK result]<div class="rss_result" onmouseover="rssMouseOver(event, this, [id])" onmouseout="rssMouseOut(event, this, [id])" onclick="RssSet([id], '[jstitle]')">[title] ([fam])</div>[ENDBLOCK result]
+<div style="border-top:1px solid; border-bottom:0px" title="[TEXT:rss: clear displayed results]" class="rss_info" onclick="RssResetSearch()">x</div>

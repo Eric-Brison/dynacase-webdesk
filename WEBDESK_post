@@ -1,0 +1,44 @@
+#!/bin/bash
+if [ "$freedom_context" == "" ]; then
+    #load environement variable for freedom
+  . /etc/freedom.conf
+   wchoose -b
+fi
+
+#------------------------------
+#post installation
+#------------------------------
+if [ "$1" = "I" ] ; then
+  $wpub/wsh.php --api=freedom_import --file=$wpub/WEBDESK/webdesk-init.ods
+  $wpub/wsh.php --api=freedom_import --file=$wpub/WEBDESK/webdesk.ods
+
+
+  cd $wpub/../html/phpweather
+  [ -f /home/httpd/html/phpweather/default.php ] && rm -f /home/httpd/html/phpweather/default
+  cp $wpub/WEBDESK/phpweather-default.php /home/httpd/html/phpweather/defaults.php
+  createdb -E latin1 -U anakeen phpweather
+  psql -U anakeen  phpweather -c 'create table pw_metars ()'
+  psql -U anakeen  phpweather -c 'create table pw_stations ()'
+  psql -U anakeen  phpweather -c 'create table pw_tafs ()'
+  php -q $wpub/WEBDESK/phpweather-init.php
+
+fi
+
+#------------------------------
+#post update
+#------------------------------
+if [ "$1" = "U" ] ; then
+
+  $wpub/wsh.php --api=freedom_import --file=$wpub/WEBDESK/webdesk.ods
+
+
+fi
+
+#------------------------------
+#post uninstallation
+#------------------------------
+if [ "$1" = "D" ] ; then
+
+  dropdb phpweather -U anakeen
+  
+fi

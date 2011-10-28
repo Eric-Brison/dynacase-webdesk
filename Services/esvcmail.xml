@@ -1,0 +1,26 @@
+<table cellspacing="0">
+<tr><td>Compte</td><td>:</td><td><input type="text" name="account"></td></tr>
+<tr><td>Login</td><td>:</td><td><input type="text" name="login"></td></tr>
+<tr><td>Password</td><td>:</td><td><input type="password" name="password"></td></tr>
+<tr><td>Serveur</td><td>:</td><td><input type="text" name="server"></td></tr>
+<tr><td>Protocole</td><td>:</td><td><select name="proto">
+<option value="pop3">Pop3
+<option value="pop3s">Pop3 Ssl
+<option value="imap">Imap
+<option value="imaps">Imap Ssl
+</select></td></tr>
+<tr><td>Affichage</td><td>:</td><td><select name="display">
+<option value="1">Emetteur
+<option value="0">Emetteur - Sujet
+</select></td></tr>
+<tr><td>Afficher les mails</td><td>:</td><td><select name="shmails">
+<option value="0">Non lus
+<option value="1">Tous
+</select></td></tr>
+<tr><td>Parmis les </td><td>:</td><td><select name="cntm">
+<option value="10">10
+<option value="20">20
+<option value="50">50
+<option value="100">100
+</select> premiers</td></tr>
+</table>
