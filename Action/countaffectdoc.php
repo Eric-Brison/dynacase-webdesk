@@ -2,18 +2,10 @@
 /*
  * @author Anakeen
  * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
- * @package FDL
- */
+ * @package WEBDESK
+*/
 /**
  * number of affected document
- *
- * @author Anakeen 2006
- * @version $Id: countaffectdoc.php,v 1.2 2006/11/08 06:21:30 marc Exp $
- * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
- * @package WEBDESK
- * @subpackage
- */
-/**
  */
 include_once ("FDL/Class.Doc.php");
 function countaffectdoc(&$action)
