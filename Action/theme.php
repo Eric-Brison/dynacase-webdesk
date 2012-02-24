@@ -2,18 +2,10 @@
 /*
  * @author Anakeen
  * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
- * @package FDL
- */
+ * @package WEBDESK
+*/
 /**
  * see webdesk user preferences
- *
- * @author Anakeen 2006
- * @version $Id: theme.php,v 1.1 2006/09/15 15:38:38 eric Exp $
- * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
- * @package WEBDESK
- * @subpackage
- */
-/**
  */
 include_once ("FDL/Class.Doc.php");
 /**

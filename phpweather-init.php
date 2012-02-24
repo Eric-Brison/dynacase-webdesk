@@ -2,12 +2,8 @@
 /*
  * @author Anakeen
  * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
- * @package FDL
- */
-/**
- * @author Anakeen
- * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
- */
+ * @package WEBDESK
+*/
 
 define('PHPWEATHER_BASE_DIR', "/home/httpd/html/phpweather");
 require_once (PHPWEATHER_BASE_DIR . '/db_layer.php');

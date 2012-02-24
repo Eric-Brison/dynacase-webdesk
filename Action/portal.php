@@ -2,19 +2,8 @@
 /*
  * @author Anakeen
  * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
- * @package FDL
- */
-/**
- * Generated Header (not documented yet)
- *
- * @author Anakeen 2000
- * @version $Id: portal.php,v 1.37 2007/10/22 12:37:53 marc Exp $
- * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
- * @package FREEDOM
- * @subpackage WGCAL
- */
-/**
- */
+ * @package WEBDESK
+*/
 
 include_once ('FDL/Lib.Dir.php');
 function portal(&$action)

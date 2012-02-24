@@ -2,13 +2,9 @@
 /*
  * @author Anakeen
  * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
- * @package FDL
- */
-/**
- * @author Anakeen
- * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
- */
-/* $Id: phpweather-default.php,v 1.2 2006/06/30 15:25:11 marc Exp $
+ * @package WEBDESK
+*/
+/*
  * Freedom service configuration for phpweather
 */
 /******************************************************************/

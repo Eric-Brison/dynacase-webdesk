@@ -2,19 +2,8 @@
 /*
  * @author Anakeen
  * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
- * @package FDL
- */
-/**
- * Generated Header (not documented yet)
- *
- * @author Anakeen 2000
- * @version $Id: admins.php,v 1.4 2008/12/30 17:07:40 eric Exp $
- * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
- * @package FREEDOM
- * @subpackage WEBDESK
- */
-/**
- */
+ * @package WEBDESK
+*/
 
 include_once ('Class.QueryDb.php');
 include_once ('Class.Application.php');
