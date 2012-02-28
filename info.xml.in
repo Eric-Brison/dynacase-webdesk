@@ -35,16 +35,19 @@
   </pre-upgrade>
 
   <post-install>
+    <process command="programs/record_application WEBDESK I" />
+    <process command="./wsh.php --api=importDocuments --file=./WEBDESK/webdesk-init.ods" />
+    <process command="./wsh.php --api=importDocuments --file=./WEBDESK/webdesk.ods" />
     <process command="programs/app_post WEBDESK I" />
-    <process command="programs/record_application WEBDESK" />
     <process command="programs/app_post WEBDESK U" />
     <process command="programs/update_catalog" />
   </post-install>
 
   <post-upgrade>
     <process command="programs/pre_migration WEBDESK" />
+    <process command="programs/record_application WEBDESK U" />
+    <process command="./wsh.php --api=importDocuments --file=./WEBDESK/webdesk.ods" />
     <process command="programs/app_post WEBDESK U" />
-    <process command="programs/record_application WEBDESK" />
     <process command="programs/post_migration WEBDESK" />
     <process command="programs/update_catalog" />
   </post-upgrade>
