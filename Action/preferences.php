@@ -8,7 +8,7 @@
 include_once ('Class.QueryDb.php');
 include_once ('Class.Application.php');
 
-function preferences(&$action)
+function preferences(Action & $action)
 {
     
     $action->parent->AddCssRef("WEBDESK:webdesk.css", true);
@@ -33,7 +33,8 @@ function preferences(&$action)
         "iconsrc" => $action->GetImageUrl("utheme.png") ,
         "id" => "x1",
         "action" => "THEME",
-        "name" => "WEBDESK"
+        "name" => "WEBDESK",
+        "extra" => ""
     );
     $tab[] = array(
         "description" => _("User identification") ,
@@ -41,7 +42,8 @@ function preferences(&$action)
         "iconsrc" => $action->GetImageUrl("uident.png") ,
         "id" => "x2",
         "action" => "IMPCARD&id=$fuid&zone=WEBDESK:USERIDENT:T",
-        "name" => "FDL"
+        "name" => "FDL",
+        "extra" => ""
     );
     
     if ($query->nb > 0) {
@@ -53,6 +55,8 @@ function preferences(&$action)
                     $appli["iconsrc"] = $action->GetImageUrl($appli["icon"]);
                     if ($appli["iconsrc"] == "CORE/Images/noimage.png") $appli["iconsrc"] = $appli["name"] . "/Images/" . $appli["icon"];
                     $appli["action"] = "APPPREFS";
+                    $appli["extra"] = "";
+                    if ($appli["name"] == "APPMNG") $appli["extra"] = "&sole=A";
                     $tab[] = $appli;
                 }
             }
