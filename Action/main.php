@@ -43,7 +43,7 @@ function main(&$action)
     $action->parent->AddJsRef("WHAT:subwindow.js", true);
     $action->parent->AddJsRef("WEBDESK:main.js", true);
     $action->parent->AddJsRef("FDC:setparamu.js", true);
-    $action->parent->AddCssRef("WEBDESK:webdesk.css", true);
+    $action->parent->AddCssRef("WEBDESK:webdesk-system.css", true);
     
     $action->lay->set("IsMBarStatic", getParam("WDK_MBARSTATIC", 1) == 0);
     $action->lay->set("userRealName", $action->user->firstname . " " . $action->user->lastname);

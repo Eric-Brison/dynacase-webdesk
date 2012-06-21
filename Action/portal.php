@@ -26,7 +26,10 @@ function portal(&$action)
         $jslay = new Layout("WEBDESK/Layout/portal.js", $action);
         $action->parent->AddJsCode($jslay->gen());
     }
-    $action->parent->AddCssRef("WEBDESK:webdesk.css", true);
+
+    $themingCSS = getParam("WDESK_PORTAL_CSS", "WEBDESK:webdesk-theme.css");
+    $action->parent->AddCssRef("WEBDESK:webdesk-system.css", true);
+    $action->parent->AddCssRef($themingCSS, true);
     
     $svclist_colcount = getParam("WDK_SVCCOLCOUNT", 3);
     //
