@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-30 15:39+0200\n"
-"PO-Revision-Date: 2012-03-30 15:39+0200\n"
+"POT-Creation-Date: 2012-06-22 11:40+0200\n"
+"PO-Revision-Date: 2012-06-22 11:43+0200\n"
 "Last-Translator: Arnaud BUATHIER <arnaud.buathier@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
 "Language: fr\n"
@@ -11,168 +11,233 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Administration"
-msgstr "Administration"
-
-msgid "Apply"
-msgstr "Appliquer"
-
-msgid "Change my account informations"
-msgstr "Modifier mon compte"
-
-msgid "Change password"
-msgstr "Modifier mon mot de passe"
-
-msgid "Change your theme"
-msgstr "Changer votre thème"
-
-msgid "Click here to logout"
-msgstr "Cliquez ici pour se déconnecter"
-
-msgid "Click to search both in society name..."
-msgstr "Sélectionner pour chercher dans les noms de société"
-
-msgid "Click to search person containing..."
-msgstr "Commençant par ...."
-
-msgid "Click to see detail"
-msgstr "Cliquer pour voir le détail"
-
 msgid "Could not create user portal."
 msgstr "Ne peut créer le portail utilisateur."
-
-msgid "Do not click here"
-msgstr "Ne cliquez pas ici"
-
-msgid "Height"
-msgstr "Hauteur"
-
-msgid "Here either"
-msgstr "Ici non plus"
-
-msgid "Identification"
-msgstr "Identification"
-
-msgid "Javascript must be enabled in your navigator"
-msgstr "Le javascript doit être activé dans votre navigateur"
-
-msgid "My account"
-msgstr "Mon compte"
 
 msgid "My portal"
 msgstr "Webdesk"
 
-msgid "No style"
-msgstr "Pas de style"
-
-#, c-format
-msgid "Pression %s hpa"
-msgstr "Pression %s hpa"
-
-msgid "Preview"
-msgstr "Prévisualisation"
-
-msgid "Theme"
-msgstr "Thème"
-
-msgid "Theme chooser"
-msgstr "Choix du thème"
-
-msgid "Theme preferences"
-msgstr "Préférences du thème"
-
-msgid "Title"
-msgstr ""
-
-msgid "Url"
-msgstr "Url"
-
-msgid "Url type"
-msgstr "Type de page"
-
-msgid "User identification"
-msgstr "Identification de l'utilisateur"
-
-#, c-format
-msgid "Visibility %s %s km"
-msgstr "visibilité %s %s km"
-
-msgid "Webdesk administration"
-msgstr "Administration du WebDesk"
+msgid "My account"
+msgstr "Mon compte"
 
 msgid "Webdesk preferences"
 msgstr "Préférences"
 
-msgid ""
-"[TEXT:no information available, verify your server have http access to "
-"internet and/or check link please...]"
-msgstr "Pas d'information, vérifiez que l'URL du lien est accessible"
-
-msgid "add service in user portal"
-msgstr "Ajouter le service au portail"
-
-msgid "administration page"
+msgid "Administration"
 msgstr "Administration"
 
-msgid "application present in application bar"
-msgstr "Application présente dans la barre"
-
-msgid "ardoise content"
-msgstr "contenu de l'ardoise"
-
-msgid "automatic reload all"
-msgstr "mise à jour toutes les"
-
-msgid "by Anakeen"
-msgstr "par Anakeen"
-
-msgid "checked : search only in titles"
-msgstr "coché : rechercher seulement dans les titres"
-
-msgid "clear displayed results"
-msgstr "Effacer les résultats"
-
-msgid "default application displayed"
-msgstr "Application affichée par défault"
-
-msgid "del service from user portal"
-msgstr "Supprimession du service du portail"
+msgid "Webdesk administration"
+msgstr "Administration du WebDesk"
 
 msgid "description"
 msgstr ""
 
-msgid "display column x lines"
-msgstr "Affichage colonnes x lignes"
+msgid "short_name"
+msgstr ""
 
-msgid "display full card in the same window"
-msgstr "Afficher les cartes complètes dans la même fenêtre"
+msgid "Theme preferences"
+msgstr "Préférences du thème"
 
-msgid "downloading content in progress..."
-msgstr "Chargement du contenu en cours..."
+msgid "Theme"
+msgstr "Thème"
 
-msgid "edit for view any url"
-msgstr "éditer pour voir une url"
+msgid "User identification"
+msgstr "Identification de l'utilisateur"
 
-msgid "edition url not given"
-msgstr "Url pour édition des param^etre non fournie"
+msgid "Identification"
+msgstr "Identification"
+
+msgid "webdesk application portal"
+msgstr "Application webdesk"
+
+msgid "Javascript must be enabled in your navigator"
+msgstr "Le javascript doit être activé dans votre navigateur"
+
+msgid "by Anakeen"
+msgstr "par Anakeen"
+
+msgid "Change password"
+msgstr "Modifier mon mot de passe"
+
+msgid "Change my account informations"
+msgstr "Modifier mon compte"
+
+msgid "wd open/close menu"
+msgstr "Ouvrir/fermer le menu"
 
 msgid "en maintenance"
 msgstr "Opération de maintenance en cours..."
 
-msgid "error retrieving mails"
-msgstr "Erreur de récupération des messages"
+msgid "top bar search"
+msgstr "recherchez dans Dynacase..."
 
-msgid "flash sheet"
-msgstr "flash"
+msgid "Click here to logout"
+msgstr "Cliquez ici pour se déconnecter"
+
+msgid "platform logout"
+msgstr "quitter"
+
+msgid "wd fixe/release menu"
+msgstr "Afficher/masque le menu comme panneau latéral"
+
+msgid "wd display application"
+msgstr "Afficher..."
+
+msgid "wd reload (force) application"
+msgstr "Recharger l'application..."
+
+msgid "wd open in new window"
+msgstr "Ouvrir dans une nouvelle fenêtre"
+
+msgid "wd default application"
+msgstr "Application par défaut"
+
+msgid "wd add/remove shortcut"
+msgstr "Ajouter/Supprimer le raccourci..."
+
+msgid "wd show/hide service list"
+msgstr "Afficher/masquer la liste des services"
+
+msgid "wd reload portal view"
+msgstr "Raffraichir le portail"
+
+msgid "wd open all services"
+msgstr "Ouvrir tous les services"
+
+msgid "wd  close all services"
+msgstr "Fermer tous les services"
+
+msgid "wd  reset colums"
+msgstr "Réinitialiser les largeurs des colonnes"
+
+msgid "wd add page"
+msgstr "Ajouter une page"
+
+msgid "wd close"
+msgstr "Fermer"
+
+msgid "wd save"
+msgstr "Sauver"
+
+msgid "wd available services"
+msgstr "Liste des services disponibles"
+
+msgid "wd add service"
+msgstr "Ajouter le service"
+
+msgid "Preview"
+msgstr "Prévisualisation"
+
+msgid "Do not click here"
+msgstr "Ne cliquez pas ici"
+
+msgid "Here either"
+msgstr "Ici non plus"
+
+msgid "Theme chooser"
+msgstr "Choix du thème"
 
 msgid "font size chooser"
 msgstr "Taille de la police"
 
-msgid "freedom rss search"
-msgstr "Recherche de fil RSS Dynacase"
+msgid "small size"
+msgstr "petite taille"
 
-msgid "generic service"
-msgstr "service générique"
+msgid "normal size"
+msgstr "taille normale"
+
+msgid "large size"
+msgstr "grande taille"
+
+msgid "x-large size"
+msgstr "très grande taille"
+
+msgid "Apply"
+msgstr "Appliquer"
+
+msgid "Change your theme"
+msgstr "Changer votre thème"
+
+msgid "wd error add service"
+msgstr "wd error add service"
+
+msgid "wd error getting service"
+msgstr "wd error getting service"
+
+msgid "wd invalid service number returned by creation"
+msgstr "invalid service number returned by creation"
+
+msgid "automatic reload all"
+msgstr "mise à jour toutes les"
+
+msgid "wd hide svc content"
+msgstr "Masquer le contenu"
+
+msgid "wd delete svc"
+msgstr "Supprimer le service"
+
+msgid "wd edit svc content"
+msgstr "Editer les paramètres"
+
+msgid "wd reload svc content"
+msgstr "Recharger le contenu"
+
+msgid "wd url for retrieving information not given"
+msgstr "Url de récuperation des informations non fournie"
+
+msgid "downloading content in progress..."
+msgstr "Chargement du contenu en cours..."
+
+msgid "wd show svc content"
+msgstr "Afficher le contenu"
+
+msgid "edition url not given"
+msgstr "Url pour édition des param^etre non fournie"
+
+msgid "wd loading edition forms"
+msgstr "Chargement du formulaire de paramètrage"
+
+msgid "wd error retrieving edit form"
+msgstr "Erreur de récupération du formulaire édition"
+
+msgid "wd error saving edit form"
+msgstr "Erreur de sauvegarde du formulaire édition"
+
+msgid "wd error geo service"
+msgstr "wd error geo service"
+
+msgid "wd confirm supress of"
+msgstr "Etes-vous sur de vouloir supprimer le service "
+
+msgid "wd error retrieving content"
+msgstr "Erreur de récupération du contenu"
+
+msgid "rss: clear displayed results"
+msgstr "Effacer les résultats"
+
+msgid "Click to search person containing..."
+msgstr "Commençant par ...."
+
+msgid "Click to search both in society name..."
+msgstr "Sélectionner pour chercher dans les noms de société"
+
+msgid "open it in a new window"
+msgstr "ouvrir dans une nouvelle fenetre"
+
+msgid "Url"
+msgstr "Url"
+
+msgid "wd enter url"
+msgstr "Saisissez l'URL ici"
+
+msgid "Title"
+msgstr ""
+
+msgid "Height"
+msgstr "Hauteur"
+
+msgid "Url type"
+msgstr "Type de page"
 
 msgid "html sheet"
 msgstr "page html"
@@ -180,49 +245,45 @@ msgstr "page html"
 msgid "image"
 msgstr "image"
 
-#, c-format
-msgid "incident in progress -%d-"
-msgstr "Incident en cours -%d-"
+msgid "flash sheet"
+msgstr "flash"
 
-msgid "large size"
-msgstr "grande taille"
+msgid "wd search ..."
+msgstr "Texte recherché"
 
-msgid "list all admin pages"
-msgstr "liste des pages d'administration"
+msgid "checked : search only in titles"
+msgstr "coché : rechercher seulement dans les titres"
 
-#, c-format
-msgid "more than %d results..."
-msgstr "plus de %d résultats..."
+msgid "Click to see detail"
+msgstr "Cliquer pour voir le détail"
 
-msgid "no account defined"
-msgstr "pas de compte défini."
-
-msgid "no result for search"
-msgstr "Pas de résultat..."
+msgid "No style"
+msgstr "Pas de style"
 
 msgid "no rss item"
 msgstr "Pas de nouvelles, bonne nouvelle"
 
-msgid "normal size"
-msgstr "taille normale"
+msgid "display full card in the same window"
+msgstr "Afficher les cartes complètes dans la même fenêtre"
 
-msgid "number of affected document"
-msgstr "nombre de documents affectés"
+msgid "display column x lines"
+msgstr "Affichage colonnes x lignes"
 
-msgid "open it in a new window"
-msgstr "ouvrir dans une nouvelle fenetre"
+msgid "freedom rss search"
+msgstr "Recherche de fil RSS Dynacase"
 
-msgid "platform logout"
-msgstr "quitter"
+msgid "rss: select to search in system RSS (else mine only)"
+msgstr ""
+"Cochez pour rechercher dans les RSS système (sinon seulement les miennes)"
 
-msgid "portal columns count"
-msgstr "nombre de colonne du portail"
+msgid "wd entre rss link here"
+msgstr "Saisissez l'URL du flux RSS ici"
 
-msgid "portal colums specification"
-msgstr "Colonnes du portail"
+msgid "portal welcome service"
+msgstr "Accueil"
 
-msgid "portal page"
-msgstr "Portail"
+msgid "portal welcome title"
+msgstr "Bienvenue sur votre portail,"
 
 msgid "portal welcome content"
 msgstr ""
@@ -231,65 +292,81 @@ msgstr ""
 "venir, les dernières nouvelles... Pour cela, vous pouvez organiser les "
 "différents services en terme de contenu, de disposition..."
 
-msgid "portal welcome help"
-msgstr ""
-"Vous pouvez supprimer ce service, l'aide reste accessible par un simple clic "
-"sur le symbole (accessible en haut à gauche de votre portail)"
-
 msgid "portal welcome manual"
 msgstr ""
 "en cliquant ici vous accédez à l'aide à l'utilisation du portail et de ses "
 "services"
 
-msgid "portal welcome service"
-msgstr "Accueil"
+msgid "portal welcome help"
+msgstr ""
+"Vous pouvez supprimer ce service, l'aide reste accessible par un simple clic "
+"sur le symbole (accessible en haut à gauche de votre portail)"
 
-msgid "portal welcome title"
-msgstr "Bienvenue sur votre portail,"
+msgid "webdesk"
+msgstr "WebDesk"
 
-msgid "position of service in user portal"
-msgstr "Position du service dans le portail"
+msgid "webdesk application"
+msgstr "Application WebDesk"
+
+msgid "webdesk access"
+msgstr "Accès au WebDesk"
+
+msgid "webdesk change top bar content"
+msgstr "changer le contenu de la barre du haut"
+
+msgid "webdesk change default application"
+msgstr "Modification de l'application affichée par défaut dans le portail"
+
+msgid "webdesk admin"
+msgstr "administration webdesk"
+
+msgid "webdesk main page"
+msgstr "Page principale WebDesk"
+
+msgid "portal page"
+msgstr "Portail"
 
 msgid "preferences page"
 msgstr "Préférences"
 
-msgid "preview of theme"
-msgstr "prévisualisation du thème"
+msgid "theme preferences"
+msgstr "Préférences du thème"
 
-#, c-format
-msgid "relative humidity %s %%"
-msgstr "humidité relative %s %%"
+msgid "administration page"
+msgstr "Administration"
+
+msgid "list all admin pages"
+msgstr "liste des pages d'administration"
+
+msgid "webdesk general admnistration"
+msgstr "Administration du WebDesk"
 
 msgid "return JS service description"
 msgstr "return JS service description"
 
-msgid "rss: clear displayed results"
-msgstr "Effacer les résultats"
-
-msgid "rss: select to search in system RSS (else mine only)"
-msgstr ""
-"Cochez pour rechercher dans les RSS système (sinon seulement les miennes)"
+msgid "add service in user portal"
+msgstr "Ajouter le service au portail"
 
 msgid "save service parameters"
 msgstr "Sauvegarde de la définition du service"
 
-msgid "service ardoise"
-msgstr "Service ardoise"
+msgid "position of service in user portal"
+msgstr "Position du service dans le portail"
 
-msgid "service contact"
-msgstr "Service Contacts"
+msgid "del service from user portal"
+msgstr "Supprimession du service du portail"
 
-msgid "service edit freedom search in familie"
-msgstr "Service Dynacase de recherche dans une famille (edition)"
+msgid "view any url"
+msgstr "voir une url"
 
-msgid "service edit rss"
-msgstr "Service RSS, édition"
+msgid "edit for view any url"
+msgstr "éditer pour voir une url"
 
-msgid "service freedom search execution"
-msgstr "Service Dynacase"
+msgid "service test view"
+msgstr "Service test - affichage"
 
-msgid "service freedom search in familie"
-msgstr "Service Dynacase de recherche dans une famille"
+msgid "service test edition"
+msgstr "Service test - édition"
 
 msgid "service incident"
 msgstr "Service Incidents"
@@ -300,213 +377,53 @@ msgstr "Service Messagerie"
 msgid "service mail edition"
 msgstr "Service Mail, édition"
 
+msgid "service contact"
+msgstr "Service Contacts"
+
+msgid "service ardoise"
+msgstr "Service ardoise"
+
 msgid "service rss"
 msgstr "Service RSS"
 
-msgid "service test edition"
-msgstr "Service test - édition"
+msgid "service edit rss"
+msgstr "Service RSS, édition"
 
-msgid "service test view"
-msgstr "Service test - affichage"
+msgid "service freedom search execution"
+msgstr "Service Dynacase"
+
+msgid "service freedom search in familie"
+msgstr "Service Dynacase de recherche dans une famille"
+
+msgid "service edit freedom search in familie"
+msgstr "Service Dynacase de recherche dans une famille (edition)"
+
+msgid "generic service"
+msgstr "service générique"
+
+msgid "number of affected document"
+msgstr "nombre de documents affectés"
+
+msgid "preview of theme"
+msgstr "prévisualisation du thème"
+
+msgid "portal colums specification"
+msgstr "Colonnes du portail"
+
+msgid "default application displayed"
+msgstr "Application affichée par défault"
+
+msgid "portal columns count"
+msgstr "nombre de colonne du portail"
 
 msgid "services list columns count"
 msgstr "nombre de colonnes pour la liste de services"
 
-msgid "short_name"
-msgstr ""
-
-msgid "small size"
-msgstr "petite taille"
-
-#, c-format
-msgid "temperature %s c (dew %s c, heat %s c)"
-msgstr "température %s°c (rosée %s°c, ressentie %s°c)"
-
-msgid "theme preferences"
-msgstr "Préférences du thème"
-
-msgid "top bar search"
-msgstr "recherchez dans Dynacase..."
-
-msgid "view any url"
-msgstr "voir une url"
-
-msgid "wd  close all services"
-msgstr "Fermer tous les services"
-
-msgid "wd  enlarge font"
-msgstr "Augmenter la taille du texte..."
-
-msgid "wd  reset colums"
-msgstr "Réinitialiser les largeurs des colonnes"
-
-msgid "wd add page"
-msgstr "Ajouter une page"
-
-msgid "wd add service"
-msgstr "Ajouter le service"
-
-msgid "wd add/remove shortcut"
-msgstr "Ajouter/Supprimer le raccourci..."
-
-msgid "wd available services"
-msgstr "Liste des services disponibles"
-
-msgid "wd close"
-msgstr "Fermer"
-
-msgid "wd confirm supress of"
-msgstr "Etes-vous sur de vouloir supprimer le service "
-
-msgid "wd default application"
-msgstr "Application par défaut"
-
-msgid "wd delete svc"
-msgstr "Supprimer le service"
-
-msgid "wd display application"
-msgstr "Afficher..."
-
-msgid "wd edit svc content"
-msgstr "Editer les paramètres"
-
-msgid "wd enter url"
-msgstr "Saisissez l'URL ici"
-
-msgid "wd entre rss link here"
-msgstr "Saisissez l'URL du flux RSS ici"
-
-msgid "wd error add service"
-msgstr "wd error add service"
-
-msgid "wd error geo service"
-msgstr "wd error geo service"
-
-msgid "wd error getting service"
-msgstr "wd error getting service"
-
-msgid "wd error retrieving content"
-msgstr "Erreur de récupération du contenu"
-
-msgid "wd error retrieving edit form"
-msgstr "Erreur de récupération du formulaire édition"
-
-msgid "wd error saving edit form"
-msgstr "Erreur de sauvegarde du formulaire édition"
-
-msgid "wd fixe/release menu"
-msgstr "Afficher/masque le menu comme panneau latéral"
-
-msgid "wd hide svc content"
-msgstr "Masquer le contenu"
-
-msgid "wd invalid freedom search given"
-msgstr "Recherche Dynacase invalide"
-
-msgid "wd invalid service number returned by creation"
-msgstr "invalid service number returned by creation"
-
-msgid "wd loading edition forms"
-msgstr "Chargement du formulaire de paramètrage"
-
-msgid "wd manage portal"
-msgstr "Gestion du portail"
-
-msgid "wd no freedom search given"
-msgstr "Pas de recherche Dynacase fournie"
-
-msgid "wd no rss link given"
-msgstr "Pas de flux RSS fourni"
-
-msgid "wd open all services"
-msgstr "Ouvrir tous les services"
-
-msgid "wd open in new window"
-msgstr "Ouvrir dans une nouvelle fenêtre"
-
-msgid "wd open/close menu"
-msgstr "Ouvrir/fermer le menu"
-
-msgid "wd reduce font"
-msgstr "Réduire la taille du texte..."
-
-msgid "wd reload (force) application"
-msgstr "Recharger l'application..."
-
-msgid "wd reload portal view"
-msgstr "Raffraichir le portail"
-
-msgid "wd reload svc content"
-msgstr "Afficher le contenu"
-
-msgid "wd rss more infos"
-msgstr "Plus d'informations..."
-
-msgid "wd save"
-msgstr "Sauver"
-
-msgid "wd search ..."
-msgstr "Texte recherché"
-
-msgid "wd show svc content"
-msgstr "Afficher le contenu"
-
-msgid "wd show/hide service list"
-msgstr "Afficher/masquer la liste des services"
-
-msgid "wd url for retrieving information not given"
-msgstr "Url de récuperation des informations non fournie"
-
-msgid "wd: Group access"
-msgstr "Accès groupes"
-
-msgid "wd: Private"
-msgstr "Accès privé"
-
-msgid "wd: Public readonly"
-msgstr "Accès public"
-
-msgid "wd: Special access"
-msgstr "Accès spéciaux"
-
-msgid "wd: result"
-msgstr "résultat"
-
-msgid "wd: secretary"
-msgstr "secrétaire"
-
-msgid "wdd info personal"
-msgstr "personnel..."
-
-msgid "wdd info society"
-msgstr "société...."
-
-msgid "webdesk"
-msgstr "WebDesk"
-
-msgid "webdesk access"
-msgstr "Accès au WebDesk"
-
-msgid "webdesk admin"
-msgstr "administration webdesk"
-
-msgid "webdesk application"
-msgstr "Application WebDesk"
-
-msgid "webdesk application portal"
-msgstr "Application webdesk"
-
-msgid "webdesk change default application"
-msgstr "Modification de l'application affichée par défaut dans le portail"
-
-msgid "webdesk change top bar content"
-msgstr "changer le contenu de la barre du haut"
-
-msgid "webdesk general admnistration"
-msgstr "Administration du WebDesk"
-
-msgid "webdesk main page"
-msgstr "Page principale WebDesk"
+msgid "ardoise content"
+msgstr "contenu de l'ardoise"
+
+msgid "application present in application bar"
+msgstr "Application présente dans la barre"
 
 msgid "webdesk menu background color"
 msgstr "Couleur de fond pour le menu application"
@@ -517,15 +434,101 @@ msgstr "Image de fond pour le menu application"
 msgid "webdesk menu background image width"
 msgstr "Largeur de l'image de fond pour le menu application"
 
-#, c-format
-msgid "wind, speed %s m/s direction [%s]"
-msgstr "vent, vitesse %s m/s, direction [%s]°"
+msgid "webdesk theme remplacement CSS"
+msgstr "CSS alternative JQuery UI"
 
 msgid "without category"
 msgstr "sans catégorie"
 
-msgid "x-large size"
-msgstr "très grande taille"
+#, c-format
+msgid "incident in progress -%d-"
+msgstr "Incident en cours -%d-"
+
+msgid "wd no freedom search given"
+msgstr "Pas de recherche Dynacase fournie"
+
+msgid "wd invalid freedom search given"
+msgstr "Recherche Dynacase invalide"
+
+#, c-format
+msgid "more than %d results..."
+msgstr "plus de %d résultats..."
+
+msgid "wd: result"
+msgstr "résultat"
+
+msgid "no result for search"
+msgstr "Pas de résultat..."
+
+msgid "clear displayed results"
+msgstr "Effacer les résultats"
+
+msgid "wd: Private"
+msgstr "Accès privé"
+
+msgid "wd: Public readonly"
+msgstr "Accès public"
+
+msgid "wd: Group access"
+msgstr "Accès groupes"
+
+msgid "wd: Special access"
+msgstr "Accès spéciaux"
+
+msgid "wd: secretary"
+msgstr "secrétaire"
+
+msgid "wdd info society"
+msgstr "société...."
+
+msgid "wdd info personal"
+msgstr "personnel..."
+
+msgid "no account defined"
+msgstr "pas de compte défini."
+
+msgid "error retrieving mails"
+msgstr "Erreur de récupération des messages"
+
+#, c-format
+msgid "temperature %s c (dew %s c, heat %s c)"
+msgstr "température %s°c (rosée %s°c, ressentie %s°c)"
+
+#, c-format
+msgid "wind, speed %s m/s direction [%s]"
+msgstr "vent, vitesse %s m/s, direction [%s]°"
+
+#, c-format
+msgid "relative humidity %s %%"
+msgstr "humidité relative %s %%"
+
+#, c-format
+msgid "Pression %s hpa"
+msgstr "Pression %s hpa"
+
+#, c-format
+msgid "Visibility %s %s km"
+msgstr "visibilité %s %s km"
+
+msgid "wd no rss link given"
+msgstr "Pas de flux RSS fourni"
+
+msgid ""
+"[TEXT:no information available, verify your server have http access to "
+"internet and/or check link please...]"
+msgstr "Pas d'information, vérifiez que l'URL du lien est accessible"
+
+#~ msgid "wd  enlarge font"
+#~ msgstr "Augmenter la taille du texte..."
+
+#~ msgid "wd manage portal"
+#~ msgstr "Gestion du portail"
+
+#~ msgid "wd reduce font"
+#~ msgstr "Réduire la taille du texte..."
+
+#~ msgid "wd rss more infos"
+#~ msgstr "Plus d'informations..."
 
 #~ msgid "Change name and coordinates"
 #~ msgstr "Changer mon nom et mes coordonnées"

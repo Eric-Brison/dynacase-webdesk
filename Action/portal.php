@@ -26,10 +26,14 @@ function portal(&$action)
         $jslay = new Layout("WEBDESK/Layout/portal.js", $action);
         $action->parent->AddJsCode($jslay->gen());
     }
-
-    $themingCSS = getParam("WDESK_PORTAL_CSS", "WEBDESK:webdesk-theme.css");
+    
     $action->parent->AddCssRef("WEBDESK:webdesk-system.css", true);
-    $action->parent->AddCssRef($themingCSS, true);
+    $styleCss = getParam("WDESK_PORTAL_CSS","WEBDESK:webdesk-theme.css");
+    if (file_exists($action->GetParam("CORE_PUBURL")."/".$styleCss)) {
+      $action->parent->AddCssRef($action->GetParam("CORE_PUBURL")."/".$styleCss);
+    } else {
+      $action->parent->AddCssRef($styleCss, true);
+    }
     
     $svclist_colcount = getParam("WDK_SVCCOLCOUNT", 3);
     //

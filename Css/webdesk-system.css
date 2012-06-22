@@ -3,13 +3,6 @@ body, div { padding:0px; margin:0px; border:0px; }
 input, select { border:1px solid [COLOR_A7]; background-color:[COLOR_A9]; } 
 
 
-a, a:visited, .wd_alink  { 
-  text-decoration:none; 
-  background-image: url([IMGF:wd_lnk_http.gif:0,0,0|COLOR_BLACK]);
-  background-repeat: no-repeat;
-  background-position: right center;
-  padding-right: 11px;
-}
 
 
 .small_button { border:0px; cursor:pointer; vertical-align:baseline }
@@ -131,35 +124,59 @@ img#appmenu_ico  { width:12px; }
 }
 
 .wdsvc { 
+  margin:3px;
+  padding:1px;
+/*
   padding : 0px 2px 2px 2px;
   border:1px solid [COLOR_A7];
   background-color:[COLOR_A9]; 
   margin: 3px 3px 1px 1px; 
   -moz-border-radius:5px 5px 0px 0px;
+*/
  }
 
 .wdsvc_title { 
+    padding : 5px;
+/*
+  font-weight:bold; 
   background-color:[COLOR_A9]; 
   border-style:none; 
   border-color:[COLOR_A6]; 
-  border-width:0px; 
-  font-weight:bold; 
-  vertical-align:bottom; 
+    padding : 5px;
+*/
 }
-.wdsvc_title td  { background-color:[COLOR_A9]!important; }
+.wdsvc_title tr  { color : inherit ; }     
+.wdsvc_title td  {     
+    font-weight:bold; 
+/*  background-color:[COLOR_A9]!important;  */
+}
+
 .wdsvc_content { 
-  background-color:[COLOR_WHITE]; 
-  padding:0px 0px 0px 0px; 
-  border-width:1px; 
-  border-style: solid; 
-  border-color:[COLOR_A5];  
 }
+.wdsvc_edit { 
+    display:none; 
+    position:relative;
+}
+
 .wdsvc_warning { font-style:italic; }
 
 .wdparamb { padding:2px; margin:2px; border-color:[COLOR_A7]; border-style: solid; border-width:1px; width:auto }
 
-.wdbuttonb { text-align:right; border-top:1px solid [COLOR_A7]; margin: 5px 0px 5px 0px;                                        }
-.wdtitleb  { text-align:center; font-weight:bold; border-bottom:1px solid [COLOR_A7]; margin: 5px 0px 10px 0px;  }
+.wdbuttonb { text-align:right; padding : 5px; }
+
+.wdtitleb  { 
+    vertical-align:middle;
+    text-align:right; 
+    font-weight:bold; 
+    border-bottom:1px solid [COLOR_A7]; 
+    margin: 5px 0px 10px 0px;  
+}
+.wdtitleb .ui-button-text {
+    width:80px;
+    height:1.4em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .wdtitleb1 { text-align:left; border-bottom:1px solid [COLOR_A7]; border-bottom:1px solid [COLOR_A7]; margin: 5px 0px 5px 0px;  }
 
 .wdaddp {
@@ -212,4 +229,42 @@ TABLE.transparent TBODY TR TD,TABLE.transparent TBODY TR {
   color: white;
   padding-left: 1em;
   padding-right: 1em;
+}
+
+.ui-widget {
+    font-size:100%; !important 
+}
+.ui-icon-left {
+    float:left;
+}
+.ui-icon-right {
+    float:right;
+}
+
+.wd-rss-link {
+    color:[COLOR_BLACK];
+    padding:5px 3px 2px 3px;
+    background-color:[COLOR_WHITE];
+}
+a.wd-rss-link {
+    padding:0px;
+    text-decoration : none;
+    color:[COLOR_BLACK];
+    font-size:110%;
+}
+a.wd-rss-only-link {
+    display : block;
+}
+a.wd-rss-link:hover {
+    text-decoration : underline;
+    background-color:[COLOR_WHITE];
+}
+a.wd-rss-link:visited {
+}
+.wd-rss-content {
+    text-decoration : none;
+    color:[COLOR_A0];
+}
+.wd-rss-content:hover {
+    text-decoration : none;
 }

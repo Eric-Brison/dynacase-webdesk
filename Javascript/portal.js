@@ -135,7 +135,7 @@ function showService(is, updates) {
     svc.id = 'svc'+snum;
     svc.setAttribute("svcid",is);
     svc.name = 'svc'+snum;
-    svc.className = 'wdsvc';
+    svc.className = 'ui-widget ui-corner-all ui-widget-content wdsvc';
     if (!isNetscape)  {
       svc.style.display = 'block';
       svc.style.width = '100%';
@@ -154,25 +154,25 @@ function showService(is, updates) {
       imgcyc = '<img src="[IMGF:wd_svc_cyclic.gif:0,0,0|COLOR_BLACK]" style="border:0px" title="[TEXT:automatic reload all] '+services[is].rdel+' minutes">';
     }
     cnt += '<table cellspacing="0" cellpadding="0" style="width:100%; border:0px">';
-    cnt += '<tr style="vertical-align:baseline; cursor:move; border:1px solid red;" onmousedown="return startMoveService(event, this, '+snum+');" onmouseup="endMoveService(event,'+snum+')"  onmouseover="mOverSvcTitle('+snum+')" onmouseout="mOutSvcTitle('+snum+')"onDblClick="showHideSvc(event, '+snum+',true); return false;">';
+    cnt += '<tr style="cursor:move; border:1px solid red;" onmousedown="return startMoveService(event, this, '+snum+');" onmouseup="endMoveService(event,'+snum+')"  onmouseover="mOverSvcTitle('+snum+')" onmouseout="mOutSvcTitle('+snum+')" onDblClick="showHideSvc(event, '+snum+',true); return false;">';
     cnt += '<td >';
-     cnt += '<img id="ivsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="showHideSvc(event, '+snum+',true); return false;" src="[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd hide svc content]">';
+      cnt += '<span id="ivsvc'+snum+'" class="ui-icon-left ui-icon ui-icon-pin-s widgetopenfullscreen small_button" open="'+(services[is].open?'1':'0')+'" onclick="showHideSvc(event, '+snum+',true); return false;" title="[TEXT:wd hide svc content]"></span>';
     cnt += '<span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
  
     cnt += '<td nowrap style="text-align:right">';
 
     cnt += '<span id="iconbox'+snum+'" style="visibility:hidden">';
 
-    if (vurl!='')
-      cnt += '<img id="irsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="startUtempo( ); loadSvcAsync('+snum+');endUtempo(); " src="[IMGF:wd_svc_reload.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reload svc content]">';
-    if (eurl!='' && iseditable)
-      cnt += '<img id="iesvc'+snum+'" style="margin-left:2px" class="small_button" onclick="return editSvc(event, '+snum+');" src="[IMGF:wd_svc_edit.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd edit svc content]">';
     if (!ismandatory)
-      cnt += '<img id="idsvc'+snum+'" style="margin-left:2px" class="small_button" onclick="deleteSvc(event, '+snum+'); return false" src="[IMGF:wd_svc_delete.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd delete svc]">';
+	  cnt += '<span class="ui-icon-right ui-icon ui-icon-close widgetopenfullscreen small_button" onclick="deleteSvc(event, '+snum+'); return false" " title="[TEXT:wd delete svc]"></span>';
+    if (eurl!='' && iseditable)
+	  cnt += '<span id="iesvc'+snum+'" class="ui-icon-right  ui-icon ui-icon-wrench widgetopenfullscreen small_button" onclick="return editSvc(event, '+snum+');" " title="[TEXT:wd edit svc content]"></span>';
+      if (vurl!='') 
+	  cnt += '<span class="ui-icon-right  ui-icon ui-icon-refresh widgetopenfullscreen small_button" onclick="startUtempo( ); loadSvcAsync('+snum+');endUtempo(); " title="[TEXT:wd reload svc content]"></span>';
     cnt += '</span>';
     cnt += '</td></tr></table>';
     tsvc.innerHTML = cnt;
-    tsvc.className = 'wdsvc_title';
+    tsvc.className = 'ui-widget-header ui-corner-all wdsvc_title';
 
     svc.appendChild(tsvc);
     
@@ -208,7 +208,7 @@ function showService(is, updates) {
 
     if (!services[is].open) {
       document.getElementById('csvc'+snum).style.display = 'none';
-      document.getElementById('ivsvc'+snum).src = '[IMGF:wd_svc_show.gif:0,0,0|COLOR_BLACK]';
+//      document.getElementById('ivsvc'+snum).src = '[IMGF:wd_svc_show.gif:0,0,0|COLOR_BLACK]';
       document.getElementById('ivsvc'+snum).title = '[TEXT:wd show svc content]';
     }
 
@@ -427,12 +427,10 @@ function showHideSvc(event, sid, savegeo) {
   if (document.getElementById('csvc'+sid)) {
     if (services[is].open) {
       document.getElementById('csvc'+sid).style.display = 'none';
-      document.getElementById('ivsvc'+sid).src = '[IMGF:wd_svc_show.gif:0,0,0|COLOR_BLACK]';
       document.getElementById('ivsvc'+sid).title = '[TEXT:wd show svc content]';
       services[is].open = false;
     } else {
       document.getElementById('csvc'+sid).style.display = 'block';
-      document.getElementById('ivsvc'+sid).src = '[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]';
       document.getElementById('ivsvc'+sid).title = '[TEXT:wd hide svc content]';
       services[is].open = true;
     }

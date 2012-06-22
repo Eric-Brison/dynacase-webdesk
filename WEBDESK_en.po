@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-30 15:39+0200\n"
-"PO-Revision-Date: 2011-02-03 17:20+0100\n"
+"POT-Creation-Date: 2012-06-22 11:40+0200\n"
+"PO-Revision-Date: 2012-06-22 11:44+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
 "Language: fr\n"
@@ -11,167 +11,232 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Administration"
-msgstr ""
-
-msgid "Apply"
-msgstr ""
-
-msgid "Change my account informations"
-msgstr ""
-
-msgid "Change password"
-msgstr ""
-
-msgid "Change your theme"
-msgstr ""
-
-msgid "Click here to logout"
-msgstr ""
-
-msgid "Click to search both in society name..."
-msgstr ""
-
-msgid "Click to search person containing..."
-msgstr ""
-
-msgid "Click to see detail"
-msgstr ""
-
 msgid "Could not create user portal."
 msgstr "Could not create user portal."
-
-msgid "Do not click here"
-msgstr ""
-
-msgid "Height"
-msgstr ""
-
-msgid "Here either"
-msgstr ""
-
-msgid "Identification"
-msgstr ""
-
-msgid "Javascript must be enabled in your navigator"
-msgstr ""
-
-msgid "My account"
-msgstr ""
 
 msgid "My portal"
 msgstr "Webdesk"
 
-msgid "No style"
-msgstr ""
-
-#, c-format
-msgid "Pression %s hpa"
-msgstr ""
-
-msgid "Preview"
-msgstr ""
-
-msgid "Theme"
-msgstr ""
-
-msgid "Theme chooser"
-msgstr ""
-
-msgid "Theme preferences"
-msgstr ""
-
-msgid "Title"
-msgstr ""
-
-msgid "Url"
-msgstr ""
-
-msgid "Url type"
-msgstr ""
-
-msgid "User identification"
-msgstr ""
-
-#, c-format
-msgid "Visibility %s %s km"
-msgstr ""
-
-msgid "Webdesk administration"
+msgid "My account"
 msgstr ""
 
 msgid "Webdesk preferences"
 msgstr ""
 
-msgid ""
-"[TEXT:no information available, verify your server have http access to "
-"internet and/or check link please...]"
+msgid "Administration"
 msgstr ""
 
-msgid "add service in user portal"
-msgstr ""
-
-msgid "administration page"
-msgstr ""
-
-msgid "application present in application bar"
-msgstr ""
-
-msgid "ardoise content"
-msgstr ""
-
-msgid "automatic reload all"
-msgstr ""
-
-msgid "by Anakeen"
-msgstr ""
-
-msgid "checked : search only in titles"
-msgstr ""
-
-msgid "clear displayed results"
-msgstr ""
-
-msgid "default application displayed"
-msgstr ""
-
-msgid "del service from user portal"
+msgid "Webdesk administration"
 msgstr ""
 
 msgid "description"
 msgstr ""
 
-msgid "display column x lines"
+msgid "short_name"
 msgstr ""
 
-msgid "display full card in the same window"
+msgid "Theme preferences"
 msgstr ""
 
-msgid "downloading content in progress..."
+msgid "Theme"
 msgstr ""
 
-msgid "edit for view any url"
+msgid "User identification"
 msgstr ""
 
-msgid "edition url not given"
+msgid "Identification"
+msgstr ""
+
+msgid "webdesk application portal"
+msgstr ""
+
+msgid "Javascript must be enabled in your navigator"
+msgstr ""
+
+msgid "by Anakeen"
+msgstr ""
+
+msgid "Change password"
+msgstr ""
+
+msgid "Change my account informations"
+msgstr ""
+
+msgid "wd open/close menu"
 msgstr ""
 
 msgid "en maintenance"
 msgstr "Maintenance in progress..."
 
-msgid "error retrieving mails"
+msgid "top bar search"
+msgstr "search in Dynacase..."
+
+msgid "Click here to logout"
 msgstr ""
 
-msgid "flash sheet"
+msgid "platform logout"
+msgstr "logout"
+
+msgid "wd fixe/release menu"
+msgstr ""
+
+msgid "wd display application"
+msgstr ""
+
+msgid "wd reload (force) application"
+msgstr ""
+
+msgid "wd open in new window"
+msgstr ""
+
+msgid "wd default application"
+msgstr ""
+
+msgid "wd add/remove shortcut"
+msgstr ""
+
+msgid "wd show/hide service list"
+msgstr ""
+
+msgid "wd reload portal view"
+msgstr ""
+
+msgid "wd open all services"
+msgstr ""
+
+msgid "wd  close all services"
+msgstr ""
+
+msgid "wd  reset colums"
+msgstr ""
+
+msgid "wd add page"
+msgstr ""
+
+msgid "wd close"
+msgstr ""
+
+msgid "wd save"
+msgstr ""
+
+msgid "wd available services"
+msgstr ""
+
+msgid "wd add service"
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+
+msgid "Do not click here"
+msgstr ""
+
+msgid "Here either"
+msgstr ""
+
+msgid "Theme chooser"
 msgstr ""
 
 msgid "font size chooser"
 msgstr ""
 
-msgid "freedom rss search"
-msgstr "Search for Dynacase RSS feeds"
+msgid "small size"
+msgstr ""
 
-msgid "generic service"
+msgid "normal size"
+msgstr ""
+
+msgid "large size"
+msgstr ""
+
+msgid "x-large size"
+msgstr ""
+
+msgid "Apply"
+msgstr ""
+
+msgid "Change your theme"
+msgstr ""
+
+msgid "wd error add service"
+msgstr ""
+
+msgid "wd error getting service"
+msgstr ""
+
+msgid "wd invalid service number returned by creation"
+msgstr ""
+
+msgid "automatic reload all"
+msgstr ""
+
+msgid "wd hide svc content"
+msgstr ""
+
+msgid "wd delete svc"
+msgstr ""
+
+msgid "wd edit svc content"
+msgstr ""
+
+msgid "wd reload svc content"
+msgstr ""
+
+msgid "wd url for retrieving information not given"
+msgstr ""
+
+msgid "downloading content in progress..."
+msgstr ""
+
+msgid "wd show svc content"
+msgstr ""
+
+msgid "edition url not given"
+msgstr ""
+
+msgid "wd loading edition forms"
+msgstr ""
+
+msgid "wd error retrieving edit form"
+msgstr ""
+
+msgid "wd error saving edit form"
+msgstr ""
+
+msgid "wd error geo service"
+msgstr ""
+
+msgid "wd confirm supress of"
+msgstr ""
+
+msgid "wd error retrieving content"
+msgstr ""
+
+msgid "rss: clear displayed results"
+msgstr ""
+
+msgid "Click to search person containing..."
+msgstr ""
+
+msgid "Click to search both in society name..."
+msgstr ""
+
+msgid "open it in a new window"
+msgstr ""
+
+msgid "Url"
+msgstr ""
+
+msgid "wd enter url"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Height"
+msgstr ""
+
+msgid "Url type"
 msgstr ""
 
 msgid "html sheet"
@@ -180,57 +245,37 @@ msgstr ""
 msgid "image"
 msgstr ""
 
-#, c-format
-msgid "incident in progress -%d-"
+msgid "flash sheet"
 msgstr ""
 
-msgid "large size"
+msgid "wd search ..."
 msgstr ""
 
-msgid "list all admin pages"
+msgid "checked : search only in titles"
 msgstr ""
 
-#, c-format
-msgid "more than %d results..."
+msgid "Click to see detail"
 msgstr ""
 
-msgid "no account defined"
-msgstr ""
-
-msgid "no result for search"
+msgid "No style"
 msgstr ""
 
 msgid "no rss item"
 msgstr ""
 
-msgid "normal size"
+msgid "display full card in the same window"
 msgstr ""
 
-msgid "number of affected document"
+msgid "display column x lines"
 msgstr ""
 
-msgid "open it in a new window"
+msgid "freedom rss search"
+msgstr "Search for Dynacase RSS feeds"
+
+msgid "rss: select to search in system RSS (else mine only)"
 msgstr ""
 
-msgid "platform logout"
-msgstr "logout"
-
-msgid "portal columns count"
-msgstr ""
-
-msgid "portal colums specification"
-msgstr ""
-
-msgid "portal page"
-msgstr ""
-
-msgid "portal welcome content"
-msgstr ""
-
-msgid "portal welcome help"
-msgstr ""
-
-msgid "portal welcome manual"
+msgid "wd entre rss link here"
 msgstr ""
 
 msgid "portal welcome service"
@@ -239,48 +284,80 @@ msgstr ""
 msgid "portal welcome title"
 msgstr ""
 
-msgid "position of service in user portal"
+msgid "portal welcome content"
+msgstr ""
+
+msgid "portal welcome manual"
+msgstr ""
+
+msgid "portal welcome help"
+msgstr ""
+
+msgid "webdesk"
+msgstr ""
+
+msgid "webdesk application"
+msgstr ""
+
+msgid "webdesk access"
+msgstr ""
+
+msgid "webdesk change top bar content"
+msgstr ""
+
+msgid "webdesk change default application"
+msgstr ""
+
+msgid "webdesk admin"
+msgstr ""
+
+msgid "webdesk main page"
+msgstr ""
+
+msgid "portal page"
 msgstr ""
 
 msgid "preferences page"
 msgstr ""
 
-msgid "preview of theme"
+msgid "theme preferences"
 msgstr ""
 
-#, c-format
-msgid "relative humidity %s %%"
+msgid "administration page"
+msgstr ""
+
+msgid "list all admin pages"
+msgstr ""
+
+msgid "webdesk general admnistration"
 msgstr ""
 
 msgid "return JS service description"
 msgstr ""
 
-msgid "rss: clear displayed results"
-msgstr ""
-
-msgid "rss: select to search in system RSS (else mine only)"
+msgid "add service in user portal"
 msgstr ""
 
 msgid "save service parameters"
 msgstr ""
 
-msgid "service ardoise"
+msgid "position of service in user portal"
 msgstr ""
 
-msgid "service contact"
+msgid "del service from user portal"
 msgstr ""
 
-msgid "service edit freedom search in familie"
-msgstr "Dynacase family search service (edit)"
-
-msgid "service edit rss"
+msgid "view any url"
 msgstr ""
 
-msgid "service freedom search execution"
-msgstr "Dynacase service"
+msgid "edit for view any url"
+msgstr ""
 
-msgid "service freedom search in familie"
-msgstr "Dynacase family search service"
+msgid "service test view"
+msgstr ""
+
+msgid "service test edition"
+msgstr ""
 
 msgid "service incident"
 msgstr ""
@@ -291,212 +368,52 @@ msgstr ""
 msgid "service mail edition"
 msgstr ""
 
+msgid "service contact"
+msgstr ""
+
+msgid "service ardoise"
+msgstr ""
+
 msgid "service rss"
 msgstr ""
 
-msgid "service test edition"
+msgid "service edit rss"
 msgstr ""
 
-msgid "service test view"
+msgid "service freedom search execution"
+msgstr "Dynacase service"
+
+msgid "service freedom search in familie"
+msgstr "Dynacase family search service"
+
+msgid "service edit freedom search in familie"
+msgstr "Dynacase family search service (edit)"
+
+msgid "generic service"
+msgstr ""
+
+msgid "number of affected document"
+msgstr ""
+
+msgid "preview of theme"
+msgstr ""
+
+msgid "portal colums specification"
+msgstr ""
+
+msgid "default application displayed"
+msgstr ""
+
+msgid "portal columns count"
 msgstr ""
 
 msgid "services list columns count"
 msgstr ""
 
-msgid "short_name"
+msgid "ardoise content"
 msgstr ""
 
-msgid "small size"
-msgstr ""
-
-#, c-format
-msgid "temperature %s c (dew %s c, heat %s c)"
-msgstr ""
-
-msgid "theme preferences"
-msgstr ""
-
-msgid "top bar search"
-msgstr "search in Dynacase..."
-
-msgid "view any url"
-msgstr ""
-
-msgid "wd  close all services"
-msgstr ""
-
-msgid "wd  enlarge font"
-msgstr ""
-
-msgid "wd  reset colums"
-msgstr ""
-
-msgid "wd add page"
-msgstr ""
-
-msgid "wd add service"
-msgstr ""
-
-msgid "wd add/remove shortcut"
-msgstr ""
-
-msgid "wd available services"
-msgstr ""
-
-msgid "wd close"
-msgstr ""
-
-msgid "wd confirm supress of"
-msgstr ""
-
-msgid "wd default application"
-msgstr ""
-
-msgid "wd delete svc"
-msgstr ""
-
-msgid "wd display application"
-msgstr ""
-
-msgid "wd edit svc content"
-msgstr ""
-
-msgid "wd enter url"
-msgstr ""
-
-msgid "wd entre rss link here"
-msgstr ""
-
-msgid "wd error add service"
-msgstr ""
-
-msgid "wd error geo service"
-msgstr ""
-
-msgid "wd error getting service"
-msgstr ""
-
-msgid "wd error retrieving content"
-msgstr ""
-
-msgid "wd error retrieving edit form"
-msgstr ""
-
-msgid "wd error saving edit form"
-msgstr ""
-
-msgid "wd fixe/release menu"
-msgstr ""
-
-msgid "wd hide svc content"
-msgstr ""
-
-msgid "wd invalid freedom search given"
-msgstr "Invalid Dynacase search given"
-
-msgid "wd invalid service number returned by creation"
-msgstr ""
-
-msgid "wd loading edition forms"
-msgstr ""
-
-msgid "wd manage portal"
-msgstr ""
-
-msgid "wd no freedom search given"
-msgstr "No Dynacase search given"
-
-msgid "wd no rss link given"
-msgstr ""
-
-msgid "wd open all services"
-msgstr ""
-
-msgid "wd open in new window"
-msgstr ""
-
-msgid "wd open/close menu"
-msgstr ""
-
-msgid "wd reduce font"
-msgstr ""
-
-msgid "wd reload (force) application"
-msgstr ""
-
-msgid "wd reload portal view"
-msgstr ""
-
-msgid "wd reload svc content"
-msgstr ""
-
-msgid "wd rss more infos"
-msgstr ""
-
-msgid "wd save"
-msgstr ""
-
-msgid "wd search ..."
-msgstr ""
-
-msgid "wd show svc content"
-msgstr ""
-
-msgid "wd show/hide service list"
-msgstr ""
-
-msgid "wd url for retrieving information not given"
-msgstr ""
-
-msgid "wd: Group access"
-msgstr ""
-
-msgid "wd: Private"
-msgstr ""
-
-msgid "wd: Public readonly"
-msgstr ""
-
-msgid "wd: Special access"
-msgstr ""
-
-msgid "wd: result"
-msgstr ""
-
-msgid "wd: secretary"
-msgstr ""
-
-msgid "wdd info personal"
-msgstr ""
-
-msgid "wdd info society"
-msgstr ""
-
-msgid "webdesk"
-msgstr ""
-
-msgid "webdesk access"
-msgstr ""
-
-msgid "webdesk admin"
-msgstr ""
-
-msgid "webdesk application"
-msgstr ""
-
-msgid "webdesk application portal"
-msgstr ""
-
-msgid "webdesk change default application"
-msgstr ""
-
-msgid "webdesk change top bar content"
-msgstr ""
-
-msgid "webdesk general admnistration"
-msgstr ""
-
-msgid "webdesk main page"
+msgid "application present in application bar"
 msgstr ""
 
 msgid "webdesk menu background color"
@@ -508,12 +425,86 @@ msgstr ""
 msgid "webdesk menu background image width"
 msgstr ""
 
-#, c-format
-msgid "wind, speed %s m/s direction [%s]"
-msgstr ""
+msgid "webdesk theme remplacement CSS"
+msgstr "JQueryUI alternative CSS"
 
 msgid "without category"
 msgstr ""
 
-msgid "x-large size"
+#, c-format
+msgid "incident in progress -%d-"
+msgstr ""
+
+msgid "wd no freedom search given"
+msgstr "No Dynacase search given"
+
+msgid "wd invalid freedom search given"
+msgstr "Invalid Dynacase search given"
+
+#, c-format
+msgid "more than %d results..."
+msgstr ""
+
+msgid "wd: result"
+msgstr ""
+
+msgid "no result for search"
+msgstr ""
+
+msgid "clear displayed results"
+msgstr ""
+
+msgid "wd: Private"
+msgstr ""
+
+msgid "wd: Public readonly"
+msgstr ""
+
+msgid "wd: Group access"
+msgstr ""
+
+msgid "wd: Special access"
+msgstr ""
+
+msgid "wd: secretary"
+msgstr ""
+
+msgid "wdd info society"
+msgstr ""
+
+msgid "wdd info personal"
+msgstr ""
+
+msgid "no account defined"
+msgstr ""
+
+msgid "error retrieving mails"
+msgstr ""
+
+#, c-format
+msgid "temperature %s c (dew %s c, heat %s c)"
+msgstr ""
+
+#, c-format
+msgid "wind, speed %s m/s direction [%s]"
+msgstr ""
+
+#, c-format
+msgid "relative humidity %s %%"
+msgstr ""
+
+#, c-format
+msgid "Pression %s hpa"
+msgstr ""
+
+#, c-format
+msgid "Visibility %s %s km"
+msgstr ""
+
+msgid "wd no rss link given"
+msgstr ""
+
+msgid ""
+"[TEXT:no information available, verify your server have http access to "
+"internet and/or check link please...]"
 msgstr ""

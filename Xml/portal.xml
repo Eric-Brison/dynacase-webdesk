@@ -46,18 +46,37 @@ addEvent(window,"load", initPortal);
 <tr><td colspan="[colCount]">
 
 <table cellspacing="0" style="width:100%"><tr>
-<td class="wdtitleb" style="margin:5px; text-align:left; vertical-align:middle">[TEXT:wd manage portal]
-&nbsp;<img class="small_button" id="wdparamimg" onclick="opencloseParams()" src="[IMGF:wd_open_services.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd show/hide service list]">
-&nbsp;<img class="small_button" onclick="document.location.reload(false)" src="[IMGF:wd_portal_reload.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reload portal view]">
-&nbsp;<a style="padding:0px; text-decoration:none; background-image: none;" href="[CORE_STANDURL]app=CORE&action=HELPVIEW&filename=portal.pdf" target="_self"><img title="[TEXT:portal welcome manual]" class="small_button" src="[IMGF:wd_help.gif:0,0,0|COLOR_BLACK]" /></a>
+<td class="wdtitleb">
+
+<button onclick="opencloseParams()"  class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false" title="[TEXT:wd show/hide service list]">
+  <span class="ui-button-icon-primary ui-icon  ui-icon-calculator"></span>
+  <span class="ui-button-text">[TEXT:wd show/hide service list]</span>
+</button>
+<button onclick="document.location.reload(false)"  class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false" title="[TEXT:wd reload portal view]">
+  <span class="ui-button-icon-primary ui-icon  ui-icon-refresh"></span>
+  <span class="ui-button-text">[TEXT:wd reload portal view]</span>
+</button>
+<button onclick="openAllSvc()"  class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false" title="[TEXT:wd open all services]">
+  <span class="ui-button-icon-primary ui-icon  ui-icon-folder-open"></span>
+  <span class="ui-button-text">[TEXT:wd open all services]</span>
+</button>
+<button onclick="closeAllSvc()"  class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false" title="[TEXT:wd  close all services]">
+  <span class="ui-button-icon-primary ui-icon  ui-icon-folder-collapsed"></span>
+  <span class="ui-button-text">[TEXT:wd  close all services]</span>
+</button>
+<button onclick="resetColsSize()"  class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false" title="[TEXT:wd  reset colums]">
+  <span class="ui-button-icon-primary ui-icon  ui-icon-grip-solid-vertical"></span>
+  <span class="ui-button-text">[TEXT:wd  reset colums]</span>
+</button>
+
+
 </td>
-<td class="wdtitleb" style="margin:5px; text-align:center; vertical-align:middle">
-  <img class="small_button" src="[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd open all services]" onclick="openAllSvc()"><img class="small_button"  src="[IMGF:wd_svc_show.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd  close all services]" onclick="closeAllSvc()"><img class="small_button" src="[IMGF:wd_font_smaller.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reduce font]" onclick="fontSizer(-1)"><img class="small_button"  src="[IMGF:wd_font_bigger.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd  enlarge font]" onclick="fontSizer(1)"><img class="small_button"  src="[IMGF:wd_resizecols.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd  reset colums]" onclick="resetColsSize()">
-</td>
+<!-- 
 <td class="wdtitleb" style="margin:5px; text-align:right; vertical-align:middle">
-<!-- <span class="wdaddp" title="[TEXT:wd add page]">(+)</span> -->
+<span class="wdaddp" title="[TEXT:wd add page]">(+)</span>
 [BLOCK plist]<span class="wdpnumber" title="Page [name]">[name]</span>[ENDBLOCK plist]
 </td>
+-->
 </tr></table>
 
 </td></tr>
@@ -74,12 +93,14 @@ addEvent(window,"load", initPortal);
 </tr></table>
 
 
-<div id="editsvc" style="padding:5px; margin:5px; border:3px solid [COLOR_A9]; display:none; position:relative">
+<div id="editsvc" class="ui-dialog ui-widget ui-corner-all ui-widget-content wdsvc_edit">
 <form name="editsvcf" id="editsvcf" style="display:inline" method="POST" action="[CORE_STANDURL]&app=WEBDESK&action=SVCSAVE">
-<div id="editsvc_c"></div>
-<div class="wdbuttonb" >
-<img class="small_button" onclick="cancelForm()" src="[IMGF:wd_cancel.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd close]">
-<img class="small_button" onclick="sendForm()" src="[IMGF:wd_save.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd save]">
+<div id="editsvc_c" class="ui-dialog-content ui-widget-content"></div>
+<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix" >
+  <div class="ui-dialog-buttonset">
+    <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"  onclick="cancelForm()" ><span class="ui-button-text">[TEXT:wd close]</span></button>
+    <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"  onclick="sendForm()" ><span class="ui-button-text">[TEXT:wd save]</span></button>
+  </div>
 </div>
 </form>
 </div> 
