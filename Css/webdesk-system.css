@@ -268,3 +268,26 @@ a.wd-rss-link:visited {
 .wd-rss-content:hover {
     text-decoration : none;
 }
+
+.header { 
+    height:1.5em;
+    box-shadow : 0 5px 10px #777;
+    margin-bottom:10px;
+}
+.menubar {
+    left:1em;
+    height:1.5em;
+    overflow:hidden;
+    width:40%;
+    position:absolute;
+}
+
+
+.menubar:hover {
+    height : 60%;
+    padding:10px;
+    overflow:auto;
+    border-radius : 10px;
+    box-shadow : 0 0 8px 8px #DDD;
+    background-color:#fff;
+}

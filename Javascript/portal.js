@@ -638,24 +638,6 @@ function loadSvcSync(sid, shl, params) {
   }
 }
 
-// Params 
-var paramIsOpen = false;
-function opencloseParams() {
-  if (document.getElementById('wdparamset')) {
-    var dp = document.getElementById('wdparamset');
-    var dpi = document.getElementById('wdparamimg');
-    if (paramIsOpen) {
-      closeSubService();
-      if (dpi) dpi.src = "[IMGF:wd_open_services.gif:0,0,0|COLOR_BLACK]";
-      dp.style.display = 'none';
-      paramIsOpen = false;
-    } else {
-      if (dpi) dpi.src = "[IMGF:wd_close_services.gif:0,0,0|COLOR_BLACK]";
-      dp.style.display = 'block';
-      paramIsOpen = true;
-   }
-  }
-}
     
 
 var tags = new Array( 'div', 'span', 'td','tr','p','b','table','strong','emphasis','a','h1','h2','h3','pre','sub','sup','i','th','cp','ul','ol','li','dt','dd');
