@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-22 11:40+0200\n"
+"POT-Creation-Date: 2012-06-25 17:41+0200\n"
 "PO-Revision-Date: 2012-06-22 11:44+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -95,7 +95,10 @@ msgstr ""
 msgid "wd add/remove shortcut"
 msgstr ""
 
-msgid "wd show/hide service list"
+msgid "wd services list"
+msgstr ""
+
+msgid "wd menu tools"
 msgstr ""
 
 msgid "wd reload portal view"
@@ -104,25 +107,16 @@ msgstr ""
 msgid "wd open all services"
 msgstr ""
 
-msgid "wd  close all services"
+msgid "wd close all services"
 msgstr ""
 
 msgid "wd  reset colums"
-msgstr ""
-
-msgid "wd add page"
 msgstr ""
 
 msgid "wd close"
 msgstr ""
 
 msgid "wd save"
-msgstr ""
-
-msgid "wd available services"
-msgstr ""
-
-msgid "wd add service"
 msgstr ""
 
 msgid "Preview"

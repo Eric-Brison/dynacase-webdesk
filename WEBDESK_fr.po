@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-22 11:40+0200\n"
-"PO-Revision-Date: 2012-06-22 11:43+0200\n"
+"POT-Creation-Date: 2012-06-25 17:41+0200\n"
+"PO-Revision-Date: 2012-06-25 17:45+0200\n"
 "Last-Translator: Arnaud BUATHIER <arnaud.buathier@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
 "Language: fr\n"
@@ -95,35 +95,29 @@ msgstr "Application par défaut"
 msgid "wd add/remove shortcut"
 msgstr "Ajouter/Supprimer le raccourci..."
 
-msgid "wd show/hide service list"
-msgstr "Afficher/masquer la liste des services"
+msgid "wd services list"
+msgstr "Services..."
+
+msgid "wd menu tools"
+msgstr "Outils..."
 
 msgid "wd reload portal view"
-msgstr "Raffraichir le portail"
+msgstr "Mettre à jour le portail"
 
 msgid "wd open all services"
-msgstr "Ouvrir tous les services"
+msgstr "Tout maximiser"
 
-msgid "wd  close all services"
-msgstr "Fermer tous les services"
+msgid "wd close all services"
+msgstr "Tout minimiser "
 
 msgid "wd  reset colums"
 msgstr "Réinitialiser les largeurs des colonnes"
-
-msgid "wd add page"
-msgstr "Ajouter une page"
 
 msgid "wd close"
 msgstr "Fermer"
 
 msgid "wd save"
 msgstr "Sauver"
-
-msgid "wd available services"
-msgstr "Liste des services disponibles"
-
-msgid "wd add service"
-msgstr "Ajouter le service"
 
 msgid "Preview"
 msgstr "Prévisualisation"
@@ -517,6 +511,21 @@ msgid ""
 "[TEXT:no information available, verify your server have http access to "
 "internet and/or check link please...]"
 msgstr "Pas d'information, vérifiez que l'URL du lien est accessible"
+
+#~ msgid "wd show/hide service list"
+#~ msgstr "Afficher/masquer la liste des services"
+
+#~ msgid "wd  close all services"
+#~ msgstr "Fermer tous les services"
+
+#~ msgid "wd add page"
+#~ msgstr "Ajouter une page"
+
+#~ msgid "wd available services"
+#~ msgstr "Liste des services disponibles"
+
+#~ msgid "wd add service"
+#~ msgstr "Ajouter le service"
 
 #~ msgid "wd  enlarge font"
 #~ msgstr "Augmenter la taille du texte..."
