@@ -4,6 +4,7 @@
 [ZONE WEBDESK:HEAD]
 
 [CSS:REF]
+[JS:REF]
 <script>
 [JS:CODE]
 
@@ -15,7 +16,19 @@ var services = new Array();
 var initSize = parseInt('[SIZE_MEDIUM]');
 
 function initPortal() {
-  [BLOCK USvc]services[[rg]] = { snum:[snum], sid:[sid], stitle:'[stitle]', 
+
+   // Initialise menu bar widget 
+   $("#level1").menubar({
+       select : function(event, ui) {
+                    if (ui.item.children("a:[ids]").attr("ids")) {
+			 addNewService(ui.item.children("a:[ids]").attr("ids"));
+                    }
+                }
+   });
+   $("div.menubar").css("display","block");
+
+
+ [BLOCK USvc]services[[rg]] = { snum:[snum], sid:[sid], stitle:'[stitle]', 
                                  vurl:'[vurl]', eurl:'[eurl]', purl:'[purl]',
                                  jslink:'[jslink]', jslinkmd5:'[jslinkmd5]', 
                                  csslink:'[csslink]', csslinkmd5:'[csslinkmd5]',
@@ -28,43 +41,36 @@ function initPortal() {
   trace('Initialisation des services...');
   displayServices();
 
-
-//   setTimeout("startRefresh()", portalRefreshInterval*1000);
   startRefresh();
 }
-
-addEvent(window,"load", initPortal);
+$(function() {
+  initPortal();
+});
+// addEvent(window,"load", initPortal);
+	
 
 </script>
-[JS:REF]
 
 </head>
 <body>
 
-<div class="ui-widget-header ui-corner-all wdsvc_title header">
-
-
-  <div class="menubar">
-    <div>Yop le menu pour tester....</div>
-    <ul id="level1">
-      <li>
+<div class="menubar">
+  <ul id="level1" class="menubar">
+    <li>
       <a>[TEXT:wd services list]</a>
       [service_menu]
-      </li>
-      <li>
-	<a>[TEXT:wd menu tools]</a>
-	<ul>
-	  <li><a href="#" onclick="document.location.reload(false)">[TEXT:wd reload portal view]</a></li>
-	  <li><a href="#" onclick="openAllSvc();">[TEXT:wd open all services]</a></li>
-	  <li><a href="#" onclick="closeAllSvc();">[TEXT:wd close all services]</a></li>
-	  <li><a href="#" onclick="resetColsSize();">[TEXT:wd  reset colums]</a></li>
-	</ul>
-      </li>
-    </ul>
-  </div>
-
-</div>  
-
+    </li>
+    <li>
+      <a>[TEXT:wd menu tools]</a>
+      <ul>
+	<li><a href="#" onclick="document.location.reload(false)">[TEXT:wd reload portal view]</a></li>
+	<li><a href="#" onclick="openAllSvc();">[TEXT:wd open all services]</a></li>
+	<li><a href="#" onclick="closeAllSvc();">[TEXT:wd close all services]</a></li>
+	<li><a href="#" onclick="resetColsSize();">[TEXT:wd  reset colums]</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
 <table class="wdservices" cellspacing="0" style="width:100%">
 <tr>
 [BLOCK cols]
@@ -90,8 +96,7 @@ addEvent(window,"load", initPortal);
 </form>
 </div> 
 
-
-[IFNOT ISIE]<div id="trace" onclick="closeTrace();" style="visibility:hidden;"></div>[ENDIF ISIE]
+[IFNOT ISIE]<div id="trace" onclick="closeTrace();" class="ui-widget-content" ></div>[ENDIF ISIE]
 
 </body>
 </html>

@@ -181,10 +181,10 @@ function showService(is, updates) {
     csvc.name = 'csvc'+snum;
     if (vurl=='') {
       csvc.innerHTML = '[TEXT:wd url for retrieving information not given]';
-      csvc.className = 'wdsvc_content wdsvc_warning';
+      csvc.className = 'ui-widget-content wdsvc_content wdsvc_warning';
     } else {
       csvc.innerHTML = '[TEXT:downloading content in progress...]';
-      csvc.className = 'wdsvc_content';
+      csvc.className = 'ui-widget-content wdsvc_content';
     }
     //    csvc.style.overflow = 'auto';
 
@@ -764,13 +764,14 @@ function trace(tt) {
   if (document.getElementById('trace')) {
     closeTrace();
     document.getElementById('trace').innerHTML = tt;
-    document.getElementById('trace').style.visibility = 'visible';    
     traceTempo = setTimeout("closeTrace()", 5000);
-  }
+    document.getElementById('trace').style.display = 'block';    
+    document.getElementById('trace').style.top = '5px';    
+ }
 }
 function closeTrace() {
   if (traceTempo!=-1) clearTimeout(traceTempo);
-  document.getElementById('trace').style.visibility = 'hidden';
+  document.getElementById('trace').style.display = 'none';
   menuTempo = -1;
 }
   

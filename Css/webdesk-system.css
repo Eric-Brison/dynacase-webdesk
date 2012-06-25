@@ -125,33 +125,29 @@ img#appmenu_ico  { width:12px; }
 
 .wdsvc { 
   margin:3px;
-  padding:1px;
-/*
-  padding : 0px 2px 2px 2px;
-  border:1px solid [COLOR_A7];
-  background-color:[COLOR_A9]; 
-  margin: 3px 3px 1px 1px; 
-  -moz-border-radius:5px 5px 0px 0px;
-*/
+  padding:0px;
+  border:0px;
  }
 
 .wdsvc_title { 
     padding : 5px;
-/*
-  font-weight:bold; 
-  background-color:[COLOR_A9]; 
-  border-style:none; 
-  border-color:[COLOR_A6]; 
-    padding : 5px;
-*/
+    border-bottom-left-radius : 0;
+    border-bottom-right-radius : 0;
+    box-shadow : 1px 0px 5px #ddd;
 }
 .wdsvc_title tr  { color : inherit ; }     
 .wdsvc_title td  {     
     font-weight:bold; 
-/*  background-color:[COLOR_A9]!important;  */
 }
 
 .wdsvc_content { 
+    padding : 5px;
+    border-style: none solid solid solid;
+    box-shadow : 1px 1px 5px #ddd;
+    border-width:1px;
+    border-bottom-left-radius : 5px;
+    border-bottom-right-radius : 5px;
+
 }
 .wdsvc_edit { 
     display:none; 
@@ -208,21 +204,6 @@ TABLE.transparent TBODY TR TD,TABLE.transparent TBODY TR {
 }
 
 
-#trace {
-  font-size: 90%; 
-  font-weight:bold; 
-  cursor:pointer; 
-  background-color:[COLOR_A9]; 
-  color:[COLOR_A5]; 
-  font-weight:bold; 
-  border:1px solid [COLOR_A2];
-  padding : 5px;
-  position:fixed; 
-  top:-10px; 
-  left:10px; 
-  height:20px;
-}
-
 #maintenance {
   font-weight: bold;
   background-color: red;
@@ -269,25 +250,27 @@ a.wd-rss-link:visited {
     text-decoration : none;
 }
 
-.header { 
-    height:1.5em;
-    box-shadow : 0 5px 10px #777;
+div.menubar {
+    box-shadow : 0px 5px 10px #ccc;
     margin-bottom:10px;
-}
-.menubar {
-    left:1em;
-    height:1.5em;
-    overflow:hidden;
-    width:40%;
-    position:absolute;
+    display:none;
 }
 
 
-.menubar:hover {
-    height : 60%;
-    padding:10px;
-    overflow:auto;
-    border-radius : 10px;
-    box-shadow : 0 0 8px 8px #DDD;
-    background-color:#fff;
+#trace {
+  position:absolute;
+  font-size: 90%; 
+  font-weight:bold; 
+  cursor:pointer; 
+  padding : 5px;
+  right:5px;
+  width:40%;
+  height:auto;
+  z-index:2000;
+  border-radius:5px;
+  position:absolute;
+  dispay:none;
+  opacity:0.8;
+  box-shadow: 2px 2px 5px #ddd;
 }
+

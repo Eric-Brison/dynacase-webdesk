@@ -13,6 +13,14 @@ function portal(&$action)
   //  $debug = true;
   $debug = false;
   
+  $action->parent->AddCssRef("WEBDESK:webdesk-system.css", true);
+  $styleCss = getParam("WDESK_PORTAL_CSS","lib/jquery-ui/src/themes/base/jquery.ui.all.css");
+  if (file_exists($action->GetParam("CORE_PUBURL")."/".$styleCss)) {
+    $action->parent->AddCssRef($action->GetParam("CORE_PUBURL")."/".$styleCss);
+  } else {
+    $action->parent->AddCssRef($styleCss, true);
+  }
+ 
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/DHTMLapi.js");
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/AnchorPosition.js");
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/geometry.js");
@@ -20,6 +28,16 @@ function portal(&$action)
   $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/subwindow.js");
   $action->parent->AddJsRef($action->GetParam("CORE_PUBURL") . "/FDL/Layout/common.js");
   $action->parent->AddJsRef($action->GetParam("CORE_PUBURL") . "/FDC/Layout/setparamu.js");
+
+  $action->parent->addJsRef('lib/jquery/jquery.js');
+  $action->parent->addJsRef('lib/jquery-ui/src/ui/jquery.ui.core.js');
+  $action->parent->addJsRef('lib/jquery-ui/src/ui/jquery.ui.widget.js');
+  $action->parent->addJsRef('lib/jquery-ui/src/ui/jquery.ui.position.js');
+  $action->parent->addJsRef('lib/jquery-ui/src/ui/jquery.ui.button.js');
+  $action->parent->addJsRef('lib/jquery-ui/src/ui/jquery.ui.menu.js');
+  $action->parent->addJsRef('lib/jquery-ui/src/ui/jquery.ui.menubar.js');
+  
+ 
   $action->lay->set("debug", $debug);
   if (!$debug) $action->parent->AddJsRef("WEBDESK:portal.js", true);
   else {
@@ -27,21 +45,11 @@ function portal(&$action)
     $action->parent->AddJsCode($jslay->gen());
   }
   
-  $action->parent->AddCssRef("WEBDESK:webdesk-system.css", true);
-  $styleCss = getParam("WDESK_PORTAL_CSS","WEBDESK:webdesk-theme.css");
-  if (file_exists($action->GetParam("CORE_PUBURL")."/".$styleCss)) {
-    $action->parent->AddCssRef($action->GetParam("CORE_PUBURL")."/".$styleCss);
-  } else {
-    $action->parent->AddCssRef($styleCss, true);
-  }
-  
   $svclist_colcount = getParam("WDK_SVCCOLCOUNT", 3);
+
   //
-  // List services ordered by category
+  // Get service categories
   //
-  $ts = GetChildDoc($dbaccess, 0, 0, "ALL", array() , $action->user->id, "TABLE", "PORTAL_SERVICE", false, "psvc_title");
-  $tserv = array();
-  $tsubserv = array();
   $d = createDoc($dbaccess, "PORTAL_SERVICE", false);
   $acat = $d->GetAttribute("psvc_categorie");
   $cat = $acat->getEnum();
@@ -50,7 +58,8 @@ function portal(&$action)
     initTCat($categories, $kc, 0, $cat);
   }
 
-  $query = new QueryDb($action->dbaccess, "Application");
+  // Get all services
+  $ts = GetChildDoc($dbaccess, 0, 0, "ALL", array() , $action->user->id, "TABLE", "PORTAL_SERVICE", false, "psvc_title");
   foreach ($ts as $k => $v) {
     $access = true;
       $appn = getV($v, "psvc_appneeded");
@@ -64,27 +73,21 @@ function portal(&$action)
       }
       if ($access) {
 	$num_cat = getV($v, "psvc_categorie");
-	if (!isset($cat[$num_cat])) $num_cat = - 1;
 	addTCatEntry($categories, $v["id"], $v["title"], $num_cat);
       }
     }
-
     $menucat = '<ul>';
     foreach ($categories as $kcat=>$vcat) 
       $menucat .= '<li>'.genCatXml($vcat, $kcat).'</li>';
     $menucat .= '</ul>';
-    
+
     $action->lay->set("service_menu", $menucat);
 
     
-    $action->lay->setBlockData("COLS", $svcols);
     $action->lay->set("colsCount", $svclist_colcount);
     $action->lay->set("colsWidth", (100 / $svclist_colcount));
     
-    foreach ($tsubserv as $k => $v) {
-        $action->lay->setBlockData("subcatserv" . $v["num"], $v["svc"]);
-    }
-    $action->lay->setBlockData("subcat", $tsubserv);
+
     // Initialise page structures
     $pspec = getParam("WDK_PORTALSPEC", "??|33:33:33");
     $ts = explode("%", $pspec);
@@ -262,7 +265,7 @@ function initTCat(&$fcat, $kcat, $level, $cat) {
 function addTCatEntry(&$categories, $id, $label, $cat) {
   foreach ($categories as $k=>$v) {
     if ($k==$cat) {
-      $categories[$k]['item'][$id] = array('label'=>$label);
+      $categories[$k]['item'][$id] = array('label'=>$label, 'ids'=>$id);
       return;
     }
     addTCatEntry($categories[$k]['subcat'], $id, $label, $cat);
@@ -273,20 +276,22 @@ function addTCatEntry(&$categories, $id, $label, $cat) {
 function genCatXml($cat,$k,$isactive) {
   $menu = "";
   if (count($cat["subcat"])>0) {
-    $menu .= '<a href="#" ids="'.$k.'">'.$cat["label"].'</a>';
-    $menu .= '<ul>';
+    $menu .= '<a href="#">'.$cat["label"]."...</a>\n";
+    $menu .= "<ul>\n";
     foreach ($cat["subcat"] as $kcat=>$vcat) $menu .= genCatXml($vcat,$kcat);
-    $menu .= '</ul>';
+    $menu .= "</ul>\n";
   } else {
-    $menu .= '<li><a href="#" ids="'.$k.'"';
-    if ($isactive) $menu .= ' onclick="addNewService('.$k.')"';
-    $menu .= '>'.$cat["label"].'</a>';
+    $menu .= '<li><a class="menu-active" href="#"';
+    if (isset($cat["ids"])) $menu .= ' ids="'.$cat["ids"].'"';
+    $menu .= '>'.$cat["label"];
+    if (!isset($cat["ids"])) $menu .= '...';
+    $menu .= "</a>\n";
     if (count($cat["item"])>0) {
       $menu .= '<ul>';
       foreach ($cat["item"] as $kcat=>$vcat) $menu .= genCatXml($vcat,$kcat,1);
-      $menu .= '</ul>';
+      $menu .= "</ul>\n";
     }
-    $menu .= '</li>';
+    $menu .= "</li>\n";
   }
   return $menu;
 }
