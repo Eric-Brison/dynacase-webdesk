@@ -68,5 +68,13 @@ $app_const = array(
         "style" => "N",
         "global" => "N"
     ) ,
+    "WDESK_PORTAL_CSS" => array(
+        "val" => "",
+        "descr" => N_("webdesk theme remplacement CSS") ,
+        "user" => "N",
+        "style" => "N",
+        "global" => "N"
+    ) ,
+
 );
 ?>

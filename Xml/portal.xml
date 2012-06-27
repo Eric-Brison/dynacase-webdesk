@@ -4,6 +4,7 @@
 [ZONE WEBDESK:HEAD]
 
 [CSS:REF]
+[JS:REF]
 <script>
 [JS:CODE]
 
@@ -15,7 +16,19 @@ var services = new Array();
 var initSize = parseInt('[SIZE_MEDIUM]');
 
 function initPortal() {
-  [BLOCK USvc]services[[rg]] = { snum:[snum], sid:[sid], stitle:'[stitle]', 
+
+   // Initialise menu bar widget 
+   $("#level1").menubar({
+       select : function(event, ui) {
+                    if (ui.item.children("a:[ids]").attr("ids")) {
+			 addNewService(ui.item.children("a:[ids]").attr("ids"));
+                    }
+                }
+   });
+   $("div.menubar").css("display","block");
+
+
+ [BLOCK USvc]services[[rg]] = { snum:[snum], sid:[sid], stitle:'[stitle]', 
                                  vurl:'[vurl]', eurl:'[eurl]', purl:'[purl]',
                                  jslink:'[jslink]', jslinkmd5:'[jslinkmd5]', 
                                  csslink:'[csslink]', csslinkmd5:'[csslinkmd5]',
@@ -28,40 +41,37 @@ function initPortal() {
   trace('Initialisation des services...');
   displayServices();
 
-
-//   setTimeout("startRefresh()", portalRefreshInterval*1000);
   startRefresh();
 }
-
-addEvent(window,"load", initPortal);
+$(function() {
+  initPortal();
+});
+// addEvent(window,"load", initPortal);
+	
 
 </script>
-[JS:REF]
 
 </head>
 <body>
 
+<div class="menubar">
+  <ul id="level1" class="menubar">
+    <li>
+      <a>[TEXT:wd services list]</a>
+      [service_menu]
+    </li>
+    <li>
+      <a>[TEXT:wd menu tools]</a>
+      <ul>
+	<li><a href="#" onclick="document.location.reload(false)">[TEXT:wd reload portal view]</a></li>
+	<li><a href="#" onclick="openAllSvc();">[TEXT:wd open all services]</a></li>
+	<li><a href="#" onclick="closeAllSvc();">[TEXT:wd close all services]</a></li>
+	<li><a href="#" onclick="resetColsSize();">[TEXT:wd  reset colums]</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
 <table class="wdservices" cellspacing="0" style="width:100%">
-
-<tr><td colspan="[colCount]">
-
-<table cellspacing="0" style="width:100%"><tr>
-<td class="wdtitleb" style="margin:5px; text-align:left; vertical-align:middle">[TEXT:wd manage portal]
-&nbsp;<img class="small_button" id="wdparamimg" onclick="opencloseParams()" src="[IMGF:wd_open_services.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd show/hide service list]">
-&nbsp;<img class="small_button" onclick="document.location.reload(false)" src="[IMGF:wd_portal_reload.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reload portal view]">
-&nbsp;<a style="padding:0px; text-decoration:none; background-image: none;" href="[CORE_STANDURL]app=CORE&action=HELPVIEW&filename=portal.pdf" target="_self"><img title="[TEXT:portal welcome manual]" class="small_button" src="[IMGF:wd_help.gif:0,0,0|COLOR_BLACK]" /></a>
-</td>
-<td class="wdtitleb" style="margin:5px; text-align:center; vertical-align:middle">
-  <img class="small_button" src="[IMGF:wd_svc_hide.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd open all services]" onclick="openAllSvc()"><img class="small_button"  src="[IMGF:wd_svc_show.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd  close all services]" onclick="closeAllSvc()"><img class="small_button" src="[IMGF:wd_font_smaller.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd reduce font]" onclick="fontSizer(-1)"><img class="small_button"  src="[IMGF:wd_font_bigger.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd  enlarge font]" onclick="fontSizer(1)"><img class="small_button"  src="[IMGF:wd_resizecols.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd  reset colums]" onclick="resetColsSize()">
-</td>
-<td class="wdtitleb" style="margin:5px; text-align:right; vertical-align:middle">
-<!-- <span class="wdaddp" title="[TEXT:wd add page]">(+)</span> -->
-[BLOCK plist]<span class="wdpnumber" title="Page [name]">[name]</span>[ENDBLOCK plist]
-</td>
-</tr></table>
-
-</td></tr>
-
 <tr>
 [BLOCK cols]
 <td  id="wdcol[icol]" wdcol="[icol]" onmouseover="mouseOverService(event)" class="wdcols" style="width:[cwidth]%;">
@@ -74,39 +84,19 @@ addEvent(window,"load", initPortal);
 </tr></table>
 
 
-<div id="editsvc" style="padding:5px; margin:5px; border:3px solid [COLOR_A9]; display:none; position:relative">
+<div id="editsvc" class="ui-dialog ui-widget ui-corner-all ui-widget-content wdsvc_edit">
 <form name="editsvcf" id="editsvcf" style="display:inline" method="POST" action="[CORE_STANDURL]&app=WEBDESK&action=SVCSAVE">
-<div id="editsvc_c"></div>
-<div class="wdbuttonb" >
-<img class="small_button" onclick="cancelForm()" src="[IMGF:wd_cancel.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd close]">
-<img class="small_button" onclick="sendForm()" src="[IMGF:wd_save.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd save]">
+<div id="editsvc_c" class="ui-dialog-content ui-widget-content"></div>
+<div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix" >
+  <div class="ui-dialog-buttonset">
+    <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"  onclick="cancelForm()" ><span class="ui-button-text">[TEXT:wd close]</span></button>
+    <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" aria-disabled="false"  onclick="sendForm()" ><span class="ui-button-text">[TEXT:wd save]</span></button>
+  </div>
 </div>
 </form>
 </div> 
 
-<div id="wdparamset" style="background-color:[COLOR_A9]; border:0px; margin:0px; padding:0px; position:absolute; left:20px; top:20px; display:none" >
-<div class="wdparamb" style="background-color:[COLOR_WHITE];" >
-<table>
-<tr><td colspan="[colsCount]" class="wdtitleb" >[TEXT:wd available services]</td></tr>
-<tr style="vertical-align:top">[BLOCK COLS]<td style="width:[colsWidth]%">
-[BLOCK catS[nCols]]<div class="wdtitleb1">[categorie]</div>
-[BLOCK services[categorie]]
-[IF issubcat]
-<div  id="subcm[num]" onmouseover="this.className='app app_over'; openSubService(event, this, 'scat[num]');" onmouseout="this.className='app';" class="app"><img class="small_button" src="[IMGF:wd_svc_show.gif:0,0,0|COLOR_BLACK]">&nbsp;[subc_title]...</div>[ENDIF issubcat]
-[IFNOT issubcat]<div title="[psvc_descr]" class="app" onmouseover="this.className='app app_over'" onmouseout="this.className='app'"  onclick="addNewService([id]); opencloseParams()" title="[TEXT:wd add service] [psvc_title]">[IF Icon]<img style="height:16px" class="small_button" title="[psvc_title]" src="[CORE_BASEURL]app=FDL&action=EXPORTFILE&vid=[vid]&docid=[docid]&attrid=[attrid]&index=-1">[ENDIF Icon][IFNOT Icon]&nbsp;&middot;[ENDIF Icon]&nbsp;[psvc_title]&nbsp<img class="small_button" src="[IMGF:wd_add_service.gif:0,0,0|COLOR_BLACK]"></div>[ENDIF issubcat][ENDBLOCK services[categorie]][ENDBLOCK catS[nCols]]</td>[ENDBLOCK COLS]<tr>
-<tr><td colspan="[colsCount]" class="wdbuttonb" style="text-align:right"><img class="small_button" onclick="opencloseParams()" src="[IMGF:wd_cancel.gif:0,0,0|COLOR_BLACK]" title="[TEXT:wd close]"></td></td></table>
-</div>
-</div>
-
-[BLOCK subcat]
-<div id="scat[num]" style="background-color:[COLOR_WHITE]; border:3px solid [COLOR_A7]; margin:0px; padding:3px; position:absolute; left:0px; top:0px; display:none" >
-<div class="wdtitleb1" >[title]</div>
-[BLOCK subcatserv[num]]
-<div title="[psvc_descr]" class="app" onmouseover="unsetTempoCloseSubService(event, 'scat[num]'); this.className='app app_over'" onmouseout="tempoCloseSubService(event, this, 'scat[num]'); this.className='app'" onclick="addNewService([id]); opencloseParams()" title="[TEXT:wd add service] [psvc_title]">[IF Icon]<img style="height:16px" class="small_button" title="[psvc_title]" src="[CORE_BASEURL]app=FDL&action=EXPORTFILE&vid=[vid]&docid=[docid]&attrid=[attrid]&index=-1">[ENDIF Icon][IFNOT Icon]&nbsp;&middot;[ENDIF Icon]&nbsp;[psvc_title]&nbsp<img class="small_button" src="[IMGF:wd_add_service.gif:0,0,0|COLOR_BLACK]"></div>
-[ENDBLOCK subcatserv[num]]
-</div>[ENDBLOCK subcat]
-
-[IFNOT ISIE]<div id="trace" onclick="closeTrace();" style="visibility:hidden;"></div>[ENDIF ISIE]
+[IFNOT ISIE]<div id="trace" onclick="closeTrace();" class="ui-widget-content" ></div>[ENDIF ISIE]
 
 </body>
 </html>

@@ -9,109 +9,85 @@ include_once ('FDL/Lib.Dir.php');
 function portal(&$action)
 {
     
-    $dbaccess = getParam("FREEDOM_DB");
-    //  $debug = true;
-    $debug = false;
-    
-    $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/DHTMLapi.js");
-    $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/AnchorPosition.js");
-    $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/geometry.js");
-    $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/resizeimg.js");
-    $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/subwindow.js");
-    $action->parent->AddJsRef($action->GetParam("CORE_PUBURL") . "/FDL/Layout/common.js");
-    $action->parent->AddJsRef($action->GetParam("CORE_PUBURL") . "/FDC/Layout/setparamu.js");
-    $action->lay->set("debug", $debug);
-    if (!$debug) $action->parent->AddJsRef("WEBDESK:portal.js", true);
-    else {
-        $jslay = new Layout("WEBDESK/Layout/portal.js", $action);
-        $action->parent->AddJsCode($jslay->gen());
+  $dbaccess = getParam("FREEDOM_DB");
+  //  $debug = true;
+  $debug = false;
+  
+  $action->parent->AddCssRef("WEBDESK:webdesk-system.css", true);
+  $styleCss = getParam("WDESK_PORTAL_CSS","lib/jquery-ui/src/themes/base/jquery.ui.all.css");
+  if (file_exists($action->GetParam("CORE_PUBURL")."/".$styleCss)) {
+    $action->parent->AddCssRef($action->GetParam("CORE_PUBURL")."/".$styleCss);
+  } else {
+    $action->parent->AddCssRef($styleCss, true);
+  }
+ 
+  $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/DHTMLapi.js");
+  $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/AnchorPosition.js");
+  $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/geometry.js");
+  $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/resizeimg.js");
+  $action->parent->AddJsRef($action->GetParam("CORE_JSURL") . "/subwindow.js");
+  $action->parent->AddJsRef($action->GetParam("CORE_PUBURL") . "/FDL/Layout/common.js");
+  $action->parent->AddJsRef($action->GetParam("CORE_PUBURL") . "/FDC/Layout/setparamu.js");
+
+  $action->parent->addJsRef('lib/jquery/jquery.js');
+  $action->parent->addJsRef('lib/jquery-ui/src/ui/jquery.ui.core.js');
+  $action->parent->addJsRef('lib/jquery-ui/src/ui/jquery.ui.widget.js');
+  $action->parent->addJsRef('lib/jquery-ui/src/ui/jquery.ui.position.js');
+  $action->parent->addJsRef('lib/jquery-ui/src/ui/jquery.ui.button.js');
+  $action->parent->addJsRef('lib/jquery-ui/src/ui/jquery.ui.menu.js');
+  $action->parent->addJsRef('lib/jquery-ui/src/ui/jquery.ui.menubar.js');
+  
+ 
+  $action->lay->set("debug", $debug);
+  if (!$debug) $action->parent->AddJsRef("WEBDESK:portal.js", true);
+  else {
+    $jslay = new Layout("WEBDESK/Layout/portal.js", $action);
+    $action->parent->AddJsCode($jslay->gen());
+  }
+  
+  $svclist_colcount = getParam("WDK_SVCCOLCOUNT", 3);
+
+  //
+  // Get service categories
+  //
+  $d = createDoc($dbaccess, "PORTAL_SERVICE", false);
+  $acat = $d->GetAttribute("psvc_categorie");
+  $cat = $acat->getEnum();
+  $categories = array();
+  foreach ($cat as $kc => $vc) {
+    initTCat($categories, $kc, 0, $cat);
+  }
+
+  // Get all services
+  $ts = GetChildDoc($dbaccess, 0, 0, "ALL", array() , $action->user->id, "TABLE", "PORTAL_SERVICE", false, "psvc_title");
+  foreach ($ts as $k => $v) {
+    $access = true;
+      $appn = getV($v, "psvc_appneeded");
+      if ($appn != "") {
+	$req = '';
+	$appl = explode("|", $appn);
+	foreach ($appl as $ka => $va) {
+	  $access = haveAppAccess($va);
+	  if (!$access) break;
+	}
+      }
+      if ($access) {
+	$num_cat = getV($v, "psvc_categorie");
+	addTCatEntry($categories, $v["id"], $v["title"], $num_cat);
+      }
     }
-    $action->parent->AddCssRef("WEBDESK:webdesk.css", true);
+    $menucat = '<ul>';
+    foreach ($categories as $kcat=>$vcat) 
+      $menucat .= '<li>'.genCatXml($vcat, $kcat).'</li>';
+    $menucat .= '</ul>';
+
+    $action->lay->set("service_menu", $menucat);
+
     
-    $svclist_colcount = getParam("WDK_SVCCOLCOUNT", 3);
-    //
-    // List services ordered by category
-    //
-    $ts = GetChildDoc($dbaccess, 0, 0, "ALL", array() , $action->user->id, "TABLE", "PORTAL_SERVICE", false, "psvc_title");
-    $tserv = array();
-    $tsubserv = array();
-    $d = createDoc($dbaccess, "PORTAL_SERVICE", false);
-    $acat = $d->GetAttribute("psvc_categorie");
-    $cat = $acat->getEnum();
-    
-    $ordercat = array();
-    foreach ($cat as $kc => $vc) {
-        $tc = explode(".", $kc);
-        $kcat = $tc[count($tc) - 1];
-        
-        $ordercat[$kcat]["father"] = (isset($tc[count($tc) - 2]) ? $tc[count($tc) - 2] : $tc[count($tc) - 1]);
-        $ordercat[$kcat]["level"] = count($tc);
-        $ordercat[$kcat]["label"] = $vc;
-        $ordercat[$kcat]["key"] = $kc;
-    }
-    
-    $query = new QueryDb($action->dbaccess, "Application");
-    foreach ($ts as $k => $v) {
-        $access = true;
-        $appn = getV($v, "psvc_appneeded");
-        if ($appn != "") {
-            $req = '';
-            $appl = explode("|", $appn);
-            foreach ($appl as $ka => $va) {
-                $access = haveAppAccess($va);
-                if (!$access) break;
-            }
-        }
-        if ($access) {
-            $num_cat = getV($v, "psvc_categorie");
-            if (!isset($ordercat[$num_cat])) $num_cat = - 1;
-            $cattitle = $ordercat[$num_cat]["label"];
-            $catlevel = $ordercat[$num_cat]["level"];
-            $catfather = $ordercat[$num_cat]["father"];
-            $ts[$k]["psvc_title_js"] = addslashes(getV($v, "psvc_title"));
-            $ts[$k]["psvc_title"] = getV($v, "psvc_title");
-            $ts[$k]["Icon"] = false;
-            $ts[$k]["subc_title"] = $cattitle;
-            $ts[$k]["num"] = $num_cat;
-            if ($catlevel == 1) {
-                $tserv[$num_cat]["categorie"] = $cattitle;
-                $ts[$k]["issubcat"] = false;
-                $tserv[$num_cat]["svc"][] = $ts[$k];
-            } else {
-                $fcat = $ordercat[$num_cat]["father"];
-                $tserv[$fcat]["categorie"] = $ordercat[$fcat]["label"];
-                $ts[$k]["issubcat"] = true;
-                $ts[$k]["num"] = $num_cat;
-                if (!isset($tsubserv[$num_cat])) {
-                    $tserv[$catfather]["svc"][] = $ts[$k];
-                    $tsubserv[$num_cat]["title"] = $cattitle;
-                    $tsubserv[$num_cat]["num"] = $num_cat;
-                    $tsubserv[$num_cat]["svc"] = array();
-                }
-                $tsubserv[$num_cat]["svc"][] = $ts[$k];
-            }
-        }
-    }
-    $svcols = array();
-    $curcol = 0;
-    foreach ($tserv as $k => $v) {
-        $action->lay->setBlockData("services" . $v["categorie"], $v["svc"]);
-        $svcols[$curcol]["nCols"] = $curcol;
-        $svcols[$curcol]["content"][] = $tserv[$k];
-        $curcol = ($curcol == $svclist_colcount - 1 ? 0 : $curcol + 1);
-    }
-    foreach ($svcols as $k => $v) {
-        $action->lay->setBlockData("catS" . $k, $v["content"]);
-    }
-    
-    $action->lay->setBlockData("COLS", $svcols);
     $action->lay->set("colsCount", $svclist_colcount);
     $action->lay->set("colsWidth", (100 / $svclist_colcount));
     
-    foreach ($tsubserv as $k => $v) {
-        $action->lay->setBlockData("subcatserv" . $v["num"], $v["svc"]);
-    }
-    $action->lay->setBlockData("subcat", $tsubserv);
+
     // Initialise page structures
     $pspec = getParam("WDK_PORTALSPEC", "??|33:33:33");
     $ts = explode("%", $pspec);
@@ -255,25 +231,69 @@ function portal(&$action)
 
 function haveAppAccess($appname)
 {
-    global $action;
-    $query = new QueryDb($action->dbaccess, "Application");
-    // Check if application is installed and available
-    $query->basic_elem->sup_where = array(
-        "name='" . $appname . "'",
-        "available='Y'"
-    );
-    $list = $query->query(0, 0, "TABLE");
-    if ($query->nb <= 0) return false;
-    // User have permission ?
-    if ($action->user->id == 1) return true;
-    
-    $queryact = new QueryDb($action->dbaccess, "Action");
-    $queryact->AddQuery("id_application=" . $list[0]["id"]);
-    $queryact->AddQuery("root='Y'");
-    $listact = $queryact->Query(0, 0, "TABLE");
-    $root_acl_name = $listact[0]["acl"];
-    if (!$action->HasPermission($root_acl_name, $list[0]["id"])) return false;
-    
-    return true;
+  global $action;
+  $query = new QueryDb($action->dbaccess, "Application");
+  // Check if application is installed and available
+  $query->basic_elem->sup_where = array(
+					"name='" . $appname . "'",
+					"available='Y'"
+					);
+  $list = $query->query(0, 0, "TABLE");
+  if ($query->nb <= 0) return false;
+  // User have permission ?
+  if ($action->user->id == 1) return true;
+  
+  $queryact = new QueryDb($action->dbaccess, "Action");
+  $queryact->AddQuery("id_application=" . $list[0]["id"]);
+  $queryact->AddQuery("root='Y'");
+  $listact = $queryact->Query(0, 0, "TABLE");
+  $root_acl_name = $listact[0]["acl"];
+  if (!$action->HasPermission($root_acl_name, $list[0]["id"])) return false;
+  
+  return true;
 }
+
+function initTCat(&$fcat, $kcat, $level, $cat) {
+  $tcat = explode(".", $kcat);
+  $clevel = $level;
+  if (!isset($fcat[$tcat[$level]])) $fcat[$tcat[$level]] = array( "label" => $cat[$kcat], "subcat" => array());
+  $level++;
+  if ($clevel<count($tcat)-1) initTCat($fcat[$tcat[$clevel]]["subcat"], $kcat, $level, $cat);
+  return;
+}
+ 
+function addTCatEntry(&$categories, $id, $label, $cat) {
+  foreach ($categories as $k=>$v) {
+    if ($k==$cat) {
+      $categories[$k]['item'][$id] = array('label'=>$label, 'ids'=>$id);
+      return;
+    }
+    addTCatEntry($categories[$k]['subcat'], $id, $label, $cat);
+  }
+  return;
+}
+
+function genCatXml($cat,$k,$isactive) {
+  $menu = "";
+  if (count($cat["subcat"])>0) {
+    $menu .= '<a href="#">'.$cat["label"]."...</a>\n";
+    $menu .= "<ul>\n";
+    foreach ($cat["subcat"] as $kcat=>$vcat) $menu .= genCatXml($vcat,$kcat);
+    $menu .= "</ul>\n";
+  } else {
+    $menu .= '<li><a class="menu-active" href="#"';
+    if (isset($cat["ids"])) $menu .= ' ids="'.$cat["ids"].'"';
+    $menu .= '>'.$cat["label"];
+    if (!isset($cat["ids"])) $menu .= '...';
+    $menu .= "</a>\n";
+    if (count($cat["item"])>0) {
+      $menu .= '<ul>';
+      foreach ($cat["item"] as $kcat=>$vcat) $menu .= genCatXml($vcat,$kcat,1);
+      $menu .= "</ul>\n";
+    }
+    $menu .= "</li>\n";
+  }
+  return $menu;
+}
+    
 ?>

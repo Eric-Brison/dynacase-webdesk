@@ -3,14 +3,10 @@
 [IFNOT rss][msg][ENDIF rss]
 [IF rss]
 [BLOCK rssnews]
-[IFNOT vfull]<div>
- <img class="small_button" src="[IMGF:wd_news.gif:0,0,0|COLOR_BLACK]">
- <a target="_blank" href="[link]">[title]</a>
-</div>[ENDIF vfull]
-[IF vfull]<div style="border:1px solid [COLOR_WHITE];  padding:0px; padding-top:5px; text-align:justify" id="rssct[id]" >
-<div style="border-bottom:1px solid [COLOR_A2]"><a target="_blank" href="[link]" title="[TEXT:wd rss more infos]">[title]</a></div>
-<div style="padding:0px 0px 0px 10px;">[descr]</div>
-</div>[ENDIF vfull]
+<div class="wd-rss-link">
+<a class="wd-rss-link [IFNOT vfull]wd-rss-only-link[ENDIF vfull]" target="_blank" href="[link]">[title]
+</a>[IF vfull]<span class="wd-rss-content">&nbsp;: [descr]</span>[ENDIF vfull]
+</div>
 [ENDBLOCK rssnews]
 [IF nocontent][TEXT:no rss item][ENDIF nocontent]
 [ENDIF rss]
