@@ -121,12 +121,8 @@ img#appmenu_ico  { width:12px; }
   border-style:none; 
   padding:0px; 
   border-width:0px;
+  [IF ISIE8] padding-right:4px; [ENDIF ISIE8]
 }
-/*
-#wdcol0 { border:1px dotted red; }
-#wdcol1 { border:1px dotted green; }
-#wdcol2 { border:1px dotted blue; }
-*/
 
 .wdsvc { 
   margin:0px 2px 4px 2px;
@@ -141,8 +137,8 @@ img#appmenu_ico  { width:12px; }
     box-shadow : 1px 0px 5px #ddd;
 }
 .wdsvc_title table {
-    [IF ISIE6]width:95%; [ENDIF ISIE6]
-    [IFNOT ISIE6]width:100%; [ENDIF ISIE6]
+    [IF ISIE]width:95%; [ENDIF ISIE]
+    [IFNOT ISIE]width:100%; [ENDIF ISIE]
     border:0px;
 }
 .wd-svc-icon-box {
