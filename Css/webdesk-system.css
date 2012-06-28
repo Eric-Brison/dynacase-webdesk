@@ -121,10 +121,11 @@ img#appmenu_ico  { width:12px; }
   border-style:none; 
   padding:0px; 
   border-width:0px;
+  [IF ISIE8] padding-right:4px; [ENDIF ISIE8]
 }
 
 .wdsvc { 
-  margin:3px;
+  margin:0px 2px 4px 2px;
   padding:0px;
   border:0px;
  }
@@ -135,6 +136,16 @@ img#appmenu_ico  { width:12px; }
     border-bottom-right-radius : 0;
     box-shadow : 1px 0px 5px #ddd;
 }
+.wdsvc_title table {
+    [IF ISIE]width:95%; [ENDIF ISIE]
+    [IFNOT ISIE]width:100%; [ENDIF ISIE]
+    border:0px;
+}
+.wd-svc-icon-box {
+    width:80px;
+    white-space:nowrap; visibility:hidden;
+}
+
 .wdsvc_title tr  { color : inherit ; }     
 .wdsvc_title td  {     
     font-weight:bold; 

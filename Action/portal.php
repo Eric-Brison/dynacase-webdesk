@@ -283,7 +283,7 @@ function genCatXml($cat, $k)
         foreach ($cat["subcat"] as $kcat => $vcat) $menu.= genCatXml($vcat, $kcat);
         $menu.= "</ul>\n";
     } else {
-        $menu.= '<li><a class="menu-active" href="#"';
+        $menu.= '<a class="menu-active" href="#"';
         if (isset($cat["ids"])) $menu.= ' ids="' . $cat["ids"] . '"';
         $menu.= '>' . $cat["label"];
         if (!isset($cat["ids"])) $menu.= '...';
@@ -293,7 +293,6 @@ function genCatXml($cat, $k)
             foreach ($cat["item"] as $kcat => $vcat) $menu.= genCatXml($vcat, $kcat, 1);
             $menu.= "</ul>\n";
         }
-        $menu.= "</li>\n";
     }
     return $menu;
 }

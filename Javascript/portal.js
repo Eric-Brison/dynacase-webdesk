@@ -11,7 +11,8 @@ var portalRefreshInterval = 10;
 var currentPage = 0;
 
 function startRefresh() {
-  var fapp = parent.document.getElementById(window.name);
+    var fapp = null;
+  if (window.name) var fapp = parent.document.getElementById(window.name);
   if ((!fapp)  || (fapp.style.display=='block')) {
     var dat = new Date();
     var mdat = dat.getTime();
@@ -153,15 +154,15 @@ function showService(is, updates) {
     if (services[is].rdel>0) {
       imgcyc = '<img src="[IMGF:wd_svc_cyclic.gif:0,0,0|COLOR_BLACK]" style="border:0px" title="[TEXT:automatic reload all] '+services[is].rdel+' minutes">';
     }
-    cnt += '<table cellspacing="0" cellpadding="0" style="width:100%; border:0px">';
-    cnt += '<tr style="cursor:move; border:1px solid red;" onmousedown="return startMoveService(event, this, '+snum+');" onmouseup="endMoveService(event,'+snum+')"  onmouseover="mOverSvcTitle('+snum+')" onmouseout="mOutSvcTitle('+snum+')" onDblClick="showHideSvc(event, '+snum+',true); return false;">';
+    cnt += '<table cellspacing="0" cellpadding="0" >';
+    cnt += '<tr style="cursor:move;" onmousedown="return startMoveService(event, this, '+snum+');" onmouseup="endMoveService(event,'+snum+')"  onmouseover="mOverSvcTitle('+snum+')" onmouseout="mOutSvcTitle('+snum+')" onDblClick="showHideSvc(event, '+snum+',true); return false;">';
     cnt += '<td >';
       cnt += '<span id="ivsvc'+snum+'" class="ui-icon-left ui-icon ui-icon-pin-s widgetopenfullscreen small_button" open="'+(services[is].open?'1':'0')+'" onclick="showHideSvc(event, '+snum+',true); return false;" title="[TEXT:wd hide svc content]"></span>';
     cnt += '<span id="tsvcti'+snum+'">'+stitle+'</span> '+imgcyc+'</td>';
  
     cnt += '<td nowrap style="text-align:right">';
 
-    cnt += '<span id="iconbox'+snum+'" style="visibility:hidden">';
+    cnt += '<span id="iconbox'+snum+'" class="wd-svc-icon-box">';
 
     if (!ismandatory)
 	  cnt += '<span class="ui-icon-right ui-icon ui-icon-close widgetopenfullscreen small_button" onclick="deleteSvc(event, '+snum+'); return false" " title="[TEXT:wd delete svc]"></span>';
