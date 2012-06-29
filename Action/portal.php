@@ -74,7 +74,7 @@ function portal(&$action)
         }
     }
     $menucat = '<ul>';
-    foreach ($categories as $kcat => $vcat) $menucat.= '<li>' . genCatXml($vcat, $kcat) . '</li>';
+    foreach ($categories as $kcat => $vcat) $menucat.= '' . genCatXml($vcat, $kcat) . '';
     $menucat.= '</ul>';
     
     $action->lay->set("service_menu", $menucat);
@@ -278,21 +278,23 @@ function genCatXml($cat, $k)
 {
     $menu = "";
     if (count($cat["subcat"]) > 0) {
-        $menu.= '<a href="#">' . $cat["label"] . "...</a>\n";
+        $menu.= '<li><a href="#">' . $cat["label"] . "...</a>\n";
         $menu.= "<ul>\n";
         foreach ($cat["subcat"] as $kcat => $vcat) $menu.= genCatXml($vcat, $kcat);
-        $menu.= "</ul>\n";
+        $menu.= "</ul>\n</li>\n";
     } else {
-        $menu.= '<a class="menu-active" href="#"';
-        if (isset($cat["ids"])) $menu.= ' ids="' . $cat["ids"] . '"';
-        $menu.= '>' . $cat["label"];
-        if (!isset($cat["ids"])) $menu.= '...';
-        $menu.= "</a>\n";
-        if (count($cat["item"]) > 0) {
-            $menu.= '<ul>';
-            foreach ($cat["item"] as $kcat => $vcat) $menu.= genCatXml($vcat, $kcat, 1);
-            $menu.= "</ul>\n";
-        }
+      $menu .= "<li>\n";
+      $menu .= '<a class="menu-active" href="#"';
+      if (isset($cat["ids"])) $menu.= ' ids="' . $cat["ids"] . '"';
+      $menu.= '>' . $cat["label"];
+      if (!isset($cat["ids"])) $menu.= '...';
+      $menu.= "</a>";
+      if (count($cat["item"]) > 0) {
+	$menu.= '<ul>';
+	foreach ($cat["item"] as $kcat => $vcat) $menu.= genCatXml($vcat, $kcat, 1);
+	$menu.= "</ul>\n";
+      }
+      $menu.= "</li>\n";
     }
     return $menu;
 }
