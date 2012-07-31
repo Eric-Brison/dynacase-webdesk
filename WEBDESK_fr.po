@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-06-25 17:41+0200\n"
-"PO-Revision-Date: 2012-06-25 17:45+0200\n"
+"POT-Creation-Date: 2012-07-31 15:45+0200\n"
+"PO-Revision-Date: 2012-07-31 15:47+0200\n"
 "Last-Translator: Arnaud BUATHIER <arnaud.buathier@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
 "Language: fr\n"
@@ -251,9 +251,6 @@ msgstr "coché : rechercher seulement dans les titres"
 msgid "Click to see detail"
 msgstr "Cliquer pour voir le détail"
 
-msgid "No style"
-msgstr "Pas de style"
-
 msgid "no rss item"
 msgstr "Pas de nouvelles, bonne nouvelle"
 
@@ -286,15 +283,8 @@ msgstr ""
 "venir, les dernières nouvelles... Pour cela, vous pouvez organiser les "
 "différents services en terme de contenu, de disposition..."
 
-msgid "portal welcome manual"
-msgstr ""
-"en cliquant ici vous accédez à l'aide à l'utilisation du portail et de ses "
-"services"
-
 msgid "portal welcome help"
-msgstr ""
-"Vous pouvez supprimer ce service, l'aide reste accessible par un simple clic "
-"sur le symbole (accessible en haut à gauche de votre portail)"
+msgstr "Vous pouvez supprimer l'affichage de ce service. Il reste accessible dans la liste des services disponibles."
 
 msgid "webdesk"
 msgstr "WebDesk"
@@ -484,26 +474,6 @@ msgstr "pas de compte défini."
 msgid "error retrieving mails"
 msgstr "Erreur de récupération des messages"
 
-#, c-format
-msgid "temperature %s c (dew %s c, heat %s c)"
-msgstr "température %s°c (rosée %s°c, ressentie %s°c)"
-
-#, c-format
-msgid "wind, speed %s m/s direction [%s]"
-msgstr "vent, vitesse %s m/s, direction [%s]°"
-
-#, c-format
-msgid "relative humidity %s %%"
-msgstr "humidité relative %s %%"
-
-#, c-format
-msgid "Pression %s hpa"
-msgstr "Pression %s hpa"
-
-#, c-format
-msgid "Visibility %s %s km"
-msgstr "visibilité %s %s km"
-
 msgid "wd no rss link given"
 msgstr "Pas de flux RSS fourni"
 
@@ -511,6 +481,29 @@ msgid ""
 "[TEXT:no information available, verify your server have http access to "
 "internet and/or check link please...]"
 msgstr "Pas d'information, vérifiez que l'URL du lien est accessible"
+
+#~ msgid "No style"
+#~ msgstr "Pas de style"
+
+#~ msgid "portal welcome manual"
+#~ msgstr ""
+#~ "en cliquant ici vous accédez à l'aide à l'utilisation du portail et de "
+#~ "ses services"
+
+#~ msgid "temperature %s c (dew %s c, heat %s c)"
+#~ msgstr "température %s°c (rosée %s°c, ressentie %s°c)"
+
+#~ msgid "wind, speed %s m/s direction [%s]"
+#~ msgstr "vent, vitesse %s m/s, direction [%s]°"
+
+#~ msgid "relative humidity %s %%"
+#~ msgstr "humidité relative %s %%"
+
+#~ msgid "Pression %s hpa"
+#~ msgstr "Pression %s hpa"
+
+#~ msgid "Visibility %s %s km"
+#~ msgstr "visibilité %s %s km"
 
 #~ msgid "wd show/hide service list"
 #~ msgstr "Afficher/masquer la liste des services"

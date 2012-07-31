@@ -17,7 +17,7 @@ GZIP_ENV = --best
 
 export targetdir PACKAGE
 
-SUBDIR=  Xml Action Api Css Javascript Images Zone Freedom Services Doc
+SUBDIR=  Xml Action Api Css Javascript Images Zone Freedom Services 
 
 pages_not_xml = info.xml
 pages_not_php=fam2po.php po2js.php
