@@ -42,7 +42,7 @@ publish:  $(pubdir)/$(appname)/webdesk-init.ods \
 	$(pubdir)/$(appname)/71_webdesk.conf
 
 webinst-services:
-	make -C Services webinst PACKAGE=$(PACKAGE)-portal-services VERSION=$(VERSION) RELEASE=$(RELEASE) APPNAME=$(appname)
+	make -C Services webinst PACKAGE=dynacase-webdesk-services VERSION=$(VERSION) RELEASE=$(RELEASE) APPNAME=$(appname)
 	mv Services/*.webinst .
 
 webinst:  webinst-services
