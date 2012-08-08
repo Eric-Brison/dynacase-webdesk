@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<module name="dynacase-webdesk-services" version="@VERSION@" release="@RELEASE@" basecomponent="yes" infopath="http://www.dynacase.org/modules/dynacase-webdesk/dynacase-webdesk-services" license="@LICENSE@">
-  <description>This module provides basic services (for backward compatibility only).</description>
+<module name="@PACKAGE@" version="@VERSION@" release="@RELEASE@" basecomponent="no" infopath="http://www.dynacase.org/modules/dynacase-webdesk/@PACKAGE@" license="@LICENSE@">
+  <description>This module provides and install basic services (for backward compatibility only).</description>
 
   <requires>
         <module name="dynacase-webdesk" comp="ge" version="@VERSION@" />
