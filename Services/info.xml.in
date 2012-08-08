@@ -3,7 +3,7 @@
   <description>This module provides and install basic services (for backward compatibility only).</description>
 
   <requires>
-        <module name="dynacase-webdesk" comp="ge" version="@VERSION@" />
+        <module name="dynacase-webdesk-portal" comp="ge" version="@VERSION@" />
   </requires>
 
   <pre-install>
