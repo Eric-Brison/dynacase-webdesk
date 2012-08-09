@@ -73,9 +73,6 @@ function portal(&$action)
             addTCatEntry($categories, $v["id"], $v["title"], $num_cat);
         }
     }
-    echo "<!--";
-    print_r2($categories);
-    echo "-->";
     
     $menucat = '<ul>';
     foreach ($categories as $kcat => $vcat) $menucat.= '' . genCatXml($vcat, $kcat) . '';
