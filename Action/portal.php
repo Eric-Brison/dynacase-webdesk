@@ -317,7 +317,7 @@ function genCatXml($cat, $k)
 function subcatNotEmpty($scat)
 {
     foreach ($scat as $k => $v) {
-        if ((is_array($v["subcat"]) && count($v["subcat"]) > 0) || (is_array($v["item"]) && count($v["item"]) > 0)) {
+        if ((is_array($v["subcat"]) && count($v["subcat"]) > 0) || (isset($v["item"]) && is_array($v["item"]) && count($v["item"]) > 0)) {
             return true;
         }
     }
