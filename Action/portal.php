@@ -6,7 +6,7 @@
 */
 
 include_once ('FDL/Lib.Dir.php');
-function portal(&$action)
+function portal(Action & $action)
 {
     
     $dbaccess = getParam("FREEDOM_DB");
@@ -14,7 +14,7 @@ function portal(&$action)
     $debug = false;
     
     $action->parent->AddCssRef("WEBDESK:webdesk-system.css", true);
-    $styleCss = getParam("WDESK_PORTAL_CSS", "lib/jquery-ui/src/themes/base/jquery.ui.all.css");
+    $styleCss = getParam("WDESK_PORTAL_CSS", "lib/jquery-ui/devel-src/themes/base/jquery.ui.all.css");
     if (file_exists($action->GetParam("CORE_PUBURL") . "/" . $styleCss)) {
         $action->parent->AddCssRef($action->GetParam("CORE_PUBURL") . "/" . $styleCss);
     } else {
@@ -30,12 +30,14 @@ function portal(&$action)
     $action->parent->AddJsRef($action->GetParam("CORE_PUBURL") . "/FDC/Layout/setparamu.js");
     
     $action->parent->addJsRef('lib/jquery/jquery.js');
-    $action->parent->addJsRef('lib/jquery-ui/src/ui/jquery.ui.core.js');
-    $action->parent->addJsRef('lib/jquery-ui/src/ui/jquery.ui.widget.js');
-    $action->parent->addJsRef('lib/jquery-ui/src/ui/jquery.ui.position.js');
-    $action->parent->addJsRef('lib/jquery-ui/src/ui/jquery.ui.button.js');
-    $action->parent->addJsRef('lib/jquery-ui/src/ui/jquery.ui.menu.js');
-    $action->parent->addJsRef('lib/jquery-ui/src/ui/jquery.ui.menubar.js');
+    
+    $packName = 'menubarjs';
+    $action->parent->addJsRef('lib/jquery-ui/devel-src/ui/jquery.ui.core.js', false, $packName);
+    $action->parent->addJsRef('lib/jquery-ui/devel-src/ui/jquery.ui.widget.js', false, $packName);
+    $action->parent->addJsRef('lib/jquery-ui/devel-src/ui/jquery.ui.position.js', false, $packName);
+    $action->parent->addJsRef('lib/jquery-ui/devel-src/ui/jquery.ui.button.js', false, $packName);
+    $action->parent->addJsRef('lib/jquery-ui/devel-src/ui/jquery.ui.menu.js', false, $packName);
+    $action->parent->addJsRef('lib/jquery-ui/devel-src/ui/jquery.ui.menubar.js', false, $packName);
     
     $action->lay->set("debug", $debug);
     if (!$debug) $action->parent->AddJsRef("WEBDESK:portal.js", true);
@@ -49,6 +51,9 @@ function portal(&$action)
     // Get service categories
     //
     $d = createDoc($dbaccess, "PORTAL_SERVICE", false);
+    /**
+     * @var NormalAttribute $acat
+     */
     $acat = $d->GetAttribute("psvc_categorie");
     $cat = $acat->getEnum();
     $categories = array();
@@ -167,6 +172,9 @@ function portal(&$action)
         if (is_numeric($welc) && $welc > 0) {
             $svc = new_Doc($dbaccess, $welc);
             if ($svc->isAffected()) {
+                /**
+                 * @var _USER_PORTAL $up
+                 */
                 $up = createDoc($dbaccess, "USER_PORTAL");
                 if (!is_object($up)) {
                     $action->addWarningMsg(_("Could not create user portal."));
@@ -278,41 +286,41 @@ function addTCatEntry(&$categories, $id, $label, $cat)
 function genCatXml($cat, $k)
 {
     $menu = "";
-    if (count($cat["subcat"]) > 0 && subcatNotEmpty($cat["subcat"])) {
+    if (isset($cat["subcat"]) && count($cat["subcat"]) > 0 && subcatNotEmpty($cat["subcat"])) {
         $menu.= '<li><a href="#">' . $cat["label"] . "...</a>\n";
         $menu.= "<ul>\n";
         foreach ($cat["subcat"] as $kcat => $vcat) $menu.= genCatXml($vcat, $kcat);
         $menu.= "</ul>\n</li>\n";
     }
-    if (count($cat["item"]) > 0) {
-	$menu .= "<li>\n";
-	$menu .= '<a class="menu-active" href="#"';
-	$menu.= '>' . $cat["label"];
-	$menu.= '...';
-	$menu.= "</a>";
-	$menu.= '<ul>';
-	foreach ($cat["item"] as $kcat => $vcat) $menu.= genCatXml($vcat, $kcat);
-	$menu.= "</ul>\n";
-	$menu.= "</li>\n";
+    if (isset($cat["item"]) && count($cat["item"]) > 0) {
+        $menu.= "<li>\n";
+        $menu.= '<a class="menu-active" href="#"';
+        $menu.= '>' . $cat["label"];
+        $menu.= '...';
+        $menu.= "</a>";
+        $menu.= '<ul>';
+        foreach ($cat["item"] as $kcat => $vcat) $menu.= genCatXml($vcat, $kcat);
+        $menu.= "</ul>\n";
+        $menu.= "</li>\n";
     }
     if (isset($cat["ids"])) {
-      $menu .= "<li>\n";
-      $menu .= '<a class="menu-active" href="#"';
-      $menu .= ' ids="' . $cat["ids"] . '"';
-      $menu .= '>' . $cat["label"];
-      $menu .= "</a>";
-      $menu .= "</li>";
+        $menu.= "<li>\n";
+        $menu.= '<a class="menu-active" href="#"';
+        $menu.= ' ids="' . $cat["ids"] . '"';
+        $menu.= '>' . $cat["label"];
+        $menu.= "</a>";
+        $menu.= "</li>";
     }
     return $menu;
 }
 
-function subcatNotEmpty($scat) {
-  foreach ($scat as $k=>$v) {
-    if ((is_array($v["subcat"]) && count($v["subcat"])>0) || (is_array($v["item"]) && count($v["item"])>0)) {
-      return true;
+function subcatNotEmpty($scat)
+{
+    foreach ($scat as $k => $v) {
+        if ((is_array($v["subcat"]) && count($v["subcat"]) > 0) || (is_array($v["item"]) && count($v["item"]) > 0)) {
+            return true;
+        }
     }
-  }
-  return false;
-
+    return false;
 }
 ?>

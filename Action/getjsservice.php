@@ -6,7 +6,7 @@
 */
 
 include_once ('FDL/Lib.Dir.php');
-function getjsservice(&$action)
+function getjsservice(Action & $action)
 {
     
     $dbaccess = getParam("FREEDOM_DB");
@@ -25,7 +25,9 @@ function getjsservice(&$action)
     } else {
         $up = $tup[0];
     }
-    
+    /**
+     * @var Doc $up
+     */
     $svcnum = $up->getTValue("uport_svcnum");
     $svcid = $up->getTValue("uport_idsvc");
     $svctitle = $up->getTValue("uport_svc");
@@ -52,10 +54,8 @@ function getjsservice(&$action)
     }
     
     $svc = getTDoc($dbaccess, $sid);
-    
-    $jslay = new Layout($jfile, $action);
-    $action->parent->AddJsCode($jslay->gen());
-    
+    // $jslay = new Layout($jfile, $action);
+    // $action->parent->AddJsCode($jslay->gen());
     $ret = "var svc = { " . "     snum:" . $snum . "," . "     sid:" . $sid . "," . "     stitle:'" . addslashes(getV($svc, "psvc_title")) . "'," . "     vurl:'" . getV($svc, "psvc_vurl") . "'," . "     eurl:'" . getV($svc, "psvc_eurl") . "'," . "     jslink:'" . (getV($svc, "psvc_jsfile") != "" ? Getparam("CORE_STANDURL") . "&app=CORE&action=CORE_CSS&session=" . $action->session->id . "&layout=" . getV($svc, "psvc_jsfile") : "") . "'," . "     jslinkmd5:'" . md5(getV($svc, "psvc_jsfile")) . "'," . "     csslink:'" . (getV($svc, "psvc_cssfile") != "" ? Getparam("CORE_STANDURL") . "&app=CORE&action=CORE_CSS&session=" . $action->session->id . "&layout=" . getV($svc, "psvc_cssfile") : "") . "'," . "     csslinkmd5:'" . md5(getV($svc, "psvc_cssfile")) . "'," . "     purl:'" . $sparam . "'," . "     rdel:" . $rdel . "," . "     nextLoad:-1," . "     col:" . $scol . "," . "     lin:" . $slin . "," . "     open:true," . "     i:" . (getV($svc, "psvc_interactif") == 1 ? "true" : "false") . "," . "     m:" . (getV($svc, "psvc_mandatory") == 1 ? "true" : "false") . "," . "     e:" . (getV($svc, "psvc_umode") == 1 ? "true" : "false") . "," . "     d:false };";
     
     $action->lay->set("OUT", $ret);
