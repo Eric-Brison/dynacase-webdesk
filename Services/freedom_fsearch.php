@@ -7,7 +7,7 @@
 
 include_once ('FDL/Lib.Dir.php');
 
-function freedom_fsearch(&$action)
+function freedom_fsearch(Action & $action)
 {
     
     header('Content-type: text/xml; charset=utf-8');
@@ -34,10 +34,7 @@ function freedom_fsearch(&$action)
     // Si le choix de la famille n'est pas proposé, ce n'est pas la peine de rechercher la liste
     if ($family == "") {
         // Interface init
-        $tclass = GetClassesDoc($dbaccess, $action->user->id, array(
-            1,
-            2
-        ) , "TABLE");
+        $tclass = GetClassesDoc($dbaccess, $action->user->id, 0, "TABLE", "usefor !~ '^S'");
         $stclass[] = array(
             "value" => 0,
             "sel" => "",
@@ -84,8 +81,8 @@ function freedom_fsearch(&$action)
         );
         if (count($tdocs) == $max) break;
     }
-    $pd = (count($tdoc) > 1);
-    $action->lay->set("msg", count($rdoc) . " document" . ($pd ? "s" : "") . " trouv�" . ($pd ? "s" : "") . ", les $max premiers...");
+    $pd = (count($tdocs) > 1);
+    $action->lay->set("msg", count($tdocs) . " document" . ($pd ? "s" : "") . " trouv�" . ($pd ? "s" : "") . ", les $max premiers...");
     $action->lay->setBlockData("docs", $tdocs);
     
     $action->lay->set("uptime", strftime("%H:%M %d/%m/%Y", time()));

@@ -10,8 +10,8 @@ function parseUrl($link)
     
     global $_SERVER;
     $gparams = array(
-        "[user]" => urlencode($_SERVER['PHP_AUTH_USER']) ,
-        "[pass]" => urlencode($_SERVER['PHP_AUTH_PW']) ,
+        "[user]" => isset($_SERVER['PHP_AUTH_USER']) ? urlencode($_SERVER['PHP_AUTH_USER']) : '',
+        "[pass]" => isset($_SERVER['PHP_AUTH_PW']) ? urlencode($_SERVER['PHP_AUTH_PW']) : '',
     );
     $ms = $mr = array();
     foreach ($gparams as $k => $v) {

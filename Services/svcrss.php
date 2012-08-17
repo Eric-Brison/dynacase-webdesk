@@ -7,7 +7,7 @@
 
 include_once ("XML/RSS.php");
 include_once ("WEBDESK/Lib.Services.php");
-function svcrss(&$action)
+function svcrss(Action & $action)
 {
     
     header('Content-type: text/xml; charset=utf-8');
@@ -27,7 +27,7 @@ function svcrss(&$action)
     
     $local = parse_url($action->getParam("CORE_URLINDEX"));
     $tu = parse_url($rsslink);
-    if ($local["host"] == $tu["host"] && $local["scheme"] == "https") {
+    if (isset($local["host"]) && isset($tu["host"]) && $local["host"] == $tu["host"] && $local["scheme"] == "https") {
         $r2link = str_replace("http:", "https:", $rsslink);
         $r2link = str_replace(":80", ":443", $r2link);
     } else {
@@ -51,7 +51,8 @@ function svcrss(&$action)
                 $tr[$ic]["title"] = htmlentities($v["title"], ENT_COMPAT, "UTF-8");
                 $sdesc = ($textlg > 0 ? substr($v["description"], 0, $textlg) . (strlen($v["description"]) > $textlg ? "..." : "") : $v["description"]);
                 $tr[$ic]["descr"] = $sdesc;
-                $tr[$ic]["date"] = $v["dc:date"];
+                
+                $tr[$ic]["date"] = isset($v["dc:date"]) ? $v["dc:date"] : isset($v["pubdate"]) ? $v["pubdate"] : '';
                 $tr[$ic]["vfull"] = $vfull;
                 $ic++;
             }
