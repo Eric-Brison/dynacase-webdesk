@@ -4,7 +4,7 @@
 
 include $(utildir)/PubRule
 
-$(pubdir)/$(appname)/webdesk.ods : webdesk-services.ods
-	cp webdesk-services.ods $(pubdir)/$(appname)
+$(pubdir)/$(appname)/webdesk.ods : webdesk.ods
+	cp webdesk.ods $(pubdir)/$(appname)
 
-publish: $(pubdir)/$(appname)/webdesk-services.ods
+publish: $(pubdir)/$(appname)/webdesk.ods

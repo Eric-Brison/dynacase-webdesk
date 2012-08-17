@@ -3,6 +3,7 @@
 # ============================================
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@
+RELEASE = @RELEASE@
 utildir = @PUBRULE@
 appname = @APPNAME@
 applib = FDL
@@ -15,9 +16,9 @@ export pubdir utildir appname applib
 TAR = tar
 GZIP_ENV = --best
 
-export targetdir PACKAGE
+export targetdir PACKAGE 
 
-SUBDIR=  Xml Action Api Css Javascript Images Zone Freedom Services 
+SUBDIR=  Xml Action Api Css Javascript Images Zone Freedom ServicesInit
 
 pages_not_xml = info.xml
 pages_not_php=fam2po.php po2js.php
@@ -28,23 +29,26 @@ DISTFILES += $(SUBDIR) \
 	$(appname).app \
         RELEASE VERSION \
 	71_webdesk.conf \
-	Freedom/webdesk.ods \
 	Freedom/webdesk-init.ods \
 	phpweather-default.php 
 
 $(pubdir)/$(appname)/71_webdesk.conf : 71_webdesk.conf
 	cp $< $@
 
-$(pubdir)/$(appname)/webdesk.ods : Freedom/webdesk.ods
-	cp Freedom/webdesk.ods $(pubdir)/$(appname)
-
-$(pubdir)/$(appname)/webdesk-init.ods : Freedom/webdesk-init.ods 
+$(pubdir)/$(appname)/webdesk-init.ods : Freedom/webdesk-init.ods
 	cp $< $(pubdir)/$(appname)
 
-publish: $(pubdir)/$(appname)/webdesk.ods $(pubdir)/$(appname)/webdesk-init.ods \
+publish:  $(pubdir)/$(appname)/webdesk-init.ods \
 	$(pubdir)/$(appname)/71_webdesk.conf
 
+webinst-services:
+	make -C Services webinst PACKAGE=dynacase-webdesk-services VERSION=$(VERSION) RELEASE=$(RELEASE) APPNAME=$(appname)
+	mv Services/*.webinst .
+
+webinst:  webinst-services
+
 clean:
+	rm -f *.webinst
 	rm -f config.log config.status configure WEBDESK-*.tar.gz WEBDESK.php WEBDESK.spec 
 	rm -f dynacase-webdesk-*.webinst
 	rm -rf autom4te-2.53.cache
