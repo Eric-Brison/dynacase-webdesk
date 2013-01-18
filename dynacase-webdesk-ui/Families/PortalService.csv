@@ -1,0 +1,32 @@
+// ;fromid;titre;id;class;name;;;;;;;;;;
+BEGIN;0;Service Portail;;;PORTAL_SERVICE;;;;;;;;;;
+TYPE;C;;;;;;;;;;;;;;
+ICON;portal_service.gif;;;;;;;;;;;;;;
+TAG;P;;;;;;;;;;;;;;
+USEFOR;S;;;;;;;;;;;;;;
+METHOD;Method.PortalService.php;;;;;;;;;;;;;;
+RESET;attributes;;;;;;;;;;;;;;
+//;idattr;idframe;label;T;A;type;ord;vis;need;link;phpfile;phpfunc;elink;constraint;option
+ATTR;PSVC_SPEC;;Service;N;N;frame;10;W;;;;;;;
+ATTR;PSVC_TITLE;PSVC_SPEC;Titre;Y;Y;text;20;W;Y;;;;;;
+ATTR;PSVC_DESCR;PSVC_SPEC;Description;N;N;longtext;30;W;;;;;;;
+ATTR;PSVC_VURL;PSVC_SPEC;Consultation;N;N;text;40;W;Y;;;;;;
+ATTR;PSVC_EURL;PSVC_SPEC;Édition;N;N;text;50;W;;;;;;;
+ATTR;PSVC_JSFILE;PSVC_SPEC;Javascript;N;N;text;60;W;;;;;;;
+ATTR;PSVC_CSSFILE;PSVC_SPEC;Css;N;N;text;70;W;;;;;;;
+ATTR;PSVC_ICON;PSVC_SPEC;Icone;N;N;file;80;W;;;;;;;
+ATTR;PSVC_CATEGORIE;PSVC_SPEC;Catégorie;N;N;enum;90;W;Y;;;10|Intranet,10.1010|Collaboratif,10.1020|Documents,10.1090|Divers,20|Actualité,20.2010|Economie,20.2020|Technologies,20.2030|Social,20.2040|Politique,20.2050|Générales,20.2060|Insolites,40|Informatiques,40.4005|Revue de presse,40.4010|Open Source,40.4020|Multimedia,40.4030|Logiciels,40.4040|Matériels,40.4090|Autres,50|Loisirs,50.5010|Sports,50.5020|Sorties,50.5030|Météo,50.5090|Autres,-1|Autres;;;multiple=yes
+ATTR;PSVC_REFRESHD;PSVC_SPEC;Délai de rafraîchissement;N;N;enum;100;W;Y;;;0|Jamais,5|5 minutes,15|1/4 d'heure,30|1/2 heure,60|1 heure,120|2 heures;;;multiple=yes
+;;;;;;;;;;;;;;;
+ATTR;PSVC_PARAMS;;Paramètres;N;N;frame;200;W;;;;;;;
+ATTR;PSVC_AVAILABLE;PSVC_PARAMS;Disponible;N;N;enum;210;W;;;;[hcheck]1|Oui,0|Non;;;system=yes|bmenu=no
+ATTR;PSVC_UMODE;PSVC_PARAMS;Modifiable;N;N;enum;220;W;;;;[hcheck]1|Oui,0|Non;;;system=yes|bmenu=no
+ATTR;PSVC_MANDATORY;PSVC_PARAMS;Obligatoire;N;N;enum;230;W;;;;[hcheck]0|Optionnel,1|Obligatoire;;;system=yes|bmenu=no
+ATTR;PSVC_INTERACTIF;PSVC_PARAMS;Interactif;N;N;enum;240;W;;;;[hcheck]0|Non,1|Oui;;;system=yes|bmenu=no
+ATTR;PSVC_APPNEEDED;PSVC_PARAMS;Application attendue;N;N;text;250;W;;;;;;;
+;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;
+DEFAULT;PSVC_CATEGORIE;4;;;;;;;;;;;;;
+END;;;;;;;;;;;;;;;

@@ -1,8 +1,0 @@
-#!/bin/bash
-
-if [ -z "$pgservice_freedom" ]; then
-   echo "Undefined or empty pgservice_freedom!"
-   exit 1
-fi
-
-"$wpub/wsh.php" --api=freedom_refresh --famid=PORTAL_SERVICE --docid=PS_LOCALMAIL --method=delete

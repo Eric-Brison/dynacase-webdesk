@@ -1,55 +1,33 @@
-# ============================================
-# $Id: Makefile.in,v 1.15 2009/01/19 14:21:37 jerome Exp $
-# ============================================
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@
-RELEASE = @RELEASE@
 utildir = @PUBRULE@
-appname = @APPNAME@
+pubdir = @prefix@
+srcdir = @srcdir@
 applib = FDL
-pubdir  = @prefix@
-srcdir  = @srcdir@
-
-
-export pubdir utildir appname applib
-
+appname = @APPNAME@
 TAR = tar
 GZIP_ENV = --best
 
-export targetdir PACKAGE 
+export pubdir utildir appname applib PACKAGE
 
-SUBDIR=  Xml Action Api Css Javascript Images Zone Freedom ServicesInit
-
-pages_not_xml = info.xml
-pages_not_php=fam2po.php po2js.php
+SUBDIR=
 
 include $(utildir)/PubRule
 
-DISTFILES += $(SUBDIR) \
-	$(appname).app \
-        RELEASE VERSION \
-	71_webdesk.conf \
-	Freedom/webdesk-init.ods \
-	phpweather-default.php 
+# For all families traduction
+# TRANSCSV += $(shell find ./Families -name "STRUCT_*.csv")
+TRANSCSV +=
 
-$(pubdir)/$(appname)/71_webdesk.conf : 71_webdesk.conf
-	cp $< $@
+webinst-dynacase-webdesk-services:
+	make -C dynacase-webdesk-services webinst RELEASE=$(RELEASE) VERSION=$(VERSION) appname=WEBDESK-SERVICES PACKAGE=dynacase-webdesk-services
+	mv dynacase-webdesk-services/*webinst .
 
-$(pubdir)/$(appname)/webdesk-init.ods : Freedom/webdesk-init.ods
-	cp $< $(pubdir)/$(appname)
+webinst-dynacase-webdesk-ui:
+	make -C dynacase-webdesk-ui webinst RELEASE=$(RELEASE) VERSION=$(VERSION) appname=WEBDESK PACKAGE=dynacase-webdesk-ui
+	mv dynacase-webdesk-ui/*webinst .
 
-publish:  $(pubdir)/$(appname)/webdesk-init.ods \
-	$(pubdir)/$(appname)/71_webdesk.conf
-
-webinst-services:
-	make -C Services webinst PACKAGE=dynacase-webdesk-services VERSION=$(VERSION) RELEASE=$(RELEASE) APPNAME=$(appname)
-	mv Services/*.webinst .
-
-webinst:  webinst-services
+webinst: webinst-dynacase-webdesk-services webinst-dynacase-webdesk-ui
 
 clean:
-	rm -f *.webinst
-	rm -f config.log config.status configure WEBDESK-*.tar.gz WEBDESK.php WEBDESK.spec 
-	rm -f dynacase-webdesk-*.webinst
-	rm -rf autom4te-2.53.cache
-	find . -name \*~  -exec rm {} \;
+	/bin/rm -f *.*~ config.* Makefile configure $(appname)_init.php info.xml $(PACKAGE)-*webinst
+	/bin/rm -fr autom4te.cache
