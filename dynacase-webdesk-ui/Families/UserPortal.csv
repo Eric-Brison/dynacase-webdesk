@@ -1,0 +1,28 @@
+// ;fromid;titre;id;class;name;;;;;;;;;;
+BEGIN;0;Portail utilisateur;;;USER_PORTAL;;;;;;;;;;
+TYPE;C;;;;;;;;;;;;;;
+ICON;user_portal.gif;;;;;;;;;;;;;;
+TAG;P;;;;;;;;;;;;;;
+USEFOR;S;;;;;;;;;;;;;;
+METHOD;Method.UserPortal.php;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;
+//;idattr;idframe;label;T;A;type;ord;vis;need;link;phpfile;phpfunc;elink;constraint;option
+ATTR;UPORT_DESCR;;Portail;N;N;frame;10;W;;;;;;;
+ATTR;UPORT_TITLE;UPORT_DESCR;Titre;Y;Y;text;20;W;;;;;;;
+ATTR;UPORT_OWNERID;UPORT_DESCR;Propriétaire Id;N;N;docid;30;H;Y;;;::getTitle(UPORT_OWNERID):UPORT_OWNER;;;
+ATTR;UPORT_OWNER;UPORT_DESCR;Propriétaire;N;Y;text;40;W;;%S%app=FDL&action=FDL_CARD&id=%UPORT_OWNERID%;fdl.php;lfamilly(D,{IUSER},UPORT_OWNER):UPORT_OWNERID,UPORT_OWNER;;;
+;;;;;;;;;;;;;;;
+ATTR;UPORT_TSERVICES;UPORT_DESCR;Services;N;N;array;100;W;;;;;;;
+ATTR;UPORT_SVCNUM;UPORT_TSERVICES;Service Number;N;N;int;110;R;;;;;;;
+ATTR;UPORT_IDSVC;UPORT_TSERVICES;Id Service;N;N;docid;120;H;;;;::getTitle(UPORT_IDSVC):UPORT_SVC;;;
+ATTR;UPORT_SVC;UPORT_TSERVICES;Service;N;N;text;130;W;;%S%app=FDL&action=FDL_CARD&id=%UPORT_IDSVC%;fdl.php;lfamilly(D,{PORTAL_SERVICE},UPORT_SVC):UPORT_IDSVC,UPORT_SVC;;;
+ATTR;UPORT_PARAM;UPORT_TSERVICES;Paramêtres;N;N;text;140;W;;;;;;;
+ATTR;UPORT_COLUMN;UPORT_TSERVICES;Colonne;N;N;int;150;W;;;;;;;
+ATTR;UPORT_LINE;UPORT_TSERVICES;Ligne;N;N;int;160;W;;;;;;;
+ATTR;UPORT_OPEN;UPORT_TSERVICES;Ouvert;N;N;enum;170;W;;;;[hcheck]1|Oui,0|Non;;;system=yes|bmenu=no
+ATTR;UPORT_REFRESHD;UPORT_TSERVICES;Délai raf.;N;N;int;180;W;;;;;;;
+ATTR;UPORT_PAGE;UPORT_TSERVICES;Page;N;N;int;190;W;;;;;;;
+;;;;;;;;;;;;;;;
+DEFAULT;UPORT_PAGE;1;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;
+END;;;;;;;;;;;;;;;

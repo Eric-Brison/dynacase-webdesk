@@ -1,0 +1,14 @@
+*.ods#
+*.csv#
+*.pyc
+.buildpath
+.cache
+deploy-package.config
+.externalToolBuilders
+.git
+.idea
+inosync_conf.py
+.project
+.pydevproject
+rsyncExclude.txt
+.settings

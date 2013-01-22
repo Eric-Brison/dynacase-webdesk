@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @property _$familyName doc
+ */
+class $workflowName extends WDoc
+{
+    public $attrPrefix =
+    public $firstState = self::E1;
+    public $viewlist = "none";
+
+    //region attributes-constants
+    //endregion
+
+    //region States
+    const E1 =
+    //endregion
+
+    //region Transitions
+    const T1 =
+    //endregion
+
+
+    public $stateactivity = array(
+
+    );
+
+
+    public $transitions = array(
+
+    );
+
+    public $cycle = array(
+
+    );
+
+
+
+}
+?>

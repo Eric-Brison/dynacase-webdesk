@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<module name="dynacase-webdesk-ui" version="@VERSION@" release="@RELEASE@" license="@LICENSE@">
+  <description>This module was used to allow user to have a webdesk. (for backward compatibility only)</description>
+
+  <requires>
+        <module name="dynacase-core" comp="ge" version="3.2.0" />
+  </requires>
+
+  <pre-install>
+    <check type="phpclass" include="XML/Parser.php" class="XML_Parser">
+      <help>You might need to install a php-pear-XML_Parser package from your distribution, or run 'pear install XML_Parser', in order to have XML_Parser support in PHP.</help>
+    </check>
+    <check type="phpclass" include="XML/RSS.php" class="XML_RSS">
+      <help>You might need to install a php-pear-XML_RSS package form your distribution, or run 'pear install XML_RSS', in order to get RSS parsing support in PHP.</help>
+    </check>
+    <check type="phpfunction" function="imap_open">
+      <help>You might need to install a php-imap package from your distribution in order to get IMAP support in PHP.</help>
+    </check>
+  </pre-install>
+
+  <pre-upgrade>
+    <check type="phpclass" include="XML/Parser.php" class="XML_Parser">
+      <help>You might need to install a php-pear-XML_Parser package from your distribution, or run 'pear install XML_Parser', in roder to have XML_Parser support in PHP.</help>
+    </check>
+    <check type="phpclass" include="XML/RSS.php" class="XML_RSS">
+      <help>You might need to install a php-pear-XML_RSS package form your distribution, or run 'pear install XML_RSS', in order to get RSS parsing support in PHP.</help>
+    </check>
+    <check type="phpfunction" function="imap_open">
+      <help>You might need to install a php-imap package from your distribution in order to get IMAP support in PHP.</help>
+    </check>
+  </pre-upgrade>
+
+  <post-install>
+    <process command="programs/record_application WEBDESK" />
+    <process command="./wsh.php --api=importDocuments --file=./WEBDESK/PortalService.csv" />
+    <process command="./wsh.php --api=importDocuments --file=./WEBDESK/UserPortal.csv" />
+    <process command="./wsh.php --api=importDocuments --file=./WEBDESK/webdesk-init.csv" />
+    <process command="programs/update_catalog" />
+  </post-install>
+
+  <post-upgrade>
+    <process command="programs/pre_migration WEBDESK" />
+    <process command="programs/record_application WEBDESK" />
+    <process command="./wsh.php --api=importDocuments --file=./WEBDESK/PortalService.csv" />
+    <process command="./wsh.php --api=importDocuments --file=./WEBDESK/UserPortal.csv" />
+    <process command="./wsh.php --api=importDocuments --file=./WEBDESK/webdesk-init.csv" />
+    <process command="programs/post_migration WEBDESK" />
+    <process command="programs/update_catalog" />
+  </post-upgrade>
+
+</module>

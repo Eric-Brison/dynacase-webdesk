@@ -1,0 +1,26 @@
+<?php
+/**
+ * @begin-method-ignore
+ *
+ * @property Layout lay
+ * @property string sqlinit
+ */
+Class _$familyClass extends $fromClass
+{
+    /**
+     * @end-method-ignore
+     */
+    
+    //region attributes-constants
+    //endregion
+
+
+
+    /**
+     * @begin-method-ignore
+     */
+}
+/**
+ * @end-method-ignore
+ */
+?>

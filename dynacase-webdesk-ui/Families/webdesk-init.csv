@@ -1,0 +1,7 @@
+ACCESS;GADMIN;WEBDESK;ADMIN;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;
+// Portal services;;;;;;;;;;;;;;;;
+//FAM;Service Portail(PORTAL_SERVICE);<specid>;<fldid>;Title;Description;Consultation;Edition;Catégorie;Délai de rafraîchissement;Disponible;Interactif;Modifiable;Obligatoire;;JS File;CSS File
+ORDER;PORTAL_SERVICE;;;psvc_title;psvc_descr;psvc_vurl;psvc_eurl;psvc_categorie;psvc_refreshd;psvc_available;psvc_interactif;psvc_umode;psvc_mandatory;psvc_appneeded;psvc_jsfile;psvc_cssfile
+;;;;;;;;;;;;;;;;
+DOC;PORTAL_SERVICE;PS_WELCOME;;Bienvenue;Service d'accueil sur le portail;[CORE_STANDURL]&sole=Y&app=WEBDESK&action=GSVC&sname=welcome;;-1;0;1;0;1;0;;;

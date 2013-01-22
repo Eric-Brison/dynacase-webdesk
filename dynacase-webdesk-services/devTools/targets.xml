@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<!DOCTYPE targets [
+        <!ELEMENT targets (target|profile)*>
+        <!ELEMENT target (process)*>
+        <!ATTLIST target
+                id ID #REQUIRED
+                label CDATA #IMPLIED
+                usefor CDATA #IMPLIED>
+        <!ELEMENT process (label)*>
+        <!ATTLIST process
+                command CDATA #REQUIRED>
+        <!ELEMENT label (#PCDATA)>
+        <!ATTLIST label
+                lang CDATA #REQUIRED>
+        <!ELEMENT profile (refTarget)*>
+        <!ATTLIST profile
+                id ID #REQUIRED
+                label CDATA #IMPLIED>
+        <!ELEMENT refTarget (#PCDATA)>
+        <!ATTLIST refTarget
+                targetId IDREF #REQUIRED>
+        ]>
+<targets>
+    <target id="t1" label="target 1" usefor="post-upgrade">
+        <process/>
+    </target>
+
+    <profile id="p1" label="profile 1">
+        <refTarget targetId="t1"/>
+        <refTarget targetId="p1"/>
+    </profile>
+</targets>
