@@ -42,7 +42,7 @@ msgid "WEBDESK:A basic webdesk"
 msgstr "Dynacase portail"
 
 msgid "WEBDESK:WEBDESK"
-msgstr "WEBDESK"
+msgstr "Webdesk"
 
 msgid ""
 "[TEXT:no information available, verify your server have http access to "
