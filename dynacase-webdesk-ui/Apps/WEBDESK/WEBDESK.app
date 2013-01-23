@@ -10,8 +10,8 @@ $app_desc = array(
     "short_name" => N_("WEBDESK:WEBDESK") ,
     "description" => N_("WEBDESK:A basic webdesk") ,
     "access_free" => "N",
-    "icon" => "webdesk_ui.png",
-    "displayable" => "N",
+    "icon" => "webdesk.gif",
+    "displayable" => "Y",
     "with_frame" => "Y",
     "childof" => ""
 );
