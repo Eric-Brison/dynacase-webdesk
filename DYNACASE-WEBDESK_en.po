@@ -1,0 +1,361 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WEBDESK\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-01-23 11:25+0100\n"
+"PO-Revision-Date: 2012-06-22 11:44+0200\n"
+"Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
+"Language-Team: French <distrib@anakeen.com>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Click to search both in society name..."
+msgstr ""
+
+msgid "Click to search person containing..."
+msgstr ""
+
+msgid "Click to see detail"
+msgstr ""
+
+msgid "Could not create user portal."
+msgstr "Could not create user portal."
+
+msgid "Height"
+msgstr ""
+
+msgid "Javascript must be enabled in your navigator"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Url"
+msgstr ""
+
+msgid "Url type"
+msgstr ""
+
+msgid "WEBDESK:A basic webdesk"
+msgstr ""
+
+msgid "WEBDESK:WEBDESK"
+msgstr ""
+
+msgid ""
+"[TEXT:no information available, verify your server have http access to "
+"internet and/or check link please...]"
+msgstr ""
+
+msgid "add service in user portal"
+msgstr ""
+
+msgid "application present in application bar"
+msgstr ""
+
+msgid "ardoise content"
+msgstr ""
+
+msgid "automatic reload all"
+msgstr ""
+
+msgid "checked : search only in titles"
+msgstr ""
+
+msgid "clear displayed results"
+msgstr ""
+
+msgid "default application displayed"
+msgstr ""
+
+msgid "del service from user portal"
+msgstr ""
+
+msgid "display column x lines"
+msgstr ""
+
+msgid "display full card in the same window"
+msgstr ""
+
+msgid "downloading content in progress..."
+msgstr ""
+
+msgid "edit for view any url"
+msgstr ""
+
+msgid "edition url not given"
+msgstr ""
+
+msgid "error retrieving mails"
+msgstr ""
+
+msgid "flash sheet"
+msgstr ""
+
+msgid "freedom rss search"
+msgstr "Search for Dynacase RSS feeds"
+
+msgid "generic service"
+msgstr ""
+
+msgid "html sheet"
+msgstr ""
+
+msgid "image"
+msgstr ""
+
+#, c-format
+msgid "incident in progress -%d-"
+msgstr ""
+
+#, c-format
+msgid "more than %d results..."
+msgstr ""
+
+msgid "no account defined"
+msgstr ""
+
+msgid "no result for search"
+msgstr ""
+
+msgid "no rss item"
+msgstr ""
+
+msgid "number of affected document"
+msgstr ""
+
+msgid "open it in a new window"
+msgstr ""
+
+msgid "portal columns count"
+msgstr ""
+
+msgid "portal colums specification"
+msgstr ""
+
+msgid "portal page"
+msgstr ""
+
+msgid "portal welcome content"
+msgstr ""
+
+msgid "portal welcome help"
+msgstr ""
+
+msgid "portal welcome service"
+msgstr ""
+
+msgid "portal welcome title"
+msgstr ""
+
+msgid "position of service in user portal"
+msgstr ""
+
+msgid "return JS service description"
+msgstr ""
+
+msgid "rss: clear displayed results"
+msgstr ""
+
+msgid "rss: select to search in system RSS (else mine only)"
+msgstr ""
+
+msgid "save service parameters"
+msgstr ""
+
+msgid "service ardoise"
+msgstr ""
+
+msgid "service contact"
+msgstr ""
+
+msgid "service edit freedom search in familie"
+msgstr "Dynacase family search service (edit)"
+
+msgid "service edit rss"
+msgstr ""
+
+msgid "service freedom search execution"
+msgstr "Dynacase service"
+
+msgid "service freedom search in familie"
+msgstr "Dynacase family search service"
+
+msgid "service incident"
+msgstr ""
+
+msgid "service mail"
+msgstr ""
+
+msgid "service mail edition"
+msgstr ""
+
+msgid "service rss"
+msgstr ""
+
+msgid "service test edition"
+msgstr ""
+
+msgid "service test view"
+msgstr ""
+
+msgid "services list columns count"
+msgstr ""
+
+msgid "view any url"
+msgstr ""
+
+msgid "wd  reset colums"
+msgstr ""
+
+msgid "wd close"
+msgstr ""
+
+msgid "wd close all services"
+msgstr ""
+
+msgid "wd confirm supress of"
+msgstr ""
+
+msgid "wd delete svc"
+msgstr ""
+
+msgid "wd edit svc content"
+msgstr ""
+
+msgid "wd enter url"
+msgstr ""
+
+msgid "wd entre rss link here"
+msgstr ""
+
+msgid "wd error add service"
+msgstr ""
+
+msgid "wd error geo service"
+msgstr ""
+
+msgid "wd error getting service"
+msgstr ""
+
+msgid "wd error retrieving content"
+msgstr ""
+
+msgid "wd error retrieving edit form"
+msgstr ""
+
+msgid "wd error saving edit form"
+msgstr ""
+
+msgid "wd hide svc content"
+msgstr ""
+
+msgid "wd invalid freedom search given"
+msgstr "Invalid Dynacase search given"
+
+msgid "wd invalid service number returned by creation"
+msgstr ""
+
+msgid "wd loading edition forms"
+msgstr ""
+
+msgid "wd menu tools"
+msgstr ""
+
+msgid "wd no freedom search given"
+msgstr "No Dynacase search given"
+
+msgid "wd no rss link given"
+msgstr ""
+
+msgid "wd open all services"
+msgstr ""
+
+msgid "wd reload portal view"
+msgstr ""
+
+msgid "wd reload svc content"
+msgstr ""
+
+msgid "wd save"
+msgstr ""
+
+msgid "wd search ..."
+msgstr ""
+
+msgid "wd services list"
+msgstr ""
+
+msgid "wd show svc content"
+msgstr ""
+
+msgid "wd url for retrieving information not given"
+msgstr ""
+
+msgid "wd: Group access"
+msgstr ""
+
+msgid "wd: Private"
+msgstr ""
+
+msgid "wd: Public readonly"
+msgstr ""
+
+msgid "wd: Special access"
+msgstr ""
+
+msgid "wd: result"
+msgstr ""
+
+msgid "wd: secretary"
+msgstr ""
+
+msgid "wdd info personal"
+msgstr ""
+
+msgid "wdd info society"
+msgstr ""
+
+msgid "webdesk access"
+msgstr ""
+
+msgid "webdesk admin"
+msgstr ""
+
+msgid "webdesk application portal"
+msgstr ""
+
+msgid "webdesk change default application"
+msgstr ""
+
+msgid "webdesk change top bar content"
+msgstr ""
+
+msgid "webdesk menu background color"
+msgstr ""
+
+msgid "webdesk menu background image"
+msgstr ""
+
+msgid "webdesk menu background image width"
+msgstr ""
+
+msgid "webdesk theme remplacement CSS"
+msgstr "JQueryUI alternative CSS"
+
+msgid "without category"
+msgstr ""
+
+#~ msgid "My portal"
+#~ msgstr "Webdesk"
+
+#~ msgid "en maintenance"
+#~ msgstr "Maintenance in progress..."
+
+#~ msgid "platform logout"
+#~ msgstr "logout"
+
+#~ msgid "top bar search"
+#~ msgstr "search in Dynacase..."

@@ -36,9 +36,6 @@ AC_CONFIG_FILES(Makefile)
 AC_CONFIG_FILES(info.xml)
 AC_CONFIG_FILES(dynacase-webdesk-services/info.xml)
 AC_CONFIG_FILES(dynacase-webdesk-ui/info.xml)
-
-for file in Apps/*/*_init.php.in; do
-    AC_CONFIG_FILES(${file%.in})
-done
+AC_CONFIG_FILES(dynacase-webdesk-ui/Apps/WEBDESK/WEBDESK_init.php)
 
 AC_OUTPUT
