@@ -19,11 +19,11 @@ include $(utildir)/PubRule
 TRANSCSV +=
 
 webinst-dynacase-webdesk-services:
-	make -C dynacase-webdesk-services webinst RELEASE=$(RELEASE) VERSION=$(VERSION) appname=WEBDESK-SERVICES PACKAGE=dynacase-webdesk-services
+	make -C dynacase-webdesk-services webinst RELEASE=$(RELEASE) VERSION=$(VERSION) LICENCE=$(LICENCE) appname=WEBDESK-SERVICES PACKAGE=dynacase-webdesk-services
 	mv dynacase-webdesk-services/*webinst .
 
 webinst-dynacase-webdesk-ui:
-	make -C dynacase-webdesk-ui webinst RELEASE=$(RELEASE) VERSION=$(VERSION) appname=WEBDESK PACKAGE=dynacase-webdesk-ui
+	make -C dynacase-webdesk-ui webinst RELEASE=$(RELEASE) VERSION=$(VERSION) LICENCE=$(LICENCE) appname=WEBDESK PACKAGE=dynacase-webdesk-ui
 	mv dynacase-webdesk-ui/*webinst .
 
 webinst: webinst-dynacase-webdesk-services webinst-dynacase-webdesk-ui
