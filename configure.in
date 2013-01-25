@@ -33,7 +33,6 @@ fi
 AC_MSG_NOTICE([PubRule located at $PUBRULE])
 
 AC_CONFIG_FILES(Makefile)
-AC_CONFIG_FILES(info.xml)
 AC_CONFIG_FILES(dynacase-webdesk-services/info.xml)
 AC_CONFIG_FILES(dynacase-webdesk-ui/info.xml)
 AC_CONFIG_FILES(dynacase-webdesk-ui/Apps/WEBDESK/WEBDESK_init.php)

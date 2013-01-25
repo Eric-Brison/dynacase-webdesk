@@ -3,8 +3,6 @@
 #
 # ============================================
 
-SUBDIR= Views Externals
-
 include $(utildir)/PubRule
 
 pages_fdl = $(patsubst %.php,$(pubdir)/$(applib)/%.php,$(wildcard *.php))

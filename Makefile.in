@@ -26,15 +26,15 @@ webinst-dynacase-webdesk-ui:
 	make -C dynacase-webdesk-ui webinst RELEASE=$(RELEASE) VERSION=$(VERSION) LICENCE=$(LICENCE) appname=WEBDESK PACKAGE=dynacase-webdesk-ui
 	mv dynacase-webdesk-ui/*webinst .
 
+#Build only the subdirectory
 webinst: webinst-dynacase-webdesk-services webinst-dynacase-webdesk-ui
+	:
 
 po-dynacase-webdesk-ui:
 	make -C dynacase-webdesk-ui po RELEASE=$(RELEASE) VERSION=$(VERSION) appname=WEBDESK PACKAGE=dynacase-webdesk-ui
 
 po: po-dynacase-webdesk-ui
 	:
-
-
 
 clean:
 	/bin/rm -f *.*~ config.* Makefile configure $(appname)_init.php info.xml $(PACKAGE)-*webinst
