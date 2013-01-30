@@ -1,5 +1,6 @@
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@
+LICENSE = @LICENSE@
 utildir = @PUBRULE@
 pubdir = @prefix@
 srcdir = @srcdir@
@@ -19,11 +20,11 @@ include $(utildir)/PubRule
 TRANSCSV +=
 
 webinst-dynacase-webdesk-services:
-	make -C dynacase-webdesk-services webinst RELEASE=$(RELEASE) VERSION=$(VERSION) LICENCE=$(LICENCE) appname=WEBDESK-SERVICES PACKAGE=dynacase-webdesk-services
+	make -C dynacase-webdesk-services webinst RELEASE=$(RELEASE) VERSION=$(VERSION) LICENSE="$(LICENSE)" appname=WEBDESK-SERVICES PACKAGE=dynacase-webdesk-services
 	mv dynacase-webdesk-services/*webinst .
 
 webinst-dynacase-webdesk-ui:
-	make -C dynacase-webdesk-ui webinst RELEASE=$(RELEASE) VERSION=$(VERSION) LICENCE=$(LICENCE) appname=WEBDESK PACKAGE=dynacase-webdesk-ui
+	make -C dynacase-webdesk-ui webinst RELEASE=$(RELEASE) VERSION=$(VERSION) LICENSE="$(LICENSE)" appname=WEBDESK PACKAGE=dynacase-webdesk-ui
 	mv dynacase-webdesk-ui/*webinst .
 
 #Build only the subdirectory
