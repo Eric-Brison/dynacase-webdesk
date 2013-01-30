@@ -72,4 +72,3 @@ $iconmap = array(
     "n_4cloud_snow" => "46",
     "n_4cloud_thunders" => "47"
 );
-?>

@@ -5,7 +5,7 @@
  * @package WEBDESK
 */
 
-function svctest(&$action)
+function svctest(Action &$action)
 {
     $gmt = GetHttpVars("gmt", 0);
     
@@ -15,4 +15,3 @@ function svctest(&$action)
     $action->lay->set("gmt", ($gmt == 1 ? true : false));
     $action->lay->set("date", $sd);
 }
-?>

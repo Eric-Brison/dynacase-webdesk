@@ -6,15 +6,12 @@
 */
 
 include_once ('FDL/Lib.Dir.php');
-function delservice(&$action)
+function delservice(Action &$action)
 {
-    
-    $dbaccess = $action->getParam("FREEDOM_DB");
     
     $inter = (GetHttpVars("silent", "no") == "no" ? true : false);
     
     $oid = GetHttpVars("oid", -1);
-    $owner = $action->user->fid;
     if ($oid != - 1) $owner = $oid;
     
     $sid = GetHttpVars("sid", -1);
@@ -24,38 +21,45 @@ function delservice(&$action)
         return;
     }
     
-    $tup = GetChildDoc($dbaccess, 0, 0, "ALL", array(
-        "uport_ownerid = '" . $owner . "'"
-    ) , $action->user->id, "LIST", "USER_PORTAL");
-    if (count($tup) < 1 || !$tup[0]->isAffected()) {
+    $search = new SearchDoc("", "USER_PORTAL");
+    $search->addFilter("uport_ownerid = '%s'", $action->user->fid);
+    $search->setSlice(1);
+    $search->setObjectReturn();
+
+    $search->search();
+
+    /* @var $tup _USER_PORTAL */
+    $tup = $search->getNextDoc();
+    if (!is_object($tup) || !$tup->isAffected()) {
         $action->lay->set("OUT", "var svcnum = -1;");
         return;
     } else {
-        $up = $tup[0];
+        /* @var $up Doc */
+        $up = $tup;
     }
-    $svcnum = $up->getTValue("uport_svcnum");
-    $svcid = $up->getTValue("uport_idsvc");
-    $svctitle = $up->getTValue("uport_svc");
-    $svcparam = $up->getTValue("uport_param");
-    $svcrdel = $up->getTValue("uport_refreshd");
-    $svccol = $up->getTValue("uport_column");
-    $svcline = $up->getTValue("uport_line");
-    $svcopen = $up->getTValue("uport_open");
+    $svcnum = $up->getMultipleRawValues("uport_svcnum");
+    $svcid = $up->getMultipleRawValues("uport_idsvc");
+    $svctitle = $up->getMultipleRawValues("uport_svc");
+    $svcparam = $up->getMultipleRawValues("uport_param");
+    $svcrdel = $up->getMultipleRawValues("uport_refreshd");
+    $svccol = $up->getMultipleRawValues("uport_column");
+    $svcline = $up->getMultipleRawValues("uport_line");
+    $svcopen = $up->getMultipleRawValues("uport_open");
     
-    $up->deleteValue("uport_svcnum");
-    $up->deleteValue("uport_idsvc");
-    $up->deleteValue("uport_svc");
-    $up->deleteValue("uport_param");
-    $up->deleteValue("uport_refreshd");
-    $up->deleteValue("uport_column");
-    $up->deleteValue("uport_line");
-    $up->deleteValue("uport_open");
+    $up->clearValue("uport_svcnum");
+    $up->clearValue("uport_idsvc");
+    $up->clearValue("uport_svc");
+    $up->clearValue("uport_param");
+    $up->clearValue("uport_refreshd");
+    $up->clearValue("uport_column");
+    $up->clearValue("uport_line");
+    $up->clearValue("uport_open");
     
     $nsvcnum = array();
     $nsvcid = array();
     $nsvctitle = array();
     $nsvcparam = array();
-    $nsvrcdel = array();
+    $nsvcrdel = array();
     $nsvccol = array();
     $nsvcline = array();
     $nsvcopen = array();
@@ -86,8 +90,7 @@ function delservice(&$action)
     
     if ($change) {
         $err = $up->modify();
-        $up->postModify();
+        $up->postStore();
         if ($inter) $action->lay->set("OUT", "var svcnum = $snum;");
     } else if ($inter) $action->lay->set("OUT", "var svcnum = -1;");
 }
-?>

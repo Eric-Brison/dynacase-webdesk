@@ -5,10 +5,9 @@
  * @package WEBDESK
 */
 
-function esvcrss(&$action)
+function esvcrss(Action &$action)
 {
     
     if (GetHttpVars("static") == 1) $action->lay->set("static", true);
     else $action->lay->set("static", false);
 }
-?>

@@ -20,4 +20,3 @@ function parseUrl($link)
     }
     return str_ireplace($ms, $mr, $link);
 }
-?>

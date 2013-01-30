@@ -5,7 +5,7 @@
  * @package WEBDESK
 */
 
-function svccontact_edit(&$action)
+function svccontact_edit(Action &$action)
 {
     
     $fcard = GetHttpVars("fcard", 1);

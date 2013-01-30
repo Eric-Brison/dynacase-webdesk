@@ -114,14 +114,6 @@ $action_desc = array(
     ) ,
     array(
         "acl" => "USER",
-        "name" => "INCIDENT",
-        "short_name" => N_("service incident") ,
-        "toc" => "N",
-        "root" => "N"
-    ) ,
-
-    array(
-        "acl" => "USER",
         "name" => "SVCMAIL",
         "short_name" => N_("service mail") ,
         "toc" => "N",

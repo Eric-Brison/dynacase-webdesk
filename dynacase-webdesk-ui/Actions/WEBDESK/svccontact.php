@@ -5,18 +5,17 @@
  * @package WEBDESK
 */
 
-function svccontact(&$action)
+function svccontact(Action &$action)
 {
     
     header('Content-type: text/xml; charset=utf-8');
-    $action->lay->setEncoding("utf-8");
     
     $action->lay->set("datebull", time());
     $action->lay->set("location", "");
     $action->lay->set("sstr", "");
     
-    include_once ("WHAT/Lib.Http.php");
-    include_once ("FDL/Lib.Dir.php");
+    include_once "WHAT/Lib.Http.php";
+    include_once "FDL/Lib.Dir.php";
     
     $fcard = GetHttpVars("fcard", 1);
     $maxl = GetHttpVars("maxl", 10);
@@ -26,4 +25,3 @@ function svccontact(&$action)
     $action->lay->set("maxc", $maxc);
     $action->lay->set("fcard", $fcard);
 }
-?>

@@ -12,7 +12,7 @@ include_once ("FDL/Lib.Dir.php");
 function svccontact_search(&$action)
 {
     
-    $str = GetHttpVars("str", "");
+    $str = pg_escape_string(GetHttpVars("str", ""));
     $fam = GetHttpVars("fam", "");
     $dcl = GetHttpVars("dcl", ""); // Div result close
     $hclick = GetHttpVars("hcl", ""); // On click handler
@@ -35,9 +35,16 @@ function svccontact_search(&$action)
     $filter[0] = "(title ~* '" . ($beg == 0 ? "" : "^") . $str . "')";
     if ($soc == 1) $filter[0].= " OR (us_society ~* '" . ($beg == 0 ? "" : "^") . $str . "')";
     $rfilter = ($beg == 0 ? "" : "^");
-    //echo "lim=$lim fam=$fam"; print_r2($filter);
-    $r = getChildDoc($dbaccess, 0, 0, $lim, $filter, $action->user->id, "TABLE", $fam);
-    
+    $search = new SearchDoc("", $fam);
+
+    $search->setSlice($lim);
+
+    foreach ($filter as $currentFilter) {
+        $search->addFilter($currentFilter);
+    }
+
+    $r = $search->search();
+
     $maxf = $maxc * $maxl;
     $total = count($r);
     $moreresult = ($total > $maxf ? true : false);
@@ -126,7 +133,9 @@ function svccontact_search(&$action)
         for ($icol = 0; $icol < $maxc; $icol++) {
             $ret.= "<td style=\"vertical-align:top\">";
             if (isset($ccol[$icol]) && is_array($ccol[$icol])) {
-                foreach ($ccol[$icol] as $k => $v) $ret.= $v;
+                foreach ($ccol[$icol] as $v)  {
+                    $ret.= $v;
+                }
             }
             $ret.= "</td>";
         }
@@ -143,13 +152,12 @@ function addCopt($str, $doc, $field, $epref = "", $pref = "", $suff = "")
 {
     $instr = "";
     if (is_array($field)) {
-        foreach ($field as $k => $v) {
+        foreach ($field as $v) {
             if (isset($doc[$v]) && $doc[$v] != "") $instr.= ($instr == "" ? "" : " ") . $doc[$v];
         }
     } else {
         $instr = (isset($doc[$field]) && $doc[$field] != "" ? $doc[$field] : "");
     }
-    if ($instr != "") return $str.= ($str == "" ? "" : $epref) . $pref . str_replace(" ", "&nbsp;", $instr) . $suff;
+    if ($instr != "") return ($str == "" ? "" : $epref) . $pref . str_replace(" ", "&nbsp;", $instr) . $suff;
     return $str;
 }
-?>

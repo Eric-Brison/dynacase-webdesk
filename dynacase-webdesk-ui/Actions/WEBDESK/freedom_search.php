@@ -5,9 +5,9 @@
  * @package WEBDESK
 */
 
-include_once ('FDL/Lib.Dir.php');
+include_once 'FDL/Lib.Dir.php';
 
-function freedom_search(&$action)
+function freedom_search(Action &$action)
 {
     
     header('Content-type: text/xml; charset=utf-8');
@@ -16,7 +16,6 @@ function freedom_search(&$action)
     
     $max = GetHttpVars("max", 5);
     $s = GetHttpVars("s", "");
-    $in = GetHttpVars("into", 0);
     
     $action->lay->set("sresult", "0");
     if ($s == "") {
@@ -26,14 +25,15 @@ function freedom_search(&$action)
     }
     
     if (is_integer($s)) $s = getIdFromName($dbaccess, $s);
-    
+
+    /* @var $fs _DSEARCH */
     $fs = new_Doc($dbaccess, $s);
     if (!$fs->isAffected()) {
         $action->lay->set("stitle", _("wd invalid freedom search given"));
         $action->lay->set("csearch", false);
         return;
     }
-    
+
     $action->lay->set("stitle", $fs->getTitle());
     
     $rdoc = $fs->getContent();
@@ -43,7 +43,7 @@ function freedom_search(&$action)
     } else {
         $action->lay->set("sresult", count($rdoc));
         $tdocs = array();
-        foreach ($rdoc as $k => $v) {
+        foreach ($rdoc as $v) {
             $owner = getDocFromUserId($dbaccess, $v["owner"]);
             $fam = getTDoc($dbaccess, getV($v, "fromid"));
             $tdocs[] = array(
@@ -53,7 +53,9 @@ function freedom_search(&$action)
                 'owner' => $owner->title,
                 'familie' => $fam["title"],
             );
-            if (count($tdocs) == $max) break;
+            if (count($tdocs) == $max) {
+                break;
+            }
         }
         $action->lay->set("csearch", true);
         $pd = (count($rdoc) > 1);

@@ -5,10 +5,9 @@
  * @package WEBDESK
 */
 
-function embed(&$action)
+function embed(Action &$action)
 {
     header('Content-type: text/xml; charset=utf-8');
-    $action->lay->setEncoding("utf-8");
     $url = GetHttpVars("url", "");
     if ($url == "") {
         $action->lay->set("nodata", true);
@@ -18,4 +17,3 @@ function embed(&$action)
     }
     $action->lay->set("date", strftime("%H:%M %d/%m/%Y", time()));
 }
-?>

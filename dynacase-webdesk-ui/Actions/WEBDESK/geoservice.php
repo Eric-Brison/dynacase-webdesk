@@ -6,10 +6,8 @@
 */
 
 include_once ('FDL/Lib.Dir.php');
-function geoservice(&$action)
+function geoservice(Action &$action)
 {
-    
-    $dbaccess = getParam("FREEDOM_DB");
     
     $spec = GetHttpVars("sgeo", "");
     if ($spec == "") {
@@ -30,23 +28,29 @@ function geoservice(&$action)
         );
     }
     
-    $tup = GetChildDoc(getParam("FREEDOM_DB") , 0, 0, "ALL", array(
-        "uport_ownerid = '" . $action->user->fid . "'"
-    ) , $action->user->id, "LIST", "USER_PORTAL");
-    if (count($tup) < 1 || !$tup[0]->isAffected()) {
+    $search = new SearchDoc("", "USER_PORTAL");
+    $search->addFilter("uport_ownerid = '%s'", $action->user->fid);
+    $search->setSlice(1);
+    $search->setObjectReturn();
+
+    $search->search();
+
+    /* @var $tup _USER_PORTAL */
+    $tup = $search->getNextDoc();
+    if (!is_object($tup) || !$tup->isAffected()) {
         $action->lay->set("OUT", "var svcnum = -1; // no portal");
         return;
     } else {
-        $up = $tup[0];
+        /* @var $up Doc */
+        $up = $tup;
     }
     
-    $svcnum = $up->getTValue("uport_svcnum");
-    $svccol = $up->getTValue("uport_column");
-    $svcline = $up->getTValue("uport_line");
-    $svcopen = $up->getTValue("uport_open");
+    $svcnum = $up->getMultipleRawValues("uport_svcnum");
+    $svccol = $up->getMultipleRawValues("uport_column");
+    $svcline = $up->getMultipleRawValues("uport_line");
+    $svcopen = $up->getMultipleRawValues("uport_open");
     
     $change = false;
-    //   $msg = '';
     foreach ($svcnum as $k => $v) {
         if (isset($svcgeo[$v])) {
             $svccol[$k] = $svcgeo[$v]["col"];
@@ -61,8 +65,9 @@ function geoservice(&$action)
         $up->setValue("uport_line", $svcline);
         $up->setValue("uport_open", $svcopen);
         $err = $up->modify();
-        $up->postModify();
+        $up->postStore();
         $action->lay->set("OUT", "var svcnum = false;");
-    } else $action->lay->set("OUT", "var svcnum = -1; // no modif");
+    } else {
+        $action->lay->set("OUT", "var svcnum = -1; // no modif");
+    }
 }
-?>
