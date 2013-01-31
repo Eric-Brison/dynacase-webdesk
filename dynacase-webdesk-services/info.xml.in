@@ -2,12 +2,9 @@
 <module name="dynacase-webdesk-services" version="@VERSION@" release="@RELEASE@" basecomponent="no" license="@LICENSE@">
   <description>This module was used to provide and install basic services (for backward compatibility only).</description>
 
-  <replaces>
-    <module name="dynacase-webdesk"/>
-  </replaces>
-
   <requires>
-        <module name="dynacase-core" comp="ge" version="3.2.0" />
+        <module name="dynacase-core" comp="ge" version="3.2.5" />
+        <module name="dynacase-webdesk-ui" comp="ge" version="@VERSION@" />
   </requires>
 
   <pre-install>

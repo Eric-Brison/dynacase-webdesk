@@ -5,11 +5,9 @@
  * @package WEBDESK
 */
 
-include_once ('FDL/Lib.Dir.php');
-function savesvc(&$action)
+include_once 'FDL/Lib.Dir.php';
+function savesvc(Action &$action)
 {
-    
-    $dbaccess = getParam("FREEDOM_DB");
     
     $excludev = array(
         "sole",

@@ -39,7 +39,7 @@ msgid "Url type"
 msgstr "Type de page"
 
 msgid "WEBDESK:A basic webdesk"
-msgstr "Dynacase portail"
+msgstr "Dynacase webdesk portail"
 
 msgid "WEBDESK:WEBDESK"
 msgstr "Webdesk"

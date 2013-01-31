@@ -5,11 +5,10 @@
  * @package WEBDESK
 */
 
-function svcardoise(&$action)
+function svcardoise(Action &$action)
 {
     
     header('Content-type: text/xml; charset=utf-8');
-    $action->lay->setEncoding("utf-8");
     $action->lay->set("uptime", strftime("%A %d %B %Y, %H:%M", time()));
     
     $craie = GetHttpVars("craie", "white");
@@ -24,4 +23,4 @@ function svcardoise(&$action)
     
     return;
 }
-?>
+

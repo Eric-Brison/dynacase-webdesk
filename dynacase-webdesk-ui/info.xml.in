@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <module name="dynacase-webdesk-ui" version="@VERSION@" release="@RELEASE@" license="@LICENSE@">
-  <description>This module was used to allow user to have a webdesk. (for backward compatibility only)</description>
+  <description>This module was used to allow user to have a webdesk. (provided for backward compatibility only)</description>
+
+    <replaces>
+      <module name="dynacase-webdesk"/>
+    </replaces>
 
   <requires>
         <module name="dynacase-core" comp="ge" version="3.2.0" />

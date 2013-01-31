@@ -9,7 +9,7 @@ include_once ("WHAT/Lib.Http.php");
 include_once ("WHAT/Class.Layout.php");
 include_once ("FDL/Lib.Dir.php");
 
-function freedomrss_search(&$action)
+function freedomrss_search(Action &$action)
 {
     
     $str = GetHttpVars("str", "");
@@ -18,24 +18,24 @@ function freedomrss_search(&$action)
     $lim = 10;
     
     $dbaccess = getParam("FREEDOM_DB");
-    $ret = "";
-    $addret = "";
     
-    $filter[0] = "(title ~* '" . $str . "')";
+    $filter[0] = "(title ~* '" . pg_escape_string($str) . "')";
     $filter[1] = "(gui_isrss = 'yes')";
-    if ($sys == 1) $filter[2] = "(owner = " . $user . " or gui_sysrss = 'yes')";
-    else $filter[2] = "(owner = " . $user . ")";
-    
-    $rfilter = ($beg == 0 ? "" : "^");
+    if ($sys == 1) $filter[2] = "(owner = " . pg_escape_string($user) . " or gui_sysrss = 'yes')";
+    else $filter[2] = "(owner = " . pg_escape_string($user) . ")";
     
     $famids = array(
         "SEARCH",
         "DIR"
     );
-    $stdoc = array();
     $tdoc = array();
-    foreach ($famids as $kf => $vf) {
-        $stdoc = getChildDoc($dbaccess, 0, 0, $lim, $filter, $user, "TABLE", $vf);
+    foreach ($famids as $vf) {
+        $search = new SearchDoc("", $vf);
+        $search->setSlice($lim);
+        foreach ($filter as $currentFilter) {
+            $search->addFilter($currentFilter);
+        }
+        $stdoc = $search->search();
         $tdoc = array_merge($tdoc, $stdoc);
     }
     $total = count($tdoc);
@@ -66,7 +66,6 @@ function freedomrss_search(&$action)
 
 function rssGetFamTitle($id)
 {
-    global $action;
     $t = getTDoc(getParam("FREEDOM_DB") , $id);
     if (isset($t["title"])) return $t["title"];
     return "Family $id";

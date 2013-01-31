@@ -21,20 +21,23 @@ PACKAGE=dynacase-webdesk
 AC_SUBST(APPNAME)
 APPNAME=DYNACASE-WEBDESK
 ac_default_prefix=/var/www/dynacase/dynacase
+LICENSE="http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License"
+AC_SUBST(LICENSE)
 AC_SUBST(PUBRULE)
-PUBRULE=
+PUBRULE="$(pwd)/buildTools"
 AC_ARG_WITH(pubrule, [  --with-pubrule=dir	Path to PubRule], PUBRULE=$withval)
-if test -z ${PUBRULEDIR}; then
+if test -z ${PUBRULE}; then
     PUBRULE=`pwd`
 fi
-if test -n -f $PUBRULEDIR/PubRule; then
+if test -f $PUBRULE/PubRule; then
+    AC_MSG_NOTICE([PubRule located at $PUBRULE])
+else
     AC_MSG_ERROR([Could not find PubRule])
 fi
-AC_MSG_NOTICE([PubRule located at $PUBRULE])
 
-AC_CONFIG_FILES(Makefile)
-AC_CONFIG_FILES(dynacase-webdesk-services/info.xml)
-AC_CONFIG_FILES(dynacase-webdesk-ui/info.xml)
-AC_CONFIG_FILES(dynacase-webdesk-ui/Apps/WEBDESK/WEBDESK_init.php)
+for file in `find . \( -name '*.in' -a -not -name configure.in \) -print`; do
+    AC_CONFIG_FILES(${file%.in})
+done
 
 AC_OUTPUT
+

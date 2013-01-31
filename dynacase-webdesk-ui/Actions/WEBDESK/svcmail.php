@@ -5,7 +5,7 @@
  * @package WEBDESK
 */
 
-function svcmail(&$action)
+function svcmail(Action &$action)
 {
     
     $action->lay->set("showmsg", false);
@@ -26,7 +26,6 @@ function svcmail(&$action)
     $action->lay->set("OnlyCount", ($ocount == "Y" ? true : false));
     if ($ocount != "Y") {
         header('Content-type: text/xml; charset=utf-8');
-        $action->lay->setEncoding("utf-8");
     }
     $action->lay->set("new", "?");
     $action->lay->set("ico", "");
@@ -144,9 +143,12 @@ function clearText($s)
 
 function getMbox($mbox, $login, $pass, $count, $new = true)
 {
-    $mailbox = array();
-    $newh = $oldh = array();
     $err = "";
+    $mail = array();
+    $newm = null;
+    $oldm = null;
+    $total = null;
+    $ftime = null;
     $otime = time();
     $mbx = @imap_open($mbox, $login, $pass);
     if (!$mbx) {
@@ -165,8 +167,7 @@ function getMbox($mbox, $login, $pass, $count, $new = true)
             $max = ($count < $total ? $count : $total);
             $int = $total . ":" . ($total - $max + 1);
             $ovv = imap_fetch_overview($mbx, $int);
-            $mail = array();
-            foreach ($ovv as $k => $v) {
+            foreach ($ovv as $v) {
                 if ($v->deleted) continue;
                 if ($v->seen && $new) continue;
                 $mail[] = $v;
@@ -183,7 +184,6 @@ function getMbox($mbox, $login, $pass, $count, $new = true)
         "error" => $err,
         "elapsed" => $ftime
     );
-    //      print_r2($mailbox);
     return $mailbox;
 }
 
@@ -191,4 +191,3 @@ function convertDH($id)
 {
     return strftime("%d/%m/%y %H:%M", strtotime($id));
 }
-?>

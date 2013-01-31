@@ -5,7 +5,7 @@
  * @package WEBDESK
 */
 
-function freedomrss_edit(&$action)
+function freedomrss_edit(Action &$action)
 {
     
     $dbaccess = getParam("FREEDOM_DB");

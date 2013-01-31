@@ -5,8 +5,8 @@
  * @package WEBDESK
 */
 
-include_once ('FDL/Lib.Dir.php');
-function addservice(&$action)
+include_once 'FDL/Lib.Dir.php';
+function addservice(Action &$action)
 {
     
     $dbaccess = $action->getParam("FREEDOM_DB");
@@ -23,29 +23,35 @@ function addservice(&$action)
     if ($oid != - 1) $owner = $oid;
     $downer = new_Doc($dbaccess, $owner);
     
-    $tup = GetChildDoc($dbaccess, 0, 0, "ALL", array(
-        "uport_ownerid = '" . $owner . "'"
-    ) , $action->user->id, "LIST", "USER_PORTAL");
-    if (count($tup) < 1 || !$tup[0]->isAffected()) {
-        $up = createDoc($dbaccess, "USER_PORTAL");
-        $up->setValue("uport_ownerid", $owner);
-        $up->setValue("uport_owner", $downer->getValue("us_firstname") . " " . $downer->getValue("us_lastname"));
-        $up->setValue("uport_title", "Mon portail (" . $downer->getValue("us_firstname") . " " . $downer->getValue("us_lastname") . ")");
-        $up->Add();
+    $search = new SearchDoc("", "USER_PORTAL");
+    $search->addFilter("uport_ownerid = '%s'", $action->user->fid);
+    $search->setSlice(1);
+    $search->setObjectReturn();
+
+    $search->search();
+
+    /* @var $tup _USER_PORTAL */
+    $tup = $search->getNextDoc();
+    if (!is_object($tup) || !$tup->isAffected()) {
+        $tup = createDoc($dbaccess, "USER_PORTAL");
+        $tup->setValue("uport_ownerid", $owner);
+        $tup->setValue("uport_owner", $downer->getRawValue("us_firstname") . " " . $downer->getRawValue("us_lastname"));
+        $tup->setValue("uport_title", "Mon portail (" . $downer->getRawValue("us_firstname") . " " . $downer->getRawValue("us_lastname") . ")");
+        $tup->Add();
         $svcnum = $svcid = $svctitle = $svcparam = $svcrdel = $svccol = $svcline = array();
     } else {
-        $up = $tup[0];
-        $svcnum = $up->getTValue("uport_svcnum");
-        $svcid = $up->getTValue("uport_idsvc");
-        $svctitle = $up->getTValue("uport_svc");
-        $svcparam = $up->getTValue("uport_param");
-        $svcrdel = $up->getTValue("uport_refreshd");
-        $svccol = $up->getTValue("uport_column");
-        $svcline = $up->getTValue("uport_line");
-        $svcopen = $up->getTValue("uport_open");
+        /** @var $up _USER_PORTAL */
+        $svcnum = $tup->getMultipleRawValues("uport_svcnum");
+        $svcid = $tup->getMultipleRawValues("uport_idsvc");
+        $svctitle = $tup->getMultipleRawValues("uport_svc");
+        $svcparam = $tup->getMultipleRawValues("uport_param");
+        $svcrdel = $tup->getMultipleRawValues("uport_refreshd");
+        $svccol = $tup->getMultipleRawValues("uport_column");
+        $svcline = $tup->getMultipleRawValues("uport_line");
+        $svcopen = $tup->getMultipleRawValues("uport_open");
     }
     
-    $svnnumber = $up->getNumSequence();
+    $svnnumber = $tup->getNumSequence();
     
     $svc = getTDoc($dbaccess, $sid);
     $svcnum[] = $svnnumber;
@@ -56,17 +62,19 @@ function addservice(&$action)
     $svccol[] = 0;
     $svcline[] = 0;
     $svcopen[] = 1;
-    $up->setValue("uport_svcnum", $svcnum);
-    $up->setValue("uport_idsvc", $svcid);
-    $up->setValue("uport_svc", $svctitle);
-    $up->setValue("uport_param", $svcparam);
-    $up->setValue("uport_refreshd", $svcrdel);
-    $up->setValue("uport_column", $svccol);
-    $up->setValue("uport_line", $svcline);
-    $up->setValue("uport_open", $svcopen);
+    $tup->setValue("uport_svcnum", $svcnum);
+    $tup->setValue("uport_idsvc", $svcid);
+    $tup->setValue("uport_svc", $svctitle);
+    $tup->setValue("uport_param", $svcparam);
+    $tup->setValue("uport_refreshd", $svcrdel);
+    $tup->setValue("uport_column", $svccol);
+    $tup->setValue("uport_line", $svcline);
+    $tup->setValue("uport_open", $svcopen);
     
-    $err = $up->modify();
-    $up->postModify();
-    if ($silent != "yes") $action->lay->set("OUT", "var svcnum = $svnnumber;");
+    $err = $tup->modify();
+    $tup->postStore();
+    if ($silent != "yes") {
+        $action->lay->set("OUT", "var svcnum = $svnnumber;");
+    }
 }
-?>
+

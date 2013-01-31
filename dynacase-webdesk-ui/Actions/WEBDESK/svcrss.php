@@ -11,10 +11,8 @@ function svcrss(Action & $action)
 {
     
     header('Content-type: text/xml; charset=utf-8');
-    $action->lay->setEncoding("utf-8");
     
     $action->lay->set("rss", false);
-    $ilink = (GetHttpVars("rss", ""));
     $ilink = urldecode(GetHttpVars("rss", ""));
     $rsslink = parseUrl($ilink);
     if ($rsslink == "") {

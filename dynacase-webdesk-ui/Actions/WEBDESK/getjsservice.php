@@ -5,7 +5,8 @@
  * @package WEBDESK
 */
 
-include_once ('FDL/Lib.Dir.php');
+include_once 'FDL/Lib.Dir.php';
+
 function getjsservice(Action & $action)
 {
     
@@ -17,24 +18,30 @@ function getjsservice(Action & $action)
         return;
     }
     
-    $tup = GetChildDoc(getParam("FREEDOM_DB") , 0, 0, "ALL", array(
-        "uport_ownerid = '" . $action->user->fid . "'"
-    ) , $action->user->id, "LIST", "USER_PORTAL");
-    if (count($tup) < 1 || !$tup[0]->isAffected()) {
+    $search = new SearchDoc("", "USER_PORTAL");
+    $search->addFilter("uport_ownerid = '%s'", $action->user->fid);
+    $search->setSlice(1);
+    $search->setObjectReturn();
+
+    $search->search();
+
+    /* @var $tup _USER_PORTAL */
+    $tup = $search->getNextDoc();
+    if (!is_object($tup) || !$tup->isAffected()) {
         $action->lay->set("OUT", "var svc = false;");
     } else {
-        $up = $tup[0];
+        $up = $tup;
     }
     /**
      * @var Doc $up
      */
-    $svcnum = $up->getTValue("uport_svcnum");
-    $svcid = $up->getTValue("uport_idsvc");
-    $svctitle = $up->getTValue("uport_svc");
-    $svcparam = $up->getTValue("uport_param");
-    $svcrdel = $up->getTValue("uport_refreshd");
-    $svccol = $up->getTValue("uport_column");
-    $svcline = $up->getTValue("uport_line");
+    $svcnum = $up->getMultipleRawValues("uport_svcnum");
+    $svcid = $up->getMultipleRawValues("uport_idsvc");
+    $svctitle = $up->getMultipleRawValues("uport_svc");
+    $svcparam = $up->getMultipleRawValues("uport_param");
+    $svcrdel = $up->getMultipleRawValues("uport_refreshd");
+    $svccol = $up->getMultipleRawValues("uport_column");
+    $svcline = $up->getMultipleRawValues("uport_line");
     
     $sid = - 1;
     foreach ($svcnum as $k => $v) {
@@ -54,10 +61,7 @@ function getjsservice(Action & $action)
     }
     
     $svc = getTDoc($dbaccess, $sid);
-    // $jslay = new Layout($jfile, $action);
-    // $action->parent->AddJsCode($jslay->gen());
     $ret = "var svc = { " . "     snum:" . $snum . "," . "     sid:" . $sid . "," . "     stitle:'" . addslashes(getV($svc, "psvc_title")) . "'," . "     vurl:'" . getV($svc, "psvc_vurl") . "'," . "     eurl:'" . getV($svc, "psvc_eurl") . "'," . "     jslink:'" . (getV($svc, "psvc_jsfile") != "" ? Getparam("CORE_STANDURL") . "&app=CORE&action=CORE_CSS&session=" . $action->session->id . "&layout=" . getV($svc, "psvc_jsfile") : "") . "'," . "     jslinkmd5:'" . md5(getV($svc, "psvc_jsfile")) . "'," . "     csslink:'" . (getV($svc, "psvc_cssfile") != "" ? Getparam("CORE_STANDURL") . "&app=CORE&action=CORE_CSS&session=" . $action->session->id . "&layout=" . getV($svc, "psvc_cssfile") : "") . "'," . "     csslinkmd5:'" . md5(getV($svc, "psvc_cssfile")) . "'," . "     purl:'" . $sparam . "'," . "     rdel:" . $rdel . "," . "     nextLoad:-1," . "     col:" . $scol . "," . "     lin:" . $slin . "," . "     open:true," . "     i:" . (getV($svc, "psvc_interactif") == 1 ? "true" : "false") . "," . "     m:" . (getV($svc, "psvc_mandatory") == 1 ? "true" : "false") . "," . "     e:" . (getV($svc, "psvc_umode") == 1 ? "true" : "false") . "," . "     d:false };";
     
     $action->lay->set("OUT", $ret);
 }
-?>

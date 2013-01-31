@@ -5,12 +5,11 @@
  * @package WEBDESK
 */
 
-include_once ('FDL/Lib.Dir.php');
+include_once 'FDL/Lib.Dir.php';
 function portal(Action & $action)
 {
     
     $dbaccess = getParam("FREEDOM_DB");
-    //  $debug = true;
     $debug = false;
     
     $action->parent->AddCssRef("WEBDESK:webdesk-system.css", true);
@@ -61,14 +60,15 @@ function portal(Action & $action)
         initTCat($categories, $kc, 0, $cat);
     }
     // Get all services
-    $ts = GetChildDoc($dbaccess, 0, 0, "ALL", array() , $action->user->id, "TABLE", "PORTAL_SERVICE", false, "psvc_title");
-    foreach ($ts as $k => $v) {
+    $search = new SearchDoc("", "PORTAL_SERVICE");
+    $search->setOrder("psvc_title");
+    $ts = $search->search();
+    foreach ($ts as $v) {
         $access = true;
         $appn = getV($v, "psvc_appneeded");
         if ($appn != "") {
-            $req = '';
             $appl = explode("|", $appn);
-            foreach ($appl as $ka => $va) {
+            foreach ($appl as $va) {
                 $access = haveAppAccess($va);
                 if (!$access) break;
             }
@@ -92,8 +92,10 @@ function portal(Action & $action)
     $ts = explode("%", $pspec);
     $pages = array();
     $ip = 0;
-    foreach ($ts as $k => $v) {
-        if ($v == "") continue;
+    foreach ($ts as $v) {
+        if ($v == "") {
+            continue;
+        }
         $sts = explode("|", $v);
         $pages[$ip]["name"] = $sts[0];
         $scol = explode(":", $sts[1]);
@@ -102,13 +104,12 @@ function portal(Action & $action)
         $ip++;
     }
     
-    foreach ($pages as $pn => $page) {
+    foreach ($pages as $page) {
         
         $colcount = $page["coln"];
         
         $action->lay->set("colCount", $colcount);
         
-        $cwidth = floor(100 / $colcount);
         $cols = array();
         for ($icol = 0; $icol < $colcount; $icol++) {
             $cols[] = array(
@@ -126,20 +127,26 @@ function portal(Action & $action)
     $ppage = 1;
     
     $tsvc = array();
-    $tup = GetChildDoc($dbaccess, 0, 0, "ALL", array(
-        "uport_ownerid = '" . $action->user->fid . "'"
-    ) , $action->user->id, "LIST", "USER_PORTAL");
-    if (is_object($tup[0]) && $tup[0]->isAffected()) {
+    $search = new SearchDoc("", "USER_PORTAL");
+    $search->addFilter("uport_ownerid = '%s'", $action->user->fid);
+    $search->setSlice(1);
+    $search->setObjectReturn();
+
+    $search->search();
+
+    /* @var $tup _USER_PORTAL */
+    $tup = $search->getNextDoc();
+    if (is_object($tup) && $tup->isAffected()) {
         
-        $svcnum = $tup[0]->getTValue("uport_svcnum");
-        $svcid = $tup[0]->getTValue("uport_idsvc");
-        $svctitle = $tup[0]->getTValue("uport_svc");
-        $svcparam = $tup[0]->getTValue("uport_param");
-        $svcrdel = $tup[0]->getTValue("uport_refreshd");
-        $svccol = $tup[0]->getTValue("uport_column");
-        $svcline = $tup[0]->getTValue("uport_line");
-        $svcopen = $tup[0]->getTValue("uport_open");
-        $svcpage = $tup[0]->getTValue("uport_page");
+        $svcnum = $tup->getMultipleRawValues("uport_svcnum");
+        $svcid = $tup->getMultipleRawValues("uport_idsvc");
+        $svctitle = $tup->getMultipleRawValues("uport_svc");
+        $svcparam = $tup->getMultipleRawValues("uport_param");
+        $svcrdel = $tup->getMultipleRawValues("uport_refreshd");
+        $svccol = $tup->getMultipleRawValues("uport_column");
+        $svcline = $tup->getMultipleRawValues("uport_line");
+        $svcopen = $tup->getMultipleRawValues("uport_open");
+        $svcpage = $tup->getMultipleRawValues("uport_page");
         
         foreach ($svcnum as $k => $v) {
             $spage = ($svcpage[$k] == "" ? 1 : $svcpage[$k]);
@@ -188,7 +195,7 @@ function portal(Action & $action)
                 $svcnumber = $up->getNumSequence();
                 $svcnum[] = $svcnumber;
                 $svcid[] = $svc->id;
-                $svctitle[] = $svc->getValue("psvc_title");
+                $svctitle[] = $svc->getRawValue("psvc_title");
                 $svcparam[] = " ";
                 $svcrdel[] = 0;
                 $svccol[] = 0;
@@ -209,9 +216,9 @@ function portal(Action & $action)
                     "rg" => count($tsvc) ,
                     "snum" => $svcnumber,
                     "sid" => $svc->id,
-                    "stitle" => addslashes($svc->getValue("psvc_title")) ,
-                    "vurl" => $svc->getValue("psvc_vurl") ,
-                    "eurl" => $svc->getValue("psvc_eurl") ,
+                    "stitle" => addslashes($svc->getRawValue("psvc_title")) ,
+                    "vurl" => $svc->getRawValue("psvc_vurl") ,
+                    "eurl" => $svc->getRawValue("psvc_eurl") ,
                     "purl" => "",
                     "jslink" => "",
                     "jslinkmd5" => "",
@@ -283,7 +290,7 @@ function addTCatEntry(&$categories, $id, $label, $cat)
     return;
 }
 
-function genCatXml($cat, $k)
+function genCatXml($cat)
 {
     $menu = "";
     if (isset($cat["subcat"]) && count($cat["subcat"]) > 0 && subcatNotEmpty($cat["subcat"])) {
@@ -316,11 +323,10 @@ function genCatXml($cat, $k)
 
 function subcatNotEmpty($scat)
 {
-    foreach ($scat as $k => $v) {
+    foreach ($scat as $v) {
         if ((is_array($v["subcat"]) && count($v["subcat"]) > 0) || (isset($v["item"]) && is_array($v["item"]) && count($v["item"]) > 0)) {
             return true;
         }
     }
     return false;
 }
-?>

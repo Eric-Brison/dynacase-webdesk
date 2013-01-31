@@ -5,11 +5,10 @@
  * @package WEBDESK
 */
 
-function welcome(&$action)
+function welcome(Action &$action)
 {
     
     header('Content-type: text/xml; charset=utf-8');
-    $action->lay->setEncoding("utf-8");
     
     $v = new Param($action->dbaccess, array(
         "VERSION",

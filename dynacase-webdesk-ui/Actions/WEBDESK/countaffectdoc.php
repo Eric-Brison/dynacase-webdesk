@@ -8,7 +8,8 @@
  * number of affected document
  */
 include_once ("FDL/Class.Doc.php");
-function countaffectdoc(&$action)
+
+function countaffectdoc(Action &$action)
 {
     $dbaccess = $action->GetParam("FREEDOM_DB");
     

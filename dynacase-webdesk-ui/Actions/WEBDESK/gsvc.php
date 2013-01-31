@@ -7,7 +7,7 @@
 
 include_once ('FDL/Lib.Dir.php');
 
-function gsvc(&$action)
+function gsvc(Action &$action)
 {
 
     $svcname = strtolower(GetHttpVars("sname", ""));
@@ -15,7 +15,7 @@ function gsvc(&$action)
 
     if ($svcname == "") {
         $action->lay->set("msg", "No service given!");
-        return;
+        return null;
     }
 
     $actfile = $svcname . ($svcact == "" ? "" : "_") . $svcact . ".php";
@@ -36,5 +36,5 @@ function gsvc(&$action)
     if ($lfile == "" && !$hasfunc) {
         $action->lay->set("msg", "no layout, no action !");
     }
-    return;
+    return null;
 }
