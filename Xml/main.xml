@@ -46,7 +46,7 @@ addEvent(window, "resize", computefbodywh);
     [IF fgsearch_installed]<td class="search">
       <form class="bform" onsubmit="if (document.getElementById('rsearch').value=='') return false; args='&keyword='+document.getElementById('rsearch').value;  runapp([fgsearch_id],'[fgsearch_name]',args,true); return false" style="display:inline" method="POST">[IFNOT MAINTENANCE]<input type="text" value="[TEXT:top bar search]" onBlur="searchOnBlur(this)" onFocus="searchOnFocus(this)" id="rsearch" class="unsetter"/>[ENDIF MAINTENANCE]</form>
       </td>[ENDIF fgsearch_installed]
-      <td class="user"><span class="name">[userRealName]</span><span alt="[TEXT:Click here to logout]" class="logos" onclick="document.authent.submit()" ><img title="[TEXT:Click here to logout]" alt="[TEXT:Click here to logout]" class="small_button" needresize="1" style="width:[SIZE_IMG-X-SMALL]"src="[IMG:exit.png]" />[TEXT:platform logout]</span>
+      <td class="user"><span class="name">[userRealName]</span><span alt="[TEXT:wd Click here to logout]" class="logos" onclick="document.authent.submit()" ><img title="[TEXT:wd Click here to logout]" alt="[TEXT:wd Click here to logout]" class="small_button" needresize="1" style="width:[SIZE_IMG-X-SMALL]"src="[IMG:exit.png]" />[TEXT:platform logout]</span>
       </td>
   </tr></table>
 </div>

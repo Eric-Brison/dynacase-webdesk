@@ -49,7 +49,7 @@ function changeTheme() {
 <tr><td align="center" colspan="2">
 <iframe id="previewtheme" width="80%" height="250px" style="border:3px inset [COLOR_WHITE];" src="[CORE_STANDURL]&app=WEBDESK&action=PREVIEWTHEME"></iframe></td></tr>
 <tr><td colspan="2" style="margin-top:5px; padding-top:5px; text-align:right; border-top:1px solid [COLOR_BLACK]">
-<input type="button" onclick="changeTheme();return false;" value="[TEXT:Apply]" title="[TEXT:Change your theme]" />
+<input type="button" onclick="changeTheme();return false;" value="[TEXT:wd Apply theme]" title="[TEXT:Change your theme]" />
 </td></tr></table>
 </body>
 </html>

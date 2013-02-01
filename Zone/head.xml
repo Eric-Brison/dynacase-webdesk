@@ -1,5 +1,5 @@
 <title>[CORE_CLIENT] : [TEXT:webdesk application portal]</title>
-<noscript><h1>[TEXT:Javascript must be enabled in your navigator]</h1></noscript>
+<noscript><h1>[TEXT:wd Javascript must be enabled in your navigator]</h1></noscript>
 <link rel="icon" href="[DYNACASE_FAVICO]">
 <link rel="SHORTCUT ICON" href="[DYNACASE_FAVICO]" >
 <script src="WHAT/Layout/logmsg.js"></script>

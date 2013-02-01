@@ -1,4 +1,4 @@
 [ZONE FDL:VIEWSCARD?zone=FDL:VIEWBODYCARD:S]
 [IFNOT _readonly]<div style="text-align:right;width:100%">
-<button onclick="document.location.href='[CORE_STANDURL]app=GENERIC&action=GENERIC_EDIT&id=[ID]&zone=FUSERS:EDITCHANGEPASSWORD:T&rzone=WEBDESK:USERIDENT:T'">[TEXT:Change password]</button>
+<button onclick="document.location.href='[CORE_STANDURL]app=GENERIC&action=GENERIC_EDIT&id=[ID]&zone=FUSERS:EDITCHANGEPASSWORD:T&rzone=WEBDESK:USERIDENT:T'">[TEXT:wd Change password]</button>
 <button onclick="document.location.href='[CORE_STANDURL]app=GENERIC&action=GENERIC_EDIT&id=[ID]&rzone=WEBDESK:USERIDENT:T'">[TEXT:Change my account informations]</button></div>[ENDIF _readonly]

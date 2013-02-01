@@ -38,7 +38,7 @@ function preferences(Action & $action)
     );
     $tab[] = array(
         "description" => _("User identification") ,
-        "short_name" => _("Identification") ,
+        "short_name" => _("wd Identification") ,
         "iconsrc" => $action->GetImageUrl("uident.png") ,
         "id" => "x2",
         "action" => "IMPCARD&id=$fuid&zone=WEBDESK:USERIDENT:T",

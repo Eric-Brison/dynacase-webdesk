@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-31 15:45+0200\n"
-"PO-Revision-Date: 2012-07-31 15:47+0200\n"
+"POT-Creation-Date: 2013-02-01 10:55+0100\n"
+"PO-Revision-Date: 2013-02-01 10:50+0100\n"
 "Last-Translator: Arnaud BUATHIER <arnaud.buathier@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
 "Language: fr\n"
@@ -11,271 +11,227 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Could not create user portal."
-msgstr "Ne peut créer le portail utilisateur."
-
-msgid "My portal"
-msgstr "Webdesk"
-
-msgid "My account"
-msgstr "Mon compte"
-
-msgid "Webdesk preferences"
-msgstr "Préférences"
-
+#: Action/main.php:93
 msgid "Administration"
 msgstr "Administration"
 
-msgid "Webdesk administration"
-msgstr "Administration du WebDesk"
-
-msgid "description"
-msgstr ""
-
-msgid "short_name"
-msgstr ""
-
-msgid "Theme preferences"
-msgstr "Préférences du thème"
-
-msgid "Theme"
-msgstr "Thème"
-
-msgid "User identification"
-msgstr "Identification de l'utilisateur"
-
-msgid "Identification"
-msgstr "Identification"
-
-msgid "webdesk application portal"
-msgstr "Application webdesk"
-
-msgid "Javascript must be enabled in your navigator"
-msgstr "Le javascript doit être activé dans votre navigateur"
-
-msgid "by Anakeen"
-msgstr "par Anakeen"
-
-msgid "Change password"
-msgstr "Modifier mon mot de passe"
-
+#: textxml.php:2
 msgid "Change my account informations"
 msgstr "Modifier mon compte"
 
-msgid "wd open/close menu"
-msgstr "Ouvrir/fermer le menu"
-
-msgid "en maintenance"
-msgstr "Opération de maintenance en cours..."
-
-msgid "top bar search"
-msgstr "recherchez dans Dynacase..."
-
-msgid "Click here to logout"
-msgstr "Cliquez ici pour se déconnecter"
-
-msgid "platform logout"
-msgstr "quitter"
-
-msgid "wd fixe/release menu"
-msgstr "Afficher/masque le menu comme panneau latéral"
-
-msgid "wd display application"
-msgstr "Afficher..."
-
-msgid "wd reload (force) application"
-msgstr "Recharger l'application..."
-
-msgid "wd open in new window"
-msgstr "Ouvrir dans une nouvelle fenêtre"
-
-msgid "wd default application"
-msgstr "Application par défaut"
-
-msgid "wd add/remove shortcut"
-msgstr "Ajouter/Supprimer le raccourci..."
-
-msgid "wd services list"
-msgstr "Services..."
-
-msgid "wd menu tools"
-msgstr "Outils..."
-
-msgid "wd reload portal view"
-msgstr "Mettre à jour le portail"
-
-msgid "wd open all services"
-msgstr "Tout maximiser"
-
-msgid "wd close all services"
-msgstr "Tout minimiser "
-
-msgid "wd  reset colums"
-msgstr "Réinitialiser les largeurs des colonnes"
-
-msgid "wd close"
-msgstr "Fermer"
-
-msgid "wd save"
-msgstr "Sauver"
-
-msgid "Preview"
-msgstr "Prévisualisation"
-
-msgid "Do not click here"
-msgstr "Ne cliquez pas ici"
-
-msgid "Here either"
-msgstr "Ici non plus"
-
-msgid "Theme chooser"
-msgstr "Choix du thème"
-
-msgid "font size chooser"
-msgstr "Taille de la police"
-
-msgid "small size"
-msgstr "petite taille"
-
-msgid "normal size"
-msgstr "taille normale"
-
-msgid "large size"
-msgstr "grande taille"
-
-msgid "x-large size"
-msgstr "très grande taille"
-
-msgid "Apply"
-msgstr "Appliquer"
-
+#: textxml.php:89
 msgid "Change your theme"
 msgstr "Changer votre thème"
 
-msgid "wd error add service"
-msgstr "wd error add service"
-
-msgid "wd error getting service"
-msgstr "wd error getting service"
-
-msgid "wd invalid service number returned by creation"
-msgstr "invalid service number returned by creation"
-
-msgid "automatic reload all"
-msgstr "mise à jour toutes les"
-
-msgid "wd hide svc content"
-msgstr "Masquer le contenu"
-
-msgid "wd delete svc"
-msgstr "Supprimer le service"
-
-msgid "wd edit svc content"
-msgstr "Editer les paramètres"
-
-msgid "wd reload svc content"
-msgstr "Recharger le contenu"
-
-msgid "wd url for retrieving information not given"
-msgstr "Url de récuperation des informations non fournie"
-
-msgid "downloading content in progress..."
-msgstr "Chargement du contenu en cours..."
-
-msgid "wd show svc content"
-msgstr "Afficher le contenu"
-
-msgid "edition url not given"
-msgstr "Url pour édition des param^etre non fournie"
-
-msgid "wd loading edition forms"
-msgstr "Chargement du formulaire de paramètrage"
-
-msgid "wd error retrieving edit form"
-msgstr "Erreur de récupération du formulaire édition"
-
-msgid "wd error saving edit form"
-msgstr "Erreur de sauvegarde du formulaire édition"
-
-msgid "wd error geo service"
-msgstr "wd error geo service"
-
-msgid "wd confirm supress of"
-msgstr "Etes-vous sur de vouloir supprimer le service "
-
-msgid "wd error retrieving content"
-msgstr "Erreur de récupération du contenu"
-
-msgid "rss: clear displayed results"
-msgstr "Effacer les résultats"
-
-msgid "Click to search person containing..."
-msgstr "Commençant par ...."
-
+#: textxml.php:11
 msgid "Click to search both in society name..."
 msgstr "Sélectionner pour chercher dans les noms de société"
 
-msgid "open it in a new window"
-msgstr "ouvrir dans une nouvelle fenetre"
+#: textxml.php:10
+msgid "Click to search person containing..."
+msgstr "Commençant par ...."
 
-msgid "Url"
-msgstr "Url"
-
-msgid "wd enter url"
-msgstr "Saisissez l'URL ici"
-
-msgid "Title"
-msgstr ""
-
-msgid "Height"
-msgstr "Hauteur"
-
-msgid "Url type"
-msgstr "Type de page"
-
-msgid "html sheet"
-msgstr "page html"
-
-msgid "image"
-msgstr "image"
-
-msgid "flash sheet"
-msgstr "flash"
-
-msgid "wd search ..."
-msgstr "Texte recherché"
-
-msgid "checked : search only in titles"
-msgstr "coché : rechercher seulement dans les titres"
-
+#: textxml.php:9
 msgid "Click to see detail"
 msgstr "Cliquer pour voir le détail"
 
-msgid "no rss item"
-msgstr "Pas de nouvelles, bonne nouvelle"
+#: Action/portal.php:180
+msgid "Could not create user portal."
+msgstr "Ne peut créer le portail utilisateur."
 
-msgid "display full card in the same window"
-msgstr "Afficher les cartes complètes dans la même fenêtre"
+#: textxml.php:91
+msgid "Do not click here"
+msgstr "Ne cliquez pas ici"
 
+#: textxml.php:92
+msgid "Here either"
+msgstr "Ici non plus"
+
+#: Action/main.php:82 Action/main.php:83
+msgid "My account"
+msgstr "Mon compte"
+
+#: Action/main.php:71 Action/main.php:72 Action/main.php:73
+msgid "My portal"
+msgstr "Webdesk"
+
+#: textxml.php:90
+msgid "Preview"
+msgstr "Prévisualisation"
+
+#: Action/preferences.php:32
+msgid "Theme"
+msgstr "Thème"
+
+#: textxml.php:82
+msgid "Theme chooser"
+msgstr "Choix du thème"
+
+#: Action/preferences.php:31
+msgid "Theme preferences"
+msgstr "Préférences du thème"
+
+#: Action/preferences.php:40
+msgid "User identification"
+msgstr "Identification de l'utilisateur"
+
+#: Action/main.php:94
+msgid "Webdesk administration"
+msgstr "Administration du WebDesk"
+
+#: Action/main.php:85
+msgid "Webdesk preferences"
+msgstr "Préférences"
+
+#: Services/svcrss.php:64
+msgid ""
+"[TEXT:no information available, verify your server have http access to "
+"internet and/or check link please...]"
+msgstr "Pas d'information, vérifiez que l'URL du lien est accessible"
+
+#: WEBDESK.app:39
+msgid "add service in user portal"
+msgstr "Ajouter le service au portail"
+
+#: WEBDESK.app:31
+msgid "administration page"
+msgstr "Administration"
+
+#: WEBDESK_init.php:44
+msgid "application present in application bar"
+msgstr "Application présente dans la barre"
+
+#: WEBDESK_init.php:38
+msgid "ardoise content"
+msgstr "contenu de l'ardoise"
+
+#: textxml.php:36
+msgid "automatic reload all"
+msgstr "mise à jour toutes les"
+
+#: textxml.php:3
+msgid "by Anakeen"
+msgstr "par Anakeen"
+
+#: textxml.php:29
+msgid "checked : search only in titles"
+msgstr "coché : rechercher seulement dans les titres"
+
+#: Services/svccontact_search.php:49 Services/svccontact_search.php:135
+msgid "clear displayed results"
+msgstr "Effacer les résultats"
+
+#: WEBDESK_init.php:22
+msgid "default application displayed"
+msgstr "Application affichée par défault"
+
+#: WEBDESK.app:42
+msgid "del service from user portal"
+msgstr "Supprimession du service du portail"
+
+#: Action/admins.php:46 Action/preferences.php:53 Action/main.php:150
+msgid "description"
+msgstr ""
+
+#: textxml.php:7
 msgid "display column x lines"
 msgstr "Affichage colonnes x lignes"
 
+#: textxml.php:6
+msgid "display full card in the same window"
+msgstr "Afficher les cartes complètes dans la même fenêtre"
+
+#: textxml.php:42
+msgid "downloading content in progress..."
+msgstr "Chargement du contenu en cours..."
+
+#: WEBDESK.app:44
+msgid "edit for view any url"
+msgstr "éditer pour voir une url"
+
+#: textxml.php:44
+msgid "edition url not given"
+msgstr "Url pour édition des param^etre non fournie"
+
+#: textxml.php:62
+msgid "en maintenance"
+msgstr "Opération de maintenance en cours..."
+
+#: Services/svcmail.php:125
+msgid "error retrieving mails"
+msgstr "Erreur de récupération des messages"
+
+#: textxml.php:83
+msgid "font size chooser"
+msgstr "Taille de la police"
+
+#: textxml.php:26
 msgid "freedom rss search"
 msgstr "Recherche de fil RSS Dynacase"
 
-msgid "rss: select to search in system RSS (else mine only)"
-msgstr ""
-"Cochez pour rechercher dans les RSS système (sinon seulement les miennes)"
+#: WEBDESK.app:66
+msgid "generic service"
+msgstr "service générique"
 
-msgid "wd entre rss link here"
-msgstr "Saisissez l'URL du flux RSS ici"
+#: Services/incident.php:60
+#, c-format
+msgid "incident in progress -%d-"
+msgstr "Incident en cours -%d-"
 
-msgid "portal welcome service"
-msgstr "Accueil"
+#: textxml.php:86
+msgid "large size"
+msgstr "grande taille"
 
-msgid "portal welcome title"
-msgstr "Bienvenue sur votre portail,"
+#: WEBDESK.app:32
+msgid "list all admin pages"
+msgstr "liste des pages d'administration"
 
+#: Services/svccontact_search.php:46 Services/freedomrss_search.php:46
+#, c-format
+msgid "more than %d results..."
+msgstr "plus de %d résultats..."
+
+#: Services/svcmail.php:39 Services/svcmail.php:42
+msgid "no account defined"
+msgstr "pas de compte défini."
+
+#: Services/svccontact_search.php:48 Services/freedomrss_search.php:48
+msgid "no result for search"
+msgstr "Pas de résultat..."
+
+#: textxml.php:25
+msgid "no rss item"
+msgstr "Pas de nouvelles, bonne nouvelle"
+
+#: textxml.php:85
+msgid "normal size"
+msgstr "taille normale"
+
+#: WEBDESK.app:67
+msgid "number of affected document"
+msgstr "nombre de documents affectés"
+
+#: textxml.php:23 textxml.php:24 textxml.php:30
+msgid "open it in a new window"
+msgstr "ouvrir dans une nouvelle fenetre"
+
+#: textxml.php:67
+msgid "platform logout"
+msgstr "quitter"
+
+#: WEBDESK_init.php:28
+msgid "portal columns count"
+msgstr "nombre de colonne du portail"
+
+#: WEBDESK_init.php:16
+msgid "portal colums specification"
+msgstr "Colonnes du portail"
+
+#: WEBDESK.app:28
+msgid "portal page"
+msgstr "Portail"
+
+#: textxml.php:95
 msgid "portal welcome content"
 msgstr ""
 "Le portail regroupe des services d'information. En un coup d'oeil vous "
@@ -283,273 +239,474 @@ msgstr ""
 "venir, les dernières nouvelles... Pour cela, vous pouvez organiser les "
 "différents services en terme de contenu, de disposition..."
 
+#: textxml.php:96
 msgid "portal welcome help"
-msgstr "Vous pouvez supprimer l'affichage de ce service. Il reste accessible dans la liste des services disponibles."
+msgstr ""
+"Vous pouvez supprimer l'affichage de ce service. Il reste accessible dans la "
+"liste des services disponibles."
 
-msgid "webdesk"
-msgstr "WebDesk"
+#: textxml.php:93
+msgid "portal welcome service"
+msgstr "Accueil"
 
-msgid "webdesk application"
-msgstr "Application WebDesk"
+#: textxml.php:94
+msgid "portal welcome title"
+msgstr "Bienvenue sur votre portail,"
 
-msgid "webdesk access"
-msgstr "Accès au WebDesk"
-
-msgid "webdesk change top bar content"
-msgstr "changer le contenu de la barre du haut"
-
-msgid "webdesk change default application"
-msgstr "Modification de l'application affichée par défaut dans le portail"
-
-msgid "webdesk admin"
-msgstr "administration webdesk"
-
-msgid "webdesk main page"
-msgstr "Page principale WebDesk"
-
-msgid "portal page"
-msgstr "Portail"
-
-msgid "preferences page"
-msgstr "Préférences"
-
-msgid "theme preferences"
-msgstr "Préférences du thème"
-
-msgid "administration page"
-msgstr "Administration"
-
-msgid "list all admin pages"
-msgstr "liste des pages d'administration"
-
-msgid "webdesk general admnistration"
-msgstr "Administration du WebDesk"
-
-msgid "return JS service description"
-msgstr "return JS service description"
-
-msgid "add service in user portal"
-msgstr "Ajouter le service au portail"
-
-msgid "save service parameters"
-msgstr "Sauvegarde de la définition du service"
-
+#: WEBDESK.app:41
 msgid "position of service in user portal"
 msgstr "Position du service dans le portail"
 
-msgid "del service from user portal"
-msgstr "Supprimession du service du portail"
+#: WEBDESK.app:29
+msgid "preferences page"
+msgstr "Préférences"
 
-msgid "view any url"
-msgstr "voir une url"
-
-msgid "edit for view any url"
-msgstr "éditer pour voir une url"
-
-msgid "service test view"
-msgstr "Service test - affichage"
-
-msgid "service test edition"
-msgstr "Service test - édition"
-
-msgid "service incident"
-msgstr "Service Incidents"
-
-msgid "service mail"
-msgstr "Service Messagerie"
-
-msgid "service mail edition"
-msgstr "Service Mail, édition"
-
-msgid "service contact"
-msgstr "Service Contacts"
-
-msgid "service ardoise"
-msgstr "Service ardoise"
-
-msgid "service rss"
-msgstr "Service RSS"
-
-msgid "service edit rss"
-msgstr "Service RSS, édition"
-
-msgid "service freedom search execution"
-msgstr "Service Dynacase"
-
-msgid "service freedom search in familie"
-msgstr "Service Dynacase de recherche dans une famille"
-
-msgid "service edit freedom search in familie"
-msgstr "Service Dynacase de recherche dans une famille (edition)"
-
-msgid "generic service"
-msgstr "service générique"
-
-msgid "number of affected document"
-msgstr "nombre de documents affectés"
-
+#: WEBDESK.app:68
 msgid "preview of theme"
 msgstr "prévisualisation du thème"
 
-msgid "portal colums specification"
-msgstr "Colonnes du portail"
+#: WEBDESK.app:38
+msgid "return JS service description"
+msgstr "return JS service description"
 
-msgid "default application displayed"
-msgstr "Application affichée par défault"
+#: textxml.php:21 textxml.php:22
+msgid "rss: clear displayed results"
+msgstr "Effacer les résultats"
 
-msgid "portal columns count"
-msgstr "nombre de colonne du portail"
+#: textxml.php:8 textxml.php:27
+msgid "rss: select to search in system RSS (else mine only)"
+msgstr ""
+"Cochez pour rechercher dans les RSS système (sinon seulement les miennes)"
 
+#: WEBDESK.app:40
+msgid "save service parameters"
+msgstr "Sauvegarde de la définition du service"
+
+#: WEBDESK.app:56 WEBDESK.app:57
+msgid "service ardoise"
+msgstr "Service ardoise"
+
+#: WEBDESK.app:54
+msgid "service contact"
+msgstr "Service Contacts"
+
+#: WEBDESK.app:64
+msgid "service edit freedom search in familie"
+msgstr "Service Dynacase de recherche dans une famille (edition)"
+
+#: WEBDESK.app:60
+msgid "service edit rss"
+msgstr "Service RSS, édition"
+
+#: WEBDESK.app:62 WEBDESK.app:63
+msgid "service freedom search execution"
+msgstr "Service Dynacase"
+
+#: WEBDESK.app:64
+msgid "service freedom search in familie"
+msgstr "Service Dynacase de recherche dans une famille"
+
+#: WEBDESK.app:49
+msgid "service incident"
+msgstr "Service Incidents"
+
+#: WEBDESK.app:51
+msgid "service mail"
+msgstr "Service Messagerie"
+
+#: WEBDESK.app:52
+msgid "service mail edition"
+msgstr "Service Mail, édition"
+
+#: WEBDESK.app:59
+msgid "service rss"
+msgstr "Service RSS"
+
+#: WEBDESK.app:48
+msgid "service test edition"
+msgstr "Service test - édition"
+
+#: WEBDESK.app:47
+msgid "service test view"
+msgstr "Service test - affichage"
+
+#: WEBDESK_init.php:33
 msgid "services list columns count"
 msgstr "nombre de colonnes pour la liste de services"
 
-msgid "ardoise content"
-msgstr "contenu de l'ardoise"
+#: Action/admins.php:47 Action/preferences.php:54 Action/main.php:151
+#: Action/main.php:152
+msgid "short_name"
+msgstr ""
 
-msgid "application present in application bar"
-msgstr "Application présente dans la barre"
+#: textxml.php:84
+msgid "small size"
+msgstr "petite taille"
 
-msgid "webdesk menu background color"
-msgstr "Couleur de fond pour le menu application"
+#: WEBDESK.app:30
+msgid "theme preferences"
+msgstr "Préférences du thème"
 
-msgid "webdesk menu background image"
-msgstr "Image de fond pour le menu application"
+#: textxml.php:31 textxml.php:63
+msgid "top bar search"
+msgstr "recherchez dans Dynacase..."
 
-msgid "webdesk menu background image width"
-msgstr "Largeur de l'image de fond pour le menu application"
+#: WEBDESK.app:43
+msgid "view any url"
+msgstr "voir une url"
 
-msgid "webdesk theme remplacement CSS"
-msgstr "CSS alternative JQuery UI"
+#: textxml.php:79
+msgid "wd  reset colums"
+msgstr "Réinitialiser les largeurs des colonnes"
 
-msgid "without category"
-msgstr "sans catégorie"
+#: textxml.php:88
+msgid "wd Apply theme"
+msgstr "Appliquer le thème"
 
-#, c-format
-msgid "incident in progress -%d-"
-msgstr "Incident en cours -%d-"
+#: textxml.php:1
+msgid "wd Change password"
+msgstr "Modifier le mot de passe"
 
-msgid "wd no freedom search given"
-msgstr "Pas de recherche Dynacase fournie"
+#: textxml.php:64 textxml.php:65 textxml.php:66
+msgid "wd Click here to logout"
+msgstr "Cliquer ici pour se déconnecter"
 
+#: textxml.php:16
+msgid "wd Height"
+msgstr "Hauteur"
+
+#: Action/preferences.php:41
+msgid "wd Identification"
+msgstr "Identification"
+
+#: textxml.php:5
+msgid "wd Javascript must be enabled in your navigator"
+msgstr "Javascript doit être activé sur votre navigateur"
+
+#: textxml.php:15
+msgid "wd Title"
+msgstr "Titre"
+
+#: textxml.php:13
+msgid "wd Url"
+msgstr "Url"
+
+#: textxml.php:17
+msgid "wd Url type"
+msgstr "Type de page"
+
+#: textxml.php:73
+msgid "wd add/remove shortcut"
+msgstr "Ajouter/Supprimer le raccourci..."
+
+#: textxml.php:80
+msgid "wd close"
+msgstr "Fermer"
+
+#: textxml.php:78
+msgid "wd close all services"
+msgstr "Tout minimiser "
+
+#: textxml.php:54
+msgid "wd confirm supress of"
+msgstr "Etes-vous sur de vouloir supprimer le service "
+
+#: textxml.php:72
+msgid "wd default application"
+msgstr "Application par défaut"
+
+#: textxml.php:38
+msgid "wd delete svc"
+msgstr "Supprimer le service"
+
+#: textxml.php:69
+msgid "wd display application"
+msgstr "Afficher..."
+
+#: textxml.php:39
+msgid "wd edit svc content"
+msgstr "Editer les paramètres"
+
+#: textxml.php:14
+msgid "wd enter url"
+msgstr "Saisissez l'URL ici"
+
+#: textxml.php:12
+msgid "wd entre rss link here"
+msgstr "Saisissez l'URL du flux RSS ici"
+
+#: textxml.php:32 textxml.php:35 textxml.php:55 textxml.php:56
+msgid "wd error add service"
+msgstr "wd error add service"
+
+#: textxml.php:52 textxml.php:53
+msgid "wd error geo service"
+msgstr "wd error geo service"
+
+#: textxml.php:33
+msgid "wd error getting service"
+msgstr "wd error getting service"
+
+#: textxml.php:57 textxml.php:58 textxml.php:59 textxml.php:60
+msgid "wd error retrieving content"
+msgstr "Erreur de récupération du contenu"
+
+#: textxml.php:46 textxml.php:47
+msgid "wd error retrieving edit form"
+msgstr "Erreur de récupération du formulaire édition"
+
+#: textxml.php:48 textxml.php:49
+msgid "wd error saving edit form"
+msgstr "Erreur de sauvegarde du formulaire édition"
+
+#: textxml.php:68
+msgid "wd fixe/release menu"
+msgstr "Afficher/masque le menu comme panneau latéral"
+
+#: textxml.php:20
+msgid "wd flash sheet"
+msgstr "flash"
+
+#: textxml.php:37 textxml.php:51
+msgid "wd hide svc content"
+msgstr "Masquer le contenu"
+
+#: textxml.php:18
+msgid "wd html sheet"
+msgstr "page html"
+
+#: textxml.php:19
+msgid "wd image"
+msgstr "image"
+
+#: Services/freedom_search.php:32
 msgid "wd invalid freedom search given"
 msgstr "Recherche Dynacase invalide"
 
-#, c-format
-msgid "more than %d results..."
-msgstr "plus de %d résultats..."
+#: textxml.php:34
+msgid "wd invalid service number returned by creation"
+msgstr "invalid service number returned by creation"
 
-msgid "wd: result"
-msgstr "résultat"
+#: textxml.php:45
+msgid "wd loading edition forms"
+msgstr "Chargement du formulaire de paramètrage"
 
-msgid "no result for search"
-msgstr "Pas de résultat..."
+#: textxml.php:75
+msgid "wd menu tools"
+msgstr "Outils..."
 
-msgid "clear displayed results"
-msgstr "Effacer les résultats"
+#: Services/freedom_search.php:23
+msgid "wd no freedom search given"
+msgstr "Pas de recherche Dynacase fournie"
 
-msgid "wd: Private"
-msgstr "Accès privé"
-
-msgid "wd: Public readonly"
-msgstr "Accès public"
-
-msgid "wd: Group access"
-msgstr "Accès groupes"
-
-msgid "wd: Special access"
-msgstr "Accès spéciaux"
-
-msgid "wd: secretary"
-msgstr "secrétaire"
-
-msgid "wdd info society"
-msgstr "société...."
-
-msgid "wdd info personal"
-msgstr "personnel..."
-
-msgid "no account defined"
-msgstr "pas de compte défini."
-
-msgid "error retrieving mails"
-msgstr "Erreur de récupération des messages"
-
+#: Services/svcrss.php:21
 msgid "wd no rss link given"
 msgstr "Pas de flux RSS fourni"
 
-msgid ""
-"[TEXT:no information available, verify your server have http access to "
-"internet and/or check link please...]"
-msgstr "Pas d'information, vérifiez que l'URL du lien est accessible"
+#: textxml.php:77
+msgid "wd open all services"
+msgstr "Tout maximiser"
+
+#: textxml.php:71
+msgid "wd open in new window"
+msgstr "Ouvrir dans une nouvelle fenêtre"
+
+#: textxml.php:61
+msgid "wd open/close menu"
+msgstr "Ouvrir/fermer le menu"
+
+#: textxml.php:70
+msgid "wd reload (force) application"
+msgstr "Recharger l'application..."
+
+#: textxml.php:76
+msgid "wd reload portal view"
+msgstr "Mettre à jour le portail"
+
+#: textxml.php:40
+msgid "wd reload svc content"
+msgstr "Recharger le contenu"
+
+#: textxml.php:81
+msgid "wd save"
+msgstr "Sauver"
+
+#: textxml.php:28
+msgid "wd search ..."
+msgstr "Texte recherché"
+
+#: textxml.php:74
+msgid "wd services list"
+msgstr "Services..."
+
+#: textxml.php:43 textxml.php:50
+msgid "wd show svc content"
+msgstr "Afficher le contenu"
+
+#: textxml.php:41
+msgid "wd url for retrieving information not given"
+msgstr "Url de récuperation des informations non fournie"
+
+#: Services/svccontact_search.php:80
+msgid "wd: Group access"
+msgstr "Accès groupes"
+
+#: Services/svccontact_search.php:78
+msgid "wd: Private"
+msgstr "Accès privé"
+
+#: Services/svccontact_search.php:79
+msgid "wd: Public readonly"
+msgstr "Accès public"
+
+#: Services/svccontact_search.php:81
+msgid "wd: Special access"
+msgstr "Accès spéciaux"
+
+#: Services/svccontact_search.php:47 Services/freedomrss_search.php:47
+msgid "wd: result"
+msgstr "résultat"
+
+#: Services/svccontact_search.php:94
+msgid "wd: secretary"
+msgstr "secrétaire"
+
+#: Services/svccontact_search.php:117
+msgid "wdd info personal"
+msgstr "personnel..."
+
+#: Services/svccontact_search.php:106
+msgid "wdd info society"
+msgstr "société...."
+
+#: WEBDESK.app:6
+msgid "webdesk"
+msgstr "WebDesk"
+
+#: WEBDESK.app:15
+msgid "webdesk access"
+msgstr "Accès au WebDesk"
+
+#: WEBDESK.app:18
+msgid "webdesk admin"
+msgstr "administration webdesk"
+
+#: WEBDESK.app:7
+msgid "webdesk application"
+msgstr "Application WebDesk"
+
+#: textxml.php:4
+msgid "webdesk application portal"
+msgstr "Application webdesk"
+
+#: WEBDESK.app:17
+msgid "webdesk change default application"
+msgstr "Modification de l'application affichée par défaut dans le portail"
+
+#: WEBDESK.app:16
+msgid "webdesk change top bar content"
+msgstr "changer le contenu de la barre du haut"
+
+#: WEBDESK.app:34
+msgid "webdesk general admnistration"
+msgstr "Administration du WebDesk"
+
+#: WEBDESK.app:26
+msgid "webdesk main page"
+msgstr "Page principale WebDesk"
+
+#: WEBDESK_init.php:51
+msgid "webdesk menu background color"
+msgstr "Couleur de fond pour le menu application"
+
+#: WEBDESK_init.php:59
+msgid "webdesk menu background image"
+msgstr "Image de fond pour le menu application"
+
+#: WEBDESK_init.php:66
+msgid "webdesk menu background image width"
+msgstr "Largeur de l'image de fond pour le menu application"
+
+#: WEBDESK_init.php:73
+msgid "webdesk theme remplacement CSS"
+msgstr "CSS alternative JQuery UI"
+
+#: Services/incident.php:31
+msgid "without category"
+msgstr "sans catégorie"
+
+#: textxml.php:87
+msgid "x-large size"
+msgstr "très grande taille"
+
+#~ msgid "Apply"
+#~ msgstr "Appliquer"
+
+#~ msgid "Change name and coordinates"
+#~ msgstr "Changer mon nom et mes coordonnées"
+
+#~ msgid "Change password"
+#~ msgstr "Modifier mon mot de passe"
+
+#~ msgid "Click here to logout"
+#~ msgstr "Cliquez ici pour se déconnecter"
+
+#~ msgid "Identification"
+#~ msgstr "Identification"
+
+#~ msgid "Javascript must be enabled in your navigator"
+#~ msgstr "Le javascript doit être activé dans votre navigateur"
+
+#~ msgid "My preferences"
+#~ msgstr "Mes préférences"
 
 #~ msgid "No style"
 #~ msgstr "Pas de style"
+
+#~ msgid "Pression %s hpa"
+#~ msgstr "Pression %s hpa"
+
+#~ msgid "Rss feed"
+#~ msgstr "Flux Rss"
+
+#~ msgid "Visibility %s %s km"
+#~ msgstr "visibilité %s %s km"
+
+#, fuzzy
+#~ msgid "portal page number 1"
+#~ msgstr "Portail"
 
 #~ msgid "portal welcome manual"
 #~ msgstr ""
 #~ "en cliquant ici vous accédez à l'aide à l'utilisation du portail et de "
 #~ "ses services"
 
-#~ msgid "temperature %s c (dew %s c, heat %s c)"
-#~ msgstr "température %s°c (rosée %s°c, ressentie %s°c)"
-
-#~ msgid "wind, speed %s m/s direction [%s]"
-#~ msgstr "vent, vitesse %s m/s, direction [%s]°"
+#~ msgid "produced by Freedom"
+#~ msgstr "produit par Freedom"
 
 #~ msgid "relative humidity %s %%"
 #~ msgstr "humidité relative %s %%"
 
-#~ msgid "Pression %s hpa"
-#~ msgstr "Pression %s hpa"
+#~ msgid "select a theme"
+#~ msgstr "Sélectionner un thème"
 
-#~ msgid "Visibility %s %s km"
-#~ msgstr "visibilité %s %s km"
-
-#~ msgid "wd show/hide service list"
-#~ msgstr "Afficher/masquer la liste des services"
+#~ msgid "temperature %s c (dew %s c, heat %s c)"
+#~ msgstr "température %s°c (rosée %s°c, ressentie %s°c)"
 
 #~ msgid "wd  close all services"
 #~ msgstr "Fermer tous les services"
 
+#~ msgid "wd  enlarge font"
+#~ msgstr "Augmenter la taille du texte..."
+
 #~ msgid "wd add page"
 #~ msgstr "Ajouter une page"
-
-#~ msgid "wd available services"
-#~ msgstr "Liste des services disponibles"
 
 #~ msgid "wd add service"
 #~ msgstr "Ajouter le service"
 
-#~ msgid "wd  enlarge font"
-#~ msgstr "Augmenter la taille du texte..."
-
-#~ msgid "wd manage portal"
-#~ msgstr "Gestion du portail"
-
-#~ msgid "wd reduce font"
-#~ msgstr "Réduire la taille du texte..."
-
-#~ msgid "wd rss more infos"
-#~ msgstr "Plus d'informations..."
-
-#~ msgid "Change name and coordinates"
-#~ msgstr "Changer mon nom et mes coordonnées"
-
-#~ msgid "My preferences"
-#~ msgstr "Mes préférences"
-
-#~ msgid "Rss feed"
-#~ msgstr "Flux Rss"
-
-#, fuzzy
-#~ msgid "portal page number 1"
-#~ msgstr "Portail"
-
-#~ msgid "produced by Freedom"
-#~ msgstr "produit par Freedom"
-
-#~ msgid "select a theme"
-#~ msgstr "Sélectionner un thème"
+#~ msgid "wd available services"
+#~ msgstr "Liste des services disponibles"
 
 #~ msgid "wd document received"
 #~ msgstr "Documents affectés"
@@ -569,11 +726,23 @@ msgstr "Pas d'information, vérifiez que l'URL du lien est accessible"
 #~ msgid "wd go up"
 #~ msgstr "déplacer vers le haut"
 
+#~ msgid "wd manage portal"
+#~ msgstr "Gestion du portail"
+
 #~ msgid "wd move service"
 #~ msgstr "Déplacer le service"
 
+#~ msgid "wd reduce font"
+#~ msgstr "Réduire la taille du texte..."
+
+#~ msgid "wd rss more infos"
+#~ msgstr "Plus d'informations..."
+
 #~ msgid "wd search for contact"
 #~ msgstr "Rechercher un contact"
+
+#~ msgid "wd show/hide service list"
+#~ msgstr "Afficher/masquer la liste des services"
 
 #~ msgid "wd unread mail count"
 #~ msgstr "Mails non lus"
@@ -583,3 +752,6 @@ msgstr "Pas d'information, vérifiez que l'URL du lien est accessible"
 
 #~ msgid "webdesk general preferences"
 #~ msgstr "Préférences générale"
+
+#~ msgid "wind, speed %s m/s direction [%s]"
+#~ msgstr "vent, vitesse %s m/s, direction [%s]°"
