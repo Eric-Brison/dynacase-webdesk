@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WEBDESK\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-23 11:25+0100\n"
+"POT-Creation-Date: 2013-02-01 11:17+0100\n"
 "PO-Revision-Date: 2012-06-22 11:44+0200\n"
 "Last-Translator: Marc Claverie <marc.claverie@anakeen.com>\n"
 "Language-Team: French <distrib@anakeen.com>\n"
@@ -11,342 +11,444 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: textxml.php:6
 msgid "Click to search both in society name..."
 msgstr ""
 
+#: textxml.php:5
 msgid "Click to search person containing..."
 msgstr ""
 
+#: textxml.php:4
 msgid "Click to see detail"
 msgstr ""
 
+#: Actions/WEBDESK/portal.php:187
 msgid "Could not create user portal."
 msgstr "Could not create user portal."
 
-msgid "Height"
-msgstr ""
-
-msgid "Javascript must be enabled in your navigator"
-msgstr ""
-
-msgid "Title"
-msgstr ""
-
-msgid "Url"
-msgstr ""
-
-msgid "Url type"
-msgstr ""
-
+#: Apps/WEBDESK/WEBDESK.app:11
 msgid "WEBDESK:A basic webdesk"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:10
 msgid "WEBDESK:WEBDESK"
 msgstr ""
 
+#: Actions/WEBDESK/svcrss.php:62
 msgid ""
 "[TEXT:no information available, verify your server have http access to "
 "internet and/or check link please...]"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:61
 msgid "add service in user portal"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK_init.php:44
 msgid "application present in application bar"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK_init.php:38
 msgid "ardoise content"
 msgstr ""
 
+#: textxml.php:40
 msgid "automatic reload all"
 msgstr ""
 
+#: textxml.php:66
 msgid "checked : search only in titles"
 msgstr ""
 
+#: Actions/WEBDESK/svccontact_search.php:56
+#: Actions/WEBDESK/svccontact_search.php:144
 msgid "clear displayed results"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK_init.php:22
 msgid "default application displayed"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:82
 msgid "del service from user portal"
 msgstr ""
 
+#: textxml.php:2
 msgid "display column x lines"
 msgstr ""
 
+#: textxml.php:1
 msgid "display full card in the same window"
 msgstr ""
 
+#: textxml.php:46
 msgid "downloading content in progress..."
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:96
 msgid "edit for view any url"
 msgstr ""
 
+#: textxml.php:48
 msgid "edition url not given"
 msgstr ""
 
+#: Actions/WEBDESK/svcmail.php:124
 msgid "error retrieving mails"
 msgstr ""
 
-msgid "flash sheet"
-msgstr ""
-
+#: textxml.php:30
 msgid "freedom rss search"
 msgstr "Search for Dynacase RSS feeds"
 
+#: Apps/WEBDESK/WEBDESK.app:200
 msgid "generic service"
 msgstr ""
 
-msgid "html sheet"
-msgstr ""
-
-msgid "image"
-msgstr ""
-
-#, c-format
-msgid "incident in progress -%d-"
-msgstr ""
-
+#: Actions/WEBDESK/svccontact_search.php:53
+#: Actions/WEBDESK/freedomrss_search.php:46
 #, c-format
 msgid "more than %d results..."
 msgstr ""
 
+#: Actions/WEBDESK/svcmail.php:38 Actions/WEBDESK/svcmail.php:41
 msgid "no account defined"
 msgstr ""
 
+#: Actions/WEBDESK/svccontact_search.php:55
+#: Actions/WEBDESK/freedomrss_search.php:48
 msgid "no result for search"
 msgstr ""
 
+#: textxml.php:29
 msgid "no rss item"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:207
 msgid "number of affected document"
 msgstr ""
 
+#: textxml.php:28 textxml.php:67
 msgid "open it in a new window"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK_init.php:28
 msgid "portal columns count"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK_init.php:16
 msgid "portal colums specification"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:46
 msgid "portal page"
 msgstr ""
 
+#: textxml.php:34
 msgid "portal welcome content"
 msgstr ""
 
+#: textxml.php:35
 msgid "portal welcome help"
 msgstr ""
 
+#: textxml.php:32
 msgid "portal welcome service"
 msgstr ""
 
+#: textxml.php:33
 msgid "portal welcome title"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:75
 msgid "position of service in user portal"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:54
 msgid "return JS service description"
 msgstr ""
 
+#: textxml.php:26 textxml.php:27
 msgid "rss: clear displayed results"
 msgstr ""
 
+#: textxml.php:3 textxml.php:31
 msgid "rss: select to search in system RSS (else mine only)"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:68
 msgid "save service parameters"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:141 Apps/WEBDESK/WEBDESK.app:148
 msgid "service ardoise"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:133
 msgid "service contact"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:192
 msgid "service edit freedom search in familie"
 msgstr "Dynacase family search service (edit)"
 
+#: Apps/WEBDESK/WEBDESK.app:163
 msgid "service edit rss"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:171 Apps/WEBDESK/WEBDESK.app:178
 msgid "service freedom search execution"
 msgstr "Dynacase service"
 
+#: Apps/WEBDESK/WEBDESK.app:185
 msgid "service freedom search in familie"
 msgstr "Dynacase family search service"
 
-msgid "service incident"
-msgstr ""
-
+#: Apps/WEBDESK/WEBDESK.app:118
 msgid "service mail"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:125
 msgid "service mail edition"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:156
 msgid "service rss"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:111
 msgid "service test edition"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:104
 msgid "service test view"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK_init.php:33
 msgid "services list columns count"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:89
 msgid "view any url"
 msgstr ""
 
+#: textxml.php:12
 msgid "wd  reset colums"
 msgstr ""
 
+#: textxml.php:19
+msgid "wd Height"
+msgstr ""
+
+#: textxml.php:25
+msgid "wd Javascript must be enabled in your navigator"
+msgstr ""
+
+#: textxml.php:18
+msgid "wd Title"
+msgstr ""
+
+#: textxml.php:16
+msgid "wd Url"
+msgstr ""
+
+#: textxml.php:20
+msgid "wd Url type"
+msgstr ""
+
+#: textxml.php:13
 msgid "wd close"
 msgstr ""
 
+#: textxml.php:11
 msgid "wd close all services"
 msgstr ""
 
+#: textxml.php:58
 msgid "wd confirm supress of"
 msgstr ""
 
+#: textxml.php:42
 msgid "wd delete svc"
 msgstr ""
 
+#: textxml.php:43
 msgid "wd edit svc content"
 msgstr ""
 
+#: textxml.php:17
 msgid "wd enter url"
 msgstr ""
 
+#: textxml.php:15
 msgid "wd entre rss link here"
 msgstr ""
 
+#: textxml.php:36 textxml.php:39 textxml.php:59 textxml.php:60
 msgid "wd error add service"
 msgstr ""
 
+#: textxml.php:56 textxml.php:57
 msgid "wd error geo service"
 msgstr ""
 
+#: textxml.php:37
 msgid "wd error getting service"
 msgstr ""
 
+#: textxml.php:61 textxml.php:62 textxml.php:63 textxml.php:64
 msgid "wd error retrieving content"
 msgstr ""
 
+#: textxml.php:50 textxml.php:51
 msgid "wd error retrieving edit form"
 msgstr ""
 
+#: textxml.php:52 textxml.php:53
 msgid "wd error saving edit form"
 msgstr ""
 
+#: textxml.php:23
+msgid "wd flash sheet"
+msgstr ""
+
+#: textxml.php:41 textxml.php:55
 msgid "wd hide svc content"
 msgstr ""
 
+#: textxml.php:21
+msgid "wd html sheet"
+msgstr ""
+
+#: textxml.php:22
+msgid "wd image"
+msgstr ""
+
+#: Actions/WEBDESK/freedom_search.php:32
 msgid "wd invalid freedom search given"
 msgstr "Invalid Dynacase search given"
 
+#: textxml.php:38
 msgid "wd invalid service number returned by creation"
 msgstr ""
 
+#: textxml.php:49
 msgid "wd loading edition forms"
 msgstr ""
 
+#: textxml.php:8
 msgid "wd menu tools"
 msgstr ""
 
+#: Actions/WEBDESK/freedom_search.php:22
 msgid "wd no freedom search given"
 msgstr "No Dynacase search given"
 
+#: Actions/WEBDESK/svcrss.php:19
 msgid "wd no rss link given"
 msgstr ""
 
+#: textxml.php:10
 msgid "wd open all services"
 msgstr ""
 
+#: textxml.php:9
 msgid "wd reload portal view"
 msgstr ""
 
+#: textxml.php:44
 msgid "wd reload svc content"
 msgstr ""
 
+#: textxml.php:14
 msgid "wd save"
 msgstr ""
 
+#: textxml.php:65
 msgid "wd search ..."
 msgstr ""
 
+#: textxml.php:7
 msgid "wd services list"
 msgstr ""
 
+#: textxml.php:47 textxml.php:54
 msgid "wd show svc content"
 msgstr ""
 
+#: textxml.php:45
 msgid "wd url for retrieving information not given"
 msgstr ""
 
+#: Actions/WEBDESK/svccontact_search.php:87
 msgid "wd: Group access"
 msgstr ""
 
+#: Actions/WEBDESK/svccontact_search.php:85
 msgid "wd: Private"
 msgstr ""
 
+#: Actions/WEBDESK/svccontact_search.php:86
 msgid "wd: Public readonly"
 msgstr ""
 
+#: Actions/WEBDESK/svccontact_search.php:88
 msgid "wd: Special access"
 msgstr ""
 
+#: Actions/WEBDESK/svccontact_search.php:54
+#: Actions/WEBDESK/freedomrss_search.php:47
 msgid "wd: result"
 msgstr ""
 
+#: Actions/WEBDESK/svccontact_search.php:101
 msgid "wd: secretary"
 msgstr ""
 
+#: Actions/WEBDESK/svccontact_search.php:124
 msgid "wdd info personal"
 msgstr ""
 
+#: Actions/WEBDESK/svccontact_search.php:113
 msgid "wdd info society"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:22
 msgid "webdesk access"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:37
 msgid "webdesk admin"
 msgstr ""
 
+#: textxml.php:24
 msgid "webdesk application portal"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:32
 msgid "webdesk change default application"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK.app:27
 msgid "webdesk change top bar content"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK_init.php:51
 msgid "webdesk menu background color"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK_init.php:59
 msgid "webdesk menu background image"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK_init.php:66
 msgid "webdesk menu background image width"
 msgstr ""
 
+#: Apps/WEBDESK/WEBDESK_init.php:73
 msgid "webdesk theme remplacement CSS"
 msgstr "JQueryUI alternative CSS"
-
-msgid "without category"
-msgstr ""
 
 #~ msgid "My portal"
 #~ msgstr "Webdesk"
