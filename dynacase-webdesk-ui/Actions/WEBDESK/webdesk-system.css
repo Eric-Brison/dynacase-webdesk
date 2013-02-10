@@ -128,13 +128,14 @@ img#appmenu_ico  { width:12px; }
   margin:0px 2px 4px 2px;
   padding:0px;
   border:0px;
- }
+  box-shadow : 1px 0px 5px #ddd;
+  border-radius: 5px;
+}
 
 .wdsvc_title { 
     padding : 5px;
     border-bottom-left-radius : 0;
     border-bottom-right-radius : 0;
-    box-shadow : 1px 0px 5px #ddd;
 }
 .wdsvc_title table {
     [IF ISIE]width:95%; [ENDIF ISIE]
@@ -153,12 +154,6 @@ img#appmenu_ico  { width:12px; }
 
 .wdsvc_content { 
     padding : 5px;
-    border-style: none solid solid solid;
-    box-shadow : 1px 1px 5px #ddd;
-    border-width:1px;
-    border-bottom-left-radius : 5px;
-    border-bottom-right-radius : 5px;
-
 }
 .wdsvc_edit { 
     display:none; 
