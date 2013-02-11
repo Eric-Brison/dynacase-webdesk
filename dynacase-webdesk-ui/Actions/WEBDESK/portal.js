@@ -136,7 +136,7 @@ function showService(is, updates) {
     svc.id = 'svc'+snum;
     svc.setAttribute("svcid",is);
     svc.name = 'svc'+snum;
-    svc.className = 'ui-widget ui-corner-all ui-widget-content wdsvc';
+    svc.className = 'wdsvc';
     if (!isNetscape)  {
       svc.style.display = 'block';
       svc.style.width = '100%';
@@ -173,7 +173,7 @@ function showService(is, updates) {
     cnt += '</span>';
     cnt += '</td></tr></table>';
     tsvc.innerHTML = cnt;
-    tsvc.className = 'ui-widget-header ui-corner-all wdsvc_title';
+    tsvc.className = 'ui-widget-header ui-corner-top wdsvc_title';
 
     svc.appendChild(tsvc);
     
@@ -182,10 +182,10 @@ function showService(is, updates) {
     csvc.name = 'csvc'+snum;
     if (vurl=='') {
       csvc.innerHTML = '[TEXT:wd url for retrieving information not given]';
-      csvc.className = 'ui-widget-content wdsvc_content wdsvc_warning';
+      csvc.className = 'ui-widget-content ui-corner-bottom wdsvc_content wdsvc_warning';
     } else {
       csvc.innerHTML = '[TEXT:downloading content in progress...]';
-      csvc.className = 'ui-widget-content wdsvc_content';
+      csvc.className = 'ui-widget-content ui-corner-bottom wdsvc_content';
     }
     //    csvc.style.overflow = 'auto';
 
