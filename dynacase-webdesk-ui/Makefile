@@ -2,7 +2,7 @@ appname=$(appname)
 
 export appname PACKAGE
 
-SUBDIR= Apps Actions Scripts Images Families
+SUBDIR= Apps Actions Scripts Images Families locale
 
 .PHONY : publish clean stub
 
