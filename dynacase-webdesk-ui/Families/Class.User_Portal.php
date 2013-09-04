@@ -4,15 +4,14 @@
  * @license http://www.fsf.org/licensing/licenses/agpl-3.0.html GNU Affero General Public License
  * @package WEBDESK
 */
-/**
- * @begin-method-ignore
- * this part will be deleted when construct document class until end-method-ignore
- */
-Class _USER_PORTAL extends Doc
+
+namespace Dcp\WebdeskUi;
+
+use Dcp\AttributeIdentifiers\User_Portal as myAttribute;
+use Dcp\AttributeIdentifiers as Attribute;
+
+Class User_Portal extends \Dcp\Family\Document
 {
-    /*
-     * @end-method-ignore
-    */
     function postCreate()
     {
         $this->uportPostModify(true);
@@ -26,7 +25,7 @@ Class _USER_PORTAL extends Doc
     {
         $this->lock();
         $change = false;
-        $numt = $this->getTValue("uport_svcnum");
+        $numt = $this->getMultipleRawValues(myAttribute::uport_svcnum);
         foreach ($numt as $k => $v) {
             if ($v == "" || $v < 0) {
                 $change = true;
@@ -34,7 +33,7 @@ Class _USER_PORTAL extends Doc
             }
         }
         if ($change) {
-            $this->setValue("uport_svcnum", $numt);
+            $this->setValue(myAttribute::uport_svcnum, $numt);
             if ($mod) $this->modify();
         }
     }
@@ -42,19 +41,11 @@ Class _USER_PORTAL extends Doc
     function getNumSequence()
     {
         $cnum = 0;
-        $numt = $this->getTValue("uport_svcnum");
+        $numt = $this->getMultipleRawValues(myAttribute::uport_svcnum);
         foreach ($numt as $k => $v) {
             if ($v != "" && $v >= 0) $cnum = ($cnum <= $v ? $v : $cnum);
         }
         $cnum++;
         return $cnum;
     }
-    /**
-     * @begin-method-ignore
-     * this part will be deleted when construct document class until end-method-ignore
-     */
 }
-/*
- * @end-method-ignore
-*/
-?>
