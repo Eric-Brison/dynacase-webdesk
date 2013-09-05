@@ -4,8 +4,8 @@ TYPE;C;;;;;;;;;;;;;;
 ICON;user_portal.gif;;;;;;;;;;;;;;
 TAG;P;;;;;;;;;;;;;;
 USEFOR;S;;;;;;;;;;;;;;
-METHOD;Method.UserPortal.php;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;
+METHOD;;;;;;;;;;;;;;;
+CLASS;Dcp\WebdeskUi\User_Portal;;;;;;;;;;;;;;
 //;idattr;idframe;label;T;A;type;ord;vis;need;link;phpfile;phpfunc;elink;constraint;option
 ATTR;UPORT_DESCR;;Portail;N;N;frame;10;W;;;;;;;
 ATTR;UPORT_TITLE;UPORT_DESCR;Titre;Y;Y;text;20;W;;;;;;;

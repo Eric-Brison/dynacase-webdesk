@@ -3,7 +3,7 @@
   <description>This module was used to provide and install basic services (for backward compatibility only).</description>
 
   <requires>
-        <module name="dynacase-core" comp="ge" version="3.2.5" />
+        <module name="dynacase-core" comp="ge" version="3.2.10" />
         <module name="dynacase-webdesk-ui" comp="ge" version="@VERSION@" />
   </requires>
 
