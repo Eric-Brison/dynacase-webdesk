@@ -40,7 +40,4 @@
     <process command="./wsh.php --api=importDocuments --file=./WEBDESK-SERVICES/webdesk-services.ods" />
   </post-upgrade>
 
-  <changelog>
-  </changelog>
-
 </module>
