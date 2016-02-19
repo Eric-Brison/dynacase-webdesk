@@ -6,10 +6,10 @@
 */
 
 include_once 'FDL/Lib.Dir.php';
-function addservice(Action &$action)
+function addservice(Action & $action)
 {
     
-    $dbaccess = $action->getParam("FREEDOM_DB");
+    $dbaccess = $action->dbaccess;
     
     $silent = GetHttpVars("silent", "no");
     $oid = GetHttpVars("oid", -1);
@@ -27,10 +27,9 @@ function addservice(Action &$action)
     $search->addFilter("uport_ownerid = '%s'", $action->user->fid);
     $search->setSlice(1);
     $search->setObjectReturn();
-
+    
     $search->search();
-
-    /* @var $tup _USER_PORTAL */
+    /* @var \Dcp\Family\User_portal $tup */
     $tup = $search->getNextDoc();
     if (!is_object($tup) || !$tup->isAffected()) {
         $tup = createDoc($dbaccess, "USER_PORTAL");
@@ -71,8 +70,7 @@ function addservice(Action &$action)
     $tup->setValue("uport_line", $svcline);
     $tup->setValue("uport_open", $svcopen);
     
-    $err = $tup->modify();
-    $tup->postStore();
+    $tup->store();
     if ($silent != "yes") {
         $action->lay->set("OUT", "var svcnum = $svnnumber;");
     }

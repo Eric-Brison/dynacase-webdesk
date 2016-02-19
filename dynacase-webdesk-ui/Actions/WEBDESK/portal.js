@@ -42,14 +42,14 @@ function addNewService(sid) {
   if (window.XMLHttpRequest) xreq = new XMLHttpRequest();
   else xreq = new ActiveXObject("Microsoft.XMLHTTP");
   if (xreq) {
-    xreq.open("POST", "[CORE_STANDURL]app=WEBDESK&action=ADDSERVICE&sid="+sid, false);
+    xreq.open("POST", "?app=WEBDESK&action=ADDSERVICE&sid="+sid, false);
     xreq.send('');
     if (xreq.status!=200) {
       trace('[TEXT:wd error add service] (HTTP Code '+xreq.status+')');	   
     } else { 
       eval(xreq.responseText);
       if (svcnum && svcnum>-1) {
-	xreq.open("POST", "[CORE_STANDURL]app=WEBDESK&action=GETJSSERVICE&snum="+svcnum, false);
+	xreq.open("POST", "?app=WEBDESK&action=GETJSSERVICE&snum="+svcnum, false);
 	xreq.send('');
 	if (xreq.status!=200) {
 	  trace('[TEXT:wd error getting service] (HTTP Code '+xreq.status+')');	   
@@ -302,7 +302,8 @@ function editSvc(event, snum) {
 
   var esvc = document.getElementById('editsvc').cloneNode(true);
   esvc.id = 'editsvc'+snum;
-  esvc.style.top = esvc.style.left = 0; 
+   esvc.style.left = 100;
+   esvc.style.top = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0) + 50;
   esvc.style.display = 'block';
   document.getElementById('tsvc'+snum).appendChild(esvc);
   document.getElementById('editsvc_c').innerHTML = '[TEXT:wd loading edition forms]';
@@ -366,7 +367,7 @@ function sendForm() {
   var fedit = document.getElementById('editsvcf');
   if (editSnum===-1) return;
   var snum = editSnum;
-
+    var nextpurl;
   var is = getSvc(snum);
   if (is===false) return;
 
@@ -374,14 +375,14 @@ function sendForm() {
   for (var ie=0; ie<fedit.elements.length; ie++) {
   	var elmt = fedit.elements[ie];
   	if(elmt.type == "select-multiple"){
-		var nextpurl = '';
+		 nextpurl = '';
 		for( var i in elmt.options ){
 			if(elmt.options[i].selected){
 				nextpurl += (nextpurl==''?'':'&')+elmt.name+'='+encodeURIComponent(elmt.options[i].value);
 			}
 		}
 	} else {
-		var nextpurl = elmt.name+'='+encodeURIComponent(elmt.value)
+		 nextpurl = elmt.name+'='+encodeURIComponent(elmt.value)
 	}
     purl += (purl==''?'':'&')+nextpurl;
   }
@@ -390,7 +391,7 @@ function sendForm() {
   if (ereq) {
     globalcursor('progress');
 //     alert(editSnum);
-    ereq.open("POST", "[CORE_STANDURL]&app=WEBDESK&action=SAVESVC&snum="+editSnum, false);
+    ereq.open("POST", "?&app=WEBDESK&action=SAVESVC&snum="+editSnum, false);
     ereq.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     ereq.send(purl);
     if (ereq.status!=200) {
@@ -403,7 +404,7 @@ function sendForm() {
   } else {
     document.getElementById('csvc'+snum).innerHTML = '[TEXT:wd error saving edit form] (XMLHttpRequest contruction)';	    
   }
-  var fedit = document.getElementById('editsvc'+snum);
+    fedit = document.getElementById('editsvc'+snum);
   fedit.parentNode.removeChild(fedit);
   editSnum = -1;
 }
@@ -456,7 +457,7 @@ function saveGeometry() {
   if (window.XMLHttpRequest) xreq = new XMLHttpRequest();
   else xreq = new ActiveXObject("Microsoft.XMLHTTP");
   if (xreq) {
-    xreq.open("POST", "[CORE_STANDURL]app=WEBDESK&action=GEOSERVICE&sgeo="+geo, false);
+    xreq.open("POST", "?app=WEBDESK&action=GEOSERVICE&sgeo="+geo, false);
      xreq.send('');
      if (xreq.status!=200) trace('[TEXT:wd error geo service] (HTTP Code '+xreq.status+')');	   
   } else {
@@ -489,7 +490,7 @@ function deleteSvc(event, snum) {
   if (window.XMLHttpRequest) xreq = new XMLHttpRequest();
   else xreq = new ActiveXObject("Microsoft.XMLHTTP");
   if (xreq) {
-    xreq.open("POST", "[CORE_STANDURL]app=WEBDESK&action=DELSERVICE&snum="+snum, false);
+    xreq.open("POST", "?app=WEBDESK&action=DELSERVICE&snum="+snum, false);
     xreq.send('');
     if (xreq.status!=200) trace('[TEXT:wd error add service] (HTTP Code '+xreq.status+')');	   
   } else {

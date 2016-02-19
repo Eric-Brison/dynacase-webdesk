@@ -88,7 +88,7 @@ $(function() {
 
 
 <div id="editsvc" class="ui-dialog ui-widget ui-corner-all ui-widget-content wdsvc_edit">
-<form name="editsvcf" id="editsvcf" style="display:inline" method="POST" action="[CORE_STANDURL]&app=WEBDESK&action=SVCSAVE">
+<form name="editsvcf" id="editsvcf" style="display:inline" method="POST" >
 <div id="editsvc_c" class="ui-dialog-content ui-widget-content"></div>
 <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix" >
   <div class="ui-dialog-buttonset">

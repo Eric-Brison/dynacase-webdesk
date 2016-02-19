@@ -36,6 +36,9 @@ po-dynacase-webdesk-ui:
 
 po: po-dynacase-webdesk-ui
 	:
+stub:
+	php  $(utildir)/genStubFamilyClass.php ./dynacase-webdesk-ui/Families/*csv > stub.php
+
 
 clean:
 	rm -f Makefile

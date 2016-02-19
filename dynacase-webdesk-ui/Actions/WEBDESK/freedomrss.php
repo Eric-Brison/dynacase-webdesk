@@ -9,10 +9,10 @@ include_once "WHAT/Lib.Http.php";
 include_once "FDL/Lib.Dir.php";
 include_once "WEBDESK/svcrss.php";
 
-function freedomrss(Action &$action)
+function freedomrss(Action & $action)
 {
     
-    $dbaccess = $action->getParam("FREEDOM_DB");
+    $dbaccess = $action->dbaccess;
     header('Content-type: text/xml; charset=utf-8');
     
     $rssid = GetHttpVars("rssid", -1);
@@ -33,4 +33,3 @@ function freedomrss(Action &$action)
     $action->lay = new Layout($action->GetLayoutFile("svcrss.xml") , $action);
     svcrss($action);
 }
-?>

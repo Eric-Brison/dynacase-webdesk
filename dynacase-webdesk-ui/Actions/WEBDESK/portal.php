@@ -80,7 +80,7 @@ function portal(Action & $action)
     }
     
     $menucat = '<ul>';
-    foreach ($categories as $kcat => $vcat) $menucat.= '' . genCatXml($vcat, $kcat) . '';
+    foreach ($categories as $kcat => $vcat) $menucat.= '' . genCatXml($vcat) . '';
     $menucat.= '</ul>';
     
     $action->lay->set("service_menu", $menucat);
@@ -131,10 +131,10 @@ function portal(Action & $action)
     $search->addFilter("uport_ownerid = '%s'", $action->user->fid);
     $search->setSlice(1);
     $search->setObjectReturn();
-
+    
     $search->search();
-
-    /* @var $tup _USER_PORTAL */
+    Webdesk\Util::parseUrl("", $action);
+    /** @var Doc $tup  */
     $tup = $search->getNextDoc();
     if (is_object($tup) && $tup->isAffected()) {
         
@@ -158,8 +158,8 @@ function portal(Action & $action)
                 "snum" => $v,
                 "sid" => $svcid[$k],
                 "stitle" => addslashes($svctitle[$k]) ,
-                "vurl" => getV($sd, "psvc_vurl") ,
-                "eurl" => getV($sd, "psvc_eurl") ,
+                "vurl" => Webdesk\Util::parseUrl(getV($sd, "psvc_vurl")) ,
+                "eurl" => Webdesk\Util::parseUrl(getV($sd, "psvc_eurl")) ,
                 "purl" => $svcparam[$k],
                 "jslink" => (getV($sd, "psvc_jsfile") != "" ? Getparam("CORE_STANDURL") . "&app=CORE&action=CORE_CSS&session=" . $action->session->id . "&layout=" . getV($sd, "psvc_jsfile") : "") ,
                 "jslinkmd5" => md5(getV($sd, "psvc_jsfile")) ,
@@ -180,7 +180,7 @@ function portal(Action & $action)
             $svc = new_Doc($dbaccess, $welc);
             if ($svc->isAffected()) {
                 /**
-                 * @var _USER_PORTAL $up
+                 * @var \Dcp\family\USER_PORTAL $up
                  */
                 $up = createDoc($dbaccess, "USER_PORTAL");
                 if (!is_object($up)) {
@@ -209,16 +209,15 @@ function portal(Action & $action)
                 $up->setValue("uport_column", $svccol);
                 $up->setValue("uport_line", $svcline);
                 $up->setValue("uport_open", $svcopen);
-                $err = $up->modify();
-                $up->postModify();
+                $up->store();
                 
                 $tsvc[] = array(
                     "rg" => count($tsvc) ,
                     "snum" => $svcnumber,
                     "sid" => $svc->id,
                     "stitle" => addslashes($svc->getRawValue("psvc_title")) ,
-                    "vurl" => $svc->getRawValue("psvc_vurl") ,
-                    "eurl" => $svc->getRawValue("psvc_eurl") ,
+                    "vurl" => Webdesk\Util::parseUrl($svc->getRawValue("psvc_vurl")) ,
+                    "eurl" => Webdesk\Util::parseUrl($svc->getRawValue("psvc_eurl")) ,
                     "purl" => "",
                     "jslink" => "",
                     "jslinkmd5" => "",
@@ -235,6 +234,7 @@ function portal(Action & $action)
             }
         }
     }
+    
     $action->lay->setBlockData("USvc", $tsvc);
 }
 
@@ -296,7 +296,7 @@ function genCatXml($cat)
     if (isset($cat["subcat"]) && count($cat["subcat"]) > 0 && subcatNotEmpty($cat["subcat"])) {
         $menu.= '<li><a href="#">' . $cat["label"] . "...</a>\n";
         $menu.= "<ul>\n";
-        foreach ($cat["subcat"] as $kcat => $vcat) $menu.= genCatXml($vcat, $kcat);
+        foreach ($cat["subcat"] as $kcat => $vcat) $menu.= genCatXml($vcat);
         $menu.= "</ul>\n</li>\n";
     }
     if (isset($cat["item"]) && count($cat["item"]) > 0) {
@@ -306,7 +306,7 @@ function genCatXml($cat)
         $menu.= '...';
         $menu.= "</a>";
         $menu.= '<ul>';
-        foreach ($cat["item"] as $kcat => $vcat) $menu.= genCatXml($vcat, $kcat);
+        foreach ($cat["item"] as $kcat => $vcat) $menu.= genCatXml($vcat);
         $menu.= "</ul>\n";
         $menu.= "</li>\n";
     }

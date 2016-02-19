@@ -10,7 +10,7 @@ include_once 'FDL/Lib.Dir.php';
 function getjsservice(Action & $action)
 {
     
-    $dbaccess = getParam("FREEDOM_DB");
+    $dbaccess = $action->dbaccess;
     
     $snum = GetHttpVars("snum", "");
     if ($snum < 0 || $snum == "") {
@@ -18,13 +18,12 @@ function getjsservice(Action & $action)
         return;
     }
     
-    $search = new SearchDoc("", "USER_PORTAL");
+    $search = new SearchDoc($dbaccess, "USER_PORTAL");
     $search->addFilter("uport_ownerid = '%s'", $action->user->fid);
     $search->setSlice(1);
     $search->setObjectReturn();
-
+    
     $search->search();
-
     /* @var $tup _USER_PORTAL */
     $tup = $search->getNextDoc();
     if (!is_object($tup) || !$tup->isAffected()) {
@@ -61,7 +60,8 @@ function getjsservice(Action & $action)
     }
     
     $svc = getTDoc($dbaccess, $sid);
-    $ret = "var svc = { " . "     snum:" . $snum . "," . "     sid:" . $sid . "," . "     stitle:'" . addslashes(getV($svc, "psvc_title")) . "'," . "     vurl:'" . getV($svc, "psvc_vurl") . "'," . "     eurl:'" . getV($svc, "psvc_eurl") . "'," . "     jslink:'" . (getV($svc, "psvc_jsfile") != "" ? Getparam("CORE_STANDURL") . "&app=CORE&action=CORE_CSS&session=" . $action->session->id . "&layout=" . getV($svc, "psvc_jsfile") : "") . "'," . "     jslinkmd5:'" . md5(getV($svc, "psvc_jsfile")) . "'," . "     csslink:'" . (getV($svc, "psvc_cssfile") != "" ? Getparam("CORE_STANDURL") . "&app=CORE&action=CORE_CSS&session=" . $action->session->id . "&layout=" . getV($svc, "psvc_cssfile") : "") . "'," . "     csslinkmd5:'" . md5(getV($svc, "psvc_cssfile")) . "'," . "     purl:'" . $sparam . "'," . "     rdel:" . $rdel . "," . "     nextLoad:-1," . "     col:" . $scol . "," . "     lin:" . $slin . "," . "     open:true," . "     i:" . (getV($svc, "psvc_interactif") == 1 ? "true" : "false") . "," . "     m:" . (getV($svc, "psvc_mandatory") == 1 ? "true" : "false") . "," . "     e:" . (getV($svc, "psvc_umode") == 1 ? "true" : "false") . "," . "     d:false };";
+    Webdesk\Util::parseUrl("", $action);
+    $ret = "var svc = { " . "     snum:" . $snum . "," . "     sid:" . $sid . "," . "     stitle:'" . addslashes(getV($svc, "psvc_title")) . "'," . "     vurl:'" . Webdesk\Util::parseUrl(getV($svc, "psvc_vurl")) . "'," . "     eurl:'" . Webdesk\Util::parseUrl(getV($svc, "psvc_eurl")) . "'," . "     jslink:'" . (getV($svc, "psvc_jsfile") != "" ? Getparam("CORE_STANDURL") . "&app=CORE&action=CORE_CSS&session=" . $action->session->id . "&layout=" . getV($svc, "psvc_jsfile") : "") . "'," . "     jslinkmd5:'" . md5(getV($svc, "psvc_jsfile")) . "'," . "     csslink:'" . (getV($svc, "psvc_cssfile") != "" ? Getparam("CORE_STANDURL") . "&app=CORE&action=CORE_CSS&session=" . $action->session->id . "&layout=" . getV($svc, "psvc_cssfile") : "") . "'," . "     csslinkmd5:'" . md5(getV($svc, "psvc_cssfile")) . "'," . "     purl:'" . $sparam . "'," . "     rdel:" . $rdel . "," . "     nextLoad:-1," . "     col:" . $scol . "," . "     lin:" . $slin . "," . "     open:true," . "     i:" . (getV($svc, "psvc_interactif") == 1 ? "true" : "false") . "," . "     m:" . (getV($svc, "psvc_mandatory") == 1 ? "true" : "false") . "," . "     e:" . (getV($svc, "psvc_umode") == 1 ? "true" : "false") . "," . "     d:false };";
     
     $action->lay->set("OUT", $ret);
 }

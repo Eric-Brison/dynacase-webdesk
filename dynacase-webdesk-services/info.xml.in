@@ -8,24 +8,12 @@
   </requires>
 
   <pre-install>
-    <check type="phpclass" include="XML/Parser.php" class="XML_Parser">
-      <help>You might need to install a php-pear-XML_Parser package from your distribution, or run 'pear install XML_Parser', in order to have XML_Parser support in PHP.</help>
-    </check>
-    <check type="phpclass" include="XML/RSS.php" class="XML_RSS">
-      <help>You might need to install a php-pear-XML_RSS package form your distribution, or run 'pear install XML_RSS', in order to get RSS parsing support in PHP.</help>
-    </check>
     <check type="phpfunction" function="imap_open">
       <help>You might need to install a php-imap package from your distribution in order to get IMAP support in PHP.</help>
     </check>
   </pre-install>
 
   <pre-upgrade>
-    <check type="phpclass" include="XML/Parser.php" class="XML_Parser">
-      <help>You might need to install a php-pear-XML_Parser package from your distribution, or run 'pear install XML_Parser', in roder to have XML_Parser support in PHP.</help>
-    </check>
-    <check type="phpclass" include="XML/RSS.php" class="XML_RSS">
-      <help>You might need to install a php-pear-XML_RSS package form your distribution, or run 'pear install XML_RSS', in order to get RSS parsing support in PHP.</help>
-    </check>
     <check type="phpfunction" function="imap_open">
       <help>You might need to install a php-imap package from your distribution in order to get IMAP support in PHP.</help>
     </check>
